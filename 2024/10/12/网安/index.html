@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="许步鸢"><meta name="copyright" content="许步鸢"><meta name="generator" content="Hexo 7.3.0"><meta name="theme" content="hexo-theme-yun"><title>网安知识点 | 许步鸢的小站</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/star-markdown-css@0.4.1/dist/yun/yun-markdown.min.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/prism-theme-vars/base.css"><script src="https://fastly.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>function initScrollReveal() {
+  [".post-card",".markdown-body img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+}
+document.addEventListener("DOMContentLoaded", initScrollReveal);
+document.addEventListener("pjax:success", initScrollReveal);
+</script><link rel="icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preconnect" href="https://fastly.jsdelivr.net/npm/" crossorigin><script id="yun-config">
+    window.Yun = {}
+    window.CONFIG = {"hostname":"example.com","root":"/","title":"许步鸢的小站","version":"1.10.11","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"搜索...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）"},"anonymous_image":"https://cdn.yunyoujun.cn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"fireworks":{"colors":null},"vendors":{"host":"https://fastly.jsdelivr.net/npm/","darken":"https://fastly.jsdelivr.net/npm/darken@1.5.0"}};
+  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/hexo-theme-yun.js" type="module"></script><meta name="description" content="网安模块一	基础设施设置与安全加固试题简述​	选手需要使用各种网络安全技术对已有的网络和服务进行配置和加固。模块A的任务场景中的一些安全配置比较明确，但另外一些安全配置则为不同的实现选项预留了选择空间，选手需根据行业最佳实践（在安全性、高可用性和可扩展性方面）选择合理安全方案，并尽最大努力实现安全配置。选手应该熟悉Windows、Linux等主流的网络安全设备和产品的安全配置和加固技术 1.网络基">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网安知识点">
+<meta property="og:url" content="http://example.com/2024/10/12/%E7%BD%91%E5%AE%89/index.html">
+<meta property="og:site_name" content="许步鸢的小站">
+<meta property="og:description" content="网安模块一	基础设施设置与安全加固试题简述​	选手需要使用各种网络安全技术对已有的网络和服务进行配置和加固。模块A的任务场景中的一些安全配置比较明确，但另外一些安全配置则为不同的实现选项预留了选择空间，选手需根据行业最佳实践（在安全性、高可用性和可扩展性方面）选择合理安全方案，并尽最大努力实现安全配置。选手应该熟悉Windows、Linux等主流的网络安全设备和产品的安全配置和加固技术 1.网络基">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-12T02:10:35.000Z">
+<meta property="article:modified_time" content="2024-11-11T07:35:31.138Z">
+<meta property="article:author" content="许步鸢">
+<meta property="article:tag" content="网安">
+<meta name="twitter:card" content="summary"><script>(function() {
+  if (CONFIG.mode !== 'auto') return
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const setting = localStorage.getItem('darken-mode') || 'auto'
+  if (setting === 'dark' || (prefersDark && setting !== 'light'))
+    document.documentElement.classList.toggle('dark', true)
+})()</script></head><body><script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script><script>// Define global variable
+IconifyProviders = {
+  // Empty prefix: overwrite default API provider configuration
+  '': {
+    // Use custom API first, use Iconify public API as backup
+    resources: [
+        'https://api.iconify.design',
+    ],
+    // Wait for 1 second before switching API hosts
+    rotate: 1000,
+  },
+};</script><script defer src="https://fastly.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><span class="icon iconify" data-icon="ri:list-ordered"></span></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><span class="icon iconify" data-icon="ri:passport-line"></span></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="许步鸢"><img width="96" loading="lazy" src="/images/avatar.jpg" alt="许步鸢"><span class="site-author-status" title="大家一起GO一辈子好吗">😭</span></a><div class="site-author-name"><a href="/about/">许步鸢</a></div><span class="site-name">许步鸢的小站</span><sub class="site-subtitle"></sub><div class="site-description"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:home-4-line"></span></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:archive-line"></span></span><span class="site-state-item-count">15</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:folder-2-line"></span></span><span class="site-state-item-count">6</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="site-state-item-count">11</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:settings-line"></span></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/xubuyuan18" title="GitHub" target="_blank" style="color:#181717"><span class="icon iconify" data-icon="ri:github-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/441828893" title="哔哩哔哩动画" target="_blank" style="color:#FF8EB3"><span class="icon iconify" data-icon="ri:bilibili-line"></span></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><span class="icon iconify" data-icon="ri:contrast-2-line"></span></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E5%AE%89"><span class="toc-number">1.</span> <span class="toc-text">网安</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E4%B8%80%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%AE%89%E5%85%A8%E5%8A%A0%E5%9B%BA"><span class="toc-number">1.1.</span> <span class="toc-text">模块一	基础设施设置与安全加固</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%95%E9%A2%98%E7%AE%80%E8%BF%B0"><span class="toc-number">1.1.1.</span> <span class="toc-text">试题简述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%EF%BC%9A"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">1.网络基础：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%EF%BC%9A"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">2.操作系统安全：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E8%AE%BE%E5%A4%87%E5%92%8C%E4%BA%A7%E5%93%81%EF%BC%9A"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">3.网络安全设备和产品：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE%E5%92%8C%E6%9C%8D%E5%8A%A1%EF%BC%9A"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">4.安全协议和服务：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%AE%89%E5%85%A8%E7%9B%91%E6%8E%A7%E5%92%8C%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%EF%BC%9A"><span class="toc-number">1.1.1.5.</span> <span class="toc-text">5.安全监控和日志分析：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E9%98%B2%E7%81%AB%E5%A2%99%E7%BB%84%E7%AD%96%E7%95%A5%E5%B0%B1%E7%9B%AF%E7%9D%80%E8%BF%99%E4%B8%89%E5%B9%B2%EF%BC%81"><span class="toc-number">1.1.1.6.</span> <span class="toc-text">日志防火墙组策略就盯着这三干！</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E4%BA%8C%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-%E6%95%B0%E5%AD%97%E5%8F%96%E8%AF%81%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8"><span class="toc-number">1.2.</span> <span class="toc-text">模块二	应急响应 数字取证应用安全</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="toc-number">1.2.0.0.1.</span> <span class="toc-text">常用的工具</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#WiresharkD%E7%9B%BE%E7%81%AB%E7%BB%92%E5%89%91"><span class="toc-number">1.2.0.0.2.</span> <span class="toc-text">Wireshark	D盾	火绒剑</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E4%B8%89CTF%E5%A4%BA%E6%97%97"><span class="toc-number">1.3.</span> <span class="toc-text">模块三	CTF夺旗</span></a></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#0078E7;"><link itemprop="mainEntityOfPage" href="http://example.com/2024/10/12/%E7%BD%91%E5%AE%89/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="许步鸢"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="许步鸢的小站"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">网安知识点</h1><div class="post-meta"><div class="post-time"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-line"></span></span> <time title="创建时间：2024-10-12 10:10:35" itemprop="dateCreated datePublished" datetime="2024-10-12T10:10:35+08:00">2024-10-12</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-2-line"></span></span> <time title="修改时间：2024-11-11 15:35:31" itemprop="dateModified" datetime="2024-11-11T15:35:31+08:00">2024-11-11</time></div><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><span class="icon iconify" data-icon="ri:folder-line"></span></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/categories/Linux/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">Linux</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag-item" href="/tags/%E7%BD%91%E5%AE%89/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">网安</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><h1 id="网安"><a href="#网安" class="headerlink" title="网安"></a>网安</h1><h2 id="模块一基础设施设置与安全加固"><a href="#模块一基础设施设置与安全加固" class="headerlink" title="模块一	基础设施设置与安全加固"></a>模块一	基础设施设置与安全加固</h2><h3 id="试题简述"><a href="#试题简述" class="headerlink" title="试题简述"></a>试题简述</h3><p>​	选手需要使用各种网络安全技术对已有的网络和服务进行配置和加固。模块A的任务场景中的一些安全配置比较明确，但另外一些安全配置则为不同的实现选项预留了选择空间，选手需根据行业最佳实践（在安全性、高可用性和可扩展性方面）选择合理安全方案，并尽最大努力实现安全配置。选手应该熟悉Windows、Linux等主流的网络安全设备和产品的安全配置和加固技术</p>
+<h4 id="1-网络基础："><a href="#1-网络基础：" class="headerlink" title="1.网络基础："></a>1.<strong>网络基础</strong>：</h4><ul>
+<li>理解TCP&#x2F;IP协议栈</li>
+<li>熟悉OSI模型</li>
+<li>掌握常见的网络设备（如路由器、交换机、防火墙）的工作原理</li>
+</ul>
+<h4 id="2-操作系统安全："><a href="#2-操作系统安全：" class="headerlink" title="2.操作系统安全："></a>2.<strong>操作系统安全</strong>：</h4><ul>
+<li>熟悉Windows和Linux操作系统的安全配置</li>
+<li>了解如何加固操作系统，包括账户管理、权限控制、安全策略等</li>
+<li>启用账户锁定策略，防止暴力破解，</li>
+<li>仅授权必要的用户和组进行关键操作，如远程关机和本地关机。</li>
+<li>限制对敏感资源的访问，确保只有授权用户可以访问</li>
+<li>增大日志文件大小，确保记录足够的日志信息以便于事后审计。</li>
+<li>开启关键事件的审核，如账户登录事件、权限更改、系统访问等优化网络服务，关闭不必要的网络共享。</li>
+<li>限制网络访问，仅允许特定的IP地址或范围访问关键服务</li>
+</ul>
+<h4 id="3-网络安全设备和产品："><a href="#3-网络安全设备和产品：" class="headerlink" title="3.网络安全设备和产品："></a>3.<strong>网络安全设备和产品</strong>：</h4><ul>
+<li>了解不同网络安全设备的功能和配置，如防火墙、入侵检测系统（IDS）、入侵防御系统（IPS）、VPN等</li>
+<li>掌握如何配置和维护这些设备</li>
+</ul>
+<h4 id="4-安全协议和服务："><a href="#4-安全协议和服务：" class="headerlink" title="4.安全协议和服务："></a>4.<strong>安全协议和服务</strong>：</h4><ul>
+<li>熟悉常见的安全协议，如SSH、HTTPS、SFTP等</li>
+<li>了解如何配置和维护这些服务</li>
+</ul>
+<h4 id="5-安全监控和日志分析："><a href="#5-安全监控和日志分析：" class="headerlink" title="5.安全监控和日志分析："></a>5.<strong>安全监控和日志分析</strong>：</h4><ul>
+<li>掌握如何设置和分析安全日志</li>
+</ul>
+<h4 id="日志防火墙组策略就盯着这三干！"><a href="#日志防火墙组策略就盯着这三干！" class="headerlink" title="日志防火墙组策略就盯着这三干！"></a>日志防火墙组策略就盯着这三干！</h4><h2 id="模块二应急响应-数字取证应用安全"><a href="#模块二应急响应-数字取证应用安全" class="headerlink" title="模块二	应急响应 数字取证应用安全"></a>模块二	应急响应 数字取证应用安全</h2><ol>
+<li><p><strong>网络安全事件响应</strong>：</p>
+<ul>
+<li>学习网络安全事件的分类和识别方法。</li>
+<li>掌握应急响应流程，包括事件的识别、响应、隔离、恢复和报告。</li>
+</ul>
+</li>
+<li><p><strong>应用程序安全</strong>：</p>
+<ul>
+<li>学习编程语言和Web应用的安全漏洞，如SQL注入、XSS等。</li>
+<li>掌握代码审计工具和技术，如静态代码分析（SAST）和动态代码分析（DAST）。</li>
+<li>有东西就往D盾扫一扫</li>
+</ul>
+</li>
+<li><p><strong>工具和资源库</strong></p>
+<h5 id="常用的工具"><a href="#常用的工具" class="headerlink" title="常用的工具"></a>常用的工具</h5><h5 id="WiresharkD盾火绒剑"><a href="#WiresharkD盾火绒剑" class="headerlink" title="Wireshark	D盾	火绒剑"></a><strong>Wireshark</strong>	D盾	火绒剑</h5><p><a target="_blank" rel="noopener" href="https://www.t00ls.com/">https://www.t00ls.com/</a>	tools</p>
+<p><a target="_blank" rel="noopener" href="https://play.picoctf.org/">https://play.picoctf.org/</a>	ctf平台</p>
+</li>
+</ol>
+<h2 id="模块三CTF夺旗"><a href="#模块三CTF夺旗" class="headerlink" title="模块三	CTF夺旗"></a>模块三	CTF夺旗</h2><p><strong>编程和脚本语言</strong>：</p>
+<ul>
+<li>学习至少一种编程语言，如Python、C、C++或Java，这将帮助你理解漏洞利用和编写自动化工具。</li>
+<li>学习脚本语言，如Bash或PowerShell，以便在不同操作系统中操作</li>
+</ul>
+<p><strong>网络安全基础</strong>：</p>
+<ul>
+<li>理解网络安全的基本概念，包括加密、身份验证、访问控制等</li>
+</ul>
+<p><strong>系统和网络</strong>：</p>
+<ul>
+<li>掌握Windows和Linux操作系统的安全性。</li>
+<li>了解网络协议和架构，如TCP&#x2F;IP、DNS、HTTP、HTTPS等</li>
+</ul>
+<p><strong>逆向工程</strong>：（不用学）</p>
+<ul>
+<li>学习如何分析和修改二进制文件，掌握逆向工程的基本概念和工具。</li>
+</ul>
+<p><strong>安全工具和资源</strong>：</p>
+<ul>
+<li><p>熟悉常用的安全工具，如Wireshark（网络分析）、John the Ripper（密码破解）、Nmap（网络扫描）等。</p>
+</li>
+<li><p>学习CTF比赛的特定技能，如代码审计、二进制漏洞利用、Web应用攻击、密码破译等。</p>
+</li>
+</ul>
+</div></section><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="打赏" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><span class="icon iconify" data-icon="ri:hand-coin-line"></span></span><div id="reward-comment">I'm so cute. Please give me money.</div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>许步鸢</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="http://example.com/2024/10/12/%E7%BD%91%E5%AE%89/" title="网安知识点">http://example.com/2024/10/12/%E7%BD%91%E5%AE%89/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><span class="icon iconify" data-icon="ri:creative-commons-line"></span><span class="icon iconify" data-icon="ri:creative-commons-by-line"></span><span class="icon iconify" data-icon="ri:creative-commons-nc-line"></span><span class="icon iconify" data-icon="ri:creative-commons-sa-line"></span></a> 许可协议。</li></ul></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/2024/10/12/%E5%B8%B8%E7%94%A8%E7%BD%91%E5%9D%80/" rel="prev" title="常用网址"><span class="icon iconify" data-icon="ri:arrow-left-s-line"></span><span class="post-nav-text">常用网址</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/2024/10/10/docker%E5%85%A5%E9%97%A8/" rel="next" title="docker入门"><span class="post-nav-text">docker入门</span><span class="icon iconify" data-icon="ri:arrow-right-s-line"></span></a></div></div></div><div class="hty-card" id="comment"></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2024 </span><span class="with-love" id="animate"><span class="icon iconify" data-icon="ri:cloud-line"></span></span><span class="author"> 许步鸢</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v7.3.0</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.10.11</span></div><div class="live-time"><span>本博客已运行</span><span id="display_live_time"></span><span class="moe-text">(●'◡'●)</span><script>function blog_live_time() {
+  setTimeout(blog_live_time, 1000);
+  const start = new Date('2024-09-06T09:00:00');
+  const now = new Date();
+  const timeDiff = (now.getTime() - start.getTime());
+  const msPerMinute = 60 * 1000;
+  const msPerHour = 60 * msPerMinute;
+  const msPerDay = 24 * msPerHour;
+  const passDay = Math.floor(timeDiff / msPerDay);
+  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
+  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
+  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
+  display_live_time.innerHTML = ` ${passDay} 天 ${passHour} 小时 ${passMinute} 分 ${passSecond} 秒`;
+}
+blog_live_time();
+</script></div></footer></div><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><span class="icon iconify" data-icon="ri:arrow-up-s-line"></span><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><script>function initMourn() {
+  const date = new Date();
+  const today = (date.getMonth() + 1) + "-" + date.getDate()
+  const mourn_days = ["4-4","9-18"]
+  if (mourn_days.includes(today)) {
+    document.documentElement.style.filter = "grayscale(1)";
+  }
+}
+initMourn();</script><script src="https://fastly.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script><script>const images = [...document.querySelectorAll('.markdown-body img')]
+mediumZoom(images)</script><style>.medium-zoom-image {
+  z-index: 99;
+}</style></body></html>
