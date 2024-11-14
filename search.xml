@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>debain 路由</title>
-    <url>/2024/10/15/Debain/</url>
+    <url>/2024/10/15/Debain%E8%B7%AF%E7%94%B1/</url>
     <content><![CDATA[<h2 id="debain-开启路由转发功能"><a href="#debain-开启路由转发功能" class="headerlink" title="debain 开启路由转发功能"></a>debain 开启路由转发功能</h2><p><strong>sysclt -w net.ipv4.ip_forward&#x3D;1</strong><br><strong>sysctp -p</strong></p>
 <p>验证是否成功开启路由转发</p>
 <p>sysctl net.ipv4.ip_forward</p>
@@ -159,19 +159,6 @@
       </tags>
   </entry>
   <entry>
-    <title>docker入门</title>
-    <url>/2024/10/10/docker%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<h2 id="Docker的安装"><a href="#Docker的安装" class="headerlink" title="Docker的安装"></a>Docker的安装</h2><h3 id="部署docker容器虚拟化平台并且配置docker镜像加速地址。"><a href="#部署docker容器虚拟化平台并且配置docker镜像加速地址。" class="headerlink" title="部署docker容器虚拟化平台并且配置docker镜像加速地址。"></a>部署docker容器虚拟化平台并且配置docker镜像加速地址。</h3><p>实验环境：openeuler24.03-LST 64位。网络要求能上外网。</p>
-<h3 id="摸鱼去了还没写完！！！"><a href="#摸鱼去了还没写完！！！" class="headerlink" title="摸鱼去了还没写完！！！"></a>摸鱼去了还没写完！！！</h3><p><img src="https://pic2.imge.cc/2024/10/12/670a75e1d1ddb.gif" loading="lazy"></p>
-]]></content>
-      <categories>
-        <category>OpenEuler</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>docker原理</title>
     <url>/2024/10/09/docker%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<h1 id="docker原理"><a href="#docker原理" class="headerlink" title="docker原理"></a>docker原理</h1><h2 id="一、Docker背景介绍。"><a href="#一、Docker背景介绍。" class="headerlink" title="一、Docker背景介绍。"></a>一、Docker背景介绍。</h2><h3 id="1、什么是docker。"><a href="#1、什么是docker。" class="headerlink" title="1、什么是docker。"></a>1、什么是docker。</h3><h4 id="Docker，翻译过来就是码头工人"><a href="#Docker，翻译过来就是码头工人" class="headerlink" title="Docker，翻译过来就是码头工人"></a>Docker，翻译过来就是码头工人</h4><p>Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可抑制的容器中，然后发布到任何流行的Linux机器上，也可以实现虚拟化。容器完全使用沙盒机制，相互之间不会存在任何接口。几乎没有性能开销，可以很容易的在机器和数据中心运行。最重要的是，他们不依赖于任何语言、框架或者包装系统。</p>
@@ -226,14 +213,14 @@
     <content><![CDATA[<h1 id="Nginx-配置问题与解决方法"><a href="#Nginx-配置问题与解决方法" class="headerlink" title="Nginx 配置问题与解决方法"></a>Nginx 配置问题与解决方法</h1><p>Nginx 配置与问题解析</p>
 <h1 id="Nginx配置与解析"><a href="#Nginx配置与解析" class="headerlink" title="Nginx配置与解析"></a>Nginx配置与解析</h1><p><code>Nginx</code>默认的配置文件是在安装目录下的 <code>conf</code>目录下，后续对 <code>Nginx</code>的使用基本上都是对此配置文件进行相应的修改。修改过<code>nginx.conf</code>配置文件，记得要重启<code>Nginx</code>服务</p>
 <h2 id="安装nginx-基础环境配置"><a href="#安装nginx-基础环境配置" class="headerlink" title="安装nginx (基础环境配置)"></a>安装nginx (基础环境配置)</h2><ul>
-<li><p>yum install nginx 	使用yum命令安装</p>
+<li><p>yum install nginx 	#使用yum命令安装</p>
 </li>
-<li><p>systemctl stop firewalld 实验环境下关闭防火墙与SElniunx策略</p>
+<li><p>systemctl stop firewalld #实验环境下关闭防火墙与SElniunx策略</p>
 </li>
 <li><p>setenforce 0</p>
 </li>
 <li><p>systemctl start nginx	#启动nginx服务</p>
-<p>在本地浏览器中输入本机IP地址，显示nginx主界面则为成功</p>
+<p>在本地浏览器中输入本机IP地址，显示nginx主界面则nginx服务成功启动</p>
 </li>
 </ul>
 <h2 id="配置个性化web界面"><a href="#配置个性化web界面" class="headerlink" title="配置个性化web界面"></a>配置个性化web界面</h2><h3 id="新建网站首页"><a href="#新建网站首页" class="headerlink" title="新建网站首页"></a>新建网站首页</h3><ul>
@@ -244,22 +231,21 @@
 </li>
 <li>重新通过web界面访问nginx主页</li>
 </ul>
-<h2 id="配置Nginx反向代理"><a href="#配置Nginx反向代理" class="headerlink" title="配置Nginx反向代理"></a>配置Nginx反向代理</h2><h3 id="实现效果：使用-Nginx-反向代理，访问IP直接跳转到百度主页"><a href="#实现效果：使用-Nginx-反向代理，访问IP直接跳转到百度主页" class="headerlink" title="实现效果：使用 Nginx 反向代理，访问IP直接跳转到百度主页"></a>实现效果：使用 Nginx 反向代理，访问IP直接跳转到百度主页</h3><p><strong>注意</strong>：此处如果要想从指定域名跳转到本机指定的ip，需要修改本机的hosts文件。</p>
+<h2 id="配置Nginx反向代理"><a href="#配置Nginx反向代理" class="headerlink" title="配置Nginx反向代理"></a>配置Nginx反向代理</h2><h3 id="实现效果：使用-Nginx-反向代理，访问IP直接跳转到百度主页"><a href="#实现效果：使用-Nginx-反向代理，访问IP直接跳转到百度主页" class="headerlink" title="实现效果：使用 Nginx 反向代理，访问IP直接跳转到百度主页"></a>实现效果：使用 Nginx 反向代理，访问IP直接跳转到百度主页</h3><p><strong>PS</strong>：此处如果要想从指定域名跳转到本机指定的ip，需要修改本机的hosts文件。</p>
 <p>配置代码</p>
 <p>server {<br>    listen       80;<br>    server_name  虚拟机IP;</p>
-<p>location &#x2F; {<br>    proxy_pass  <a href="http://www.baidu.com/">http://www.baidu.com</a><br>}</p>
-<p>}</p>
+<p>location &#x2F; {<br>    proxy_pass  <a href="http://www.baidu.com/">http://www.baidu.com</a><br>    }<br>}</p>
 <p>如上配置，Nginx监听 80端口，访问虚拟机IP（不加端口号时默认为 80端口），访问该IP时会跳转到 百度主页上。</p>
 <h2 id="配置Nginx负载均衡"><a href="#配置Nginx负载均衡" class="headerlink" title="配置Nginx负载均衡"></a>配置Nginx负载均衡</h2><h3 id="负载均衡的作用"><a href="#负载均衡的作用" class="headerlink" title="负载均衡的作用"></a>负载均衡的作用</h3><p>解决服务器的高并发压力，提高应用程序的处理性能；<br>提供故障转移，实现高可用；<br>通过添加或减少服务器数量，增强网站的可扩展性；<br>在负载均衡器上进行过滤，可以提高系统的安全性。</p>
 <h4 id="Nginx负载均衡配置"><a href="#Nginx负载均衡配置" class="headerlink" title="Nginx负载均衡配置"></a>Nginx负载均衡配置</h4><h5 id="代理服务器-配置"><a href="#代理服务器-配置" class="headerlink" title="代理服务器 配置"></a>代理服务器 配置</h5><p>vi &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</p>
-<p>在Nnginx的主配置文件下的http块中配置</p>
+<p>1.在Nnginx的主配置文件下的http块中配置</p>
 <pre><code># 设置服务器组
 upstream backend &#123;
     server localhost;
     server localhost;
 &#125;
 </code></pre>
-<h6 id="在server块下增加配置"><a href="#在server块下增加配置" class="headerlink" title="在server块下增加配置"></a>在server块下增加配置</h6><p>server {<br>        listen 80;<br>        server_name localhost;<br>        location &#x2F; {</p>
+<h6 id="2-在server块下增加配置"><a href="#2-在server块下增加配置" class="headerlink" title="2.在server块下增加配置"></a>2.在server块下增加配置</h6><p>server {<br>        listen 80;<br>        server_name localhost;<br>        location &#x2F; {</p>
 <p>​			# backend 就是服务器组的名称</p>
 <p>​			proxy_pass <a href="http://backend/">http://backend/</a>;<br>​		}<br>​	}</p>
 ]]></content>
@@ -348,7 +334,6 @@ gpgkey=http://repo.huaweicloud.com/openeuler/openEuler-22.03-LTS-SP3/everything/
 <p>同时开启机器：  DC1  long.com（两个网络之间需要互相ping通）</p>
 <p>Ipconfig &#x2F;all 查看网络配置信息，ping  DC1 ，观察是否可以ping通</p>
 <p>Ping 192.168.10.1，网络之间能够ping通再进行下一步操作</p>
-<h3 id="步骤3：在本计算机上运行sysprep"><a href="#步骤3：在本计算机上运行sysprep" class="headerlink" title="步骤3：在本计算机上运行sysprep"></a>步骤3：在本计算机上运行sysprep</h3><p>文件位置: C:\Windows\System32\Sysprep，运行程序，点击通用后直接点击确定</p>
 ]]></content>
       <categories>
         <category>windonws Server</category>
