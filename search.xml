@@ -343,6 +343,71 @@ gpgkey=http://repo.huaweicloud.com/openeuler/openEuler-22.03-LTS-SP3/everything/
       </tags>
   </entry>
   <entry>
+    <title>华三交换机配置命令</title>
+    <url>/2024/11/16/%E5%8D%8E%E4%B8%89%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="华三交换机命令"><a href="#华三交换机命令" class="headerlink" title="华三交换机命令"></a>华三交换机命令</h1><span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">system-view</td>
+<td align="left">进入系统视图</td>
+</tr>
+<tr>
+<td align="left">interface GigabitEthernet0&#x2F;0&#x2F;0</td>
+<td align="left">进入以太网端口视图</td>
+</tr>
+<tr>
+<td align="left">display interface</td>
+<td align="left">接口流量、链路状态</td>
+</tr>
+<tr>
+<td align="left">vlan 2 ****</td>
+<td align="left">创建VLAN2</td>
+</tr>
+<tr>
+<td align="left">[H3C]undo vlan all</td>
+<td align="left">删除除缺省VLAN外的所有VLAN,缺省VLAN不能被删除</td>
+</tr>
+<tr>
+<td align="left">[H3C-vlan2]port G 0&#x2F;4 to Ethernet0&#x2F;7</td>
+<td align="left">将4到7号端口加入到VLAN2中</td>
+</tr>
+<tr>
+<td align="left">ip address192.168.1.2 255.255.255.0</td>
+<td align="left">为接口添加静态IP地址**</td>
+</tr>
+<tr>
+<td align="left">port link-type trunk</td>
+<td align="left">设置链路的<strong>类型为trunk</strong></td>
+</tr>
+<tr>
+<td align="left">port access vlan 20</td>
+<td align="left">将当前<strong>access端口加入指定的VLAN</strong></td>
+</tr>
+<tr>
+<td align="left">save</td>
+<td align="left">保存当前交换机配置</td>
+</tr>
+<tr>
+<td align="left">sys name 1</td>
+<td align="left">设置交换机名</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>华三</category>
+      </categories>
+      <tags>
+        <tag>“交换机”</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>常用命令</title>
     <url>/2024/10/13/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><p>以下命令均需要安装后使用</p>
