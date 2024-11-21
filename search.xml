@@ -343,6 +343,72 @@ gpgkey=http://repo.huaweicloud.com/openeuler/openEuler-22.03-LTS-SP3/everything/
       </tags>
   </entry>
   <entry>
+    <title>华三交换机配置命令</title>
+    <url>/2024/11/16/%E5%8D%8E%E4%B8%89%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="华三交换机命令"><a href="#华三交换机命令" class="headerlink" title="华三交换机命令"></a>华三交换机命令</h1><p><img src="https://pic2.imge.cc/2024/11/17/67398d7e0ca7a.jpeg" loading="lazy"></p>
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">system-view</td>
+<td align="left">进入系统视图</td>
+</tr>
+<tr>
+<td align="left">interface GigabitEthernet0&#x2F;0&#x2F;0</td>
+<td align="left">进入以太网端口视图</td>
+</tr>
+<tr>
+<td align="left">display interface</td>
+<td align="left">接口流量、链路状态</td>
+</tr>
+<tr>
+<td align="left">vlan 2 ****</td>
+<td align="left">创建VLAN2</td>
+</tr>
+<tr>
+<td align="left">[H3C]undo vlan all</td>
+<td align="left">删除除缺省VLAN外的所有VLAN,缺省VLAN不能被删除</td>
+</tr>
+<tr>
+<td align="left">[H3C-vlan2]port G 0&#x2F;4 to Ethernet0&#x2F;7</td>
+<td align="left">将4到7号端口加入到VLAN2中</td>
+</tr>
+<tr>
+<td align="left">ip address192.168.1.2 255.255.255.0</td>
+<td align="left">为接口添加静态IP地址**</td>
+</tr>
+<tr>
+<td align="left">port link-type trunk</td>
+<td align="left">设置链路的<strong>类型为trunk</strong></td>
+</tr>
+<tr>
+<td align="left">port access vlan 20</td>
+<td align="left">将当前<strong>access端口加入指定的VLAN</strong></td>
+</tr>
+<tr>
+<td align="left">save</td>
+<td align="left">保存当前交换机配置</td>
+</tr>
+<tr>
+<td align="left">sys name 1</td>
+<td align="left">设置交换机名</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>华三</category>
+      </categories>
+      <tags>
+        <tag>“交换机”</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>常用命令</title>
     <url>/2024/10/13/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><p>以下命令均需要安装后使用</p>
@@ -442,7 +508,7 @@ gpgkey=http://repo.huaweicloud.com/openeuler/openEuler-22.03-LTS-SP3/everything/
     <content><![CDATA[<p><img src="https://pic2.imge.cc/2024/11/17/67398c800f7b4.png" loading="lazy"></p>
 <span id="more"></span>
 
-<h3 id="kimi-AIhttps-kimi-moonshot-cn-图床https-imge-cc"><a href="#kimi-AIhttps-kimi-moonshot-cn-图床https-imge-cc" class="headerlink" title="kimi AI	https://kimi.moonshot.cn/		图床	https://imge.cc/"></a>kimi AI	<a href="https://kimi.moonshot.cn/">https://kimi.moonshot.cn/</a>		图床	<a href="https://imge.cc/">https://imge.cc/</a></h3><h3 id="红队命令https-book-shentoushi-top"><a href="#红队命令https-book-shentoushi-top" class="headerlink" title="红队命令	https://book.shentoushi.top/"></a>红队命令	<a href="https://book.shentoushi.top/">https://book.shentoushi.top/</a></h3><h3 id="P站国内镜像https-www-vilipix-com"><a href="#P站国内镜像https-www-vilipix-com" class="headerlink" title="P站国内镜像	https://www.vilipix.com/"></a>P站国内镜像	<a href="https://www.vilipix.com/">https://www.vilipix.com/</a></h3><h3 id="ZEABUR部署服务-已跑路-https-dash-zeabur-com-projects"><a href="#ZEABUR部署服务-已跑路-https-dash-zeabur-com-projects" class="headerlink" title="ZEABUR部署服务(已跑路) 	https://dash.zeabur.com/projects"></a>ZEABUR部署服务(已跑路) 	<a href="https://dash.zeabur.com/projects">https://dash.zeabur.com/projects</a></h3><h3 id="次元云订阅https-ciyy-cc-index-php-stage-dashboard"><a href="#次元云订阅https-ciyy-cc-index-php-stage-dashboard" class="headerlink" title="次元云订阅	https://ciyy.cc/index.php/#/stage/dashboard"></a>次元云订阅	<a href="https://ciyy.cc/index.php/#/stage/dashboard">https://ciyy.cc/index.php/#/stage/dashboard</a></h3><h3 id="vercel部署https-vercel-com-xubuyuan18s-projects"><a href="#vercel部署https-vercel-com-xubuyuan18s-projects" class="headerlink" title="vercel部署	https://vercel.com/xubuyuan18s-projects"></a>vercel部署	<a href="https://vercel.com/xubuyuan18s-projects">https://vercel.com/xubuyuan18s-projects</a></h3><h3 id="清华镜像站https-mirrors-tuna-tsinghua-edu-cn"><a href="#清华镜像站https-mirrors-tuna-tsinghua-edu-cn" class="headerlink" title="清华镜像站	https://mirrors.tuna.tsinghua.edu.cn/"></a>清华镜像站	<a href="https://mirrors.tuna.tsinghua.edu.cn/">https://mirrors.tuna.tsinghua.edu.cn/</a></h3><h3 id="中科大镜像站https-lug-ustc-edu-cn-wiki-lug-services-mirrors"><a href="#中科大镜像站https-lug-ustc-edu-cn-wiki-lug-services-mirrors" class="headerlink" title="中科大镜像站	https://lug.ustc.edu.cn/wiki/lug/services/mirrors/"></a>中科大镜像站	<a href="https://lug.ustc.edu.cn/wiki/lug/services/mirrors/">https://lug.ustc.edu.cn/wiki/lug/services/mirrors/</a></h3>]]></content>
+<h3 id="kimi-AIhttps-kimi-moonshot-cn-图床https-imge-cc"><a href="#kimi-AIhttps-kimi-moonshot-cn-图床https-imge-cc" class="headerlink" title="kimi AI	https://kimi.moonshot.cn/		图床	https://imge.cc/"></a>kimi AI	<a href="https://kimi.moonshot.cn/">https://kimi.moonshot.cn/</a>		图床	<a href="https://imge.cc/">https://imge.cc/</a></h3><h3 id="学习通-http-pjzy-fanya-chaoxing-com-portal"><a href="#学习通-http-pjzy-fanya-chaoxing-com-portal" class="headerlink" title="学习通      http://pjzy.fanya.chaoxing.com/portal"></a>学习通      <a href="http://pjzy.fanya.chaoxing.com/portal">http://pjzy.fanya.chaoxing.com/portal</a></h3><h3 id="红队命令https-book-shentoushi-top"><a href="#红队命令https-book-shentoushi-top" class="headerlink" title="红队命令	https://book.shentoushi.top/"></a>红队命令	<a href="https://book.shentoushi.top/">https://book.shentoushi.top/</a></h3><h3 id="P站国内镜像https-www-vilipix-com"><a href="#P站国内镜像https-www-vilipix-com" class="headerlink" title="P站国内镜像	https://www.vilipix.com/"></a>P站国内镜像	<a href="https://www.vilipix.com/">https://www.vilipix.com/</a></h3><h3 id="ZEABUR部署服务-已跑路-https-dash-zeabur-com-projects"><a href="#ZEABUR部署服务-已跑路-https-dash-zeabur-com-projects" class="headerlink" title="ZEABUR部署服务(已跑路) 	https://dash.zeabur.com/projects"></a>ZEABUR部署服务(已跑路) 	<a href="https://dash.zeabur.com/projects">https://dash.zeabur.com/projects</a></h3><h3 id="次元云订阅https-ciyy-cc-index-php-stage-dashboard"><a href="#次元云订阅https-ciyy-cc-index-php-stage-dashboard" class="headerlink" title="次元云订阅	https://ciyy.cc/index.php/#/stage/dashboard"></a>次元云订阅	<a href="https://ciyy.cc/index.php/#/stage/dashboard">https://ciyy.cc/index.php/#/stage/dashboard</a></h3><h3 id="vercel部署https-vercel-com-xubuyuan18s-projects"><a href="#vercel部署https-vercel-com-xubuyuan18s-projects" class="headerlink" title="vercel部署	https://vercel.com/xubuyuan18s-projects"></a>vercel部署	<a href="https://vercel.com/xubuyuan18s-projects">https://vercel.com/xubuyuan18s-projects</a></h3><h3 id="清华镜像站https-mirrors-tuna-tsinghua-edu-cn"><a href="#清华镜像站https-mirrors-tuna-tsinghua-edu-cn" class="headerlink" title="清华镜像站	https://mirrors.tuna.tsinghua.edu.cn/"></a>清华镜像站	<a href="https://mirrors.tuna.tsinghua.edu.cn/">https://mirrors.tuna.tsinghua.edu.cn/</a></h3><h3 id="中科大镜像站https-lug-ustc-edu-cn-wiki-lug-services-mirrors"><a href="#中科大镜像站https-lug-ustc-edu-cn-wiki-lug-services-mirrors" class="headerlink" title="中科大镜像站	https://lug.ustc.edu.cn/wiki/lug/services/mirrors/"></a>中科大镜像站	<a href="https://lug.ustc.edu.cn/wiki/lug/services/mirrors/">https://lug.ustc.edu.cn/wiki/lug/services/mirrors/</a></h3>]]></content>
       <categories>
         <category>工具</category>
       </categories>
@@ -554,72 +620,6 @@ gpgkey=http://repo.huaweicloud.com/openeuler/openEuler-22.03-LTS-SP3/everything/
       </categories>
       <tags>
         <tag>openeuler</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>华三交换机配置命令</title>
-    <url>/2024/11/16/%E5%8D%8E%E4%B8%89%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h1 id="华三交换机命令"><a href="#华三交换机命令" class="headerlink" title="华三交换机命令"></a>华三交换机命令</h1><p><img src="https://pic2.imge.cc/2024/11/17/67398d7e0ca7a.jpeg" loading="lazy"></p>
-<span id="more"></span>
-
-<table>
-<thead>
-<tr>
-<th align="left">命令</th>
-<th align="left">功能说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">system-view</td>
-<td align="left">进入系统视图</td>
-</tr>
-<tr>
-<td align="left">interface GigabitEthernet0&#x2F;0&#x2F;0</td>
-<td align="left">进入以太网端口视图</td>
-</tr>
-<tr>
-<td align="left">display interface</td>
-<td align="left">接口流量、链路状态</td>
-</tr>
-<tr>
-<td align="left">vlan 2 ****</td>
-<td align="left">创建VLAN2</td>
-</tr>
-<tr>
-<td align="left">[H3C]undo vlan all</td>
-<td align="left">删除除缺省VLAN外的所有VLAN,缺省VLAN不能被删除</td>
-</tr>
-<tr>
-<td align="left">[H3C-vlan2]port G 0&#x2F;4 to Ethernet0&#x2F;7</td>
-<td align="left">将4到7号端口加入到VLAN2中</td>
-</tr>
-<tr>
-<td align="left">ip address192.168.1.2 255.255.255.0</td>
-<td align="left">为接口添加静态IP地址**</td>
-</tr>
-<tr>
-<td align="left">port link-type trunk</td>
-<td align="left">设置链路的<strong>类型为trunk</strong></td>
-</tr>
-<tr>
-<td align="left">port access vlan 20</td>
-<td align="left">将当前<strong>access端口加入指定的VLAN</strong></td>
-</tr>
-<tr>
-<td align="left">save</td>
-<td align="left">保存当前交换机配置</td>
-</tr>
-<tr>
-<td align="left">sys name 1</td>
-<td align="left">设置交换机名</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>华三</category>
-      </categories>
-      <tags>
-        <tag>“交换机”</tag>
       </tags>
   </entry>
 </search>
