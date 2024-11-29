@@ -347,8 +347,43 @@ gpgkey=http://repo.huaweicloud.com/openeuler/openEuler-22.03-LTS-SP3/everything/
     <url>/2024/11/16/%E5%8D%8E%E4%B8%89%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="华三交换机命令"><a href="#华三交换机命令" class="headerlink" title="华三交换机命令"></a>华三交换机命令</h1><p><img src="https://pic2.imge.cc/2024/11/17/67398d7e0ca7a.jpeg" loading="lazy"></p>
 <span id="more"></span>
-<p>int g1&#x2F;0&#x2F;1 #进入接口<br>int v 10  #进入vlan<br>v b 10 20 #批量创建vlan<br>int b 1   #创建聚合口<br>p link-type t #改变为turk<br>p t p v 10 #允许不同vlan经过</p>
-<h3 id="创建核心堆叠"><a href="#创建核心堆叠" class="headerlink" title="创建核心堆叠"></a>创建核心堆叠</h3><p>irf d 10<br>irf m 1 r 1</p>
+
+<h3 id="Vlan-划分与配置"><a href="#Vlan-划分与配置" class="headerlink" title="Vlan 划分与配置"></a>Vlan 划分与配置</h3><p>基础记了一点常用命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int g1/0/1 #进入接口</span><br><span class="line">int v 10  #进入vlan</span><br><span class="line">v b 10 20 #批量创建vlan</span><br><span class="line">int b 1   #创建聚合口</span><br><span class="line">p link-type t #改变为turk</span><br><span class="line">p t p v 10 #允许不同vlan经过</span><br><span class="line">ip add 10.10.10.10 24 #配置ip地址</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="创建交换核心堆叠"><a href="#创建交换核心堆叠" class="headerlink" title="创建交换核心堆叠"></a>创建交换核心堆叠</h3><p>​	<strong>核心堆叠是一种网络技术，它允许将多台支持堆叠特性的交换机通过专用的堆叠口连接起来，从逻辑上变成一台交换设备，作为一个整体参与数据转发。</strong></p>
+<p>​	准备两台交换机</p>
+<p><img src="https://pic2.imge.cc/2024/11/29/6749bdae1da28.png" loading="lazy"></p>
+<h4 id="SW1配置"><a href="#SW1配置" class="headerlink" title="SW1配置"></a>SW1配置</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">irf domain 10	#配置domain域</span><br><span class="line">irf member 1 priority 10	#配置设备权重(大的为主)</span><br><span class="line">int r t1/0/49 to t1/0/50	</span><br><span class="line">shutdown		#端口加入之前必须先shutdowm		</span><br><span class="line">qu			</span><br><span class="line">irf-port 1/1	#irf -port 1/1 注解	前一个1代表交换机的member号，后一个代表irf-port的端口号</span><br><span class="line">port group int t1/0/49</span><br><span class="line">port group int t1/0/50</span><br><span class="line">qu</span><br><span class="line">int r t1/0/49 to t1/0/50	</span><br><span class="line">undo shutdown</span><br><span class="line">qu</span><br><span class="line">irf-port-configuration active	#激活配置</span><br><span class="line">save保存</span><br></pre></td></tr></table></figure>
+
+<h4 id="SW2配置"><a href="#SW2配置" class="headerlink" title="SW2配置"></a>SW2配置</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">irf domain 10	#配置domain域</span><br><span class="line">irf member 1 remember 2		#重置编号后需要重启设备</span><br><span class="line">qu</span><br><span class="line">reboot</span><br><span class="line">.......</span><br><span class="line">irf member 2 priority 1	#配置设备权重(默认为1，此步可省略)</span><br><span class="line">int r t2/0/49 to t2/0/50	</span><br><span class="line">shutdown		#端口加入之前必须先shutdowm		</span><br><span class="line">qu			</span><br><span class="line">irf-port 2/2</span><br><span class="line">port group int t2/0/49</span><br><span class="line">port group int t2/0/50</span><br><span class="line">qu</span><br><span class="line">int r t2/0/49 to t2/0/50	</span><br><span class="line">undo shutdown</span><br><span class="line">qu</span><br><span class="line">irf-port-configuration active	#激活配置</span><br><span class="line">save保存</span><br></pre></td></tr></table></figure>
+
+<p>​	<strong>完成上述配置后,接线，堆叠完成</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dis irf		#查看irf配置</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic2.imge.cc/2024/11/29/6749d568b0072.png" loading="lazy"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dis irf link	#查看irf接口(多用于排错)	</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic2.imge.cc/2024/11/29/6749d60cce269.png" alt="dis irf link.png" loading="lazy"></p>
+<h4 id="IRF-心跳检测-选做"><a href="#IRF-心跳检测-选做" class="headerlink" title="IRF 心跳检测(选做)"></a>IRF 心跳检测(选做)</h4><h3 id="静态路由部署与配置"><a href="#静态路由部署与配置" class="headerlink" title="静态路由部署与配置"></a>静态路由部署与配置</h3><p>原理：</p>
+<p>路由器的核心作用是实现网络互连，数据转发，路由器工作时需要建立和更新路由表，因为路由器互联的是不同网段，因此能隔离广播，能快速转发分组数据。</p>
+<p>路由表，简单说来就是指挥数据如何发送到目的地的表</p>
+<p>实验准备两台路由器，两台PC</p>
+<p><img src="https://pic2.imge.cc/2024/11/29/6749dcda237a2.png" alt="静态路由.png" loading="lazy"></p>
+<p>拓扑搭建完成后先使用ping测试网络是否连通</p>
+<p> <img src="https://pic2.imge.cc/2024/11/29/6749dec6a4a5f.png" alt="ping0.png" loading="lazy"></p>
+<p>ping不通是因为路由无法正常的发送数据包</p>
+<h4 id="静态路由"><a href="#静态路由" class="headerlink" title="静态路由"></a>静态路由</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[RAT-1]ip route-static 10.10.20.0 24 10.10.30.2</span><br><span class="line">[RAT-2]ip route-static 10.10.10.0 24 10.10.30.1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic2.imge.cc/2024/11/29/6749e186b0bf1.png" alt="ping1.png" loading="lazy"></p>
+<p>成功ping通！</p>
+<p>查看一下路由表 可以看到路由已经添加了</p>
+<p><img src="https://pic2.imge.cc/2024/11/29/6749e207a7a06.png" alt="ip route tabe.png" loading="lazy"></p>
+<h4 id="默认路由"><a href="#默认路由" class="headerlink" title="默认路由"></a>默认路由</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[RAT-1]ip route-static 0.0.0.0 0 10.10.30.2</span><br><span class="line">[RAT-2]ip route-static 0.0.0.0 0 10.10.30.1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic2.imge.cc/2024/11/29/6749e2ee3e766.png" alt="rout0.png" loading="lazy"></p>
 ]]></content>
       <categories>
         <category>华三</category>
