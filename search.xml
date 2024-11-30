@@ -596,6 +596,36 @@ gpgkey=http://repo.huaweicloud.com/openeuler/openEuler-22.03-LTS-SP3/everything/
       </tags>
   </entry>
   <entry>
+    <title>网络通信基础</title>
+    <url>/2024/11/30/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="网络通信基础"><a href="#网络通信基础" class="headerlink" title="网络通信基础"></a>网络通信基础</h1><h2 id="12-2"><a href="#12-2" class="headerlink" title="12.2"></a>12.2</h2><h3 id="计算机是如何上网的"><a href="#计算机是如何上网的" class="headerlink" title="计算机是如何上网的"></a>计算机是如何上网的</h3><p>当两台计算机需要通信时，必须使用物理或无线，连接它们</p>
+<p>计算机之间的通信</p>
+<p><img src="https://pic2.imge.cc/2024/11/30/674b079c1f9bf.png" alt="12.2 1.png" loading="lazy"></p>
+<p>当两台计算机需要通信时，必须使用物理或无线，连接它们</p>
+<p>当我们想要上网时</p>
+<p>IP地址身份标识</p>
+<p><strong>私网和公网</strong>：又名内网和外网，公网通常指Internet-因特网，因特网为世界上最大的互联网</p>
+<p>私有IP为Internet保留给私人网络的IP</p>
+<p>A类：10.0.0.0~10.255.255.255</p>
+<p>B类：172.16.0.0~172.31.255.255</p>
+<p>C类：192.168.0.0~192.168.255.255</p>
+<p>当我们想要上网时</p>
+<p>IP地址身份标识</p>
+<p>cmd</p>
+<p>ipconfig</p>
+<p>文件夹共享</p>
+<p>ping 命令</p>
+<p>网关数据传输</p>
+<p>dns解析 域名IP地址解析</p>
+<p>访问百度</p>
+<p>nslookup <a href="http://www.baidu.com/">www.baidu.com</a></p>
+<p>域名</p>
+]]></content>
+      <tags>
+        <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>OpenEulerSeliinux与防火墙</title>
     <url>/2024/09/17/%E9%98%B2%E7%81%AB%E5%A2%99/</url>
     <content><![CDATA[<h1 id="SELinux与防火墙配置"><a href="#SELinux与防火墙配置" class="headerlink" title="SELinux与防火墙配置"></a>SELinux与防火墙配置</h1><h2 id="查看SElinnux状态"><a href="#查看SElinnux状态" class="headerlink" title="查看SElinnux状态"></a>查看SElinnux状态</h2><h3 id="getenforce"><a href="#getenforce" class="headerlink" title="getenforce"></a>getenforce</h3><h2 id="临时更改SELinux模式"><a href="#临时更改SELinux模式" class="headerlink" title="临时更改SELinux模式"></a>临时更改SELinux模式</h2><h3 id="setenforce-0"><a href="#setenforce-0" class="headerlink" title="setenforce 0"></a>setenforce 0</h3><h2 id="semanage-安装（用于管理和配置SELinux策略）"><a href="#semanage-安装（用于管理和配置SELinux策略）" class="headerlink" title="semanage 安装（用于管理和配置SELinux策略）"></a>semanage 安装（用于管理和配置SELinux策略）</h2><h3 id="yum-install-policycoreutils-python-utils"><a href="#yum-install-policycoreutils-python-utils" class="headerlink" title="yum install policycoreutils-python-utils"></a>yum install policycoreutils-python-utils</h3><h2 id="查看所有开放端口"><a href="#查看所有开放端口" class="headerlink" title="查看所有开放端口"></a>查看所有开放端口</h2><h3 id="semanage-port-l"><a href="#semanage-port-l" class="headerlink" title="semanage port -l"></a>semanage port -l</h3><h2 id="查看特定端口是否开放（例如查看端口5000）"><a href="#查看特定端口是否开放（例如查看端口5000）" class="headerlink" title="查看特定端口是否开放（例如查看端口5000）"></a>查看特定端口是否开放（例如查看端口5000）</h2><h3 id="semanage-port-l-grep-5000"><a href="#semanage-port-l-grep-5000" class="headerlink" title="semanage port -l | grep 5000"></a>semanage port -l | grep 5000</h3><h2 id="查看针对特定服务（如http）开放的端口"><a href="#查看针对特定服务（如http）开放的端口" class="headerlink" title="查看针对特定服务（如http）开放的端口"></a>查看针对特定服务（如http）开放的端口</h2><h3 id="semanage-port-l-grep-http-port-t"><a href="#semanage-port-l-grep-http-port-t" class="headerlink" title="semanage port -l | grep http_port_t"></a>semanage port -l | grep http_port_t</h3><h2 id="添加端口（例如开放5002端口给http服务）"><a href="#添加端口（例如开放5002端口给http服务）" class="headerlink" title="添加端口（例如开放5002端口给http服务）"></a>添加端口（例如开放5002端口给http服务）</h2><h3 id="semanage-port-a-t-http-port-t-p-tcp-5502"><a href="#semanage-port-a-t-http-port-t-p-tcp-5502" class="headerlink" title="semanage port -a -t http_port_t -p tcp 5502"></a>semanage port -a -t http_port_t -p tcp 5502</h3><h2 id="删除端口（例如关闭http服务的5002端口）"><a href="#删除端口（例如关闭http服务的5002端口）" class="headerlink" title="删除端口（例如关闭http服务的5002端口）"></a>删除端口（例如关闭http服务的5002端口）</h2><h3 id="semanage-port-a-t-http-port-t-p-tcp-5502-1"><a href="#semanage-port-a-t-http-port-t-p-tcp-5502-1" class="headerlink" title="semanage port -a -t http_port_t -p tcp 5502"></a>semanage port -a -t http_port_t -p tcp 5502</h3><h1 id="防火墙配置"><a href="#防火墙配置" class="headerlink" title="防火墙配置"></a>防火墙配置</h1><h2 id="启动-停止-防火墙服务"><a href="#启动-停止-防火墙服务" class="headerlink" title="启动&#x2F;停止 防火墙服务"></a>启动&#x2F;停止 防火墙服务</h2><h3 id="systemctl-start-stop-firewalld"><a href="#systemctl-start-stop-firewalld" class="headerlink" title="systemctl start&#x2F;stop firewalld"></a>systemctl start&#x2F;stop firewalld</h3><h2 id="查看防火墙服务状态"><a href="#查看防火墙服务状态" class="headerlink" title="查看防火墙服务状态"></a>查看防火墙服务状态</h2><h3 id="systemctl-status-firewalld"><a href="#systemctl-status-firewalld" class="headerlink" title="systemctl status firewalld"></a>systemctl status firewalld</h3><h2 id="启用-禁用防火墙服务开机自启"><a href="#启用-禁用防火墙服务开机自启" class="headerlink" title="启用&#x2F;禁用防火墙服务开机自启"></a>启用&#x2F;禁用防火墙服务开机自启</h2><h3 id="systemctl-enable-disable-firewalld"><a href="#systemctl-enable-disable-firewalld" class="headerlink" title="systemctl enable&#x2F;disable firewalld"></a>systemctl enable&#x2F;disable firewalld</h3><h2 id="添加-删除端口到防火墙规则"><a href="#添加-删除端口到防火墙规则" class="headerlink" title="添加&#x2F;删除端口到防火墙规则"></a>添加&#x2F;删除端口到防火墙规则</h2><h3 id="firewall-cmd-–permanent-–add-remove-port-80-tcp"><a href="#firewall-cmd-–permanent-–add-remove-port-80-tcp" class="headerlink" title="firewall-cmd –permanent –add&#x2F;remove-port&#x3D;80&#x2F;tcp"></a>firewall-cmd –permanent –add&#x2F;remove-port&#x3D;80&#x2F;tcp</h3><h2 id="重新加载防火墙规则"><a href="#重新加载防火墙规则" class="headerlink" title="重新加载防火墙规则"></a>重新加载防火墙规则</h2><h3 id="firewall-cmd-–reload"><a href="#firewall-cmd-–reload" class="headerlink" title="firewall-cmd –reload"></a>firewall-cmd –reload</h3><h2 id="查看当前防火墙规则"><a href="#查看当前防火墙规则" class="headerlink" title="查看当前防火墙规则"></a>查看当前防火墙规则</h2><h3 id="firewall-cmd-–list-all"><a href="#firewall-cmd-–list-all" class="headerlink" title="firewall-cmd –list-all"></a>firewall-cmd –list-all</h3><h2 id="允许-阻止特定服务通过防火墙"><a href="#允许-阻止特定服务通过防火墙" class="headerlink" title="允许&#x2F;阻止特定服务通过防火墙"></a>允许&#x2F;阻止特定服务通过防火墙</h2><h3 id="firewall-cmd-–permanent-–add-remove-service-http"><a href="#firewall-cmd-–permanent-–add-remove-service-http" class="headerlink" title="firewall-cmd –permanent –add&#x2F;remove-service&#x3D;http"></a>firewall-cmd –permanent –add&#x2F;remove-service&#x3D;http</h3><h2 id="查看防火墙日志"><a href="#查看防火墙日志" class="headerlink" title="查看防火墙日志"></a>查看防火墙日志</h2><h3 id="journalctl-u-firewalld"><a href="#journalctl-u-firewalld" class="headerlink" title="journalctl -u firewalld"></a>journalctl -u firewalld</h3>]]></content>
