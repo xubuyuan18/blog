@@ -199,7 +199,16 @@
   <entry>
     <title>hexo折腾日记</title>
     <url>/2024/10/01/hexo%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="hexo使用中遇到的问题和解决方法"><a href="#hexo使用中遇到的问题和解决方法" class="headerlink" title="hexo使用中遇到的问题和解决方法"></a>hexo使用中遇到的问题和解决方法</h1>]]></content>
+    <content><![CDATA[<h1 id="hexo使用中遇到的问题和解决方法"><a href="#hexo使用中遇到的问题和解决方法" class="headerlink" title="hexo使用中遇到的问题和解决方法"></a>hexo使用中遇到的问题和解决方法</h1><p> 头文件定义</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: 标题</span><br><span class="line">date: 时间</span><br><span class="line">tags: “tag”</span><br><span class="line">categories: 分类归递</span><br><span class="line">sticky: 优先级</span><br></pre></td></tr></table></figure>
+
+<p>hexo 基础命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo cl #清除本地缓存文件</span><br><span class="line">hexo g	#生成网页静态文件</span><br><span class="line">hexo s	#启动hexo 服务</span><br></pre></td></tr></table></figure>
+
+<p>hexo-yun自用配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">banner:       #开始标语</span><br><span class="line">  enable: true</span><br><span class="line">  title: 许步鸢的小站</span><br><span class="line">  border: true</span><br><span class="line">  cloud:</span><br><span class="line">    enable: true</span><br><span class="line">    color: white</span><br><span class="line">  go_down:</span><br><span class="line">    enable: true</span><br><span class="line">    icon: ri:arrow-down-s-line</span><br><span class="line"></span><br><span class="line">avatar:			</span><br><span class="line">  enable: true</span><br><span class="line">  url: /images/avatar.jpg</span><br><span class="line">  rounded: true</span><br><span class="line">  opacity: 1</span><br><span class="line">  mickey_mouse: false</span><br><span class="line">  status:</span><br><span class="line">    enable: true</span><br><span class="line">    emoji: 😭</span><br><span class="line">    message: 大家一起GO一辈子好吗 #头像</span><br><span class="line">wordcloud:</span><br><span class="line">  enable: true</span><br><span class="line">  height: 600</span><br><span class="line">  count: true</span><br><span class="line">  time: true  #云体流动效果</span><br><span class="line"></span><br><span class="line">social:   #侧边栏图标</span><br><span class="line">  - name: GitHub</span><br><span class="line">    link: https://github.com/xubuyuan18</span><br><span class="line">    icon: ri:github-line</span><br><span class="line">    color: &#x27;#181717&#x27;</span><br><span class="line">  - name: 哔哩哔哩动画</span><br><span class="line">    link: https://space.bilibili.com/441828893</span><br><span class="line">    icon: ri:bilibili-line</span><br><span class="line">    color: &#x27;#FF8EB3&#x27;</span><br><span class="line">footer:           #运行时间显示</span><br><span class="line">  live_time:</span><br><span class="line">    enable: true</span><br><span class="line">    prefix: 本博客已运行</span><br><span class="line">    suffix: (●&#x27;◡&#x27;●)</span><br><span class="line">    start_time: &#x27;2024-09-06T09:00:00&#x27;</span><br><span class="line"></span><br><span class="line">medium_zoom: true #图片放大预览</span><br><span class="line"></span><br><span class="line">bg_image:       #背景壁纸</span><br><span class="line">  enable: true</span><br><span class="line">  url: https://pic2.imge.cc/2024/10/12/670a20fee140a.jpg</span><br><span class="line">  dark: https://pic2.imge.cc/2024/10/12/670a050e8ce49.png</span><br><span class="line">  # blur: 30px # 设置背景模糊程度</span><br><span class="line">  opacity: 0.8</span><br><span class="line">pages:  </span><br><span class="line">#关闭友链链接</span><br><span class="line">say:</span><br><span class="line">  enable: true</span><br><span class="line">  api: https://cdn.jsdelivr.net/gh/ElpsyCN/say@gh-pages/sentences.json</span><br><span class="line">  # https://developer.hitokoto.cn/sentence/</span><br><span class="line">  hitokoto:</span><br><span class="line">    enable: true</span><br><span class="line">    api: https://v1.hitokoto.cn #中二语录</span><br><span class="line"></span><br><span class="line">mourn:</span><br><span class="line">  enable: true</span><br><span class="line">  days:</span><br><span class="line">    - 4-4   #纪念日哀悼</span><br><span class="line">search:</span><br><span class="line">  path: search.json</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000  #搜索</span><br><span class="line">wordcount:</span><br><span class="line">  enable: true</span><br><span class="line">  count: true</span><br><span class="line">  time: true  #字数统计</span><br><span class="line"># search</span><br><span class="line"># https://github.com/next-theme/hexo-generator-searchdb</span><br><span class="line">local_search:</span><br><span class="line">  enable: true  #搜索</span><br><span class="line"></span><br><span class="line">reward:</span><br><span class="line">  enable: true</span><br><span class="line">  icon: ri:hand-coin-line</span><br><span class="line">  comment: 如果以上文章帮助到了你，不妨请我喝杯咖啡</span><br><span class="line">  # url: https://github.com/YunYouJun/yunyoujun.github.io/issues/96</span><br><span class="line">  methods:</span><br><span class="line">    - name: 支付宝</span><br><span class="line">      path: https://pic2.imge.cc/2024/11/16/67382dc367df6.jpg</span><br><span class="line">      color: &#x27;#00A3EE&#x27;</span><br><span class="line">      icon: ri:alipay-line</span><br><span class="line">    - name: 微信支付</span><br><span class="line">      path: https://pic2.imge.cc/2024/11/16/67382dc383063.jpg</span><br><span class="line">      color: &#x27;#2DC100&#x27;</span><br><span class="line">      icon: ri:wechat-pay-line</span><br><span class="line">  creative_commons:</span><br><span class="line">  license: by-nc-sa</span><br><span class="line">  post: true</span><br><span class="line">  language: deed.zh</span><br><span class="line">  clipboard: false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
         <category>常用</category>
       </categories>
@@ -489,9 +498,9 @@ gpgkey=http://repo.huaweicloud.com/openeuler/openEuler-22.03-LTS-SP3/everything/
   <entry>
     <title>常用网址</title>
     <url>/2024/10/12/%E5%B8%B8%E7%94%A8%E7%BD%91%E5%9D%80/</url>
-    <content><![CDATA[<p><img src="https://pic2.imge.cc/2024/11/29/6749e352170ec.jpeg" alt="698143066bb2b8954fa9cf654bacb5cc.jpeg" loading="lazy"></p>
-<h3 id="kimi-AIhttps-kimi-moonshot-cn"><a href="#kimi-AIhttps-kimi-moonshot-cn" class="headerlink" title="kimi AI	https://kimi.moonshot.cn/"></a>kimi AI	<a href="https://kimi.moonshot.cn/">https://kimi.moonshot.cn/</a></h3><h3 id="图床https-imge-cc"><a href="#图床https-imge-cc" class="headerlink" title="图床	https://imge.cc/"></a>图床	<a href="https://imge.cc/">https://imge.cc/</a></h3><h3 id="学习通-http-pjzy-fanya-chaoxing-com-portal"><a href="#学习通-http-pjzy-fanya-chaoxing-com-portal" class="headerlink" title="学习通      http://pjzy.fanya.chaoxing.com/portal"></a>学习通      <a href="http://pjzy.fanya.chaoxing.com/portal">http://pjzy.fanya.chaoxing.com/portal</a></h3><h3 id="红队命令https-book-shentoushi-top"><a href="#红队命令https-book-shentoushi-top" class="headerlink" title="红队命令	https://book.shentoushi.top/"></a>红队命令	<a href="https://book.shentoushi.top/">https://book.shentoushi.top/</a></h3><h3 id="P站国内镜像https-www-vilipix-com"><a href="#P站国内镜像https-www-vilipix-com" class="headerlink" title="P站国内镜像	https://www.vilipix.com/"></a>P站国内镜像	<a href="https://www.vilipix.com/">https://www.vilipix.com/</a></h3><h3 id="ZEABUR部署服务-已跑路-https-dash-zeabur-com-projects"><a href="#ZEABUR部署服务-已跑路-https-dash-zeabur-com-projects" class="headerlink" title="ZEABUR部署服务(已跑路) 	https://dash.zeabur.com/projects"></a>ZEABUR部署服务(已跑路) 	<a href="https://dash.zeabur.com/projects">https://dash.zeabur.com/projects</a></h3><span id="more"></span>
+    <content><![CDATA[<h3 id="kimi-AIhttps-kimi-moonshot-cn"><a href="#kimi-AIhttps-kimi-moonshot-cn" class="headerlink" title="kimi AI	https://kimi.moonshot.cn/"></a>kimi AI	<a href="https://kimi.moonshot.cn/">https://kimi.moonshot.cn/</a></h3><h3 id="图床https-imge-cc"><a href="#图床https-imge-cc" class="headerlink" title="图床	https://imge.cc/"></a>图床	<a href="https://imge.cc/">https://imge.cc/</a></h3><h3 id="学习通-http-pjzy-fanya-chaoxing-com-portal"><a href="#学习通-http-pjzy-fanya-chaoxing-com-portal" class="headerlink" title="学习通      http://pjzy.fanya.chaoxing.com/portal"></a>学习通      <a href="http://pjzy.fanya.chaoxing.com/portal">http://pjzy.fanya.chaoxing.com/portal</a></h3><span id="more"></span>
 
+<h3 id="红队命令https-book-shentoushi-top"><a href="#红队命令https-book-shentoushi-top" class="headerlink" title="红队命令	https://book.shentoushi.top/"></a>红队命令	<a href="https://book.shentoushi.top/">https://book.shentoushi.top/</a></h3><h3 id="P站国内镜像https-www-vilipix-com"><a href="#P站国内镜像https-www-vilipix-com" class="headerlink" title="P站国内镜像	https://www.vilipix.com/"></a>P站国内镜像	<a href="https://www.vilipix.com/">https://www.vilipix.com/</a></h3><h3 id="ZEABUR部署服务-已跑路-https-dash-zeabur-com-projects"><a href="#ZEABUR部署服务-已跑路-https-dash-zeabur-com-projects" class="headerlink" title="ZEABUR部署服务(已跑路) 	https://dash.zeabur.com/projects"></a>ZEABUR部署服务(已跑路) 	<a href="https://dash.zeabur.com/projects">https://dash.zeabur.com/projects</a></h3><p><img src="https://pic2.imge.cc/2024/11/29/6749e352170ec.jpeg" alt="698143066bb2b8954fa9cf654bacb5cc.jpeg" loading="lazy"></p>
 <h3 id="次元云订阅https-ciyy-cc-index-php-stage-dashboard"><a href="#次元云订阅https-ciyy-cc-index-php-stage-dashboard" class="headerlink" title="次元云订阅	https://ciyy.cc/index.php/#/stage/dashboard"></a>次元云订阅	<a href="https://ciyy.cc/index.php/#/stage/dashboard">https://ciyy.cc/index.php/#/stage/dashboard</a></h3><h3 id="vercel部署https-vercel-com-xubuyuan18s-projects"><a href="#vercel部署https-vercel-com-xubuyuan18s-projects" class="headerlink" title="vercel部署	https://vercel.com/xubuyuan18s-projects"></a>vercel部署	<a href="https://vercel.com/xubuyuan18s-projects">https://vercel.com/xubuyuan18s-projects</a></h3><h3 id="清华镜像站https-mirrors-tuna-tsinghua-edu-cn"><a href="#清华镜像站https-mirrors-tuna-tsinghua-edu-cn" class="headerlink" title="清华镜像站	https://mirrors.tuna.tsinghua.edu.cn/"></a>清华镜像站	<a href="https://mirrors.tuna.tsinghua.edu.cn/">https://mirrors.tuna.tsinghua.edu.cn/</a></h3><h3 id="中科大镜像站https-lug-ustc-edu-cn-wiki-lug-services-mirrors"><a href="#中科大镜像站https-lug-ustc-edu-cn-wiki-lug-services-mirrors" class="headerlink" title="中科大镜像站	https://lug.ustc.edu.cn/wiki/lug/services/mirrors/"></a>中科大镜像站	<a href="https://lug.ustc.edu.cn/wiki/lug/services/mirrors/">https://lug.ustc.edu.cn/wiki/lug/services/mirrors/</a></h3>]]></content>
       <categories>
         <category>工具</category>
@@ -599,27 +608,23 @@ gpgkey=http://repo.huaweicloud.com/openeuler/openEuler-22.03-LTS-SP3/everything/
     <title>网络通信基础</title>
     <url>/2024/11/30/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h1 id="网络通信基础"><a href="#网络通信基础" class="headerlink" title="网络通信基础"></a>网络通信基础</h1><h2 id="12-2"><a href="#12-2" class="headerlink" title="12.2"></a>12.2</h2><h3 id="计算机是如何上网的"><a href="#计算机是如何上网的" class="headerlink" title="计算机是如何上网的"></a>计算机是如何上网的</h3><p>当两台计算机需要通信时，必须使用物理或无线，连接它们</p>
-<p>计算机之间的通信</p>
-<p><img src="https://pic2.imge.cc/2024/11/30/674b079c1f9bf.png" alt="12.2 1.png" loading="lazy"></p>
+<p>计算机之间的通信	ping 命令</p>
 <p>当两台计算机需要通信时，必须使用物理或无线，连接它们</p>
-<p>当我们想要上网时</p>
-<p>IP地址身份标识</p>
+<p><img src="https://pic2.imge.cc/2024/11/30/674b079c1f9bf.png" alt="12.2 1.png" loading="lazy"></p>
+<p>小型局域网</p>
+<p>IP地址身份标识	ipconfig</p>
+<h3 id="局域网"><a href="#局域网" class="headerlink" title="局域网"></a>局域网</h3><p>局域网是一种私有网络，它连接着一定区域内的计算机、打印机、服务器等设备，使得这些设备之间可以相互通信和访问彼此的资源	</p>
+<h4 id="文件夹共享小实验"><a href="#文件夹共享小实验" class="headerlink" title="文件夹共享小实验"></a>文件夹共享小实验</h4><h3 id="互联网-广域网"><a href="#互联网-广域网" class="headerlink" title="互联网&amp;广域网"></a>互联网&amp;广域网</h3><p>网关数据传输</p>
+<p>dns解析 域名IP地址解析</p>
+<p>访问百度</p>
+<p>nslookup <a href="www.baidu.com">www.baidu.com</a></p>
+<p>域名</p>
 <p><strong>私网和公网</strong>：又名内网和外网，公网通常指Internet-因特网，因特网为世界上最大的互联网</p>
 <p>私有IP为Internet保留给私人网络的IP</p>
 <p>A类：10.0.0.0~10.255.255.255</p>
 <p>B类：172.16.0.0~172.31.255.255</p>
 <p>C类：192.168.0.0~192.168.255.255</p>
 <p>当我们想要上网时</p>
-<p>IP地址身份标识</p>
-<p>cmd</p>
-<p>ipconfig</p>
-<p>文件夹共享</p>
-<p>ping 命令</p>
-<p>网关数据传输</p>
-<p>dns解析 域名IP地址解析</p>
-<p>访问百度</p>
-<p>nslookup <a href="http://www.baidu.com/">www.baidu.com</a></p>
-<p>域名</p>
 ]]></content>
       <tags>
         <tag>网络</tag>
