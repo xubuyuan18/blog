@@ -1,0 +1,1893 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>debain 路由</title>
+    <url>/2024/10/15/Debain%E8%B7%AF%E7%94%B1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="debain-开启路由转发功能"><a href="#debain-开启路由转发功能" class="headerlink" title="debain 开启路由转发功能"></a>debain 开启路由转发功能</h2><p><strong>sysclt -w net.ipv4.ip_forward&#x3D;1</strong><br><strong>sysctp -p</strong></p>
+<p>验证是否成功开启路由转发</p>
+<p>sysctl net.ipv4.ip_forward</p>
+<p>成功后会显示</p>
+<p>net.ipv4.ip_forward &#x3D; 1		<br>#代表路由转发成功开启</p>
+<h2 id="debain-配置IP"><a href="#debain-配置IP" class="headerlink" title="debain 配置IP"></a>debain 配置IP</h2><ul>
+<li>编辑 <code>/etc/network/interfaces</code> 文件来设置静态IP地址。</li>
+</ul>
+<p>auto eth0<br>iface eth0 inet static<br>    address 192.168.1.101<br>    netmask 255.255.255.0<br>    gateway 192.168.1.254<br>    dns-nameservers 8.8.8.8 8.8.4.4</p>
+<h2 id="开启PAT端口映射连接公共互联网"><a href="#开启PAT端口映射连接公共互联网" class="headerlink" title="开启PAT端口映射连接公共互联网"></a>开启PAT端口映射连接公共互联网</h2><h3 id="iptables"><a href="#iptables" class="headerlink" title="iptables"></a><strong>iptables</strong></h3><p>1.<strong>确保iptables已安装</strong></p>
+<p>apt update<br>apt install iptables</p>
+<p>2.<strong>配置iptables进行PAT</strong></p>
+]]></content>
+      <categories>
+        <category>Debain</category>
+      </categories>
+      <tags>
+        <tag>debain</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MD语法格式</title>
+    <url>/2024/10/17/Markdown%20%E8%AF%AD%E6%B3%95%E6%A0%BC%E5%BC%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Markdown-语法格式"><a href="#Markdown-语法格式" class="headerlink" title="Markdown 语法格式"></a>Markdown 语法格式</h1><h2 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h2><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="#一级标题"></a>#一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="##二级标题"></a>##二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="###三级标题"></a>###三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="####四级标题"></a>####四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="#####五级标题"></a>#####五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="######六级标题"></a>######六级标题</h6><h2 id="2-强调"><a href="#2-强调" class="headerlink" title="2.强调"></a>2.强调</h2><p><em>斜体文本</em> 	**<br><em>斜体文本</em>	——<br><strong>粗体文本</strong>	** **<br><strong>粗体文本</strong>	————<br><strong><em>同时斜体和粗体</em></strong>	** —	—**</p>
+<h2 id="3-列表"><a href="#3-列表" class="headerlink" title="3.列表"></a>3.列表</h2><p>无序列表：</p>
+<ul>
+<li></li>
+</ul>
+<ul>
+<li></li>
+</ul>
+<ul>
+<li></li>
+</ul>
+<p>有序列表</p>
+<ol>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+<h2 id="4-链接"><a href="#4-链接" class="headerlink" title="4.链接"></a>4.链接</h2><p><a href="http://url.com/">链接文本</a></p>
+<p>[链接文本]+(<a href="http://url.com/">http://url.com</a>)</p>
+<h2 id="5-图片"><a href="#5-图片" class="headerlink" title="5.图片"></a>5.图片</h2><p><img src="https://pic2.imge.cc/2024/10/12/670a03ad6a397.jpg" alt="替代文本" loading="lazy"></p>
+<p>![替代文本]+(<a href="https://pic2.imge.cc/2024/10/12/670a03ad6a397.jpg">https://pic2.imge.cc/2024/10/12/670a03ad6a397.jpg</a>)</p>
+<h2 id="6-引用"><a href="#6-引用" class="headerlink" title="6 引用"></a>6 引用</h2><blockquote>
+<p>这是一个引用。</p>
+</blockquote>
+<p>（&gt;）+ 引用文本</p>
+<h2 id="7-代码"><a href="#7-代码" class="headerlink" title="7.代码"></a>7.代码</h2><p><code>代码</code></p>
+<h2 id="8-表格"><a href="#8-表格" class="headerlink" title="8.表格"></a>8.表格</h2><table>
+<thead>
+<tr>
+<th>表头</th>
+<th>表头</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单元</td>
+<td>单元</td>
+</tr>
+<tr>
+<td>单元</td>
+<td>单元</td>
+</tr>
+</tbody></table>
+<h2 id="9-分割线"><a href="#9-分割线" class="headerlink" title="9.分割线"></a>9.分割线</h2><p>-+-+-</p>
+<hr>
+<p><strong>或者</strong></p>
+<p>’***‘</p>
+<hr>
+<h2 id="10-任务列表"><a href="#10-任务列表" class="headerlink" title="10 任务列表"></a>10 任务列表</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> 已完成项</li>
+<li><input disabled="" type="checkbox"> 未完成项</li>
+<li><input checked="" disabled="" type="checkbox"> 已完成项</li>
+<li><input disabled="" type="checkbox"> 未完成项‘</li>
+</ul>
+<h2 id="11-内联HTML"><a href="#11-内联HTML" class="headerlink" title="11.内联HTML"></a>11.内联HTML</h2><div>这是一个div块</div>
+
+<p>’<div>这是一个div块</div>‘</p>
+]]></content>
+      <categories>
+        <category>常用</category>
+      </categories>
+      <tags>
+        <tag>语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OpenEuler</title>
+    <url>/2024/12/12/OpenEuler/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/1733826593704.gif" loading="lazy"></p>
+<span id="more"></span>
+
+<h1 id="网络YUM源配置"><a href="#网络YUM源配置" class="headerlink" title="网络YUM源配置"></a>网络YUM源配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">确定操作系统版本<br><br>cat /etc/os-release<br></code></pre></td></tr></table></figure>
+
+<h2 id="选择yum源版本-配置yum源文件"><a href="#选择yum源版本-配置yum源文件" class="headerlink" title="选择yum源版本 配置yum源文件"></a>选择yum源版本 配置yum源文件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cd /etc/yum.repos.d/<br>mv openEuler.repo openEuler.repo.bak  *备份原有的配置文件*<br>vi openEuler.repo  *创建或编辑新的配置文件*<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="编辑yum源"><a href="#编辑yum源" class="headerlink" title="编辑yum源"></a>编辑yum源</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">[openEuler-everything]<br>name=openEuler-everything<br>baseurl=http://repo.huaweicloud.com/openeuler/openEuler-22.03-LTS-SP3/everything/x86_64/<br>enabled=1<br>gpgcheck=0<br>gpgkey=http://repo.huaweicloud.com/openeuler/openEuler-22.03-LTS-SP3/everything/x86_64/RPM-GPG-KEY-openEuler<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="本地YUM源配置"><a href="#本地YUM源配置" class="headerlink" title="本地YUM源配置"></a>本地YUM源配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">懒的写<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="SELinux与防火墙配置"><a href="#SELinux与防火墙配置" class="headerlink" title="SELinux与防火墙配置"></a>SELinux与防火墙配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">查看SElinnux状态<br>getenforce<br>临时更改SELinux模式<br>setenforce 0<br>semanage 安装（用于管理和配置SELinux策略）<br>yum install policycoreutils-python-utils<br>查看所有开放端口<br>semanage port -l<br>查看特定端口是否开放（例如查看端口5000）<br>semanage port -l | grep 5000<br>查看针对特定服务（如http）开放的端口<br>semanage port -l | grep http_port_t<br>添加端口（例如开放5002端口给http服务）<br>semanage port -a -t http_port_t -p tcp 5502<br>删除端口（例如关闭http服务的5002端口）<br>semanage port -a -t http_port_t -p tcp 5502<br>防火墙配置<br>启动/停止 防火墙服务<br>systemctl start/stop firewalld<br>查看防火墙服务状态<br>systemctl status firewalld <br>启用/禁用防火墙服务开机自启<br>systemctl enable/disable firewalld<br>添加/删除端口到防火墙规则<br>firewall-cmd --permanent --add/remove-port=80/tcp<br>重新加载防火墙规则<br>firewall-cmd --reload<br>查看当前防火墙规则 <br>firewall-cmd --list-all<br>允许/阻止特定服务通过防火墙 <br>firewall-cmd --permanent --add/remove-service=http<br>查看防火墙日志 <br>journalctl -u firewalld<br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>OpenEuler</category>
+      </categories>
+      <tags>
+        <tag>openeuler</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker原理</title>
+    <url>/2024/10/09/docker%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="docker原理"><a href="#docker原理" class="headerlink" title="docker原理"></a>docker原理</h1><h2 id="一、Docker背景介绍。"><a href="#一、Docker背景介绍。" class="headerlink" title="一、Docker背景介绍。"></a>一、Docker背景介绍。</h2><h3 id="1、什么是docker。"><a href="#1、什么是docker。" class="headerlink" title="1、什么是docker。"></a>1、什么是docker。</h3><h4 id="Docker，翻译过来就是码头工人"><a href="#Docker，翻译过来就是码头工人" class="headerlink" title="Docker，翻译过来就是码头工人"></a>Docker，翻译过来就是码头工人</h4><p>Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可抑制的容器中，然后发布到任何流行的Linux机器上，也可以实现虚拟化。容器完全使用沙盒机制，相互之间不会存在任何接口。几乎没有性能开销，可以很容易的在机器和数据中心运行。最重要的是，他们不依赖于任何语言、框架或者包装系统。</p>
+<p>小知识：沙盒也叫沙箱（sandbox）。在计算机领域指一种虚拟技术，而且多用于计算机安全技术。安全软件可以让它在沙盒中运行，如果含有恶意行为，则禁止程序的进一步运行，而这不会对系统造成任何危害。</p>
+<p>Docker是dotCloud公司开源的一个基于LXC的高级容器引擎，源码托管在Github上，基于go语言并且遵从Apache2.0协议开源。<br>GitHub地址：<a href="https://github.com/moby/moby">https://github.com/moby/moby</a></p>
+<p>小知识：LXC为Linux Container的简写。Linux Container 容器是一种内核虚拟化技术，可以提供轻量级的虚拟化，以便隔离进程和资源，而且不需要提供指令解释机制以及全虚拟化的其他复杂性。<br>LXC主要通过Kernel的namespace实现每个用户实例之间的项目隔离，通过cgroup实现对资源的配额和调度。</p>
+<p>docker官网：<a href="https://www.docker.com/">https://www.docker.com</a><br>docker中文库:<a href="https://www.docker.org.cn/">https://www.docker.org.cn/</a></p>
+<h3 id="2、Docker容器技术与虚拟机的区别。"><a href="#2、Docker容器技术与虚拟机的区别。" class="headerlink" title="2、Docker容器技术与虚拟机的区别。"></a>2、Docker容器技术与虚拟机的区别。</h3><h4 id="docker相较于VM的优点："><a href="#docker相较于VM的优点：" class="headerlink" title="docker相较于VM的优点："></a>docker相较于VM的优点：</h4><p>1、比VM小、快，Docker容器的尺寸减小相比于整个虚拟机大大简化了分布<br>到云和分发时间的开销。Docker启动一个容器实例时间仅仅需要几秒钟。</p>
+<p>2、Docker是一个开放的平台，构建、发布和运行分布式应用程序。</p>
+<p>3、开发人员不需要关系具体是哪个Linux操作系统</p>
+<p>4、Google、微软（azure）、亚马逊、IBM等都支持docker。</p>
+<p>5、Docker支持Unix&#x2F;Linux操作系统，也支持Windows和Mac。</p>
+<h4 id="Docker局限性："><a href="#Docker局限性：" class="headerlink" title="Docker局限性："></a>Docker局限性：</h4><p>Docker用于应用程序时是最有用的，但并不包含数据。日志、数据库等通常放在Docker容器外。一个容器的镜像通常都很小，不用和存储大量数据，存储可以通过外部挂载等方式使用，比如：NFS、ipsan、MFS等 ，或者docker命令 ，-v映射磁盘分区。<br>总之，docker只用于计算，存储交给别人。</p>
+<h3 id="3、通过docker架构图初步了解docker。"><a href="#3、通过docker架构图初步了解docker。" class="headerlink" title="3、通过docker架构图初步了解docker。"></a>3、通过docker架构图初步了解docker。</h3><p>等了解了docker之后，这张图所代表的的内容就很清晰明了，希望大家学完docker之后还能回来看看这张图。这里简单给大家介绍一下docker的工作流程。<br>工作流程：<br>1、启动docker<br>2、下载镜像到本地<br>3、启动docker容器实例<br>提示：大家可以去注册一个dockerhub，之后会详细给大家讲解它的作用（非常重要！连docker hub账号都没有，玩什么docker！）。</p>
+<h4 id="Docker核心技术"><a href="#Docker核心技术" class="headerlink" title="Docker核心技术:"></a>Docker核心技术:</h4><p>1、Namespace —&gt; 实现Container的进程、网络、消息、文件系统和主机名的隔离。<br>2、Cgroup —&gt; 实现对资源的配额和调度。<br>注意：Cgroup的配额，可以指定实例使用的CPU个数，内存大小等</p>
+<h3 id="4、Docker特性。"><a href="#4、Docker特性。" class="headerlink" title="4、Docker特性。"></a>4、Docker特性。</h3><p>文件系统隔离：每个进程容器运行在一个完全独立的根文件系统里。</p>
+<p>资源隔离：系统资源，像CPU和内存等可以分配到不同的容器中，使用cgroup。<br>网络隔离：每个进程容器运行在自己的网路空间，虚拟接口和IP地址。</p>
+<p>日志记录：Docker将收集到和记录的每个进程容器的标准流（stdout&#x2F;stderr&#x2F;stdin），用于实时检索或者批量检索</p>
+<p>变更管理：容器文件系统的变更可以提交到新的镜像中，并可重复使用以创建更多的容器。无需使用模板或者手动配置。</p>
+<p>交互式shell：Docker可以分配一个虚拟终端并且关联到任何容器的标准输出上，例如运行一个一次性交互shell。</p>
+]]></content>
+      <categories>
+        <category>OpenEuler</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo折腾日记</title>
+    <url>/2024/10/01/hexo%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="hexo使用中遇到的问题和解决方法"><a href="#hexo使用中遇到的问题和解决方法" class="headerlink" title="hexo使用中遇到的问题和解决方法"></a>hexo使用中遇到的问题和解决方法</h1><p> 头文件定义</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">title: 标题<br>date: 时间<br>tags: “tag”<br>categories: 分类归递<br>sticky: 优先级<br>readmore: true  #封面显示<br>&lt;!-- more --&gt;  #截至显示<br></code></pre></td></tr></table></figure>
+
+<p><strong>girls-index</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">- name: <br>  avatar: <br>  from: <br>  url: <br>  reason:<br></code></pre></td></tr></table></figure>
+
+<p>hexo 基础命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">hexo cl #清除本地缓存文件<br>hexo g  #生成网页静态文件<br>hexo s  #启动hexo 服务<br></code></pre></td></tr></table></figure>
+
+<p>遇到无法正确上传的情况可能是git仓库没有正确配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cd 你的博客根目录<br>vi _conifg.yml<br>编辑<br>deploy:<br>  type: git<br>  repo: https://密钥@github.com/xubuyuan18/blog<br>  branch: main # 默认使用 master 分支<br>  保存退出<br>  <br>配置Deployment首先，你需要为自己配置身份信息，打开命令行，然后输入：<br>git config --global user.name &quot;yourname&quot;<br>git config --global user.email &quot;youremail&quot;<br>如果报错可以使用<br>git config --global user.name --replace-all yourname<br>全局替换<br><br></code></pre></td></tr></table></figure>
+
+
+
+<p>hexo-yun自用配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">banner:       #开始标语<br>  enable: true<br>  title: 许步鸢的小站<br>  border: true<br>  cloud:<br>    enable: true<br>    color: white<br>  go_down:<br>    enable: true<br>    icon: ri:arrow-down-s-line<br><br>avatar:      <br>  enable: true<br>  url: /images/avatar.jpg<br>  rounded: true<br>  opacity: 1<br>  mickey_mouse: false<br>  status:<br>    enable: true<br>    emoji: 😭<br>    message: 大家一起GO一辈子好吗 #头像<br>wordcloud:<br>  enable: true<br>  height: 600<br>  count: true<br>  time: true  #云体流动效果<br><br>social:   #侧边栏图标<br>  - name: GitHub<br>    link: https://github.com/xubuyuan18<br>    icon: ri:github-line<br>    color: &#x27;#181717&#x27;<br>  - name: 哔哩哔哩动画<br>    link: https://space.bilibili.com/441828893<br>    icon: ri:bilibili-line<br>    color: &#x27;#FF8EB3&#x27;<br>footer:           #运行时间显示<br>  live_time:<br>    enable: true<br>    prefix: 本博客已运行<br>    suffix: (●&#x27;◡&#x27;●)<br>    start_time: &#x27;2024-09-06T09:00:00&#x27;<br><br>medium_zoom: true #图片放大预览<br><br>bg_image:       #背景壁纸<br>  enable: true<br>  url: https://pic2.imge.cc/2024/10/12/670a20fee140a.jpg<br>  dark: https://pic2.imge.cc/2024/10/12/670a050e8ce49.png<br>  # blur: 30px # 设置背景模糊程度<br>  opacity: 0.8<br>pages:  <br>#关闭友链链接<br>say:<br>  enable: true<br>  api: https://cdn.jsdelivr.net/gh/ElpsyCN/say@gh-pages/sentences.json<br>  # https://developer.hitokoto.cn/sentence/<br>  hitokoto:<br>    enable: true<br>    api: https://v1.hitokoto.cn #中二语录<br><br>mourn:<br>  enable: true<br>  days:<br>    - 4-4   #纪念日哀悼<br>search:<br>  path: search.json<br>  field: post<br>  format: html<br>  limit: 10000  #搜索<br>wordcount:<br>  enable: true<br>  count: true<br>  time: true  #字数统计<br># search<br># https://github.com/next-theme/hexo-generator-searchdb<br>local_search:<br>  enable: true  #搜索<br><br>reward:<br>  enable: true<br>  icon: ri:hand-coin-line<br>  comment: 如果以上文章帮助到了你，不妨请我喝杯咖啡<br>  # url: https://github.com/YunYouJun/yunyoujun.github.io/issues/96<br>  methods:<br>    - name: 支付宝<br>      path: https://pic2.imge.cc/2024/11/16/67382dc367df6.jpg<br>      color: &#x27;#00A3EE&#x27;<br>      icon: ri:alipay-line<br>    - name: 微信支付<br>      path: https://pic2.imge.cc/2024/11/16/67382dc383063.jpg<br>      color: &#x27;#2DC100&#x27;<br>      icon: ri:wechat-pay-line<br>  creative_commons:<br>  license: by-nc-sa<br>  post: true<br>  language: deed.zh<br>  clipboard: false<br><br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>常用</category>
+      </categories>
+      <tags>
+        <tag>webserver</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nginx</title>
+    <url>/2024/10/10/nginx/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Nginx-配置问题与解决方法"><a href="#Nginx-配置问题与解决方法" class="headerlink" title="Nginx 配置问题与解决方法"></a>Nginx 配置问题与解决方法</h1><p>Nginx 配置与问题解析</p>
+<h1 id="Nginx配置与解析"><a href="#Nginx配置与解析" class="headerlink" title="Nginx配置与解析"></a>Nginx配置与解析</h1><p><code>Nginx</code>默认的配置文件是在安装目录下的 <code>conf</code>目录下，后续对 <code>Nginx</code>的使用基本上都是对此配置文件进行相应的修改。修改过<code>nginx.conf</code>配置文件，记得要重启<code>Nginx</code>服务</p>
+<h2 id="安装nginx-基础环境配置"><a href="#安装nginx-基础环境配置" class="headerlink" title="安装nginx (基础环境配置)"></a>安装nginx (基础环境配置)</h2><ul>
+<li><p>yum install nginx 	#使用yum命令安装</p>
+</li>
+<li><p>systemctl stop firewalld #实验环境下关闭防火墙与SElniunx策略</p>
+</li>
+<li><p>setenforce 0</p>
+</li>
+<li><p>systemctl start nginx	#启动nginx服务</p>
+<p>在本地浏览器中输入本机IP地址，显示nginx主界面则nginx服务成功启动</p>
+</li>
+</ul>
+<h2 id="配置个性化web界面"><a href="#配置个性化web界面" class="headerlink" title="配置个性化web界面"></a>配置个性化web界面</h2><h3 id="新建网站首页"><a href="#新建网站首页" class="headerlink" title="新建网站首页"></a>新建网站首页</h3><ul>
+<li>echo “this is nginx web server” &gt; &#x2F;var&#x2F;ww&#x2F;html index.html<ul>
+<li>vi &#x2F;etc&#x2F;nginx&#x2F;ngin #新建并编辑nginx的配置文件<br>server {<br>　　　　listen 80;	#监听端口<br>       server_name localhost; 	#本机IP或域名<br>  location &#x2F; {<br>  root &#x2F;var&#x2F;www&#x2F;html;		#主目录<br>  index index.html;		<br>  }<br>}</li>
+<li>nginx -t      #然后使用命令验证nginx语法正确性<br>tips:尽量不要修改nginx的主配置文件，在&#x2F;cond.d 目录下的文件会被nginx默认识别。</li>
+</ul>
+</li>
+<li>重新通过web界面访问nginx主页</li>
+</ul>
+<h2 id="配置Nginx反向代理"><a href="#配置Nginx反向代理" class="headerlink" title="配置Nginx反向代理"></a>配置Nginx反向代理</h2><h3 id="实现效果：使用-Nginx-反向代理，访问IP直接跳转到百度主页"><a href="#实现效果：使用-Nginx-反向代理，访问IP直接跳转到百度主页" class="headerlink" title="实现效果：使用 Nginx 反向代理，访问IP直接跳转到百度主页"></a>实现效果：使用 Nginx 反向代理，访问IP直接跳转到百度主页</h3><p><strong>PS</strong>：此处如果要想从指定域名跳转到本机指定的ip，需要修改本机的hosts文件。</p>
+<p>配置代码</p>
+<p>server {<br>    listen       80;<br>    server_name  虚拟机IP;</p>
+<p>location &#x2F; {<br>    proxy_pass  <a href="http://www.baidu.com/">http://www.baidu.com</a><br>    }<br>}</p>
+<p>如上配置，Nginx监听 80端口，访问虚拟机IP（不加端口号时默认为 80端口），访问该IP时会跳转到 百度主页上。</p>
+<h2 id="配置Nginx负载均衡"><a href="#配置Nginx负载均衡" class="headerlink" title="配置Nginx负载均衡"></a>配置Nginx负载均衡</h2><h3 id="负载均衡的作用"><a href="#负载均衡的作用" class="headerlink" title="负载均衡的作用"></a>负载均衡的作用</h3><p>解决服务器的高并发压力，提高应用程序的处理性能；<br>提供故障转移，实现高可用；<br>通过添加或减少服务器数量，增强网站的可扩展性；<br>在负载均衡器上进行过滤，可以提高系统的安全性。</p>
+<h4 id="Nginx负载均衡配置"><a href="#Nginx负载均衡配置" class="headerlink" title="Nginx负载均衡配置"></a>Nginx负载均衡配置</h4><h5 id="代理服务器-配置"><a href="#代理服务器-配置" class="headerlink" title="代理服务器 配置"></a>代理服务器 配置</h5><p>vi &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</p>
+<p>1.在Nnginx的主配置文件下的http块中配置</p>
+<pre><code># 设置服务器组
+upstream backend &#123;
+    server localhost;
+    server localhost;
+&#125;
+</code></pre>
+<h6 id="2-在server块下增加配置"><a href="#2-在server块下增加配置" class="headerlink" title="2.在server块下增加配置"></a>2.在server块下增加配置</h6><p>server {<br>        listen 80;<br>        server_name localhost;<br>        location &#x2F; {</p>
+<p>​			# backend 就是服务器组的名称</p>
+<p>​			proxy_pass <a href="http://backend/">http://backend/</a>;<br>​		}<br>​	}</p>
+]]></content>
+      <categories>
+        <category>OpenEuler</category>
+      </categories>
+      <tags>
+        <tag>webserver</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows Server 域</title>
+    <url>/2024/10/12/windons%20server%20%E5%9F%9F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Windows-Server-域"><a href="#Windows-Server-域" class="headerlink" title="Windows Server 域"></a>Windows Server 域</h1><h1 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h1><p>​	域是一种网络架构，它允许集中管理用户账户、计算机账户、安全策略、软件部署、组策略和其他资源</p>
+<ol>
+<li><p><strong>集中管理</strong>：</p>
+<p>域允许管理员通过一个集中的位置来管理用户和计算机，而不是在每台计算机上单独进行。</p>
+</li>
+<li><p><strong>安全控制</strong>：</p>
+<p>域提供了一个安全框架，可以实施统一的安全策略，如密码策略、账户锁定策略和访问控制列表（ACLs）。</p>
+</li>
+<li><p><strong>身份验证</strong>：</p>
+<p>域中的用户可以使用单一登录凭证（域凭据）访问域内的所有资源，而无需为每个资源记住不同的用户名和密码。</p>
+</li>
+<li><p><strong>资源共享</strong>：</p>
+<p>域允许用户和应用程序访问网络资源，如文件服务器、打印机和其他应用程序服务。</p>
+</li>
+<li><p><strong>策略实施</strong>：</p>
+<p>通过组策略，管理员可以控制用户和计算机的配置，包括软件安装、桌面设置、安全设置等。</p>
+</li>
+<li><p><strong>目录服务</strong>：</p>
+<p>域使用活动目录（Active Directory）作为其目录服务，它存储有关域内所有对象的信息，如用户、计算机、打印机和共享文件夹。</p>
+</li>
+<li><p><strong>简化管理</strong>：</p>
+<p>域减少了管理任务的复杂性，因为许多任务可以通过自动化脚本来完成，如用户账户的创建和删除。</p>
+</li>
+<li><p><strong>提高效率</strong>：</p>
+<p>域可以提高工作效率，因为用户可以轻松地访问他们需要的资源，而不需要管理员的频繁干预。</p>
+</li>
+<li><p><strong>可扩展性</strong>：</p>
+<p>域结构可以随着组织的成长而扩展，支持从小型网络到大型企业环境。</p>
+</li>
+<li><p><strong>故障转移和高可用性</strong>：</p>
+<p>域控制器可以配置为相互冗余，以确保在硬件故障或其他问题发生时，域服务仍然可用。</p>
+</li>
+</ol>
+<h1 id="实操"><a href="#实操" class="headerlink" title="实操"></a>实操</h1><p>放行ping命令(基础)<br>方法1：关闭防火墙</p>
+<p>方法2：入站规则新建规则：放行ping命令（自定义IPv4端口）</p>
+<p>网络连接方式设置为桥接模式</p>
+<p>使两个网络能够互相ping通</p>
+<p>每一个win server系统都需要进行放行ping命令的操作（检查互通）</p>
+<p>第一台域控制器DC1配置<br>步骤1：环境准备<br>搭建winserver2019的系统环境</p>
+<p>我们首先进行克隆为win-server-2</p>
+<p>计算机重命名 DC1</p>
+<p>控制面板—系统和安全—系统—高级系统设置—系统属性—计算机名  DC1</p>
+<p>步骤2：设置Administrator账户的密码<br>设置—账户设置—PIN密码—设置密码</p>
+<p>步骤3：配置网络信息<br>IP地址：  192.168.10.1</p>
+<p>DNS地址：192.168.10.1</p>
+<p>步骤4：创建第一台域控制器long.om<br>添加角色和功能  —将此服务器升级为域控制器</p>
+<p>ps:我们还没有创建其他的域控制器，此处我们选择添加新林</p>
+<h3 id="补充：将域服务器降级为成员服务器"><a href="#补充：将域服务器降级为成员服务器" class="headerlink" title="补充：将域服务器降级为成员服务器"></a>补充：将域服务器降级为成员服务器</h3><p>服务器管理器—删除角色和功能</p>
+<p>删除功能之前，需要先对域控制器进行降级</p>
+<p>重新开机即可操作成功</p>
+<p>添加成员服务器MS1<br>步骤1：设置Administrator账户的密码<br>步骤2：配置网络信息<br>IP地址：192.168.10.10</p>
+<p>DNS地址：192.168.10.1</p>
+<p>同时开启机器：  DC1  long.com（两个网络之间需要互相ping通）</p>
+<p>Ipconfig &#x2F;all 查看网络配置信息，ping  DC1 ，观察是否可以ping通</p>
+<p>Ping 192.168.10.1，网络之间能够ping通再进行下一步操作</p>
+]]></content>
+      <categories>
+        <category>windonws Server</category>
+      </categories>
+      <tags>
+        <tag>windows web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2024春1X传感网应用开发Ⅱ-题库</title>
+    <url>/2024/12/12/%E4%BC%A0%E6%84%9F%E7%BD%91%E9%A2%98%E5%BA%93/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/1733826593718.gif" loading="lazy"></p>
+ <span id="more"></span>
+
+<p><em><strong>*1、实现呼吸灯的原理是什么*</strong></em> </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">答案： PWM采用调整脉冲占空比的方式，达到调整电压与电流的效果 <br></code></pre></td></tr></table></figure>
+
+<p><em><strong>*2、请写出ADC的基本参数*</strong></em> </p>
+<p>答案： ADC的工作模式<br>ADC转换结果的存储方式<br>AD通道的转换时间<br>AD时钟信号的获取 </p>
+<p><em><strong>*3、STM32L151芯片的APB2和APB1总线的最高时钟频率分别为( )。*</strong></em> </p>
+<p>A、 72MHz,72MHz </p>
+<p>B、 32MHz,32MHz </p>
+<p>C、 32MHz，16MHz </p>
+<p>D、 64MHz，32MHz </p>
+<p>答案： B </p>
+<p><em><strong>*4、以下C语言中的用户标识符，合法的是( )。*</strong></em> </p>
+<p>A、 for </p>
+<p>B、 4f </p>
+<p>C、 f2_G3 </p>
+<p>D、 struct </p>
+<p>答案： C </p>
+<p><em><strong>*5、ARM Cortex-M3不可以通过( )唤醒CPU。*</strong></em> </p>
+<p>A、 I&#x2F;O端口 </p>
+<p>B、 RTC 闹钟 </p>
+<p>C、 USB唤醒事件 </p>
+<p>D、 PLL </p>
+<p>答案： D </p>
+<p><em><strong>*6、若有C语言语句:char a&#x3D;’\72’; 则变量a中(  )。*</strong></em> </p>
+<p>A、 包含1个字符 </p>
+<p>B、 包含2个字符 </p>
+<p>C、 包含3个字符 </p>
+<p>D、 语句不合法 </p>
+<p>答案： A </p>
+<p><em><strong>*7、以下程序的输出结果是(  )。*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*main( )*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*{*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*int k&#x3D;0x31;*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*printf(“%d，%c，%x \n”，k，k，k);*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*}*</strong></em> </p>
+<p>A、 49,1,31 </p>
+<p>B、 31,31,31 </p>
+<p>C、 31,1,31 </p>
+<p>D、 49,1,49 </p>
+<p>答案： A </p>
+<p><em><strong>*8、STM32 ADC输入信号电压为1.1V，已知系统供电为3.3V，A&#x2F;D转换精度为12位，则A&#x2F;D转换结果应为( )。*</strong></em> </p>
+<p>A、 33 </p>
+<p>B、 132 </p>
+<p>C、 1365 </p>
+<p>D、 4096 </p>
+<p>答案： C </p>
+<p><em><strong>*9、STM32F103中PC13与以下哪个GPIO引脚(  )共用EXTI13这根中断线。*</strong></em> </p>
+<p>A、 PA15 </p>
+<p>B、 PA14 </p>
+<p>C、 PA13 </p>
+<p>D、 PA12 </p>
+<p>答案： C </p>
+<p><em><strong>*10、STM32的串口通信中断中，判断接收标志位不为空所使用的宏是（ ）*</strong></em> </p>
+<p>A、 UART_FLAG_IDLE </p>
+<p>B、 UART_FLAG_RXNE </p>
+<p>C、 UART_FLAG_ORE </p>
+<p>D、 UART_FLAG_TXE </p>
+<p>答案： B </p>
+<p><em><strong>*11、C语言中表示关系:X大于等于Y 并且Y大于等于Z,应使用以下哪个( )表达式。*</strong></em> </p>
+<p>A、 (x&gt;&#x3D;y)AND(y&gt;&#x3D;z) </p>
+<p>B、 (x&gt;&#x3D;y)&amp;&amp;(y&gt;&#x3D;z) </p>
+<p>C、 (x&gt;&#x3D;y&gt;&#x3D;z) </p>
+<p>D、 (x&gt;&#x3D;y)&amp;(y&gt;&#x3D;z) </p>
+<p>答案： B </p>
+<p><em><strong>*12、一个12位分辨率的ADC，若供电电压为5V, 当输入模拟量为2V时，可计算出输出数字量为( )。*</strong></em> </p>
+<p>A、 102 </p>
+<p>B、 103 </p>
+<p>C、 1638 </p>
+<p>D、 1670 </p>
+<p>答案： C </p>
+<p><em><strong>*13、在NB-IoT 网络中，设置对接的IoT 平台地址的AT指令是( )。*</strong></em> </p>
+<p>A、 AT+CMEE </p>
+<p>B、 AT+CFUN </p>
+<p>C、 AT+NCDP </p>
+<p>D、 AT+CIPMUX </p>
+<p>答案： C </p>
+<p><em><strong>*14、在keil工程中，使用printf()函数时要添加的头文件是(  )。*</strong></em> </p>
+<p>A、 &lt;stdlib.h&gt; </p>
+<p>B、 &lt;stdio.h&gt; </p>
+<p>C、 &lt;time.h&gt; </p>
+<p>D、 &lt;string.h&gt; </p>
+<p>答案： B </p>
+<p><em><strong>*15、CC2530的串口通信中，修改（ ）寄存器对通信波特率有影响。*</strong></em> </p>
+<p>A、 U0GCR </p>
+<p>B、 UxDBUF </p>
+<p>C、 UxCSR </p>
+<p>D、 APCFG </p>
+<p>答案： A </p>
+<p><em><strong>*16、节点固件下载时，M3主控模块板的JP1拨码开关拨向______模式?*</strong></em> </p>
+<p>A、 NC </p>
+<p>B、 Boot </p>
+<p>答案： B </p>
+<p><em><strong>*17、设置ESP8266 WiFi模块工作模式为soft-AP + station，发送的指令是（ ）。*</strong></em> </p>
+<p>A、 AT+CWMODE&#x3D;0 </p>
+<p>B、 AT+CWMODE&#x3D;1 </p>
+<p>C、 AT+CWMODE&#x3D;2 </p>
+<p>D、 AT+CWMODE&#x3D;3 </p>
+<p>答案： D </p>
+<p><em><strong>*18、配置时波特率我们需要设的值是?*</strong></em> </p>
+<p>A、 12800 </p>
+<p>B、 115200 </p>
+<p>答案： B </p>
+<p><em><strong>*19、ISO 11898标准的CAN总线的两条信号线CAN_H和CAN_L的传输的信号为3.5V与1.5V，此时表示的是（ ）。*</strong></em> </p>
+<p>A、 逻辑0 </p>
+<p>B、 逻辑1 </p>
+<p>C、 总线空闲 </p>
+<p>D、 不确定状态 </p>
+<p>答案： A </p>
+<p><em><strong>*20、Modbus标准规定的Modbus功能码不包括(  )。*</strong></em> </p>
+<p>A、 公共功能码 </p>
+<p>B、 默认功能码 </p>
+<p>C、 用户自定义功能码 </p>
+<p>D、 保留功能码 </p>
+<p>答案： B </p>
+<p><em><strong>*21、通过RS485网络上传数据到网关时,如果数据域为两个字节，并且高字节为温度值，当上传的数据域中的数据是0x1840时，上传的温度值是( )℃。*</strong></em> </p>
+<p>A、 6 </p>
+<p>B、 18 </p>
+<p>C、 40 </p>
+<p>D、 24 </p>
+<p>答案： D </p>
+<p><em><strong>*22、Modbus常见功能码中0x03的功能是( )。*</strong></em> </p>
+<p>A、 读线圈状态 </p>
+<p>B、 读输入寄存器 </p>
+<p>C、 读保持寄存器 </p>
+<p>D、 写单个保持寄存器 </p>
+<p>答案： C </p>
+<p><em><strong>*23、CC2530中的定时器4为（ ）位定时计数器。*</strong></em> </p>
+<p>A、 8 </p>
+<p>B、 12 </p>
+<p>C、 16 </p>
+<p>D、 20 </p>
+<p>答案： A </p>
+<p><em><strong>*24、某Modbus的RTU模式报文如为“06 01 00 16 00 21 1C 61”，其中第一个字节“06”的含义是( )。*</strong></em> </p>
+<p>A、 06号功能码 </p>
+<p>B、 06号主机地址 </p>
+<p>C、 06号从机地址 </p>
+<p>D、 D、 随机码 </p>
+<p>答案： C </p>
+<p><em><strong>*25、LoRa采用扩频技术，扩频因子LORA_SPREADING_FACTOR值越大，通信距离 ( )与传输速率（ ）。*</strong></em> </p>
+<p>A、 越近，越高 </p>
+<p>B、 越远，越高 </p>
+<p>C、 越近，越低 </p>
+<p>D、 越远，越低 </p>
+<p>答案： D </p>
+<p><em><strong>*26、下列关于标准Modbus功能码说法不正确的是( )。*</strong></em> </p>
+<p>A、 0x01:读线圈寄存器 </p>
+<p>B、 0x02:读离散输入寄存器 </p>
+<p>C、 0x03:读保持寄存器 </p>
+<p>D、 0x06:写保持寄存器 </p>
+<p>答案： D </p>
+<p><em><strong>*27、bxCAN有（ ）个发送邮箱，由发送调度程序决定优先发送哪个。*</strong></em> </p>
+<p>A、 10 </p>
+<p>B、 2 </p>
+<p>C、 3 </p>
+<p>D、 5 </p>
+<p>答案： C </p>
+<p><em><strong>*28、通过RS485网络上传数据到网关时,如果数据域为两个字节，并且高字节为温度值，当上传的数据域中的数据是0x1840时，上传的温度值是( )℃。*</strong></em> </p>
+<p>A、 6 </p>
+<p>B、 18 </p>
+<p>C、 40 </p>
+<p>D、 24 </p>
+<p>答案： D </p>
+<p><em><strong>*29、目前，Modbus协议的所有权属于（ ）组织。*</strong></em> </p>
+<p>A、 3GPP </p>
+<p>B、 施耐得 </p>
+<p>C、 Sipex </p>
+<p>D、 Modbus-IDA </p>
+<p>答案： D </p>
+<p><em><strong>*30、can通信帧的类型*</strong></em> </p>
+<p>答案： 数据帧、遥控帧、错误帧、过载帧、帧间隔 </p>
+<p><em><strong>*31、CC2530的P1_0和P1_1端口具有( )的驱动能力。*</strong></em> </p>
+<p>A、 4mA </p>
+<p>B、 8mA </p>
+<p>C、 16mA </p>
+<p>D、 20mA </p>
+<p>答案： D </p>
+<p><em><strong>*32、在64位操作系统环境下,下列关于C语言的数据类型占用内存的长度说法正确的是( )。*</strong></em> </p>
+<p>A、 unsigned char类型占2字节 </p>
+<p>B、 unsigned int类型占2 字节 </p>
+<p>C、 unsigned short int类型占2字节 </p>
+<p>D、 unsigned long int类型占4字节 </p>
+<p>答案： C </p>
+<p><em><strong>*33、CC2530寄存器ADCH用来存放( )。*</strong></em> </p>
+<p>A、 ADC转换结果的高位数据 </p>
+<p>B、 ADC转换结果的低位数据 </p>
+<p>C、 ADC转换结果的全部数据 </p>
+<p>D、 以上都不正确 </p>
+<p>答案： A </p>
+<p><em><strong>*34、下列不属于CC2530中断源的是( )。*</strong></em> </p>
+<p>A、 RFERR </p>
+<p>B、 Ipx_IPG </p>
+<p>C、 T3 </p>
+<p>D、 P2INT </p>
+<p>答案： B </p>
+<p><em><strong>*35、在CC2530中,如果采用单通道ADC转换,说法正确的是( )。*</strong></em> </p>
+<p>A、 不需要指定参考电压 </p>
+<p>B、 不需要指定抽取率 </p>
+<p>C、 不需要指定转换通道号码 </p>
+<p>D、 单个转换在寄存器ADCCON3写入后立即发生 </p>
+<p>答案： D </p>
+<p><em><strong>*36、CC2530中的寄存器 PxSEL,其中 x 为端口的标号( )。*</strong></em> </p>
+<p>A、 0~1 </p>
+<p>B、 0~4 </p>
+<p>C、 0~3 </p>
+<p>D、 0~2 </p>
+<p>答案： D </p>
+<p><em><strong>*37、在基于Modbus协议的通信中,如果主节点发送的报文是:02 02 00 77 00 01 B9 F9,则说法正确的是( )。*</strong></em> </p>
+<p>A、 此报文请求读取保持寄存器的值 </p>
+<p>B、 寄存器的起始地址是0X 0077 </p>
+<p>C、 寄存器个数是0X02 </p>
+<p>D、 从节点地址是0X 01 </p>
+<p>答案： B </p>
+<p><em><strong>*38、ZigBee网络中的2.4G频段可以提供( )个不同的信道。*</strong></em> </p>
+<p>A、 8 </p>
+<p>B、 16 </p>
+<p>C、 24 </p>
+<p>D、 32 </p>
+<p>答案： B </p>
+<p><em><strong>*39、在CAN总线中,实现“逻辑电平”与“差分电平”之间相互转换的器件是( )。*</strong></em> </p>
+<p>A、 CAN收发器 </p>
+<p>B、 CAN控制器 </p>
+<p>C、 MCU </p>
+<p>D、 终端匹配电阻 </p>
+<p>答案： A </p>
+<p><em><strong>*40、在Modbus网络中,通信总是由( )发起。*</strong></em> </p>
+<p>A、 服务器节点 </p>
+<p>B、 客户端节点 </p>
+<p>C、 主设备 </p>
+<p>D、 从设备 </p>
+<p>答案： C </p>
+<p><em><strong>*41、CC2530串口0通用控制寄存器是( )。*</strong></em> </p>
+<p>A、 U0BAUD </p>
+<p>B、 U0CSR </p>
+<p>C、 U0BUF </p>
+<p>D、 U0GCR </p>
+<p>答案： D </p>
+<p><em><strong>*42、P0IE&#x3D;1用来设置( )。*</strong></em> </p>
+<p>A、 端口0中断使能 </p>
+<p>B、 端口0禁止中断 </p>
+<p>C、 开启总中断 </p>
+<p>D、 关闭总中断 </p>
+<p>答案： A </p>
+<p><em><strong>*43、CC2530定时器1工作在自由运行模式时,当到达最终计数值( )时溢出。*</strong></em> </p>
+<p>A、 0x0000 </p>
+<p>B、 0x00FF </p>
+<p>C、 0xFFFF </p>
+<p>D、 0xFF00 </p>
+<p>答案： C </p>
+<p><em><strong>*44、在NB-IoT网络中,终端与物联网云平台间一般使用( )协议进行通信。*</strong></em> </p>
+<p>A、 FTP </p>
+<p>B、 CoAP </p>
+<p>C、 TCP </p>
+<p>D、 HTTP </p>
+<p>答案： B </p>
+<p><em><strong>*45、在CC2530单片机中,关于中断服务函数说法正确的是( )*</strong></em> </p>
+<p>A、 要以inter作为中断服务函数的前缀 </p>
+<p>B、 端口组中断发生后需要在中断服务函数中确定是哪个端口发生的中断。 </p>
+<p>C、 在中断服务函数中不需要清除中断标志位 </p>
+<p>D、 以上都正确 </p>
+<p>答案： B </p>
+<p><em><strong>*46、在使用利尔达 NB86-G模组时,用于查询当前模组网络注册连接状态的AT指令是( )。*</strong></em> </p>
+<p>A、 AT+CEREG </p>
+<p>B、 AT+CSQ </p>
+<p>C、 AT+CIMI </p>
+<p>D、 AT+CCLK </p>
+<p>答案： A </p>
+<p><em><strong>*47、光敏电阻在一定的外加电压下,外加电压与暗电流之比称为“暗电阻”,常用( )表示。*</strong></em> </p>
+<p>A、 0lx </p>
+<p>B、 100lx </p>
+<p>C、 200lx </p>
+<p>D、 300lx </p>
+<p>答案： A </p>
+<p><em><strong>*48、在CAN总线2.0B技术规范中,扩展帧具有的标识符位数为( )。*</strong></em> </p>
+<p>A、 8位 </p>
+<p>B、 11位 </p>
+<p>C、 15位 </p>
+<p>D、 29位 </p>
+<p>答案： D </p>
+<p><em><strong>*49、Modbus的ASCII模式消息帧格式,消息以( )字符开始。*</strong></em> </p>
+<p>A、 冒号 </p>
+<p>B、 3.5个字符 </p>
+<p>C、 分号 </p>
+<p>D、 句号 </p>
+<p>答案： A </p>
+<p><em><strong>*50、下列C语言用户标识符中合法的是( )。*</strong></em> </p>
+<p>A、 while </p>
+<p>B、 5num </p>
+<p>C、 -a2 </p>
+<p>D、 path </p>
+<p>答案： D </p>
+<p><em><strong>*51、CC2530寄存器PERCFG.T4CFG用来设置 ( )。*</strong></em> </p>
+<p>A、 定时器4的复用引脚 </p>
+<p>B、 端口组4的复用引脚 </p>
+<p>C、 串口4的复用引脚 </p>
+<p>D、 以上都不正确 </p>
+<p>答案： A </p>
+<p><em><strong>*52、下列哪一个无线技术需要运营商网络支持( )。*</strong></em> </p>
+<p>A、 蓝牙 </p>
+<p>B、 LoRa </p>
+<p>C、 NB-IoT </p>
+<p>D、 ZigBee </p>
+<p>答案： C </p>
+<p><em><strong>*53、下列关于ZigBee相关技术的描述中,不正确的是( )。*</strong></em> </p>
+<p>A、 ZigBee是建立在 IEEE 802.15.4 标准之上 </p>
+<p>B、 ZigBee提供了数据完整性检查和鉴权功能,采用AES-128加密算法 </p>
+<p>C、 共规定了27个信道 </p>
+<p>D、 ZigBee工作在非 ISM 频带 </p>
+<p>答案： D </p>
+<p><em><strong>*54、CC2530中的寄存器 PxDIR是用来设置x端口组的( )。*</strong></em> </p>
+<p>A、 备用位置 </p>
+<p>B、 方向 </p>
+<p>C、 定时器设置 </p>
+<p>D、 功能 </p>
+<p>答案： B </p>
+<p><em><strong>*55、当CAN总线上的一个节点发送数据时,是以( )形式广播给网络中的所有节点。*</strong></em> </p>
+<p>A、 报文 </p>
+<p>B、 字符串 </p>
+<p>C、 数字 </p>
+<p>D、 字节 </p>
+<p>答案： A </p>
+<p><em><strong>*56、CC2530单片机用来设置端口中断控制的PICTL寄存器,如果要将CC2530单片机的P1.3引脚设置为上升沿中断触发方式,则下列对PICTL寄存器的值设置正确的是( )。*</strong></em> </p>
+<p>A、 PICTL &amp;&#x3D;~0x01 </p>
+<p>B、 PICTL &amp;&#x3D;~0x02 </p>
+<p>C、 PICTL &amp;&#x3D;~0x04 </p>
+<p>D、 PICTL &amp;&#x3D;~0x08 </p>
+<p>答案： B </p>
+<p><em><strong>*57、CC2530 ADC转换结果的低位部分数据存放在( )寄存器中。*</strong></em> </p>
+<p>A、 ADCCON1 </p>
+<p>B、 ADCH </p>
+<p>C、 ADCCON2 </p>
+<p>D、 ADCL </p>
+<p>答案： D </p>
+<p><em><strong>*58、CC2530寄存器PxSEL复位之后,所有的位均为( )。*</strong></em> </p>
+<p>A、 3 </p>
+<p>B、 2 </p>
+<p>C、 1 </p>
+<p>D、 0 </p>
+<p>答案： D </p>
+<p><em><strong>*59、3GPP标准化组织的成员不包括( )*</strong></em> </p>
+<p>A、 日本无线工业及商贸联合会 </p>
+<p>B、 中国通信标准化协会 </p>
+<p>C、 美国电信行业解决方案联盟 </p>
+<p>D、 ISO国际标准化组织 </p>
+<p>答案： D </p>
+<p><em><strong>*60、在主流的LPWAN技术中,不包括( )*</strong></em> </p>
+<p>A、 NB-IoT </p>
+<p>B、 LoRa </p>
+<p>C、 Wi-Fi </p>
+<p>D、 eMTC </p>
+<p>答案： C </p>
+<p><em><strong>*61、CAN总线具有“仲裁”功能,即当多个节点设备同时向总线发送数据时,采用这些数据的逻辑运算值作为总线输出。当两个节点设备同时向总线输出,一个输出“0100”,一个输出“0010”时,总线输出( )。*</strong></em> </p>
+<p>A、 0100 </p>
+<p>B、 0010 </p>
+<p>C、 0110 </p>
+<p>D、 0000 </p>
+<p>答案： B </p>
+<p><em><strong>*62、以下C语言中的用户标识符,合法的是( )。*</strong></em> </p>
+<p>A、 for </p>
+<p>B、 4f </p>
+<p>C、 f2_G3 </p>
+<p>D、 struct </p>
+<p>答案： C </p>
+<p><em><strong>*63、STM32L151芯片的APB2和APB1总线的最高时钟频率分别为( )。*</strong></em> </p>
+<p>A、 72MHz,72MHz </p>
+<p>B、 32MHz,32MHz </p>
+<p>C、 32MHz,16MHz </p>
+<p>D、 64MHz,32MHz </p>
+<p>答案： B </p>
+<p><em><strong>*64、下列关于LoRa的说法不正确的是( )。*</strong></em> </p>
+<p>A、 LoRa是一种扩频通信技术 </p>
+<p>B、 LoRa在郊区环境下,通信距离可达15Km </p>
+<p>C、 LoRa技术的应用领域一般在智能水表、楼宇自动化、自动贩卖机等 </p>
+<p>D、 LoRa与Wi-Fi、ZigBee一样都属于短距离无线通信技术 </p>
+<p>答案： D </p>
+<p><em><strong>*65、按键KEY1连接到STM32芯片中的PA0引脚,请问PA0需要设置的上下拉模式为( ),如果用中断检测该按键,应该检测PA0引脚电平的( )。*</strong></em> </p>
+<p>A、 Pull-up;上升沿 </p>
+<p>B、 Pull-up;下升沿 </p>
+<p>C、 Pull-down;上升沿 </p>
+<p>D、 Pull-down;下升沿 </p>
+<p>答案： C </p>
+<p><em><strong>*66、STM32 F1的外部中断&#x2F;事件控制器中EXTI18是连接或对应以下哪个事件( )。*</strong></em> </p>
+<p>A、 GPIO中断事件 </p>
+<p>B、 RTC闹钟事件 </p>
+<p>C、 以太网唤醒事件 </p>
+<p>D、 USB事件 </p>
+<p>答案： D </p>
+<p><em><strong>*67、以下为STM32的GPIO端口配置寄存器的描述,在GPIO控制LED电路设计时,要使最大输出速度为10MHz,应该设置( )。*</strong></em> </p>
+<p>A、 CNFy[1:0] </p>
+<p>B、 MODEy[1:0] </p>
+<p>C、 MODE </p>
+<p>D、 CNF </p>
+<p>答案： B </p>
+<p><em><strong>*68、STM32的外部中断&#x2F;事件控制器(EXTI)支持( )个中断&#x2F;事件请求。*</strong></em> </p>
+<p>A、 16 </p>
+<p>B、 19 </p>
+<p>C、 43 </p>
+<p>D、 36 </p>
+<p>答案： B </p>
+<p><em><strong>*69、ARM Cortex-M3不可以通过( )唤醒CPU。*</strong></em> </p>
+<p>A、 I&#x2F;O端口 </p>
+<p>B、 RTC 闹钟 </p>
+<p>C、 USB唤醒事件 </p>
+<p>D、 PLL </p>
+<p>答案： D </p>
+<p><em><strong>*70、ESP8266 Wi-Fi模块断开现有热点连接的指令是( )。*</strong></em> </p>
+<p>A、 AT+CWMODE </p>
+<p>B、 AT+CWDHCP </p>
+<p>C、 AT+CWQAP </p>
+<p>D、 AT+CWSAP </p>
+<p>答案： C </p>
+<p><em><strong>*71、CC2530是面向( )通信的一种片上系统,是一种专用单片机。*</strong></em> </p>
+<p>A、 2.2G </p>
+<p>B、 2.4G </p>
+<p>C、 3.6G </p>
+<p>D、 5G </p>
+<p>答案： B </p>
+<p><em><strong>*72、使能P1_2 端口中断,需将P1IEN 寄存器的第2 位置为1,则下列选项中设置正确的是( )。*</strong></em> </p>
+<p>A、 P1IEN |&#x3D; 0x04; </p>
+<p>B、 P2IEN |&#x3D; 0x04; </p>
+<p>C、 P1IEN |&#x3D; 0x02;、; </p>
+<p>D、 P2IEN |&#x3D; 0x02; </p>
+<p>答案： A </p>
+<p><em><strong>*73、下列传输方式只有点对点的是( )。*</strong></em> </p>
+<p>A、 Wi-Fi </p>
+<p>B、 ZigBee </p>
+<p>C、 红外 </p>
+<p>D、 LoRa </p>
+<p>答案： C </p>
+<p><em><strong>*74、若有C语言语句:char a&#x3D;’\72’; 则变量a中( )。*</strong></em> </p>
+<p>A、 包含1个字符 </p>
+<p>B、 包含2个字符 </p>
+<p>C、 包含3个字符 </p>
+<p>D、 语句不合法 </p>
+<p>答案： A </p>
+<p><em><strong>*75、CC2530单片机的定时器1为( )位定时器。*</strong></em> </p>
+<p>A、 8位 </p>
+<p>B、 14位 </p>
+<p>C、 16位 </p>
+<p>D、 24位 </p>
+<p>答案： C </p>
+<p><em><strong>*76、以下是CC2530端口0方向寄存器的是( )。*</strong></em> </p>
+<p>A、 P0SEL </p>
+<p>B、 PLSEL </p>
+<p>C、 P0DIR </p>
+<p>D、 P0INP </p>
+<p>答案： C </p>
+<p><em><strong>*77、STM32通过PA0接LED灯,并进行开关LED灯操作,则PA0口需要设置的工作模式为( )。*</strong></em> </p>
+<p>A、 推挽输出 </p>
+<p>B、 开漏输出 </p>
+<p>C、 复用推挽输入 </p>
+<p>D、 复用开漏输入 </p>
+<p>答案： A </p>
+<p><em><strong>*78、STM32 ADC输入信号电压为1.1V,已知系统供电为3.3V,A&#x2F;D转换精度为12位,则A&#x2F;D转换结果应为( )。*</strong></em> </p>
+<p>A、 33 </p>
+<p>B、 132 </p>
+<p>C、 1365 </p>
+<p>D、 4096 </p>
+<p>答案： C </p>
+<p><em><strong>*79、IEEE 802.15.4在2.4G频段定义了( )个信道。*</strong></em> </p>
+<p>A、 27 </p>
+<p>B、 16 </p>
+<p>C、 11 </p>
+<p>D、 5 </p>
+<p>答案： B </p>
+<p><em><strong>*80、STM32F103中PC13与以下哪个GPIO引脚( )共用EXTI13这根中断线。*</strong></em> </p>
+<p>A、 PA15 </p>
+<p>B、 PA14 </p>
+<p>C、 PA13 </p>
+<p>D、 PA12 </p>
+<p>答案： C </p>
+<p><em><strong>*81、C语言中表示关系:X大于等于Y 并且Y大于等于Z,应使用以下哪个( )表达式。*</strong></em> </p>
+<p>A、 (x&gt;&#x3D;y)AND(y&gt;&#x3D;z) </p>
+<p>B、 (x&gt;&#x3D;y)&amp;&amp;(y&gt;&#x3D;z) </p>
+<p>C、 (x&gt;&#x3D;y&gt;&#x3D;z) </p>
+<p>D、 (x&gt;&#x3D;y)&amp;(y&gt;&#x3D;z) </p>
+<p>答案： B </p>
+<p><em><strong>*82、下列哪项不属于ZigBee技术体系结构的( )。*</strong></em> </p>
+<p>A、 应用层 </p>
+<p>B、 网络层 </p>
+<p>C、 传输层 </p>
+<p>D、 物理层 </p>
+<p>答案： C </p>
+<p><em><strong>*83、CoAP属于( )的协议。*</strong></em> </p>
+<p>A、 表示层 </p>
+<p>B、 会话层 </p>
+<p>C、 应用层 </p>
+<p>D、 传输层 </p>
+<p>答案： C </p>
+<p><em><strong>*84、下列选项中哪个是SPI的时钟引脚( )。*</strong></em> </p>
+<p>A、 MOSI </p>
+<p>B、 MISO </p>
+<p>C、 SCLK </p>
+<p>D、 CS </p>
+<p>答案： C </p>
+<p><em><strong>*85、在ZigBee网络中,一个主节点管理若干子节点,最多一个主节点可管理( )个子节点。*</strong></em> </p>
+<p>A、 32 </p>
+<p>B、 64 </p>
+<p>C、 128 </p>
+<p>D、 254 </p>
+<p>答案： D </p>
+<p><em><strong>*86、LoRa芯片与MCU通过SPI总线进行通信,SPI主机(MCU)通过( )连接到从机(MCU)的NSS引脚对从机进行选通的。*</strong></em> </p>
+<p>A、 拉高 </p>
+<p>B、 拉低 </p>
+<p>C、 先拉高再拉低 </p>
+<p>D、 先拉低再拉高 </p>
+<p>答案： B </p>
+<p><em><strong>*87、利尔达NB-IoT模组NB86-G的AT指令“AT+NMGS&#x3D;2,0001”中的数字“2”是指( )。*</strong></em> </p>
+<p>A、 发送的上行数据的字节数为2 </p>
+<p>B、 发送的设备地址为2 </p>
+<p>C、 发送的上行数据的值为2 </p>
+<p>D、 接收的传感数据的值为2 </p>
+<p>答案： A </p>
+<p><em><strong>*88、Wi-Fi芯片ESP8266扫描当前可用的AP热点列表的AT指令是( )。*</strong></em> </p>
+<p>A、 AT+CWDHCP </p>
+<p>B、 AT+CWLAP </p>
+<p>C、 AT+CWMODE </p>
+<p>D、 AT+RST </p>
+<p>答案： B </p>
+<p><em><strong>*89、一个12位分辨率的ADC,若供电电压为5V, 当输入模拟量为2V时,可计算出输出数字量为( )。*</strong></em> </p>
+<p>A、 102 </p>
+<p>B、 103 </p>
+<p>C、 1638 </p>
+<p>D、 1670 </p>
+<p>答案： C </p>
+<p><em><strong>*90、以下程序的输出结果是( )。*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*main( )*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*{*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*int k&#x3D;0x31;*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*printf(“%d,%c,%x \n”,k,k,k);*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*}*</strong></em> </p>
+<p>A、 49,1,31 </p>
+<p>B、 31,31,31 </p>
+<p>C、 31,1,31 </p>
+<p>D、 49,1,49 </p>
+<p>答案： A </p>
+<p><em><strong>*91、单字节有符号十进制数 -2 其对应的十六进制可表示为( )。*</strong></em> </p>
+<p>A、 92 </p>
+<p>B、 82 </p>
+<p>C、 02 </p>
+<p>D、 FE </p>
+<p>答案： D </p>
+<p><em><strong>*92、不是SPI总线引脚的是( )。*</strong></em> </p>
+<p>A、 SCLK </p>
+<p>B、 SDAT </p>
+<p>C、 MOSI </p>
+<p>D、 MISO </p>
+<p>答案： B </p>
+<p><em><strong>*93、RS232通信中,表示逻辑1所使用的电平信号为( )。*</strong></em> </p>
+<p>A、 5V ~ 12V </p>
+<p>B、 5V </p>
+<p>C、 -15V ~ -3V </p>
+<p>D、 -5V ~ 0V </p>
+<p>答案： C </p>
+<p><em><strong>*94、LoRa芯片的信号发射功率由TX_OUTPUT_POWER设置,该值越大发射功率越大,传输距离越远,该值最大不得超过( )*</strong></em> </p>
+<p>A、 3dBm </p>
+<p>B、 10dBm </p>
+<p>C、 15dBm </p>
+<p>D、 20dBm </p>
+<p>答案： D </p>
+<p><em><strong>*95、采用双线结构的CAN总线必须使用( )抑制信号反射。*</strong></em> </p>
+<p>A、 终端电容 </p>
+<p>B、 终端电阻 </p>
+<p>C、 LC电路 </p>
+<p>D、 RC电路 </p>
+<p>答案： B </p>
+<p><em><strong>*96、通过HAL库对STM32的GPIO口配置为推挽输出模式时,初始化GPIO应该将Mode设置为( )*</strong></em> </p>
+<p>A、 GPIO_MODE_IT_FALLING </p>
+<p>B、 GPIO_MODE_OUTPUT_PP </p>
+<p>C、 GPIO_MODE_OUTPUT_OD </p>
+<p>D、 GPIO_MODE_ANALOG </p>
+<p>答案： B </p>
+<p><em><strong>*97、STM32F103VE芯片的定时器属于高级定时器的是( )。*</strong></em> </p>
+<p>A、 TIM1,TIM2 </p>
+<p>B、 TIM3,TIM4 </p>
+<p>C、 TIM6,TIM7 </p>
+<p>D、 TIM1 TIM8 </p>
+<p>答案： D </p>
+<p><em><strong>*98、HAL库代码中定义的uint16_t数据类型,可以表示的数值范围是( )。*</strong></em> </p>
+<p>A、 -32768 ~ 32767 </p>
+<p>B、 0 ~ 65535 </p>
+<p>C、 0~255 </p>
+<p>D、 0 ~ 819200 </p>
+<p>答案： B </p>
+<p><em><strong>*99、STM32的串口通信中断中,判断接收标志位不为空所使用的宏是( )*</strong></em> </p>
+<p>A、 UART_FLAG_IDLE </p>
+<p>B、 UART_FLAG_RXNE </p>
+<p>C、 UART_FLAG_ORE </p>
+<p>D、 UART_FLAG_TXE </p>
+<p>答案： B </p>
+<p><em><strong>*100、STM32F103VET6有3个( )位的A-D转换器。*</strong></em> </p>
+<p>A、 8 </p>
+<p>B、 12 </p>
+<p>C、 16 </p>
+<p>D、 24 </p>
+<p>答案： C </p>
+<p><em><strong>*101、在NB-IoT 网络中,设置对接的IoT 平台地址的AT指令是( )。*</strong></em> </p>
+<p>A、 AT+CMEE </p>
+<p>B、 AT+CFUN </p>
+<p>C、 AT+NCDP </p>
+<p>D、 AT+CIPMUX </p>
+<p>答案： C </p>
+<p><em><strong>*102、CC2530的串口通信中,修改( )寄存器对通信波特率有影响。*</strong></em> </p>
+<p>A、 U0GCR </p>
+<p>B、 UxDBUF </p>
+<p>C、 UxCSR </p>
+<p>D、 APCFG </p>
+<p>答案： A </p>
+<p><em><strong>*103、设置ESP8266 WiFi模块工作模式为soft-AP + station,发送的指令是( )。*</strong></em> </p>
+<p>A、 AT+CWMODE&#x3D;0 </p>
+<p>B、 AT+CWMODE&#x3D;1 </p>
+<p>C、 AT+CWMODE&#x3D;2 </p>
+<p>D、 AT+CWMODE&#x3D;3 </p>
+<p>答案： D </p>
+<p><em><strong>*104、ISO 11898标准的CAN总线的两条信号线CAN_H和CAN_L的传输的信号为3.5V与1.5V,此时表示的是( )。*</strong></em> </p>
+<p>A、 逻辑0 </p>
+<p>B、 逻辑1 </p>
+<p>C、 总线空闲 </p>
+<p>D、 不确定状态 </p>
+<p>答案： A </p>
+<p><em><strong>*105、通过RS485网络上传数据到网关时,如果数据域为两个字节,并且高字节为温度值,当上传的数据域中的数据是0x1840时,上传的温度值是( )℃。*</strong></em> </p>
+<p>A、 6 </p>
+<p>B、 18 </p>
+<p>C、 40 </p>
+<p>D、 24 </p>
+<p>答案： D </p>
+<p><em><strong>*106、CC2530中的定时器4为( )位定时计数器。*</strong></em> </p>
+<p>A、 8 </p>
+<p>B、 12 </p>
+<p>C、 16 </p>
+<p>D、 20 </p>
+<p>答案： A </p>
+<p><em><strong>*107、LoRa采用扩频技术,扩频因子LORA_SPREADING_FACTOR值越大,通信距离 ( )与传输速率( )。*</strong></em> </p>
+<p>A、 越近,越高 </p>
+<p>B、 越远,越高 </p>
+<p>C、 越近,越低 </p>
+<p>D、 越远,越低 </p>
+<p>答案： D </p>
+<p><em><strong>*108、bxCAN有( )个发送邮箱,由发送调度程序决定优先发送哪个。*</strong></em> </p>
+<p>A、 10 </p>
+<p>B、 2 </p>
+<p>C、 3 </p>
+<p>D、 5 </p>
+<p>答案： C </p>
+<p><em><strong>*109、STM32F103中的CAN接收筛选器有工作状态有( )。*</strong></em> </p>
+<p>A、 1个32位标识符掩码 </p>
+<p>B、 2个32位标识符列表 </p>
+<p>C、 2个16位标识符掩码 </p>
+<p>D、 4个16位标识符列表 </p>
+<p>答案： ABCD </p>
+<p><em><strong>*110、STM32F103中的CAN通信端口可以设置为以下哪些工作模式( )。*</strong></em> </p>
+<p>A、 CAN_MODE_NORMAL </p>
+<p>B、 CAN_MODE_LOOPBACK </p>
+<p>C、 CAN_MODE_SILENT </p>
+<p>D、 CAN_MODE_SILENT_LOOPBACK </p>
+<p>答案： ABCD </p>
+<p><em><strong>*111、常用的STM32软件的开发模式有( )。*</strong></em> </p>
+<p>A、 基于寄存器的开发模式 </p>
+<p>B、 基于标准外设库的开发模式 </p>
+<p>C、 基于STM32Cube的开发模式 </p>
+<p>D、 基于应用层的接口调用模式 </p>
+<p>答案： ABC </p>
+<p><em><strong>*112、关于SX1276&#x2F;77&#x2F;78收发器,说法正确的有( )。*</strong></em> </p>
+<p>A、 SX1276的扩频因子为6~12 </p>
+<p>B、 SX1276的带宽与SX1277的不同 </p>
+<p>C、 SX1277的扩频因子为6~9 </p>
+<p>D、 SX1278的扩频因子与SX1276的不同 </p>
+<p>答案： AC </p>
+<p><em><strong>*113、主流的WiFi标准和速率有( )。*</strong></em> </p>
+<p>A、 802.11k </p>
+<p>B、 802.11n </p>
+<p>C、 802.11m </p>
+<p>D、 802.11ax </p>
+<p>答案： BD </p>
+<p><em><strong>*114、目前,Modbus协议的所有权属于( )组织。*</strong></em> </p>
+<p>A、 3GPP </p>
+<p>B、 施耐得 </p>
+<p>C、 Sipex </p>
+<p>D、 Modbus-IDA </p>
+<p>答案： D </p>
+<p><em><strong>*115、LPWAN低功耗广域网又叫做蜂窝物联网,下列属于LPWAN的是( )。*</strong></em> </p>
+<p>A、 WiFi </p>
+<p>B、 NB-IoT </p>
+<p>C、 Bluetooth </p>
+<p>D、 ZigBee </p>
+<p>答案： B </p>
+<p><em><strong>*116、下列不属于NB-IoT应用领域的是( )。*</strong></em> </p>
+<p>A、 远程抄表 </p>
+<p>B、 共享单车 </p>
+<p>C、 智能井盖 </p>
+<p>D、 公交刷卡 </p>
+<p>答案： D </p>
+<p><em><strong>*117、以下技术中覆盖范围最小的是( )。*</strong></em> </p>
+<p>A、 CAN总线 </p>
+<p>B、 蓝牙 </p>
+<p>C、 LoRa </p>
+<p>D、 ZigBee </p>
+<p>答案： B </p>
+<p><em><strong>*118、ARM架构中针对实时操作系统的体系结构是。*</strong></em> </p>
+<p>A、 Cortex-A </p>
+<p>B、 Cortex-R </p>
+<p>C、 Cortex-M </p>
+<p>D、 以上都不正确 </p>
+<p>答案： B </p>
+<p><em><strong>*119、将金属导体温度变化转换为热电势变化的是( )。*</strong></em> </p>
+<p>A、 热电阻传感器 </p>
+<p>B、 热敏电阻传感器 </p>
+<p>C、 热电偶传感器 </p>
+<p>D、 热敏电偶传感器 </p>
+<p>答案： C </p>
+<p><em><strong>*120、STM32F103芯片内核为( )。*</strong></em> </p>
+<p>A、 Cortex-M0 </p>
+<p>B、 Cortex-M3 </p>
+<p>C、 Cortex-M4 </p>
+<p>D、 Cortex-M7 </p>
+<p>答案： B </p>
+<p><em><strong>*121、Ti公司提供的基于CC253x芯片的的BasicRF软件包,不包括( )。*</strong></em> </p>
+<p>A、 硬件层 </p>
+<p>B、 基本无线传输层 </p>
+<p>C、 数据链路层 </p>
+<p>D、 应用层 </p>
+<p>答案： C </p>
+<p><em><strong>*122、以下关于CAN总线的描述中,错误的是( )。*</strong></em> </p>
+<p>A、 CAN总线的数据传输实质是通过总线上的电压变化传输的。 </p>
+<p>B、 静态时两条信号线对地电压均为2.5V左右,表示逻辑1 </p>
+<p>C、 隐性状态是指两根导线的电压差值为0 </p>
+<p>D、 当CAN_H对地电压为3.5且CAN_L对地电压为0时,表示逻辑0 </p>
+<p>答案： D </p>
+<p><em><strong>*123、在802.11无线局域网系列标准,主要工作在( )开放频段。*</strong></em> </p>
+<p>A、 2.4GHz </p>
+<p>B、 868MHz </p>
+<p>C、 915MHz </p>
+<p>D、 433MHz </p>
+<p>答案： A </p>
+<p><em><strong>*124、SHT11是一种数字( )。*</strong></em> </p>
+<p>A、 声音传感器 </p>
+<p>B、 温湿度传感器 </p>
+<p>C、 空气质量传感器 </p>
+<p>D、 二氧化碳传感器 </p>
+<p>答案： B </p>
+<p><em><strong>*125、以下关于Modbus协议描述中,错误的是( )。*</strong></em> </p>
+<p>A、 Modbus是一种并行通信协议 </p>
+<p>B、 Modbus是一种单主&#x2F;多从的通信协议 </p>
+<p>C、 Modbus通信协议是应用层协议 </p>
+<p>D、 Modbus通信协议包括RTU、ASCII、TCP </p>
+<p>答案： A </p>
+<p><em><strong>*126、若要配置CC2530芯片的P1.0、P1.1引脚为通用I&#x2F;O口,则以下配置代码正确的是( )*</strong></em> </p>
+<p>A、 P1SEL &amp;&#x3D;~ 0x03; </p>
+<p>B、 P1SEL &amp;&#x3D; 0x03; </p>
+<p>C、 P1SEL &amp;&#x3D; (0x00&lt;&lt;1|0x01&lt;&lt;0) </p>
+<p>D、 P1DIR &amp;&#x3D; 0x03; </p>
+<p>答案： A </p>
+<p><em><strong>*127、以下关于RS-485总线,说法错误的是( )。*</strong></em> </p>
+<p>A、 RS-485总线是两线制,半双工 </p>
+<p>B、 RS-485总线两线间电压差+2V~+6V,代表逻辑1 </p>
+<p>C、 RS-485接口可以采用屏蔽双绞线传输 </p>
+<p>D、 RS-485总线的最大传输速率为200Kbps </p>
+<p>答案： D </p>
+<p><em><strong>*128、将传感器在使用中或者存储后进行的性能复测称为( )。*</strong></em> </p>
+<p>A、 重置 </p>
+<p>B、 更新 </p>
+<p>C、 校准 </p>
+<p>D、 测试 </p>
+<p>答案： C </p>
+<p><em><strong>*129、CC2530F256芯片自带ADC的ENOB(有效数字位)是( )位*</strong></em> </p>
+<p>A、 8 </p>
+<p>B、 12 </p>
+<p>C、 14 </p>
+<p>D、 16 </p>
+<p>答案： B </p>
+<p><em><strong>*130、以下不属于SPI总线通信的是()。*</strong></em> </p>
+<p>A、 MOSI </p>
+<p>B、 MISO </p>
+<p>C、 SDA </p>
+<p>D、 SCLK </p>
+<p>答案： C </p>
+<p><em><strong>*131、设置当前AP热点SSID名称,登陆密码信道和加密方式的AT指令是( )。*</strong></em> </p>
+<p>A、 AT+CWDHCP </p>
+<p>B、 AT+CWSAP_CUR </p>
+<p>C、 AT+CWMODE </p>
+<p>D、 AT+RST </p>
+<p>答案： B </p>
+<p><em><strong>*132、关于CC2530的串口通信模块,说法错误的是( )。*</strong></em> </p>
+<p>A、 有两个串口通信接口USART0和USATR1 </p>
+<p>B、 串口可以运行于异步UART模式 </p>
+<p>C、 串口可以运行于同步SPI模式 </p>
+<p>D、 通过U0DBUF寄存器可以设置串口对应外部I&#x2F;O口引脚映射关系 </p>
+<p>答案： D </p>
+<p><em><strong>*133、下列哪个不是LoRa通信技术的特点( )。*</strong></em> </p>
+<p>A、 低功耗 </p>
+<p>B、 多节点 </p>
+<p>C、 低成本 </p>
+<p>D、 短距离 </p>
+<p>答案： D </p>
+<p><em><strong>*134、当CC2530的USART数据发送时,会查询完成标志( ),当该标志被置1时,表示数据发送完成。*</strong></em> </p>
+<p>A、 URX0IF </p>
+<p>B、 U0GCR </p>
+<p>C、 UTX0IF </p>
+<p>D、 UxDBUF </p>
+<p>答案： C </p>
+<p><em><strong>*135、关于NB-IoT的AT指令:AT+CSQ说法正确的是( )。*</strong></em> </p>
+<p>A、 该指令用于查询连网的IP地址 </p>
+<p>B、 返回的第一个数值的范围是1-31 </p>
+<p>C、 返回值的第一个参数99代表没有网络 </p>
+<p>D、 返回值的第二个参数目前一直都是99 </p>
+<p>答案： CD </p>
+<p><em><strong>*136、下列关于NB-IoT叙述正确的是( )。*</strong></em> </p>
+<p>A、 频谱窄:200kHz </p>
+<p>B、 该技术降低了终端的激活比,降低了终端基带的复杂度 </p>
+<p>C、 降低了信号的功率谱密度,提升了信号的覆盖增益,并且提升了频谱利用效率 </p>
+<p>D、 相同的数据包重复传输也可获得更好的覆盖增益 </p>
+<p>答案： ABD </p>
+<p><em><strong>*137、下列表述正确的是( )。*</strong></em> </p>
+<p>A、 -1反码为1111 1110 </p>
+<p>B、 0xFF的十进制表述为256 </p>
+<p>C、 -1补码为1111 1111 </p>
+<p>D、 +0和-0的补码均为00000000 </p>
+<p>答案： ACD </p>
+<p><em><strong>*138、湿敏传感器按照元件输出的电学量形式可分为( )。*</strong></em> </p>
+<p>A、 电阻式 </p>
+<p>B、 电容式 </p>
+<p>C、 频率式 </p>
+<p>D、 电感式 </p>
+<p>答案： ABC </p>
+<p><em><strong>*139、正温度系数热敏电阻的阻值随温度升高而( )*</strong></em> </p>
+<p>A、 先升高再降低 </p>
+<p>B、 先降低再升高 </p>
+<p>C、 降低 </p>
+<p>D、 升高 </p>
+<p>答案： D </p>
+<p><em><strong>*140、Modbus网络中主设备发送功能码0x03,如果从设备执行正确返回,则从设备返回帧中的功能码是( )。*</strong></em> </p>
+<p>A、 0x03 </p>
+<p>B、 0x83 </p>
+<p>C、 0x00 </p>
+<p>D、 0xFF </p>
+<p>答案： A </p>
+<p><em><strong>*141、在Modbus网络中,主设备需要向所有的从设备发送请求报文时,该请求报文的设备地址为( )。*</strong></em> </p>
+<p>A、 0x08 </p>
+<p>B、 0x04 </p>
+<p>C、 0x02 </p>
+<p>D、 0x00 </p>
+<p>答案： D </p>
+<p><em><strong>*142、LoRa芯片与MCU通过( )进行通信。*</strong></em> </p>
+<p>A、 UART </p>
+<p>B、 CAN总线 </p>
+<p>C、 SPI </p>
+<p>D、 I 2C </p>
+<p>答案： C </p>
+<p><em><strong>*143、STM32的TIM6定时器,时钟源频率为72MHz,TIMx_PSC配置为7199,定时时间配置为1秒钟,则自动重载寄存器TIMx_ARR的值为( )。*</strong></em> </p>
+<p>A、 9999 </p>
+<p>B、 999 </p>
+<p>C、 10000 </p>
+<p>D、 1000 </p>
+<p>答案： A </p>
+<p><em><strong>*144、若有语句 int *point , a&#x3D;4 ; point &#x3D; &a; 下面均代表地址的一组选项是( )。*</strong></em> </p>
+<p>A、 a , point , *&amp;a </p>
+<p>B、 &amp;*a , &amp;a , *point </p>
+<p>C、 *&amp;point, *point , &amp;a </p>
+<p>D、 &amp;a , &amp;*point , point </p>
+<p>答案： D </p>
+<p><em><strong>*145、LPWAN低功耗广域网又叫做蜂窝物联网，下列属于LPWAN的是( )。*</strong></em> </p>
+<p>A、 WiFi </p>
+<p>B、 NB-IoT </p>
+<p>C、 Bluetooth </p>
+<p>D、 ZigBee </p>
+<p>答案： B </p>
+<p><em><strong>*146、关于BasicRF描述错误的是( )。*</strong></em> </p>
+<p>A、 包含了IEEE802.15.4标准的数据包的收发功能 </p>
+<p>B、 可以让两个节点进行简单的通信 </p>
+<p>C、 可以自动组网 </p>
+<p>D、 没有自动重发的功能 </p>
+<p>答案： C </p>
+<p><em><strong>*147、basicRfCfg_t数据结构中的panId成员是( )。*</strong></em> </p>
+<p>A、 发送模块地址 </p>
+<p>B、 接收模块地址 </p>
+<p>C、 网络ID </p>
+<p>D、 通信信道 </p>
+<p>答案： C </p>
+<p><em><strong>*148、调用basicRfPacketIsReady()函数的目的是( )。*</strong></em> </p>
+<p>A、 basicRf是否地址配置好了 </p>
+<p>B、 检查用户层是否接收到数据 </p>
+<p>C、 是否发送数据完毕 </p>
+<p>D、 是否是无线数据包 </p>
+<p>答案： B </p>
+<p><em><strong>*149、要把CC2530芯片的P1.4 P1.1设置为输出,不影响其它端口的设置,正确的语句是( )。*</strong></em> </p>
+<p>A、 P1DIRL&amp;&#x3D;~0x0D </p>
+<p>B、 P1DIR&amp;&#x3D;~0x12 </p>
+<p>C、 P1DIRL|&#x3D;0x12 </p>
+<p>D、 P1DIR|&#x3D;0x11 </p>
+<p>答案： C </p>
+<p><em><strong>*150、在物联网云平台上创建NB-IoT项目,当添加设备时选择的通讯协议是( )。*</strong></em> </p>
+<p>A、 TCP </p>
+<p>B、 MQTT </p>
+<p>C、 HTTP </p>
+<p>D、 LWM2M </p>
+<p>答案： D </p>
+<p><em><strong>*151、低速CAN总线,要求在每根总线上各串联一个( )的电阻。*</strong></em> </p>
+<p>A、 240Ω </p>
+<p>B、 120Ω </p>
+<p>C、 2.2kΩ </p>
+<p>D、 10kΩ </p>
+<p>答案： C </p>
+<p><em><strong>*152、不属于中国电信NB-IOT UE终端对接流程的是( )。*</strong></em> </p>
+<p>A、 AT+CWLAP </p>
+<p>B、 AT+CFUN&#x3D;1 </p>
+<p>C、 AT+CGATT&#x3D;1 </p>
+<p>D、 AT+NNMI&#x3D;1 </p>
+<p>答案： A </p>
+<p><em><strong>*153、STM32CubeMX中,需要对STM32的中断进行设置是在“Pinout&amp;Configuration”标签页左侧的“System Core”选项,选择( )选项。*</strong></em> </p>
+<p>A、 DMA </p>
+<p>B、 GPIO </p>
+<p>C、 IWDG </p>
+<p>D、 NVIC </p>
+<p>答案： D </p>
+<p><em><strong>*154、RS-485的电气特性:逻辑”1”以两线间的电压差为( )V表示。*</strong></em> </p>
+<p>A、 (-3~-15)V </p>
+<p>B、 (+3~+15)V </p>
+<p>C、 (-2~-6)V </p>
+<p>D、 (+2~+6)V </p>
+<p>答案： D </p>
+<p><em><strong>*155、发动Wi-Fi模块ESP8266连接AP热点的AT指令是( )。*</strong></em> </p>
+<p>A、 AT+CWDHCP </p>
+<p>B、 AT+CWLAP </p>
+<p>C、 AT+CWMODE </p>
+<p>D、 AT+CWJAP </p>
+<p>答案： D </p>
+<p><em><strong>*156、0xFE对应的十进制可表示为( )。*</strong></em> </p>
+<p>A、 256 </p>
+<p>B、 1514 </p>
+<p>C、 254 </p>
+<p>D、 255 </p>
+<p>答案： C </p>
+<p><em><strong>*157、通讯协议中校验位的主要作用是( )。*</strong></em> </p>
+<p>A、 保证一帧数据的准确接收 </p>
+<p>B、 用作一帧数据的结束位 </p>
+<p>C、 求一帧数据的累加和 </p>
+<p>D、 加快应用程序的数据传输和命令的解析 </p>
+<p>答案： A </p>
+<p><em><strong>*158、在NB-IoT常用AT指令中,开启下行数据通知的的指令是( )。*</strong></em> </p>
+<p>A、 AT+CFUN&#x3D;1 </p>
+<p>B、 AT+NNMI&#x3D;1 </p>
+<p>C、 AT+CGATT&#x3D;1 </p>
+<p>D、 AT+CSCON&#x3D;1 </p>
+<p>答案： B </p>
+<p><em><strong>*159、下列哪些是NB-IoT网络体系架构组成部分( )。*</strong></em> </p>
+<p>A、 终端 </p>
+<p>B、 基站 </p>
+<p>C、 IoT平台 </p>
+<p>D、 应用服务器 </p>
+<p>答案： ABCD </p>
+<p><em><strong>*160、bxCAN的工作模式主要有( )。*</strong></em> </p>
+<p>A、 化 </p>
+<p>B、 正常 </p>
+<p>C、 睡眠 </p>
+<p>D、 复位 </p>
+<p>答案： ABC </p>
+<p><em><strong>*161、Wi-Fi的组网结构有( )。*</strong></em> </p>
+<p>A、 一对多 </p>
+<p>B、 多对一 </p>
+<p>C、 点对点 </p>
+<p>D、 多对多 </p>
+<p>答案： AC </p>
+<p><em><strong>*162、为了降低终端功耗,延长终端电池寿命,NB-IoT引入了( )技术*</strong></em> </p>
+<p>A、 eDRX </p>
+<p>B、 PSM </p>
+<p>C、 DRX </p>
+<p>D、 MIMO </p>
+<p>答案： AB </p>
+<p><em><strong>*163、下列关于LoRa技术的说法正确的有( )。*</strong></em> </p>
+<p>A、 LoRa调制解调器采用隐式和显式两种数据包格式 </p>
+<p>B、 LoRa数据包包含前导码、可选报头、数据有效负载 </p>
+<p>C、 扩频因子取值为7-14 </p>
+<p>D、 带宽越小则距离超近 </p>
+<p>答案： AB </p>
+<p><em><strong>*164、CC2530F256芯片自带ADC的ENOB(有效数字位)是( )位。*</strong></em> </p>
+<p>A、 8 </p>
+<p>B、 12 </p>
+<p>C、 14 </p>
+<p>D、 16 </p>
+<p>答案： B </p>
+<p><em><strong>*165、短距离无线通信相关标准包括( )。*</strong></em> </p>
+<p>A、 基于NFC 技术的接口和协议标准 </p>
+<p>B、 低速物理层和MAC 层增强技术标准 </p>
+<p>C、 基于ZigBee 的网络层 </p>
+<p>D、 应用层标准等 </p>
+<p>答案： ABCD </p>
+<p><em><strong>*166、CC2530的无线通信部分工作频段为( )。*</strong></em> </p>
+<p>A、 315MHz </p>
+<p>B、 433MHz </p>
+<p>C、 2.4GHz </p>
+<p>D、 5.8GHz </p>
+<p>答案： C </p>
+<p><em><strong>*167、CC2530哪种工作模式(供电模式)下功耗最低( )。*</strong></em> </p>
+<p>A、 主动模式 </p>
+<p>B、 空闲模式 </p>
+<p>C、 PM1 </p>
+<p>D、 PM3 </p>
+<p>答案： D </p>
+<p><em><strong>*168、CC2530有几个16位定时&#x2F;计数器( )。*</strong></em> </p>
+<p>A、 1个 </p>
+<p>B、 2个 </p>
+<p>C、 3个 </p>
+<p>D、 4个 </p>
+<p>答案： A </p>
+<p><em><strong>*169、Cortex-M3处理器采用的架构是( )。*</strong></em> </p>
+<p>A、 v4T </p>
+<p>B、 v5TE </p>
+<p>C、 v6 </p>
+<p>D、 v7 </p>
+<p>答案： D </p>
+<p><em><strong>*170、STM32F1xx的NVIC用4位数字对NMI中断的抢占和响应优先级分组,共有几组模式( )。*</strong></em> </p>
+<p>A、 2组 </p>
+<p>B、 4组 </p>
+<p>C、 5组 </p>
+<p>D、 6组 </p>
+<p>答案： C </p>
+<p><em><strong>*171、STM32F1xx处理器有8个16位定时器,其中TIM2定时器的类型是( )。*</strong></em> </p>
+<p>A、 高级控制定时器 </p>
+<p>B、 基本定时器 </p>
+<p>C、 通用定时器 </p>
+<p>D、 以上都不正确 </p>
+<p>答案： C </p>
+<p><em><strong>*172、Wi-Fi 6采用的是IEEE802.11家族中哪个标准( )。*</strong></em> </p>
+<p>A、 n </p>
+<p>B、 ac </p>
+<p>C、 ah </p>
+<p>D、 ax </p>
+<p>答案： D </p>
+<p><em><strong>*173、Wi-Fi 6的MU-MIMO技术,允许路由器同时与最多几个设备通信( )。*</strong></em> </p>
+<p>A、 2个 </p>
+<p>B、 4个 </p>
+<p>C、 8个 </p>
+<p>D、 16个 </p>
+<p>答案： C </p>
+<p><em><strong>*174、CAN总线采用差分驱动模式,总线要传递逻辑“1”时,CANH和CANL线电平之差为( )。*</strong></em> </p>
+<p>A、 0V </p>
+<p>B、 2V </p>
+<p>C、 3.3V </p>
+<p>D、 5V </p>
+<p>答案： A </p>
+<p><em><strong>*175、两个CAN通信节点同时向总线输出,一个输出“0”,一个输出“1”,则总线输出( )。*</strong></em> </p>
+<p>A、 0 </p>
+<p>B、 1 </p>
+<p>C、 总线错误 </p>
+<p>D、 随机 </p>
+<p>答案： A </p>
+<p><em><strong>*176、RS485总线设备采用差分驱动模式,有A、B两根信号线,设备连接总线时应( )。*</strong></em> </p>
+<p>A、 同名端相连 </p>
+<p>B、 交叉相连 </p>
+<p>C、 任意连接 </p>
+<p>D、 接地 </p>
+<p>答案： A </p>
+<p><em><strong>*177、Modbus协议网络一般采用“问-答”形式通信中,该网络中主机数量为( )。*</strong></em> </p>
+<p>A、 1个 </p>
+<p>B、 2个 </p>
+<p>C、 3个 </p>
+<p>D、 不限 </p>
+<p>答案： A </p>
+<p><em><strong>*178、NB-IoT频谱利用率高,单个小区200kHz带宽情况,终端数量可达( )。*</strong></em> </p>
+<p>A、 8个 </p>
+<p>B、 128个 </p>
+<p>C、 1万个 </p>
+<p>D、 5-10万个 </p>
+<p>答案： D </p>
+<p><em><strong>*179、NB-IoT网络中,用来关闭NB终端设备的AT指令是( )。*</strong></em> </p>
+<p>A、 AT+CMEE&#x3D;1 </p>
+<p>B、 AT+CGSN&#x3D;1 </p>
+<p>C、 AT+CFUN&#x3D;1 </p>
+<p>D、 AT+NBAND&#x3D;1 </p>
+<p>答案： C </p>
+<p><em><strong>*180、LoRa是一种基于扩频的通信技术,当扩频因子为6时,码片速率&#x2F;符号速率比为( )。*</strong></em> </p>
+<p>A、 1&#x2F;6 </p>
+<p>B、 6 </p>
+<p>C、 1&#x2F;64 </p>
+<p>D、 64 </p>
+<p>答案： D </p>
+<p><em><strong>*181、LoRa相比蓝牙、Wi-Fi等技术,有着更远的传输距离,在典型郊区情况下最远可传输距离( )。*</strong></em> </p>
+<p>A、 一百米以内 </p>
+<p>B、 100-100米左右 </p>
+<p>C、 10-20千米左右 </p>
+<p>D、 100千米以上 </p>
+<p>答案： C </p>
+<p><em><strong>*182、SX1276&#x2F;78是最经常使用的LoRa芯片,其输出功率最大可达20dBm,,接收灵敏度最高可达-148dBm,如果使用一对SX1276&#x2F;78做收发数据,其最大无线链路预算可达( )。*</strong></em> </p>
+<p>A、 148dB </p>
+<p>B、 168dB </p>
+<p>C、 128dB </p>
+<p>D、 -128dB </p>
+<p>答案： B </p>
+<p><em><strong>*183、basicRFCfg_t是BasicRF协议中一个重要的结构体,其成员变量“myAddr”表示( )。*</strong></em> </p>
+<p>A、 网络地址 </p>
+<p>B、 发送方地址 </p>
+<p>C、 射频通道 </p>
+<p>D、 接收方地址 </p>
+<p>答案： B </p>
+<p><em><strong>*184、NB-IoT的AT指令集中AT+CGATT?的含义是( )。*</strong></em> </p>
+<p>A、 指令错误 </p>
+<p>B、 附着网络 </p>
+<p>C、 查询网络附着状态 </p>
+<p>D、 去网络附着 </p>
+<p>答案： C </p>
+<p><em><strong>*185、SPI总线上主机向从机发送数据时,数据是通过( )信号线传输的(。*</strong></em> </p>
+<p>A、 SSN </p>
+<p>B、 SCK </p>
+<p>C、 MISO </p>
+<p>D、 MOSI </p>
+<p>答案： D </p>
+<p><em><strong>*186、关于LoRa技术,以下说法正确的是( )。*</strong></em> </p>
+<p>A、 相同功耗下,能比Wi-Fi传输更远距离 </p>
+<p>B、 发射功率一定时,带宽越宽传输距离越远 </p>
+<p>C、 发射功率一定时,带宽越宽传输距离越近 </p>
+<p>D、 其他参数相同,扩频因子越大,传输速率越高 </p>
+<p>答案： AC </p>
+<p><em><strong>*187、关于Modbus通信协议的说法正确的是( )。*</strong></em> </p>
+<p>A、 只能在RS-485总线上运行 </p>
+<p>B、 可运行在多种介质上 </p>
+<p>C、 每个Modbus总线上只能有一个主机 </p>
+<p>D、 Modbus指令都是固定功能的 </p>
+<p>答案： BC </p>
+<p><em><strong>*188、下列配置CC2530芯片P1.0-P1.3引脚为输出模式的语句正确的有( )。*</strong></em> </p>
+<p>A、 P1DIR |&#x3D; 0x0F; </p>
+<p>B、 P1DIR &amp;&#x3D; ~0x0F; </p>
+<p>C、 P1DIR |&#x3D;(1&lt;&lt;0)|(1&lt;&lt;1)|(1&lt;&lt;2)|(1&lt;&lt;3); </p>
+<p>D、 P1DIR &#x3D; 0x0F; </p>
+<p>答案： BD </p>
+<p><em><strong>*189、下列关于光敏传感器的说法正确的有( )。*</strong></em> </p>
+<p>A、 光照度传感器只能做成模拟量传感器模块 </p>
+<p>B、 光敏电阻型光照度传感器是能量转换型传感器 </p>
+<p>C、 光照度传感器可以做成开关量传感器模块 </p>
+<p>D、 光敏电阻式光照度传感器是能量控制型传感器 </p>
+<p>答案： BD </p>
+<p><em><strong>*190、Wi-Fi 技术标准802.11n使用2.4GGHz频带的信号划分,实际一共有( )信道。*</strong></em> </p>
+<p>A、 7 </p>
+<p>B、 14 </p>
+<p>C、 28 </p>
+<p>D、 32 </p>
+<p>答案： B </p>
+<p><em><strong>*191、下列哪项不属于ZigBee技术体系结构的( )*</strong></em> </p>
+<p>A、 应用层 </p>
+<p>B、 网络层 </p>
+<p>C、 传输层 </p>
+<p>D、 物理层 </p>
+<p>答案： C </p>
+<p><em><strong>*192、关于Flame-1000-D传感器,以下说法正确的是( )。*</strong></em> </p>
+<p>A、 它是红外传感器 </p>
+<p>B、 它是火焰传感器 </p>
+<p>C、 它可输出模拟量 </p>
+<p>D、 它可以输出数字量 </p>
+<p>答案： ABCD </p>
+<p><em><strong>*193、以下关于Modbus的功能码说法正确的是( )。*</strong></em> </p>
+<p>A、 0x01用于读线圈 </p>
+<p>B、 0x03用于读保持寄存器 </p>
+<p>C、 0x06用于写单个寄存器 </p>
+<p>D、 0x10用于写多个线圈 </p>
+<p>答案： ABC </p>
+<p><em><strong>*194、若要配置CC2530芯片的P1.0、P1.1引脚为通用I&#x2F;O口,则以下配置代码错误的是( )。*</strong></em> </p>
+<p>A、 P1SEL &amp;&#x3D;~ 0x03; </p>
+<p>B、 P1SEL &amp;&#x3D; 0x03; </p>
+<p>C、 P1SEL &amp;&#x3D;~ (0x01&lt;&lt;1|0x01&lt;&lt;0) </p>
+<p>D、 P1DIR &amp;&#x3D; 0x03; </p>
+<p>答案： BD </p>
+<p><em><strong>*195、关于STM32的优先级,说法正确的是( )。*</strong></em> </p>
+<p>A、 级别的值越大,优先级越高。 </p>
+<p>B、 级别的值越小,优先级越高。 </p>
+<p>C、 响应优先级高的可以在响应优先级低的中断内嵌套中断。 </p>
+<p>D、 抢占优先级高的可以在抢占优先级低的中断内嵌套中断。 </p>
+<p>答案： BD </p>
+<p><em><strong>*196、一个WSN节点通常由( )构成。*</strong></em> </p>
+<p>A、 传感器(感知芯片) </p>
+<p>B、 微控制器 </p>
+<p>C、 无线收发模块 </p>
+<p>D、 电源模块 </p>
+<p>答案： ABCD </p>
+<p><em><strong>*197、*</strong></em></p>
+<p><em><strong>*1、*</strong></em><em><strong>*补全核心代码HAL_TIM_PeriodElapsedCallback里面的部分*</strong></em></p>
+<p>if(TIM6 &#x3D;&#x3D; htim-&gt;Instance)</p>
+<p>{</p>
+<p>(1)_________;</p>
+<p>(2)_________</p>
+<p>(3)_________;</p>
+<p>HAL_GPIO_WritePin(GPIOE,0xff,GPIO_PIN_SET);</p>
+<p>HAL_GPIO_WritePin(GPIOE,num,GPIO_PIN_RESET);</p>
+<p>}</p>
+<p>答案： </p>
+<p>if(TIM6 &#x3D;&#x3D; htim-&gt;Instance)</p>
+<p>{</p>
+<p>num &#x3D; num&gt;&gt;1;</p>
+<p>if(num &#x3D;&#x3D; 0)</p>
+<p>num &#x3D; 0x80;</p>
+<p>HAL_GPIO_WritePin(GPIOE,0xff,GPIO_PIN_SET);</p>
+<p>HAL_GPIO_WritePin(GPIOE,num,GPIO_PIN_RESET);</p>
+<p>}</p>
+<p><em><strong>*198、*</strong></em></p>
+<p><em><strong>*1、*</strong></em><em><strong>*补全实验2流水灯的使能TIM6更新中断和添加TIM6中断服务程序代码。*</strong></em></p>
+<p>if(HAL_TIM_Base_Start_IT(&amp;htim6)!&#x3D;HAL_OK)</p>
+<p> {</p>
+<p> Error_Handler();</p>
+<p> }</p>
+<p>void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)</p>
+<p>{</p>
+<p>if((1)_________ &#x3D;&#x3D; htim-&gt;Instance)</p>
+<p>{</p>
+<p>num &#x3D; num&gt;&gt;1;</p>
+<p>if(num &#x3D;&#x3D; 0)</p>
+<p>num &#x3D; 0x80;</p>
+<p>HAL_GPIO_WritePin(GPIOE,0xff,GPIO_PIN_(2)_________);</p>
+<p>HAL_GPIO_WritePin(GPIOE,num,GPIO_PIN_(3)_________);</p>
+<p>}</p>
+<p>}</p>
+<p>答案： </p>
+<p>if(HAL_TIM_Base_Start_IT(&amp;htim6)!&#x3D;HAL_OK)</p>
+<p> {</p>
+<p> Error_Handler();</p>
+<p> }</p>
+<p>void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)</p>
+<p>{</p>
+<p>if(TIM6 &#x3D;&#x3D; htim-&gt;Instance)</p>
+<p>{</p>
+<p>num &#x3D; num&gt;&gt;1;</p>
+<p>if(num &#x3D;&#x3D; 0)</p>
+<p>num &#x3D; 0x80;</p>
+<p>HAL_GPIO_WritePin(GPIOE,0xff,GPIO_PIN_SET);</p>
+<p>HAL_GPIO_WritePin(GPIOE,num,GPIO_PIN_RESET);</p>
+<p>}</p>
+<p>}</p>
+<p><em><strong>*199、*</strong></em></p>
+<p><em><strong>*请说明STM32F103VET6型号中各部分的含义*</strong></em></p>
+<p>答案： </p>
+<p><img src="file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml11672\wps1.png" alt="img" loading="lazy"></p>
+<p><em><strong>*200、*</strong></em></p>
+<p><em><strong>*5、*</strong></em><em><strong>*请写出中断处理函数IRQHandler（）*</strong></em></p>
+<p>if((__HAL_UART_GET_FLAG(&amp;huart1,UART_FLAG_RXNE) !&#x3D; RESET))</p>
+<p>{</p>
+<p>__HAL_UART_ENABLE_IT(&amp;huart1,UART_IT_IDLE);</p>
+<p>uart1RxBuff[uart1RxCounter] &#x3D; (uint8_t)(huart1.Instance-&gt;DR &amp; (uint8_t)0x00ff);</p>
+<p>(1)_________;</p>
+<p>__HAL_UART_CLEAR_FLAG(&amp;huart1,UART_FLAG_RXNE);</p>
+<p>}</p>
+<p>if((__HAL_UART_GET_FLAG(&amp;huart1,UART_FLAG_IDLE) !&#x3D; RESET))</p>
+<p>{</p>
+<p>__HAL_UART_DISABLE_IT(&amp;huart1,UART_IT_IDLE);</p>
+<p>(2)_________;</p>
+<p>}</p>
+<p>答案： </p>
+<p>if((__HAL_UART_GET_FLAG(&amp;huart1,UART_FLAG_RXNE) !&#x3D; RESET))</p>
+<p>{</p>
+<p>__HAL_UART_ENABLE_IT(&amp;huart1,UART_IT_IDLE);</p>
+<p>uart1RxBuff[uart1RxCounter] &#x3D; (uint8_t)(huart1.Instance-&gt;DR &amp; (uint8_t)0x00ff);</p>
+<p>uart1RxCounter++;</p>
+<p>__HAL_UART_CLEAR_FLAG(&amp;huart1,UART_FLAG_RXNE);</p>
+<p>}</p>
+<p>if((__HAL_UART_GET_FLAG(&amp;huart1,UART_FLAG_IDLE) !&#x3D; RESET))</p>
+<p>{</p>
+<p>__HAL_UART_DISABLE_IT(&amp;huart1,UART_IT_IDLE);</p>
+<p>uart1RxState &#x3D; 1;</p>
+<p>}</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>]]></content>
+      <tags>
+        <tag>题库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>华三交换机配置命令</title>
+    <url>/2024/11/16/%E5%8D%8E%E4%B8%89%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/1733826593691.gif"/ loading="lazy">
+
+<span id="more"></span>
+
+<h1 id="华三交换机命令"><a href="#华三交换机命令" class="headerlink" title="华三交换机命令"></a>华三交换机命令</h1><h3 id="Vlan-划分与配置"><a href="#Vlan-划分与配置" class="headerlink" title="Vlan 划分与配置"></a>Vlan 划分与配置</h3><p>基础记了一点常用命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int g1/0/1 #进入接口<br>int v 10  #进入vlan<br>v b 10 20 #批量创建vlan<br>int b 1   #创建聚合口<br>p link-type t #改变为turk<br>p t p v 10 #允许不同vlan经过<br>ip add 10.10.10.10 24 #配置ip地址<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="创建交换核心堆叠"><a href="#创建交换核心堆叠" class="headerlink" title="创建交换核心堆叠"></a>创建交换核心堆叠</h3><p>​	<strong>核心堆叠是一种网络技术，它允许将多台支持堆叠特性的交换机通过专用的堆叠口连接起来，从逻辑上变成一台交换设备，作为一个整体参与数据转发。</strong></p>
+<p>​	准备两台交换机</p>
+<p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213163202229.png" loading="lazy"></p>
+<h4 id="SW1配置"><a href="#SW1配置" class="headerlink" title="SW1配置"></a>SW1配置</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs /">irf domain 10  #配置domain域<br>irf member 1 priority 10  #配置设备权重(大的为主)<br>int r t1/0/49 to t1/0/50  <br>shutdown    #端口加入之前必须先shutdowm		<br>qu      <br>irf-port 1/1  #irf -port 1/1 注解	前一个1代表交换机的member号，后一个代表irf-port的端口号<br>port group int t1/0/49<br>port group int t1/0/50<br>qu<br>int r t1/0/49 to t1/0/50  <br>undo shutdown<br>qu<br>irf-port-configuration active  #激活配置<br>save保存<br></code></pre></td></tr></table></figure>
+
+<h4 id="SW2配置"><a href="#SW2配置" class="headerlink" title="SW2配置"></a>SW2配置</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">irf domain 10  #配置domain域<br>irf member 1 remember 2    #重置编号后需要重启设备<br>qu<br>reboot<br>.......<br>irf member 2 priority 1  #配置设备权重(默认为1，此步可省略)<br>int r t2/0/49 to t2/0/50  <br>shutdown    #端口加入之前必须先shutdowm		<br>qu      <br>irf-port 2/2<br>port group int t2/0/49<br>port group int t2/0/50<br>qu<br>int r t2/0/49 to t2/0/50  <br>undo shutdown<br>qu<br>irf-port-configuration active  #激活配置<br>save保存<br></code></pre></td></tr></table></figure>
+
+<p>​	<strong>完成上述配置后,接线，堆叠完成</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">dis irf    #查看irf配置<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213163057374.png" loading="lazy"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">dis irf link  #查看irf接口(多用于排错)	<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213163103741.png" loading="lazy"></p>
+<h4 id="IRF-心跳检测-选做"><a href="#IRF-心跳检测-选做" class="headerlink" title="IRF 心跳检测(选做)"></a>IRF 心跳检测(选做)</h4><h3 id="静态路由部署与配置"><a href="#静态路由部署与配置" class="headerlink" title="静态路由部署与配置"></a>静态路由部署与配置</h3><p>原理：</p>
+<p>路由器的核心作用是实现网络互连，数据转发，路由器工作时需要建立和更新路由表，因为路由器互联的是不同网段，因此能隔离广播，能快速转发分组数据。</p>
+<p>路由表，简单说来就是指挥数据如何发送到目的地的表</p>
+<p>实验准备两台路由器，两台PC</p>
+<p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213164103916.png" loading="lazy"></p>
+<p>拓扑搭建完成后先使用ping测试网络是否连通</p>
+<img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213163140436.png" style="zoom:200%;" / loading="lazy">
+
+<p>ping不通是因为路由无法正常的找到IP地址发送数据包</p>
+<h4 id="静态路由"><a href="#静态路由" class="headerlink" title="静态路由"></a>静态路由</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">[RAT-1]ip route-static 10.10.20.0 24 10.10.30.2<br>[RAT-2]ip route-static 10.10.10.0 24 10.10.30.1<br></code></pre></td></tr></table></figure>
+
+<p>成功ping通！</p>
+<p>查看一下路由表 可以看到路由已经添加了</p>
+<img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213163146508.png" style="zoom:200%;" / loading="lazy">
+
+<h4 id="默认路由"><a href="#默认路由" class="headerlink" title="默认路由"></a>默认路由</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">[RAT-1]ip route-static 0.0.0.0 0 10.10.30.2<br>[RAT-2]ip route-static 0.0.0.0 0 10.10.30.1<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213163153148.png" loading="lazy"></p>
+<h3 id="华三OSPF配置"><a href="#华三OSPF配置" class="headerlink" title="华三OSPF配置"></a>华三OSPF配置</h3><h4 id="技术简介"><a href="#技术简介" class="headerlink" title="技术简介"></a>技术简介</h4><p>实验拓扑</p>
+<p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241214112704356.png" loading="lazy"></p>
+<p>基础配置</p>
+<h4 id="OSPF单域配置"><a href="#OSPF单域配置" class="headerlink" title="OSPF单域配置"></a>OSPF单域配置</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">RTA<br>int g0/0<br>ip add 10.10.10.2 24<br>int s1/0<br>ip add 10.10.20.1 30<br>int s2/0<br>ip add 10.10.40.1 30<br>ospf 10<br>a 0<br>net 0.0.0.0 255.255.255.255    #默认路由<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">RTB<br>int s1/0<br>ip add 10.10.20.2 30<br>int s2/0<br>ip add 10.10.50.2 30<br>int g0/0<br>ip add 10.10.30.2 24<br>ospf 10 <br>a 0<br>net  10.10.20.2 0.0.0.3<br>net  10.10.30.2 0.0.0.255<br>net  10.10.50.2 0.0.0.3<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">RTC<br>int s1/0<br>ip add 10.10.40.2 30<br>int s2/0<br>ip add 10.10.50.1 30<br>int g0/0<br>ip add 10.10.60.2 24<br>ospf 10 <br>a 0<br>net  0.0.0.0 255.255.255.255<br></code></pre></td></tr></table></figure>
+
+<h4 id="OSPF多域配置"><a href="#OSPF多域配置" class="headerlink" title="OSPF多域配置"></a>OSPF多域配置</h4><p>在OSPF中，必须有一个骨干区域（通常为Area 0），所有其他区域必须直接或间接地连接到骨干区域。骨干区域负责在不同区域之间传递路由信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">#ip 地址配置同上<br>[RTA]  <br>ospf 100<br>a  0<br>net 0.0.0.0 255.255.255.255<br><br>[RTB]<br>ospf 100<br>a  1<br>net  0.0.0.0 255.255.255.255<br><br>[RTC]<br>ospf 100<br>a 0<br>net 10.10.40.0 0.0.0.255<br>qu<br>a 1<br>net 10.10.50.0 0.0.0.255<br>net 10.10.60.0 0.0.0.255<br>save<br></code></pre></td></tr></table></figure>
+
+<h3 id="网络访问控制"><a href="#网络访问控制" class="headerlink" title="网络访问控制"></a>网络访问控制</h3><h4 id="访问控制列表ACl"><a href="#访问控制列表ACl" class="headerlink" title="访问控制列表ACl"></a>访问控制列表ACl</h4><h2 id="ACL简介"><a href="#ACL简介" class="headerlink" title="ACL简介"></a>ACL简介</h2><p>ACL（Access Control List，访问控制列表）是一系列用于识别报文流的规则的集合。这里的规则是指描述报文匹配条件的判断语句，匹配条件可以是报文的源地址、目的地址、端口号等。设备依据ACL规则识别出特定的报文，并根据预先设定的策略对其进行处理，最常见的应用就是使用ACL进行报文过滤。此外，ACL还可应用于诸如路由、安全、QoS等业务中识别报文，对这些报文的具体处理方式由应用ACL的业务模块来决定</p>
+<h5 id="基本ACL"><a href="#基本ACL" class="headerlink" title="基本ACL"></a>基本ACL</h5><p>基本ACL根据报文的源IP地址来制订规则，对报文进行匹配</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="NAPT-telent"><a href="#NAPT-telent" class="headerlink" title="NAPT+telent"></a>NAPT+telent</h1><p>拓扑图</p>
+<p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213183716661.png" loading="lazy"></p>
+<p><strong>内网PC</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">ip add 10.10.10.10 24<br>网关  10.10.10.2<br></code></pre></td></tr></table></figure>
+
+<p><strong>内网服务器</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int g0/0<br>ip add 10.10.1.10 24<br>ip rou 0.0.0.0 0 10.10.10.1.2<br>#开启tenlent 远程访问服务<br>telent server enable<br>line vty 0 4<br>aouthenticaition-mode scheme<br>user-role leave-15<br>qu<br>local-user xz<br>passwdorld simple 12345<br>service-type telent<br>authorization-attribute user-role leave-15<br></code></pre></td></tr></table></figure>
+
+<p><strong>核心交换</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int vlan1<br>ip add 10.10.10.2 24<br>int g1/0/2 <br>port link-mode route<br>ip add 10.10.1.2 24<br>int g1/0/3<br>port like-mode route<br>ip add 10.10.2.1 30<br>ip rou 0.0.0.0 0 10.10.10.2.2<br></code></pre></td></tr></table></figure>
+
+<p><strong>带宽路由</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int g0/0<br>ip add 10.10.2.2 30<br>int s1/0<br>ip add 100.200.1.1 28<br>ip rou 0.0.0.0 0 100.200.1.2<br>ip rou 10.10.0.0 16 10.10.2.1<br>acl nember 2000<br>rule p s 10.10.0.0 16 <br>nat add group 1<br>add 100.200.1.3  100.200.14<br>qu<br>int s1/0<br>nat outbound 2000<br>nat server protocol tcp global 100.200.3[公网] 23 inside 10.10.1.10[内网] 23<br></code></pre></td></tr></table></figure>
+
+<p><strong>公网路由</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int s1/0<br>ip add 100.200.1.2 28<br>int g0/0<br>ip add 20.20.20.2 24<br></code></pre></td></tr></table></figure>
+
+<p><strong>外网PC</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">ip add 20.20.20.10 24<br>网关   20.20.20.2<br></code></pre></td></tr></table></figure>
+
+<p>此时先在内网测试telnet 服务是否失败</p>
+<p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213183109189.png" loading="lazy"></p>
+<p>内网成功访问 telnet</p>
+<p>外网PC试一下</p>
+<p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213183318358.png" loading="lazy"></p>
+<p>大成功！</p>
+<p>恭喜你学会了NAT server + telnet</p>
+<h1 id="ppp"><a href="#ppp" class="headerlink" title="ppp"></a>ppp</h1><p>#PAP认证</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">RTA<br>int s1/0<br>linl-protocol ppp<br>ppp auth-mode pap<br>qu<br>local-user xz class network<br>password simlpe 123456<br>service-type ppp<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">RTB<br><br>int s1/0<br><br>link-protocol ppp<br><br>ppp pap local-user xz password simple 123456<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="MP"><a href="#MP" class="headerlink" title="#MP"></a>#MP</h3><p>创建MP口</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">RTA配置<br>int mp 1<br>ip add 10.1.1.1 30<br>qu<br><br>int  r s1/0 s2/0<br>ppp mp m 1<br>qu<br><br>local-user admin class network<br>passworld simple 123<br>service-type ppp<br>qu<br>int r s1/0 s2/0<br>ppp auth-mode chap<br>ppp chap user xz<br>ppp chap passwd simple 456<br>qu<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">RTB配置<br>int mp 1<br>ip add 10.1.1.2 30<br><br>local-user xz class network<br>passwdord simple 456<br>service-type ppp<br>qu<br><br>int r s1/0 s2/0<br>ppp auth-mode chap<br>ppp chap user admin<br>ppp chap password simple 123<br></code></pre></td></tr></table></figure>
+
+<p>验证配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">dis int br<br><br>ping 10.1.1.1<br><br></code></pre></td></tr></table></figure>
+
+<h1 id="期末作业"><a href="#期末作业" class="headerlink" title="期末作业"></a>期末作业</h1>]]></content>
+      <categories>
+        <category>华三</category>
+      </categories>
+      <tags>
+        <tag>“交换机”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>工坊晚自习</title>
+    <url>/2024/12/15/%E5%B7%A5%E5%9D%8A%E6%99%9A%E8%87%AA%E4%B9%A0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="带你成为Linux高手"><a href="#带你成为Linux高手" class="headerlink" title="带你成为Linux高手"></a>带你成为Linux高手</h1><p>[linux发行版路线图]</p>
+<p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/8581944c0009333bd392108a3c926916.png" loading="lazy"></p>
+<p>Linux服务器因其稳定性、安全性和灵活性而被广泛使用。以下是Linux服务器可以执行的一些常见任务：</p>
+<ol>
+<li><strong>网站托管</strong>：<ul>
+<li>运行Web服务器软件（如Apache、Nginx）来托管网站和Web应用程序。</li>
+<li>提供SSL&#x2F;TLS加密以保护数据传输。</li>
+</ul>
+</li>
+<li><strong>文件存储和共享</strong>：<ul>
+<li>作为文件服务器，使用Samba、NFS等协议共享文件和打印机。</li>
+<li>提供云存储解决方案，如ownCloud或Nextcloud。</li>
+</ul>
+</li>
+<li><strong>数据库服务</strong>：<ul>
+<li>运行数据库管理系统（如MySQL、PostgreSQL、MariaDB）来存储和管理数据。</li>
+</ul>
+</li>
+<li><strong>邮件服务</strong>：<ul>
+<li>作为邮件服务器，使用Sendmail、Postfix等软件处理电子邮件的发送和接收。</li>
+</ul>
+</li>
+<li><strong>虚拟化</strong>：<ul>
+<li>使用KVM、Xen或VMware等技术提供虚拟机服务。</li>
+</ul>
+</li>
+<li><strong>网络安全</strong>：<ul>
+<li>作为防火墙，使用iptables、firewalld等工具保护网络。</li>
+<li>作为VPN服务器，使用OpenVPN等软件提供安全的远程访问。</li>
+</ul>
+</li>
+<li><strong>开发和测试环境</strong>：<ul>
+<li>提供开发、构建和测试应用程序的环境。</li>
+</ul>
+</li>
+<li><strong>云计算平台</strong>：<ul>
+<li>作为私有云或公共云平台的一部分，使用OpenStack等技术。</li>
+</ul>
+</li>
+<li><strong>大数据和分析</strong>：<ul>
+<li>运行Hadoop、Spark等大数据处理框架。</li>
+</ul>
+</li>
+<li><strong>容器化服务</strong>：<ul>
+<li>使用Docker和Kubernetes等技术管理容器化应用程序。</li>
+</ul>
+</li>
+<li><strong>自动化和持续集成&#x2F;持续部署（CI&#x2F;CD）</strong>：<ul>
+<li>运行Jenkins、GitLab CI等工具自动化软件构建和部署流程。</li>
+</ul>
+</li>
+<li><strong>监控和日志管理</strong>：<ul>
+<li>使用Nagios、Zabbix等监控工具监控服务器性能和健康状态。</li>
+<li>使用ELK（Elasticsearch、Logstash、Kibana）堆栈等工具管理日志。</li>
+</ul>
+</li>
+<li><strong>多媒体服务</strong>：<ul>
+<li>作为媒体服务器，使用Plex等软件流式传输音乐、视频和照片。</li>
+</ul>
+</li>
+<li><strong>游戏服务器</strong>：<ul>
+<li>运行Minecraft、Team Fortress 2等游戏的服务器。</li>
+</ul>
+</li>
+<li><strong>科学计算和高性能计算（HPC）</strong>：<ul>
+<li>用于科学研究和复杂的数值计算。</li>
+</ul>
+</li>
+</ol>
+<p>Linux服务器的多功能性使其成为企业、组织和个人用户的理想选择，能够满足各种不同的需求。</p>
+<p>创建一台自己的linux主机</p>
+<p>安装</p>
+<p>基本配置</p>
+]]></content>
+      <categories>
+        <category>常用</category>
+      </categories>
+      <tags>
+        <tag>工坊</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常用网址</title>
+    <url>/2024/10/12/%E5%B8%B8%E7%94%A8%E7%BD%91%E5%9D%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/1733826593723.gif" loading="lazy"></p>
+<span id="more"></span>
+
+<h3 id="kimi-AIhttps-kimi-moonshot-cn"><a href="#kimi-AIhttps-kimi-moonshot-cn" class="headerlink" title="kimi AI	https://kimi.moonshot.cn/"></a>kimi AI	<a href="https://kimi.moonshot.cn/">https://kimi.moonshot.cn/</a></h3><h3 id="学习通-http-pjzy-fanya-chaoxing-com-portal"><a href="#学习通-http-pjzy-fanya-chaoxing-com-portal" class="headerlink" title="学习通      http://pjzy.fanya.chaoxing.com/portal"></a>学习通      <a href="http://pjzy.fanya.chaoxing.com/portal">http://pjzy.fanya.chaoxing.com/portal</a></h3><h3 id="红队命令https-book-shentoushi-top"><a href="#红队命令https-book-shentoushi-top" class="headerlink" title="红队命令	https://book.shentoushi.top/"></a>红队命令	<a href="https://book.shentoushi.top/">https://book.shentoushi.top/</a></h3><h3 id="P站国内镜像https-www-vilipix-com"><a href="#P站国内镜像https-www-vilipix-com" class="headerlink" title="P站国内镜像	https://www.vilipix.com/"></a>P站国内镜像	<a href="https://www.vilipix.com/">https://www.vilipix.com/</a></h3><h3 id="次元云订阅https-ciyy-cc-index-php-stage-dashboard"><a href="#次元云订阅https-ciyy-cc-index-php-stage-dashboard" class="headerlink" title="次元云订阅	https://ciyy.cc/index.php/#/stage/dashboard"></a>次元云订阅	<a href="https://ciyy.cc/index.php/#/stage/dashboard">https://ciyy.cc/index.php/#/stage/dashboard</a></h3><h3 id="vercel部署https-vercel-com-xubuyuan18s-projects"><a href="#vercel部署https-vercel-com-xubuyuan18s-projects" class="headerlink" title="vercel部署	https://vercel.com/xubuyuan18s-projects"></a>vercel部署	<a href="https://vercel.com/xubuyuan18s-projects">https://vercel.com/xubuyuan18s-projects</a></h3><h3 id="清华镜像站https-mirrors-tuna-tsinghua-edu-cn"><a href="#清华镜像站https-mirrors-tuna-tsinghua-edu-cn" class="headerlink" title="清华镜像站	https://mirrors.tuna.tsinghua.edu.cn/"></a>清华镜像站	<a href="https://mirrors.tuna.tsinghua.edu.cn/">https://mirrors.tuna.tsinghua.edu.cn/</a></h3><h3 id="中科大镜像站https-lug-ustc-edu-cn-wiki-lug-services-mirrors"><a href="#中科大镜像站https-lug-ustc-edu-cn-wiki-lug-services-mirrors" class="headerlink" title="中科大镜像站	https://lug.ustc.edu.cn/wiki/lug/services/mirrors/"></a>中科大镜像站	<a href="https://lug.ustc.edu.cn/wiki/lug/services/mirrors/">https://lug.ustc.edu.cn/wiki/lug/services/mirrors/</a></h3>]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>网站</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>测试</title>
+    <url>/2024/09/17/%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是一篇测试，用来git仓库是否成功同步</p>
+<p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213162936893.png" loading="lazy"></p>
+]]></content>
+      <categories>
+        <category>测试</category>
+      </categories>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网安学习路线</title>
+    <url>/2024/12/14/%E7%BD%91%E5%AE%89%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一、基础阶段"><a href="#一、基础阶段" class="headerlink" title="一、基础阶段"></a>一、基础阶段</h1><p>中华人民共和国网络安全法<br>Linux操作系统<br>计算机网络<br>SHELL<br>HTML&#x2F;CSS<br>JavaScript<br>PHP入门<br>MySQL数据库<br>Python </p>
+<h1 id="二、渗透阶段"><a href="#二、渗透阶段" class="headerlink" title="二、渗透阶段"></a>二、渗透阶段</h1><p>SQL注入的渗透与防御<br>XSS相关渗透与防御<br>上传验证渗透与防御<br>文件包含渗透与防御<br>CSRF渗透与防御<br>SSRF渗透与防御<br>XXE渗透与防御<br>远程代码执行渗透与防御</p>
+<h1 id="三、安全管理（提升）"><a href="#三、安全管理（提升）" class="headerlink" title="三、安全管理（提升）"></a>三、安全管理（提升）</h1><p>渗透报告编写<br>等级保护2.0<br>应急响应<br>代码审计<br>风险评估<br>安全巡检<br>数据安全</p>
+<h4 id="四、提升阶段（提升）"><a href="#四、提升阶段（提升）" class="headerlink" title="四、提升阶段（提升）"></a>四、提升阶段（提升）</h4><p>密码学<br>JavaSE入门<br>C语言<br>C++语言<br>Windows逆向<br>CTF夺旗赛<br>Android逆向</p>
+]]></content>
+      <categories>
+        <category>网安</category>
+      </categories>
+      <tags>
+        <tag>网安</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网安笔记</title>
+    <url>/2024/12/14/%E7%BD%91%E5%AE%89%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>我将分享我在PC领d域遇到的一些关键知识点，并将它们系统化整理</p>
+<h1 id="osi七层网络参考模型"><a href="#osi七层网络参考模型" class="headerlink" title="osi七层网络参考模型"></a>osi七层网络参考模型</h1><p>OSI模型，全称为开放式系统互联参考模型（Open System Interconnection Reference Model），是由国际标准化组织（ISO）在20世纪80年代初提出的一个网络通信模型。这个模型的目的是为了标准化网络通信的过程，使得不同厂商的设备能够互联互通。</p>
+<p>OSI模型将网络通信划分为七个层次，每一层都有其特定的功能和协议。这七个层次从底到顶依次是：</p>
+<ol>
+<li><strong>物理层（Physical Layer）</strong>：负责在物理媒介上传输原始的比特流，包括定义电气、机械、过程和功能标准，如电压、物理数据速率、最大传输距离等。</li>
+<li><strong>数据链路层（Data Link Layer）</strong>：确保物理层传输的数据无误，进行帧同步、差错控制和流量控制，将网络层的逻辑传输单元封装成帧。</li>
+<li><strong>网络层（Network Layer）</strong>：负责数据包从源到宿的传输和路由选择，处理数据包在整个网络中的移动。</li>
+<li><strong>传输层（Transport Layer）</strong>：提供端到端的数据传输服务，确保数据的完整性和可靠性，常见的协议有TCP和UDP。</li>
+<li><strong>会话层（Session Layer）</strong>：管理和控制两个通信系统之间的会话连接，负责建立、维护和终止会话。</li>
+<li><strong>表示层（Presentation Layer）</strong>：处理数据的表示、编码和转换，确保一个系统的应用层所发送的信息可以被另一个系统的应用层读取。</li>
+<li><strong>应用层（Application Layer）</strong>：为应用软件提供网络服务，如文件传输、电子邮件和远程登录等。</li>
+</ol>
+<p>每一层都向其上层提供服务，并且依赖于其下层所提供的服务。OSI模型的成功之处在于它清晰地区分了服务、接口和协议这三个容易混淆的概念，使得功能定义与实现细节区分开来，具有很高的概括性和适应能力</p>
+<h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1><p>端口（Port）在计算机网络中是一个重要的概念，用于区分不同的服务或进程。每个运行在计算机上的进程都可以通过一个端口来与其他计算机上的进程进行通信。端口号是一个16位的数字，其取值范围从0到65535。</p>
+<p>端口可以分为以下几类：</p>
+<ol>
+<li><strong>知名端口（Well-Known Ports）</strong>：<ul>
+<li>范围：0-1023</li>
+<li>这些端口号被分配给常用的或者标准的服务和应用程序。例如，HTTP服务通常使用端口80，HTTPS使用443，FTP使用21。</li>
+</ul>
+</li>
+<li><strong>注册端口（Registered Ports）</strong>：<ul>
+<li>范围：1024-49151</li>
+<li>这些端口号用于用户或公司的应用程序。它们不像知名端口那样固定，但通常被注册以避免冲突。</li>
+</ul>
+</li>
+<li><strong>动态或私有端口（Dynamic or Private Ports）</strong>：<ul>
+<li>范围：49152-65535</li>
+<li>这些端口号通常不固定分配给任何服务，可以由任何用户用于任何目的。它们经常用于临时的通信会话。</li>
+</ul>
+</li>
+</ol>
+<p>端口在网络通信中的作用包括：</p>
+<ul>
+<li><strong>区分服务</strong>：不同的网络服务监听不同的端口，例如，Web服务器通常监听80端口，而邮件服务器可能监听25端口（SMTP）。</li>
+<li><strong>端到端通信</strong>：在客户端和服务器之间的通信中，端口用于标识特定的进程或服务，确保数据能够正确地送达目的地。</li>
+<li><strong>安全性</strong>：通过开放或关闭特定的端口，可以增加或减少网络的攻击面。例如，关闭不必要的服务端口可以提高系统的安全性。</li>
+<li><strong>端口转发和映射</strong>：在家庭或企业网络中，端口转发可以将外部请求从一个端口转发到内部网络的另一个端口，使得内部服务能够被外部访问。</li>
+</ul>
+<h2 id="常用端口号"><a href="#常用端口号" class="headerlink" title="常用端口号"></a>常用端口号</h2><ol>
+<li>**HTTP (Hypertext Transfer Protocol)**：80端口，用于普通的Web页面传输。</li>
+<li>**HTTPS (HTTP Secure)**：443端口，用于加密的Web页面传输。</li>
+<li>**FTP (File Transfer Protocol)**：21端口，用于文件传输。</li>
+<li>**SSH (Secure Shell)**：22端口，用于安全远程登录和文件传输。</li>
+<li><strong>Telnet</strong>：23端口，用于远程登录，但由于不安全，已逐渐被SSH取代。</li>
+<li>**SMTP (Simple Mail Transfer Protocol)**：25端口，用于发送电子邮件。</li>
+<li>**DNS (Domain Name System)**：53端口，用于域名解析。</li>
+<li>**DHCP (Dynamic Host Configuration Protocol)**：67和68端口，用于自动分配IP地址。</li>
+<li>**POP3 (Post Office Protocol 3)**：110端口，用于接收电子邮件。</li>
+<li>**IMAP (Internet Message Access Protocol)**：143端口，用于访问和管理电子邮件。</li>
+<li>**SNMP (Simple Network Management Protocol)**：161和162端口，用于网络管理。</li>
+<li>**LDAP (Lightweight Directory Access Protocol)**：389端口，用于访问和维护分布式目录信息服务。</li>
+<li><strong>HTTPS over SSL&#x2F;TLS</strong>：443端口，用于加密的Web页面传输。</li>
+<li>**RDP (Remote Desktop Protocol)**：3389端口，用于远程桌面连接。</li>
+<li>**SIP (Session Initiation Protocol)**：5060和5061端口，用于语音和视频通信。</li>
+<li><strong>MySQL</strong>：3306端口，用于MySQL数据库服务。</li>
+<li><strong>PostgreSQL</strong>：5432端口，用于PostgreSQL数据库服务。</li>
+<li><strong>Microsoft SQL Server</strong>：1433端口，用于SQL Server数据库服务。</li>
+<li><strong>Oracle SQL*Net</strong>：1521端口，用于Oracle数据库服务。</li>
+<li>**NFS (Network File System)**：2049端口，用于文件共享。</li>
+</ol>
+<h2 id="tcp-udp"><a href="#tcp-udp" class="headerlink" title="tcp&#x2F;udp"></a>tcp&#x2F;udp</h2><p>二者都工作在<strong>传输层</strong> 在程序之间传输数据</p>
+<p><strong>TCP</strong>（传输控制协议）是互联网上最常用的协议之一，广泛应用于TCP&#x2F;IP网络中。TCP协议通过建立连接并在两台设备之间传输数据流，确保数据包的可靠传输和顺序接收。与UDP相比，TCP的最大特点是它能够保证通信的可靠性，确保数据不会丢失或乱序。</p>
+<p><strong>UDP</strong>（用户数据报协议）与TCP一样，通常与IP协议一起使用，用于在计算机之间传输数据报。与TCP不同，UDP是无连接的，无法保证数据的可靠性。在数据传输过程中，如果出现错误或丢包，接收方应用程序需要自行处理。由于UDP的传输速度更快，且适用于对实时性要求较高的应用，比如音视频流或在线游戏等，因此在这些场景中常常优先选择UDP协议，即便它可能会丢失一些数据包。</p>
+<p>​		</p>
+<p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241214192948834.png" loading="lazy"></p>
+<p>​			如图所示（笑）</p>
+<h3 id="TCP连接的建立过程（三次握手）："><a href="#TCP连接的建立过程（三次握手）：" class="headerlink" title="TCP连接的建立过程（三次握手）："></a>TCP连接的建立过程（三次握手）：</h3><ul>
+<li><pre><code>**SYN（同步序列编号）**：
+
+- 客户端发送一个带有SYN标志的TCP段到服务器，请求建立连接，并指定客户端的初始序列号。
+
+**SYN-ACK（同步-确认）**：
+
+- 服务器收到SYN请求后，如果同意建立连接，则发送一个SYN-ACK段作为响应，包含服务器的初始序列号和对客户端SYN的确认。
+
+**ACK（确认）**：
+
+- 客户端收到服务器的SYN-ACK响应后，发送一个带有ACK标志的TCP段作为最后的确认，确认收到了服务器的SYN-ACK。
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"><br>  <br><br>完成这三次握手后，TCP连接就成功建立了，数据可以开始在两端之间传输。这个过程确保了双方都准备好进行数据传输，并且能够跟踪和确认数据包的发送和接收。<br><br>### TCP连接的终止（四次挥手）：<br><br>- ```<br>  **FIN（结束）**：<br>  <br>  - 当一方完成数据发送后，发送一个FIN段来关闭连接。<br>  <br>  **ACK（确认）**：<br>  <br>  - 接收方确认FIN，并发送一个ACK段。<br>  <br>  **FIN（结束）**：<br>  <br>  - 接收方在发送完所有剩余数据后，也发送一个FIN段。<br>  <br>  **ACK（确认）**：<br>  <br>  - 最初发送FIN的一方确认接收方的FIN，并发送最后一个ACK段。<br></code></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<p>完成这四次挥手后，TCP连接被关闭。这个过程确保了双方都有机会发送完所有剩余的数据，并确认连接即将关闭。</p>
+<h1 id="HTPP协议简介"><a href="#HTPP协议简介" class="headerlink" title="HTPP协议简介"></a>HTPP协议简介</h1><p>超文本传输协议</p>
+<p>应用层</p>
+<p>TCP&#x2F;IP</p>
+<p>发布和接受HTML</p>
+<h3 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h3><p>TCP三次握手</p>
+<p>tcp建立连接成功后，向服务器发送http请求</p>
+<p>服务器收到http请求后，向客户机发送http响应</p>
+<p>客户端通过TCP四次挥手，与服务器断开TCP连接</p>
+<h3 id="B-S-C-S"><a href="#B-S-C-S" class="headerlink" title="B&#x2F;S&amp;C&#x2F;S"></a>B&#x2F;S&amp;C&#x2F;S</h3><p>C&#x2F;S Client&#x2F;Server 客户机和服务器结构</p>
+<p>B&#x2F;S  Browser&#x2F;Server  浏览器和服务器结构</p>
+]]></content>
+      <categories>
+        <category>网安</category>
+      </categories>
+      <tags>
+        <tag>网安</tag>
+      </tags>
+  </entry>
+</search>

@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="zh_CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="许步鸢"><meta name="copyright" content="许步鸢"><meta name="generator" content="Hexo 7.3.0"><meta name="theme" content="hexo-theme-yun"><title>网安笔记 | 许步鸢的小站</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/star-markdown-css@0.4.1/dist/yun/yun-markdown.min.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/prism-theme-vars/base.css"><script src="https://fastly.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>function initScrollReveal() {
+  [".post-card",".markdown-body img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+}
+document.addEventListener("DOMContentLoaded", initScrollReveal);
+document.addEventListener("pjax:success", initScrollReveal);
+</script><link rel="icon" type="image/png" href="/images/avatar.jpg"><link rel="mask-icon" href="/images/avatar.jpg" color="#0078E7"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preconnect" href="https://fastly.jsdelivr.net/npm/" crossorigin><script id="yun-config">
+    window.Yun = {}
+    window.CONFIG = {"hostname":"www.xubuyuan.top","root":"/","title":"许步鸢的小站","version":"1.10.11","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms"},"anonymous_image":"https://cdn.yunyoujun.cn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"local_search":{"path":"/search.xml"},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"fireworks":{"colors":null},"vendors":{"host":"https://fastly.jsdelivr.net/npm/","darken":"https://fastly.jsdelivr.net/npm/darken@1.5.0"}};
+  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/hexo-theme-yun.js" type="module"></script><link rel="alternate" href="/atom.xml" title="许步鸢的小站" type="application/atom+xml"><meta name="description" content="前言我将分享我在PC领d域遇到的一些关键知识点，并将它们系统化整理 osi七层网络参考模型OSI模型，全称为开放式系统互联参考模型（Open System Interconnection Reference Model），是由国际标准化组织（ISO）在20世纪80年代初提出的一个网络通信模型。这个模型的目的是为了标准化网络通信的过程，使得不同厂商的设备能够互联互通。 OSI模型将网络通信划分为七个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网安笔记">
+<meta property="og:url" content="https://www.xubuyuan.top/2024/12/14/%E7%BD%91%E5%AE%89%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="许步鸢的小站">
+<meta property="og:description" content="前言我将分享我在PC领d域遇到的一些关键知识点，并将它们系统化整理 osi七层网络参考模型OSI模型，全称为开放式系统互联参考模型（Open System Interconnection Reference Model），是由国际标准化组织（ISO）在20世纪80年代初提出的一个网络通信模型。这个模型的目的是为了标准化网络通信的过程，使得不同厂商的设备能够互联互通。 OSI模型将网络通信划分为七个">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241214192948834.png">
+<meta property="article:published_time" content="2024-12-14T11:37:34.000Z">
+<meta property="article:modified_time" content="2024-12-14T11:48:50.938Z">
+<meta property="article:author" content="许步鸢">
+<meta property="article:tag" content="网安">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241214192948834.png"><script>(function() {
+  if (CONFIG.mode !== 'auto') return
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const setting = localStorage.getItem('darken-mode') || 'auto'
+  if (setting === 'dark' || (prefersDark && setting !== 'light'))
+    document.documentElement.classList.toggle('dark', true)
+})()</script></head><body><script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script><script>// Define global variable
+IconifyProviders = {
+  // Empty prefix: overwrite default API provider configuration
+  '': {
+    // Use custom API first, use Iconify public API as backup
+    resources: [
+        'https://api.iconify.design',
+    ],
+    // Wait for 1 second before switching API hosts
+    rotate: 1000,
+  },
+};</script><script defer src="https://fastly.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="Table of Contents"><span class="icon iconify" data-icon="ri:list-ordered"></span></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="Overview"><span class="icon iconify" data-icon="ri:passport-line"></span></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="许步鸢"><img width="96" loading="lazy" src="/images/avatar.jpg" alt="许步鸢"><span class="site-author-status" title="大家一起GO一辈子好吗">😭</span></a><div class="site-author-name"><a href="/about/">许步鸢</a></div><span class="site-name">许步鸢的小站</span><sub class="site-subtitle"></sub><div class="site-description"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="Home"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:home-4-line"></span></span></a><div class="site-state-item"><a href="/archives/" title="Archives"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:archive-line"></span></span><span class="site-state-item-count">14</span></a></div><div class="site-state-item"><a href="/categories/" title="Categories"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:folder-2-line"></span></span><span class="site-state-item-count">8</span></a></div><div class="site-state-item"><a href="/tags/" title="Tags"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="site-state-item-count">12</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:settings-line"></span></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/xubuyuan18" title="GitHub" target="_blank" style="color:#181717"><span class="icon iconify" data-icon="ri:github-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/441828893" title="哔哩哔哩动画" target="_blank" style="color:#FF8EB3"><span class="icon iconify" data-icon="ri:bilibili-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="/girls/" title="二次元" target="_blank" style="color:#eb001b"><span class="icon iconify" data-icon="ri:heart-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="http://113.44.129.122:5244/" title="许步鸢的书架" target="_blank" style="color:#000000"><span class="icon iconify" data-icon="ri:book-2-line"></span></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><span class="icon iconify" data-icon="ri:contrast-2-line"></span></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#osi%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">osi七层网络参考模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3"><span class="toc-number"></span> <span class="toc-text">端口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="toc-number"></span> <span class="toc-text">常用端口号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcp-udp"><span class="toc-number"></span> <span class="toc-text">tcp&#x2F;udp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%BB%BA%E7%AB%8B%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%89%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">TCP连接的建立过程（三次握手）：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTPP%E5%8D%8F%E8%AE%AE%E7%AE%80%E4%BB%8B"><span class="toc-number"></span> <span class="toc-text">HTPP协议简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">工作流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-S-C-S"><span class="toc-number">2.</span> <span class="toc-text">B&#x2F;S&amp;C&#x2F;S</span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#0078E7;"><link itemprop="mainEntityOfPage" href="https://www.xubuyuan.top/2024/12/14/%E7%BD%91%E5%AE%89%E7%AC%94%E8%AE%B0/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="许步鸢"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="许步鸢的小站"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">网安笔记</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-line"></span></span> <time title="Created: 2024-12-14 19:37:34" itemprop="dateCreated datePublished" datetime="2024-12-14T19:37:34+08:00">2024-12-14</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="Word count in article"><span class="icon iconify" data-icon="ri:file-word-line"></span></span> <span title="Word count in article">2.1k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="Reading time"><span class="icon iconify" data-icon="ri:timer-line"></span></span> <span title="Reading time">7m</span></span></span><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><span class="icon iconify" data-icon="ri:folder-line"></span></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/categories/%E7%BD%91%E5%AE%89/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">网安</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag-item" href="/tags/%E7%BD%91%E5%AE%89/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">网安</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>我将分享我在PC领d域遇到的一些关键知识点，并将它们系统化整理</p>
+<h1 id="osi七层网络参考模型"><a href="#osi七层网络参考模型" class="headerlink" title="osi七层网络参考模型"></a>osi七层网络参考模型</h1><p>OSI模型，全称为开放式系统互联参考模型（Open System Interconnection Reference Model），是由国际标准化组织（ISO）在20世纪80年代初提出的一个网络通信模型。这个模型的目的是为了标准化网络通信的过程，使得不同厂商的设备能够互联互通。</p>
+<p>OSI模型将网络通信划分为七个层次，每一层都有其特定的功能和协议。这七个层次从底到顶依次是：</p>
+<ol>
+<li><strong>物理层（Physical Layer）</strong>：负责在物理媒介上传输原始的比特流，包括定义电气、机械、过程和功能标准，如电压、物理数据速率、最大传输距离等。</li>
+<li><strong>数据链路层（Data Link Layer）</strong>：确保物理层传输的数据无误，进行帧同步、差错控制和流量控制，将网络层的逻辑传输单元封装成帧。</li>
+<li><strong>网络层（Network Layer）</strong>：负责数据包从源到宿的传输和路由选择，处理数据包在整个网络中的移动。</li>
+<li><strong>传输层（Transport Layer）</strong>：提供端到端的数据传输服务，确保数据的完整性和可靠性，常见的协议有TCP和UDP。</li>
+<li><strong>会话层（Session Layer）</strong>：管理和控制两个通信系统之间的会话连接，负责建立、维护和终止会话。</li>
+<li><strong>表示层（Presentation Layer）</strong>：处理数据的表示、编码和转换，确保一个系统的应用层所发送的信息可以被另一个系统的应用层读取。</li>
+<li><strong>应用层（Application Layer）</strong>：为应用软件提供网络服务，如文件传输、电子邮件和远程登录等。</li>
+</ol>
+<p>每一层都向其上层提供服务，并且依赖于其下层所提供的服务。OSI模型的成功之处在于它清晰地区分了服务、接口和协议这三个容易混淆的概念，使得功能定义与实现细节区分开来，具有很高的概括性和适应能力</p>
+<h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1><p>端口（Port）在计算机网络中是一个重要的概念，用于区分不同的服务或进程。每个运行在计算机上的进程都可以通过一个端口来与其他计算机上的进程进行通信。端口号是一个16位的数字，其取值范围从0到65535。</p>
+<p>端口可以分为以下几类：</p>
+<ol>
+<li><strong>知名端口（Well-Known Ports）</strong>：<ul>
+<li>范围：0-1023</li>
+<li>这些端口号被分配给常用的或者标准的服务和应用程序。例如，HTTP服务通常使用端口80，HTTPS使用443，FTP使用21。</li>
+</ul>
+</li>
+<li><strong>注册端口（Registered Ports）</strong>：<ul>
+<li>范围：1024-49151</li>
+<li>这些端口号用于用户或公司的应用程序。它们不像知名端口那样固定，但通常被注册以避免冲突。</li>
+</ul>
+</li>
+<li><strong>动态或私有端口（Dynamic or Private Ports）</strong>：<ul>
+<li>范围：49152-65535</li>
+<li>这些端口号通常不固定分配给任何服务，可以由任何用户用于任何目的。它们经常用于临时的通信会话。</li>
+</ul>
+</li>
+</ol>
+<p>端口在网络通信中的作用包括：</p>
+<ul>
+<li><strong>区分服务</strong>：不同的网络服务监听不同的端口，例如，Web服务器通常监听80端口，而邮件服务器可能监听25端口（SMTP）。</li>
+<li><strong>端到端通信</strong>：在客户端和服务器之间的通信中，端口用于标识特定的进程或服务，确保数据能够正确地送达目的地。</li>
+<li><strong>安全性</strong>：通过开放或关闭特定的端口，可以增加或减少网络的攻击面。例如，关闭不必要的服务端口可以提高系统的安全性。</li>
+<li><strong>端口转发和映射</strong>：在家庭或企业网络中，端口转发可以将外部请求从一个端口转发到内部网络的另一个端口，使得内部服务能够被外部访问。</li>
+</ul>
+<h2 id="常用端口号"><a href="#常用端口号" class="headerlink" title="常用端口号"></a>常用端口号</h2><ol>
+<li>**HTTP (Hypertext Transfer Protocol)**：80端口，用于普通的Web页面传输。</li>
+<li>**HTTPS (HTTP Secure)**：443端口，用于加密的Web页面传输。</li>
+<li>**FTP (File Transfer Protocol)**：21端口，用于文件传输。</li>
+<li>**SSH (Secure Shell)**：22端口，用于安全远程登录和文件传输。</li>
+<li><strong>Telnet</strong>：23端口，用于远程登录，但由于不安全，已逐渐被SSH取代。</li>
+<li>**SMTP (Simple Mail Transfer Protocol)**：25端口，用于发送电子邮件。</li>
+<li>**DNS (Domain Name System)**：53端口，用于域名解析。</li>
+<li>**DHCP (Dynamic Host Configuration Protocol)**：67和68端口，用于自动分配IP地址。</li>
+<li>**POP3 (Post Office Protocol 3)**：110端口，用于接收电子邮件。</li>
+<li>**IMAP (Internet Message Access Protocol)**：143端口，用于访问和管理电子邮件。</li>
+<li>**SNMP (Simple Network Management Protocol)**：161和162端口，用于网络管理。</li>
+<li>**LDAP (Lightweight Directory Access Protocol)**：389端口，用于访问和维护分布式目录信息服务。</li>
+<li><strong>HTTPS over SSL&#x2F;TLS</strong>：443端口，用于加密的Web页面传输。</li>
+<li>**RDP (Remote Desktop Protocol)**：3389端口，用于远程桌面连接。</li>
+<li>**SIP (Session Initiation Protocol)**：5060和5061端口，用于语音和视频通信。</li>
+<li><strong>MySQL</strong>：3306端口，用于MySQL数据库服务。</li>
+<li><strong>PostgreSQL</strong>：5432端口，用于PostgreSQL数据库服务。</li>
+<li><strong>Microsoft SQL Server</strong>：1433端口，用于SQL Server数据库服务。</li>
+<li><strong>Oracle SQL*Net</strong>：1521端口，用于Oracle数据库服务。</li>
+<li>**NFS (Network File System)**：2049端口，用于文件共享。</li>
+</ol>
+<h2 id="tcp-udp"><a href="#tcp-udp" class="headerlink" title="tcp&#x2F;udp"></a>tcp&#x2F;udp</h2><p>二者都工作在<strong>传输层</strong> 在程序之间传输数据</p>
+<p><strong>TCP</strong>（传输控制协议）是互联网上最常用的协议之一，广泛应用于TCP&#x2F;IP网络中。TCP协议通过建立连接并在两台设备之间传输数据流，确保数据包的可靠传输和顺序接收。与UDP相比，TCP的最大特点是它能够保证通信的可靠性，确保数据不会丢失或乱序。</p>
+<p><strong>UDP</strong>（用户数据报协议）与TCP一样，通常与IP协议一起使用，用于在计算机之间传输数据报。与TCP不同，UDP是无连接的，无法保证数据的可靠性。在数据传输过程中，如果出现错误或丢包，接收方应用程序需要自行处理。由于UDP的传输速度更快，且适用于对实时性要求较高的应用，比如音视频流或在线游戏等，因此在这些场景中常常优先选择UDP协议，即便它可能会丢失一些数据包。</p>
+<p>​		</p>
+<p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241214192948834.png" loading="lazy"></p>
+<p>​			如图所示（笑）</p>
+<h3 id="TCP连接的建立过程（三次握手）："><a href="#TCP连接的建立过程（三次握手）：" class="headerlink" title="TCP连接的建立过程（三次握手）："></a>TCP连接的建立过程（三次握手）：</h3><ul>
+<li><pre><code>**SYN（同步序列编号）**：
+
+- 客户端发送一个带有SYN标志的TCP段到服务器，请求建立连接，并指定客户端的初始序列号。
+
+**SYN-ACK（同步-确认）**：
+
+- 服务器收到SYN请求后，如果同意建立连接，则发送一个SYN-ACK段作为响应，包含服务器的初始序列号和对客户端SYN的确认。
+
+**ACK（确认）**：
+
+- 客户端收到服务器的SYN-ACK响应后，发送一个带有ACK标志的TCP段作为最后的确认，确认收到了服务器的SYN-ACK。
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"><br>  <br><br>完成这三次握手后，TCP连接就成功建立了，数据可以开始在两端之间传输。这个过程确保了双方都准备好进行数据传输，并且能够跟踪和确认数据包的发送和接收。<br><br>### TCP连接的终止（四次挥手）：<br><br>- ```<br>  **FIN（结束）**：<br>  <br>  - 当一方完成数据发送后，发送一个FIN段来关闭连接。<br>  <br>  **ACK（确认）**：<br>  <br>  - 接收方确认FIN，并发送一个ACK段。<br>  <br>  **FIN（结束）**：<br>  <br>  - 接收方在发送完所有剩余数据后，也发送一个FIN段。<br>  <br>  **ACK（确认）**：<br>  <br>  - 最初发送FIN的一方确认接收方的FIN，并发送最后一个ACK段。<br></code></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<p>完成这四次挥手后，TCP连接被关闭。这个过程确保了双方都有机会发送完所有剩余的数据，并确认连接即将关闭。</p>
+<h1 id="HTPP协议简介"><a href="#HTPP协议简介" class="headerlink" title="HTPP协议简介"></a>HTPP协议简介</h1><p>超文本传输协议</p>
+<p>应用层</p>
+<p>TCP&#x2F;IP</p>
+<p>发布和接受HTML</p>
+<h3 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h3><p>TCP三次握手</p>
+<p>tcp建立连接成功后，向服务器发送http请求</p>
+<p>服务器收到http请求后，向客户机发送http响应</p>
+<p>客户端通过TCP四次挥手，与服务器断开TCP连接</p>
+<h3 id="B-S-C-S"><a href="#B-S-C-S" class="headerlink" title="B&#x2F;S&amp;C&#x2F;S"></a>B&#x2F;S&amp;C&#x2F;S</h3><p>C&#x2F;S Client&#x2F;Server 客户机和服务器结构</p>
+<p>B&#x2F;S  Browser&#x2F;Server  浏览器和服务器结构</p>
+</div></section><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="Donate" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><span class="icon iconify" data-icon="ri:hand-coin-line"></span></span><div id="reward-comment">如果以上文章帮助到了你，不妨请我喝杯咖啡</div><div id="qr" style="display:none;"><div style="display:inline-block"><a target="_blank" rel="noopener" href="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213162954156.png"><img loading="lazy" src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213162954156.png" alt="支付宝" title="支付宝"></a><div><span style="color:#00A3EE"><span class="icon iconify" data-icon="ri:alipay-line"></span></span></div></div><div style="display:inline-block"><a target="_blank" rel="noopener" href="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213163004236.png"><img loading="lazy" src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213163004236.png" alt="微信支付" title="微信支付"></a><div><span style="color:#2DC100"><span class="icon iconify" data-icon="ri:wechat-pay-line"></span></span></div></div></div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>Post author: </strong>许步鸢</li><li class="post-copyright-link"><strong>Post link: </strong><a href="https://www.xubuyuan.top/2024/12/14/%E7%BD%91%E5%AE%89%E7%AC%94%E8%AE%B0/" title="网安笔记">https://www.xubuyuan.top/2024/12/14/%E7%BD%91%E5%AE%89%E7%AC%94%E8%AE%B0/</a></li><li class="post-copyright-license"><strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><span class="icon iconify" data-icon="ri:creative-commons-line"></span><span class="icon iconify" data-icon="ri:creative-commons-by-line"></span><span class="icon iconify" data-icon="ri:creative-commons-nc-line"></span><span class="icon iconify" data-icon="ri:creative-commons-sa-line"></span></a> unless otherwise stated.</li></ul></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/2024/12/14/%E7%BD%91%E5%AE%89%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" rel="prev" title="网安学习路线"><span class="icon iconify" data-icon="ri:arrow-left-s-line"></span><span class="post-nav-text">网安学习路线</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/2024/12/12/OpenEuler/" rel="next" title="OpenEuler"><span class="post-nav-text">OpenEuler</span><span class="icon iconify" data-icon="ri:arrow-right-s-line"></span></a></div></div></div><div class="hty-card" id="comment"></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2024 </span><span class="with-love" id="animate"><span class="icon iconify" data-icon="ri:cloud-line"></span></span><span class="author"> 许步鸢</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.10.11</span></div><div class="live-time"><span>本博客已运行</span><span id="display_live_time"></span><span class="moe-text">(●'◡'●)</span><script>function blog_live_time() {
+  setTimeout(blog_live_time, 1000);
+  const start = new Date('2024-09-06T09:00:00');
+  const now = new Date();
+  const timeDiff = (now.getTime() - start.getTime());
+  const msPerMinute = 60 * 1000;
+  const msPerHour = 60 * msPerMinute;
+  const msPerDay = 24 * msPerHour;
+  const passDay = Math.floor(timeDiff / msPerDay);
+  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
+  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
+  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
+  display_live_time.innerHTML = ` ${passDay} Days ${passHour} Hours ${passMinute} Minutes ${passSecond} Seconds`;
+}
+blog_live_time();
+</script></div></footer></div><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><span class="icon iconify" data-icon="ri:arrow-up-s-line"></span><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><a class="popup-trigger hty-icon-button icon-search" id="search" href="javascript:;" title="Search"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:search-line"></span></span></a><script>window.addEventListener("DOMContentLoaded", () => {
+  // Handle and trigger popup window
+  document.querySelector(".popup-trigger").addEventListener("click", () => {
+    document.querySelector(".popup").classList.add("show");
+    setTimeout(() => {
+      document.querySelector(".search-input").focus();
+    }, 100);
+  });
+
+  // Monitor main search box
+  const onPopupClose = () => {
+    document.querySelector(".popup").classList.remove("show");
+  };
+
+  document.querySelector(".popup-btn-close").addEventListener("click", () => {
+    onPopupClose();
+  });
+
+  window.addEventListener("keyup", event => {
+    if (event.key === "Escape") {
+      onPopupClose();
+    }
+  });
+});
+</script><script src="https://fastly.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script><script src="/js/search/local-search.js" defer type="module"></script><div class="popup search-popup"><div class="search-header"><span class="popup-btn-close close-icon hty-icon-button"><span class="icon iconify" data-icon="ri:close-line"></span></span></div><div class="search-input-container"><input class="search-input" id="local-search-input" type="text" placeholder="Searching..." value=""></div><div class="search-result-container"></div></div><script>function initMourn() {
+  const date = new Date();
+  const today = (date.getMonth() + 1) + "-" + date.getDate()
+  const mourn_days = ["4-4","9-18"]
+  if (mourn_days.includes(today)) {
+    document.documentElement.style.filter = "grayscale(1)";
+  }
+}
+initMourn();</script><script src="https://fastly.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script><script>const images = [...document.querySelectorAll('.markdown-body img')]
+mediumZoom(images)</script><style>.medium-zoom-image {
+  z-index: 99;
+}</style></body></html>

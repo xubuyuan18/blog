@@ -1,0 +1,1337 @@
+<!DOCTYPE html><html lang="zh_CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="许步鸢"><meta name="copyright" content="许步鸢"><meta name="generator" content="Hexo 7.3.0"><meta name="theme" content="hexo-theme-yun"><title>2024春1X传感网应用开发Ⅱ-题库 | 许步鸢的小站</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/star-markdown-css@0.4.1/dist/yun/yun-markdown.min.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/prism-theme-vars/base.css"><script src="https://fastly.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>function initScrollReveal() {
+  [".post-card",".markdown-body img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+}
+document.addEventListener("DOMContentLoaded", initScrollReveal);
+document.addEventListener("pjax:success", initScrollReveal);
+</script><link rel="icon" type="image/png" href="/images/avatar.jpg"><link rel="mask-icon" href="/images/avatar.jpg" color="#0078E7"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preconnect" href="https://fastly.jsdelivr.net/npm/" crossorigin><script id="yun-config">
+    window.Yun = {}
+    window.CONFIG = {"hostname":"www.xubuyuan.top","root":"/","title":"许步鸢的小站","version":"1.10.11","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms"},"anonymous_image":"https://cdn.yunyoujun.cn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"local_search":{"path":"/search.xml"},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"fireworks":{"colors":null},"vendors":{"host":"https://fastly.jsdelivr.net/npm/","darken":"https://fastly.jsdelivr.net/npm/darken@1.5.0"}};
+  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/hexo-theme-yun.js" type="module"></script><link rel="alternate" href="/atom.xml" title="许步鸢的小站" type="application/atom+xml"><meta property="og:type" content="article">
+<meta property="og:title" content="2024春1X传感网应用开发Ⅱ-题库">
+<meta property="og:url" content="https://www.xubuyuan.top/2024/12/12/%E4%BC%A0%E6%84%9F%E7%BD%91%E9%A2%98%E5%BA%93/index.html">
+<meta property="og:site_name" content="许步鸢的小站">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/1733826593718.gif">
+<meta property="og:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/ksohtml11672/wps1.png">
+<meta property="article:published_time" content="2024-12-12T00:48:34.000Z">
+<meta property="article:modified_time" content="2024-12-13T09:48:34.611Z">
+<meta property="article:author" content="许步鸢">
+<meta property="article:tag" content="题库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/1733826593718.gif"><script>(function() {
+  if (CONFIG.mode !== 'auto') return
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const setting = localStorage.getItem('darken-mode') || 'auto'
+  if (setting === 'dark' || (prefersDark && setting !== 'light'))
+    document.documentElement.classList.toggle('dark', true)
+})()</script></head><body><script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script><script>// Define global variable
+IconifyProviders = {
+  // Empty prefix: overwrite default API provider configuration
+  '': {
+    // Use custom API first, use Iconify public API as backup
+    resources: [
+        'https://api.iconify.design',
+    ],
+    // Wait for 1 second before switching API hosts
+    rotate: 1000,
+  },
+};</script><script defer src="https://fastly.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="Table of Contents"><span class="icon iconify" data-icon="ri:list-ordered"></span></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="Overview"><span class="icon iconify" data-icon="ri:passport-line"></span></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="许步鸢"><img width="96" loading="lazy" src="/images/avatar.jpg" alt="许步鸢"><span class="site-author-status" title="大家一起GO一辈子好吗">😭</span></a><div class="site-author-name"><a href="/about/">许步鸢</a></div><span class="site-name">许步鸢的小站</span><sub class="site-subtitle"></sub><div class="site-description"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="Home"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:home-4-line"></span></span></a><div class="site-state-item"><a href="/archives/" title="Archives"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:archive-line"></span></span><span class="site-state-item-count">14</span></a></div><div class="site-state-item"><a href="/categories/" title="Categories"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:folder-2-line"></span></span><span class="site-state-item-count">8</span></a></div><div class="site-state-item"><a href="/tags/" title="Tags"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="site-state-item-count">12</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:settings-line"></span></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/xubuyuan18" title="GitHub" target="_blank" style="color:#181717"><span class="icon iconify" data-icon="ri:github-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/441828893" title="哔哩哔哩动画" target="_blank" style="color:#FF8EB3"><span class="icon iconify" data-icon="ri:bilibili-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="/girls/" title="二次元" target="_blank" style="color:#eb001b"><span class="icon iconify" data-icon="ri:heart-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="http://113.44.129.122:5244/" title="许步鸢的书架" target="_blank" style="color:#000000"><span class="icon iconify" data-icon="ri:book-2-line"></span></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><span class="icon iconify" data-icon="ri:contrast-2-line"></span></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#0078E7;"><link itemprop="mainEntityOfPage" href="https://www.xubuyuan.top/2024/12/12/%E4%BC%A0%E6%84%9F%E7%BD%91%E9%A2%98%E5%BA%93/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="许步鸢"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="许步鸢的小站"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">2024春1X传感网应用开发Ⅱ-题库</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-line"></span></span> <time title="Created: 2024-12-12 08:48:34" itemprop="dateCreated datePublished" datetime="2024-12-12T08:48:34+08:00">2024-12-12</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-2-line"></span></span> <time title="Modified: 2024-12-13 17:48:34" itemprop="dateModified" datetime="2024-12-13T17:48:34+08:00">2024-12-13</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="Word count in article"><span class="icon iconify" data-icon="ri:file-word-line"></span></span> <span title="Word count in article">9.1k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="Reading time"><span class="icon iconify" data-icon="ri:timer-line"></span></span> <span title="Reading time">38m</span></span></span><div class="post-classify"><span class="post-tag"><a class="tag-item" href="/tags/%E9%A2%98%E5%BA%93/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">题库</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/1733826593718.gif" loading="lazy"></p>
+ <span id="more"></span>
+
+<p><em><strong>*1、实现呼吸灯的原理是什么*</strong></em> </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">答案： PWM采用调整脉冲占空比的方式，达到调整电压与电流的效果 <br></code></pre></td></tr></table></figure>
+
+<p><em><strong>*2、请写出ADC的基本参数*</strong></em> </p>
+<p>答案： ADC的工作模式<br>ADC转换结果的存储方式<br>AD通道的转换时间<br>AD时钟信号的获取 </p>
+<p><em><strong>*3、STM32L151芯片的APB2和APB1总线的最高时钟频率分别为( )。*</strong></em> </p>
+<p>A、 72MHz,72MHz </p>
+<p>B、 32MHz,32MHz </p>
+<p>C、 32MHz，16MHz </p>
+<p>D、 64MHz，32MHz </p>
+<p>答案： B </p>
+<p><em><strong>*4、以下C语言中的用户标识符，合法的是( )。*</strong></em> </p>
+<p>A、 for </p>
+<p>B、 4f </p>
+<p>C、 f2_G3 </p>
+<p>D、 struct </p>
+<p>答案： C </p>
+<p><em><strong>*5、ARM Cortex-M3不可以通过( )唤醒CPU。*</strong></em> </p>
+<p>A、 I&#x2F;O端口 </p>
+<p>B、 RTC 闹钟 </p>
+<p>C、 USB唤醒事件 </p>
+<p>D、 PLL </p>
+<p>答案： D </p>
+<p><em><strong>*6、若有C语言语句:char a&#x3D;’\72’; 则变量a中(  )。*</strong></em> </p>
+<p>A、 包含1个字符 </p>
+<p>B、 包含2个字符 </p>
+<p>C、 包含3个字符 </p>
+<p>D、 语句不合法 </p>
+<p>答案： A </p>
+<p><em><strong>*7、以下程序的输出结果是(  )。*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*main( )*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*{*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*int k&#x3D;0x31;*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*printf(“%d，%c，%x \n”，k，k，k);*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*}*</strong></em> </p>
+<p>A、 49,1,31 </p>
+<p>B、 31,31,31 </p>
+<p>C、 31,1,31 </p>
+<p>D、 49,1,49 </p>
+<p>答案： A </p>
+<p><em><strong>*8、STM32 ADC输入信号电压为1.1V，已知系统供电为3.3V，A&#x2F;D转换精度为12位，则A&#x2F;D转换结果应为( )。*</strong></em> </p>
+<p>A、 33 </p>
+<p>B、 132 </p>
+<p>C、 1365 </p>
+<p>D、 4096 </p>
+<p>答案： C </p>
+<p><em><strong>*9、STM32F103中PC13与以下哪个GPIO引脚(  )共用EXTI13这根中断线。*</strong></em> </p>
+<p>A、 PA15 </p>
+<p>B、 PA14 </p>
+<p>C、 PA13 </p>
+<p>D、 PA12 </p>
+<p>答案： C </p>
+<p><em><strong>*10、STM32的串口通信中断中，判断接收标志位不为空所使用的宏是（ ）*</strong></em> </p>
+<p>A、 UART_FLAG_IDLE </p>
+<p>B、 UART_FLAG_RXNE </p>
+<p>C、 UART_FLAG_ORE </p>
+<p>D、 UART_FLAG_TXE </p>
+<p>答案： B </p>
+<p><em><strong>*11、C语言中表示关系:X大于等于Y 并且Y大于等于Z,应使用以下哪个( )表达式。*</strong></em> </p>
+<p>A、 (x&gt;&#x3D;y)AND(y&gt;&#x3D;z) </p>
+<p>B、 (x&gt;&#x3D;y)&amp;&amp;(y&gt;&#x3D;z) </p>
+<p>C、 (x&gt;&#x3D;y&gt;&#x3D;z) </p>
+<p>D、 (x&gt;&#x3D;y)&amp;(y&gt;&#x3D;z) </p>
+<p>答案： B </p>
+<p><em><strong>*12、一个12位分辨率的ADC，若供电电压为5V, 当输入模拟量为2V时，可计算出输出数字量为( )。*</strong></em> </p>
+<p>A、 102 </p>
+<p>B、 103 </p>
+<p>C、 1638 </p>
+<p>D、 1670 </p>
+<p>答案： C </p>
+<p><em><strong>*13、在NB-IoT 网络中，设置对接的IoT 平台地址的AT指令是( )。*</strong></em> </p>
+<p>A、 AT+CMEE </p>
+<p>B、 AT+CFUN </p>
+<p>C、 AT+NCDP </p>
+<p>D、 AT+CIPMUX </p>
+<p>答案： C </p>
+<p><em><strong>*14、在keil工程中，使用printf()函数时要添加的头文件是(  )。*</strong></em> </p>
+<p>A、 &lt;stdlib.h&gt; </p>
+<p>B、 &lt;stdio.h&gt; </p>
+<p>C、 &lt;time.h&gt; </p>
+<p>D、 &lt;string.h&gt; </p>
+<p>答案： B </p>
+<p><em><strong>*15、CC2530的串口通信中，修改（ ）寄存器对通信波特率有影响。*</strong></em> </p>
+<p>A、 U0GCR </p>
+<p>B、 UxDBUF </p>
+<p>C、 UxCSR </p>
+<p>D、 APCFG </p>
+<p>答案： A </p>
+<p><em><strong>*16、节点固件下载时，M3主控模块板的JP1拨码开关拨向______模式?*</strong></em> </p>
+<p>A、 NC </p>
+<p>B、 Boot </p>
+<p>答案： B </p>
+<p><em><strong>*17、设置ESP8266 WiFi模块工作模式为soft-AP + station，发送的指令是（ ）。*</strong></em> </p>
+<p>A、 AT+CWMODE&#x3D;0 </p>
+<p>B、 AT+CWMODE&#x3D;1 </p>
+<p>C、 AT+CWMODE&#x3D;2 </p>
+<p>D、 AT+CWMODE&#x3D;3 </p>
+<p>答案： D </p>
+<p><em><strong>*18、配置时波特率我们需要设的值是?*</strong></em> </p>
+<p>A、 12800 </p>
+<p>B、 115200 </p>
+<p>答案： B </p>
+<p><em><strong>*19、ISO 11898标准的CAN总线的两条信号线CAN_H和CAN_L的传输的信号为3.5V与1.5V，此时表示的是（ ）。*</strong></em> </p>
+<p>A、 逻辑0 </p>
+<p>B、 逻辑1 </p>
+<p>C、 总线空闲 </p>
+<p>D、 不确定状态 </p>
+<p>答案： A </p>
+<p><em><strong>*20、Modbus标准规定的Modbus功能码不包括(  )。*</strong></em> </p>
+<p>A、 公共功能码 </p>
+<p>B、 默认功能码 </p>
+<p>C、 用户自定义功能码 </p>
+<p>D、 保留功能码 </p>
+<p>答案： B </p>
+<p><em><strong>*21、通过RS485网络上传数据到网关时,如果数据域为两个字节，并且高字节为温度值，当上传的数据域中的数据是0x1840时，上传的温度值是( )℃。*</strong></em> </p>
+<p>A、 6 </p>
+<p>B、 18 </p>
+<p>C、 40 </p>
+<p>D、 24 </p>
+<p>答案： D </p>
+<p><em><strong>*22、Modbus常见功能码中0x03的功能是( )。*</strong></em> </p>
+<p>A、 读线圈状态 </p>
+<p>B、 读输入寄存器 </p>
+<p>C、 读保持寄存器 </p>
+<p>D、 写单个保持寄存器 </p>
+<p>答案： C </p>
+<p><em><strong>*23、CC2530中的定时器4为（ ）位定时计数器。*</strong></em> </p>
+<p>A、 8 </p>
+<p>B、 12 </p>
+<p>C、 16 </p>
+<p>D、 20 </p>
+<p>答案： A </p>
+<p><em><strong>*24、某Modbus的RTU模式报文如为“06 01 00 16 00 21 1C 61”，其中第一个字节“06”的含义是( )。*</strong></em> </p>
+<p>A、 06号功能码 </p>
+<p>B、 06号主机地址 </p>
+<p>C、 06号从机地址 </p>
+<p>D、 D、 随机码 </p>
+<p>答案： C </p>
+<p><em><strong>*25、LoRa采用扩频技术，扩频因子LORA_SPREADING_FACTOR值越大，通信距离 ( )与传输速率（ ）。*</strong></em> </p>
+<p>A、 越近，越高 </p>
+<p>B、 越远，越高 </p>
+<p>C、 越近，越低 </p>
+<p>D、 越远，越低 </p>
+<p>答案： D </p>
+<p><em><strong>*26、下列关于标准Modbus功能码说法不正确的是( )。*</strong></em> </p>
+<p>A、 0x01:读线圈寄存器 </p>
+<p>B、 0x02:读离散输入寄存器 </p>
+<p>C、 0x03:读保持寄存器 </p>
+<p>D、 0x06:写保持寄存器 </p>
+<p>答案： D </p>
+<p><em><strong>*27、bxCAN有（ ）个发送邮箱，由发送调度程序决定优先发送哪个。*</strong></em> </p>
+<p>A、 10 </p>
+<p>B、 2 </p>
+<p>C、 3 </p>
+<p>D、 5 </p>
+<p>答案： C </p>
+<p><em><strong>*28、通过RS485网络上传数据到网关时,如果数据域为两个字节，并且高字节为温度值，当上传的数据域中的数据是0x1840时，上传的温度值是( )℃。*</strong></em> </p>
+<p>A、 6 </p>
+<p>B、 18 </p>
+<p>C、 40 </p>
+<p>D、 24 </p>
+<p>答案： D </p>
+<p><em><strong>*29、目前，Modbus协议的所有权属于（ ）组织。*</strong></em> </p>
+<p>A、 3GPP </p>
+<p>B、 施耐得 </p>
+<p>C、 Sipex </p>
+<p>D、 Modbus-IDA </p>
+<p>答案： D </p>
+<p><em><strong>*30、can通信帧的类型*</strong></em> </p>
+<p>答案： 数据帧、遥控帧、错误帧、过载帧、帧间隔 </p>
+<p><em><strong>*31、CC2530的P1_0和P1_1端口具有( )的驱动能力。*</strong></em> </p>
+<p>A、 4mA </p>
+<p>B、 8mA </p>
+<p>C、 16mA </p>
+<p>D、 20mA </p>
+<p>答案： D </p>
+<p><em><strong>*32、在64位操作系统环境下,下列关于C语言的数据类型占用内存的长度说法正确的是( )。*</strong></em> </p>
+<p>A、 unsigned char类型占2字节 </p>
+<p>B、 unsigned int类型占2 字节 </p>
+<p>C、 unsigned short int类型占2字节 </p>
+<p>D、 unsigned long int类型占4字节 </p>
+<p>答案： C </p>
+<p><em><strong>*33、CC2530寄存器ADCH用来存放( )。*</strong></em> </p>
+<p>A、 ADC转换结果的高位数据 </p>
+<p>B、 ADC转换结果的低位数据 </p>
+<p>C、 ADC转换结果的全部数据 </p>
+<p>D、 以上都不正确 </p>
+<p>答案： A </p>
+<p><em><strong>*34、下列不属于CC2530中断源的是( )。*</strong></em> </p>
+<p>A、 RFERR </p>
+<p>B、 Ipx_IPG </p>
+<p>C、 T3 </p>
+<p>D、 P2INT </p>
+<p>答案： B </p>
+<p><em><strong>*35、在CC2530中,如果采用单通道ADC转换,说法正确的是( )。*</strong></em> </p>
+<p>A、 不需要指定参考电压 </p>
+<p>B、 不需要指定抽取率 </p>
+<p>C、 不需要指定转换通道号码 </p>
+<p>D、 单个转换在寄存器ADCCON3写入后立即发生 </p>
+<p>答案： D </p>
+<p><em><strong>*36、CC2530中的寄存器 PxSEL,其中 x 为端口的标号( )。*</strong></em> </p>
+<p>A、 0~1 </p>
+<p>B、 0~4 </p>
+<p>C、 0~3 </p>
+<p>D、 0~2 </p>
+<p>答案： D </p>
+<p><em><strong>*37、在基于Modbus协议的通信中,如果主节点发送的报文是:02 02 00 77 00 01 B9 F9,则说法正确的是( )。*</strong></em> </p>
+<p>A、 此报文请求读取保持寄存器的值 </p>
+<p>B、 寄存器的起始地址是0X 0077 </p>
+<p>C、 寄存器个数是0X02 </p>
+<p>D、 从节点地址是0X 01 </p>
+<p>答案： B </p>
+<p><em><strong>*38、ZigBee网络中的2.4G频段可以提供( )个不同的信道。*</strong></em> </p>
+<p>A、 8 </p>
+<p>B、 16 </p>
+<p>C、 24 </p>
+<p>D、 32 </p>
+<p>答案： B </p>
+<p><em><strong>*39、在CAN总线中,实现“逻辑电平”与“差分电平”之间相互转换的器件是( )。*</strong></em> </p>
+<p>A、 CAN收发器 </p>
+<p>B、 CAN控制器 </p>
+<p>C、 MCU </p>
+<p>D、 终端匹配电阻 </p>
+<p>答案： A </p>
+<p><em><strong>*40、在Modbus网络中,通信总是由( )发起。*</strong></em> </p>
+<p>A、 服务器节点 </p>
+<p>B、 客户端节点 </p>
+<p>C、 主设备 </p>
+<p>D、 从设备 </p>
+<p>答案： C </p>
+<p><em><strong>*41、CC2530串口0通用控制寄存器是( )。*</strong></em> </p>
+<p>A、 U0BAUD </p>
+<p>B、 U0CSR </p>
+<p>C、 U0BUF </p>
+<p>D、 U0GCR </p>
+<p>答案： D </p>
+<p><em><strong>*42、P0IE&#x3D;1用来设置( )。*</strong></em> </p>
+<p>A、 端口0中断使能 </p>
+<p>B、 端口0禁止中断 </p>
+<p>C、 开启总中断 </p>
+<p>D、 关闭总中断 </p>
+<p>答案： A </p>
+<p><em><strong>*43、CC2530定时器1工作在自由运行模式时,当到达最终计数值( )时溢出。*</strong></em> </p>
+<p>A、 0x0000 </p>
+<p>B、 0x00FF </p>
+<p>C、 0xFFFF </p>
+<p>D、 0xFF00 </p>
+<p>答案： C </p>
+<p><em><strong>*44、在NB-IoT网络中,终端与物联网云平台间一般使用( )协议进行通信。*</strong></em> </p>
+<p>A、 FTP </p>
+<p>B、 CoAP </p>
+<p>C、 TCP </p>
+<p>D、 HTTP </p>
+<p>答案： B </p>
+<p><em><strong>*45、在CC2530单片机中,关于中断服务函数说法正确的是( )*</strong></em> </p>
+<p>A、 要以inter作为中断服务函数的前缀 </p>
+<p>B、 端口组中断发生后需要在中断服务函数中确定是哪个端口发生的中断。 </p>
+<p>C、 在中断服务函数中不需要清除中断标志位 </p>
+<p>D、 以上都正确 </p>
+<p>答案： B </p>
+<p><em><strong>*46、在使用利尔达 NB86-G模组时,用于查询当前模组网络注册连接状态的AT指令是( )。*</strong></em> </p>
+<p>A、 AT+CEREG </p>
+<p>B、 AT+CSQ </p>
+<p>C、 AT+CIMI </p>
+<p>D、 AT+CCLK </p>
+<p>答案： A </p>
+<p><em><strong>*47、光敏电阻在一定的外加电压下,外加电压与暗电流之比称为“暗电阻”,常用( )表示。*</strong></em> </p>
+<p>A、 0lx </p>
+<p>B、 100lx </p>
+<p>C、 200lx </p>
+<p>D、 300lx </p>
+<p>答案： A </p>
+<p><em><strong>*48、在CAN总线2.0B技术规范中,扩展帧具有的标识符位数为( )。*</strong></em> </p>
+<p>A、 8位 </p>
+<p>B、 11位 </p>
+<p>C、 15位 </p>
+<p>D、 29位 </p>
+<p>答案： D </p>
+<p><em><strong>*49、Modbus的ASCII模式消息帧格式,消息以( )字符开始。*</strong></em> </p>
+<p>A、 冒号 </p>
+<p>B、 3.5个字符 </p>
+<p>C、 分号 </p>
+<p>D、 句号 </p>
+<p>答案： A </p>
+<p><em><strong>*50、下列C语言用户标识符中合法的是( )。*</strong></em> </p>
+<p>A、 while </p>
+<p>B、 5num </p>
+<p>C、 -a2 </p>
+<p>D、 path </p>
+<p>答案： D </p>
+<p><em><strong>*51、CC2530寄存器PERCFG.T4CFG用来设置 ( )。*</strong></em> </p>
+<p>A、 定时器4的复用引脚 </p>
+<p>B、 端口组4的复用引脚 </p>
+<p>C、 串口4的复用引脚 </p>
+<p>D、 以上都不正确 </p>
+<p>答案： A </p>
+<p><em><strong>*52、下列哪一个无线技术需要运营商网络支持( )。*</strong></em> </p>
+<p>A、 蓝牙 </p>
+<p>B、 LoRa </p>
+<p>C、 NB-IoT </p>
+<p>D、 ZigBee </p>
+<p>答案： C </p>
+<p><em><strong>*53、下列关于ZigBee相关技术的描述中,不正确的是( )。*</strong></em> </p>
+<p>A、 ZigBee是建立在 IEEE 802.15.4 标准之上 </p>
+<p>B、 ZigBee提供了数据完整性检查和鉴权功能,采用AES-128加密算法 </p>
+<p>C、 共规定了27个信道 </p>
+<p>D、 ZigBee工作在非 ISM 频带 </p>
+<p>答案： D </p>
+<p><em><strong>*54、CC2530中的寄存器 PxDIR是用来设置x端口组的( )。*</strong></em> </p>
+<p>A、 备用位置 </p>
+<p>B、 方向 </p>
+<p>C、 定时器设置 </p>
+<p>D、 功能 </p>
+<p>答案： B </p>
+<p><em><strong>*55、当CAN总线上的一个节点发送数据时,是以( )形式广播给网络中的所有节点。*</strong></em> </p>
+<p>A、 报文 </p>
+<p>B、 字符串 </p>
+<p>C、 数字 </p>
+<p>D、 字节 </p>
+<p>答案： A </p>
+<p><em><strong>*56、CC2530单片机用来设置端口中断控制的PICTL寄存器,如果要将CC2530单片机的P1.3引脚设置为上升沿中断触发方式,则下列对PICTL寄存器的值设置正确的是( )。*</strong></em> </p>
+<p>A、 PICTL &amp;&#x3D;~0x01 </p>
+<p>B、 PICTL &amp;&#x3D;~0x02 </p>
+<p>C、 PICTL &amp;&#x3D;~0x04 </p>
+<p>D、 PICTL &amp;&#x3D;~0x08 </p>
+<p>答案： B </p>
+<p><em><strong>*57、CC2530 ADC转换结果的低位部分数据存放在( )寄存器中。*</strong></em> </p>
+<p>A、 ADCCON1 </p>
+<p>B、 ADCH </p>
+<p>C、 ADCCON2 </p>
+<p>D、 ADCL </p>
+<p>答案： D </p>
+<p><em><strong>*58、CC2530寄存器PxSEL复位之后,所有的位均为( )。*</strong></em> </p>
+<p>A、 3 </p>
+<p>B、 2 </p>
+<p>C、 1 </p>
+<p>D、 0 </p>
+<p>答案： D </p>
+<p><em><strong>*59、3GPP标准化组织的成员不包括( )*</strong></em> </p>
+<p>A、 日本无线工业及商贸联合会 </p>
+<p>B、 中国通信标准化协会 </p>
+<p>C、 美国电信行业解决方案联盟 </p>
+<p>D、 ISO国际标准化组织 </p>
+<p>答案： D </p>
+<p><em><strong>*60、在主流的LPWAN技术中,不包括( )*</strong></em> </p>
+<p>A、 NB-IoT </p>
+<p>B、 LoRa </p>
+<p>C、 Wi-Fi </p>
+<p>D、 eMTC </p>
+<p>答案： C </p>
+<p><em><strong>*61、CAN总线具有“仲裁”功能,即当多个节点设备同时向总线发送数据时,采用这些数据的逻辑运算值作为总线输出。当两个节点设备同时向总线输出,一个输出“0100”,一个输出“0010”时,总线输出( )。*</strong></em> </p>
+<p>A、 0100 </p>
+<p>B、 0010 </p>
+<p>C、 0110 </p>
+<p>D、 0000 </p>
+<p>答案： B </p>
+<p><em><strong>*62、以下C语言中的用户标识符,合法的是( )。*</strong></em> </p>
+<p>A、 for </p>
+<p>B、 4f </p>
+<p>C、 f2_G3 </p>
+<p>D、 struct </p>
+<p>答案： C </p>
+<p><em><strong>*63、STM32L151芯片的APB2和APB1总线的最高时钟频率分别为( )。*</strong></em> </p>
+<p>A、 72MHz,72MHz </p>
+<p>B、 32MHz,32MHz </p>
+<p>C、 32MHz,16MHz </p>
+<p>D、 64MHz,32MHz </p>
+<p>答案： B </p>
+<p><em><strong>*64、下列关于LoRa的说法不正确的是( )。*</strong></em> </p>
+<p>A、 LoRa是一种扩频通信技术 </p>
+<p>B、 LoRa在郊区环境下,通信距离可达15Km </p>
+<p>C、 LoRa技术的应用领域一般在智能水表、楼宇自动化、自动贩卖机等 </p>
+<p>D、 LoRa与Wi-Fi、ZigBee一样都属于短距离无线通信技术 </p>
+<p>答案： D </p>
+<p><em><strong>*65、按键KEY1连接到STM32芯片中的PA0引脚,请问PA0需要设置的上下拉模式为( ),如果用中断检测该按键,应该检测PA0引脚电平的( )。*</strong></em> </p>
+<p>A、 Pull-up;上升沿 </p>
+<p>B、 Pull-up;下升沿 </p>
+<p>C、 Pull-down;上升沿 </p>
+<p>D、 Pull-down;下升沿 </p>
+<p>答案： C </p>
+<p><em><strong>*66、STM32 F1的外部中断&#x2F;事件控制器中EXTI18是连接或对应以下哪个事件( )。*</strong></em> </p>
+<p>A、 GPIO中断事件 </p>
+<p>B、 RTC闹钟事件 </p>
+<p>C、 以太网唤醒事件 </p>
+<p>D、 USB事件 </p>
+<p>答案： D </p>
+<p><em><strong>*67、以下为STM32的GPIO端口配置寄存器的描述,在GPIO控制LED电路设计时,要使最大输出速度为10MHz,应该设置( )。*</strong></em> </p>
+<p>A、 CNFy[1:0] </p>
+<p>B、 MODEy[1:0] </p>
+<p>C、 MODE </p>
+<p>D、 CNF </p>
+<p>答案： B </p>
+<p><em><strong>*68、STM32的外部中断&#x2F;事件控制器(EXTI)支持( )个中断&#x2F;事件请求。*</strong></em> </p>
+<p>A、 16 </p>
+<p>B、 19 </p>
+<p>C、 43 </p>
+<p>D、 36 </p>
+<p>答案： B </p>
+<p><em><strong>*69、ARM Cortex-M3不可以通过( )唤醒CPU。*</strong></em> </p>
+<p>A、 I&#x2F;O端口 </p>
+<p>B、 RTC 闹钟 </p>
+<p>C、 USB唤醒事件 </p>
+<p>D、 PLL </p>
+<p>答案： D </p>
+<p><em><strong>*70、ESP8266 Wi-Fi模块断开现有热点连接的指令是( )。*</strong></em> </p>
+<p>A、 AT+CWMODE </p>
+<p>B、 AT+CWDHCP </p>
+<p>C、 AT+CWQAP </p>
+<p>D、 AT+CWSAP </p>
+<p>答案： C </p>
+<p><em><strong>*71、CC2530是面向( )通信的一种片上系统,是一种专用单片机。*</strong></em> </p>
+<p>A、 2.2G </p>
+<p>B、 2.4G </p>
+<p>C、 3.6G </p>
+<p>D、 5G </p>
+<p>答案： B </p>
+<p><em><strong>*72、使能P1_2 端口中断,需将P1IEN 寄存器的第2 位置为1,则下列选项中设置正确的是( )。*</strong></em> </p>
+<p>A、 P1IEN |&#x3D; 0x04; </p>
+<p>B、 P2IEN |&#x3D; 0x04; </p>
+<p>C、 P1IEN |&#x3D; 0x02;、; </p>
+<p>D、 P2IEN |&#x3D; 0x02; </p>
+<p>答案： A </p>
+<p><em><strong>*73、下列传输方式只有点对点的是( )。*</strong></em> </p>
+<p>A、 Wi-Fi </p>
+<p>B、 ZigBee </p>
+<p>C、 红外 </p>
+<p>D、 LoRa </p>
+<p>答案： C </p>
+<p><em><strong>*74、若有C语言语句:char a&#x3D;’\72’; 则变量a中( )。*</strong></em> </p>
+<p>A、 包含1个字符 </p>
+<p>B、 包含2个字符 </p>
+<p>C、 包含3个字符 </p>
+<p>D、 语句不合法 </p>
+<p>答案： A </p>
+<p><em><strong>*75、CC2530单片机的定时器1为( )位定时器。*</strong></em> </p>
+<p>A、 8位 </p>
+<p>B、 14位 </p>
+<p>C、 16位 </p>
+<p>D、 24位 </p>
+<p>答案： C </p>
+<p><em><strong>*76、以下是CC2530端口0方向寄存器的是( )。*</strong></em> </p>
+<p>A、 P0SEL </p>
+<p>B、 PLSEL </p>
+<p>C、 P0DIR </p>
+<p>D、 P0INP </p>
+<p>答案： C </p>
+<p><em><strong>*77、STM32通过PA0接LED灯,并进行开关LED灯操作,则PA0口需要设置的工作模式为( )。*</strong></em> </p>
+<p>A、 推挽输出 </p>
+<p>B、 开漏输出 </p>
+<p>C、 复用推挽输入 </p>
+<p>D、 复用开漏输入 </p>
+<p>答案： A </p>
+<p><em><strong>*78、STM32 ADC输入信号电压为1.1V,已知系统供电为3.3V,A&#x2F;D转换精度为12位,则A&#x2F;D转换结果应为( )。*</strong></em> </p>
+<p>A、 33 </p>
+<p>B、 132 </p>
+<p>C、 1365 </p>
+<p>D、 4096 </p>
+<p>答案： C </p>
+<p><em><strong>*79、IEEE 802.15.4在2.4G频段定义了( )个信道。*</strong></em> </p>
+<p>A、 27 </p>
+<p>B、 16 </p>
+<p>C、 11 </p>
+<p>D、 5 </p>
+<p>答案： B </p>
+<p><em><strong>*80、STM32F103中PC13与以下哪个GPIO引脚( )共用EXTI13这根中断线。*</strong></em> </p>
+<p>A、 PA15 </p>
+<p>B、 PA14 </p>
+<p>C、 PA13 </p>
+<p>D、 PA12 </p>
+<p>答案： C </p>
+<p><em><strong>*81、C语言中表示关系:X大于等于Y 并且Y大于等于Z,应使用以下哪个( )表达式。*</strong></em> </p>
+<p>A、 (x&gt;&#x3D;y)AND(y&gt;&#x3D;z) </p>
+<p>B、 (x&gt;&#x3D;y)&amp;&amp;(y&gt;&#x3D;z) </p>
+<p>C、 (x&gt;&#x3D;y&gt;&#x3D;z) </p>
+<p>D、 (x&gt;&#x3D;y)&amp;(y&gt;&#x3D;z) </p>
+<p>答案： B </p>
+<p><em><strong>*82、下列哪项不属于ZigBee技术体系结构的( )。*</strong></em> </p>
+<p>A、 应用层 </p>
+<p>B、 网络层 </p>
+<p>C、 传输层 </p>
+<p>D、 物理层 </p>
+<p>答案： C </p>
+<p><em><strong>*83、CoAP属于( )的协议。*</strong></em> </p>
+<p>A、 表示层 </p>
+<p>B、 会话层 </p>
+<p>C、 应用层 </p>
+<p>D、 传输层 </p>
+<p>答案： C </p>
+<p><em><strong>*84、下列选项中哪个是SPI的时钟引脚( )。*</strong></em> </p>
+<p>A、 MOSI </p>
+<p>B、 MISO </p>
+<p>C、 SCLK </p>
+<p>D、 CS </p>
+<p>答案： C </p>
+<p><em><strong>*85、在ZigBee网络中,一个主节点管理若干子节点,最多一个主节点可管理( )个子节点。*</strong></em> </p>
+<p>A、 32 </p>
+<p>B、 64 </p>
+<p>C、 128 </p>
+<p>D、 254 </p>
+<p>答案： D </p>
+<p><em><strong>*86、LoRa芯片与MCU通过SPI总线进行通信,SPI主机(MCU)通过( )连接到从机(MCU)的NSS引脚对从机进行选通的。*</strong></em> </p>
+<p>A、 拉高 </p>
+<p>B、 拉低 </p>
+<p>C、 先拉高再拉低 </p>
+<p>D、 先拉低再拉高 </p>
+<p>答案： B </p>
+<p><em><strong>*87、利尔达NB-IoT模组NB86-G的AT指令“AT+NMGS&#x3D;2,0001”中的数字“2”是指( )。*</strong></em> </p>
+<p>A、 发送的上行数据的字节数为2 </p>
+<p>B、 发送的设备地址为2 </p>
+<p>C、 发送的上行数据的值为2 </p>
+<p>D、 接收的传感数据的值为2 </p>
+<p>答案： A </p>
+<p><em><strong>*88、Wi-Fi芯片ESP8266扫描当前可用的AP热点列表的AT指令是( )。*</strong></em> </p>
+<p>A、 AT+CWDHCP </p>
+<p>B、 AT+CWLAP </p>
+<p>C、 AT+CWMODE </p>
+<p>D、 AT+RST </p>
+<p>答案： B </p>
+<p><em><strong>*89、一个12位分辨率的ADC,若供电电压为5V, 当输入模拟量为2V时,可计算出输出数字量为( )。*</strong></em> </p>
+<p>A、 102 </p>
+<p>B、 103 </p>
+<p>C、 1638 </p>
+<p>D、 1670 </p>
+<p>答案： C </p>
+<p><em><strong>*90、以下程序的输出结果是( )。*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*main( )*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*{*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*int k&#x3D;0x31;*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*printf(“%d,%c,%x \n”,k,k,k);*</strong></em> <em><strong>*<br>*</strong></em><em><strong>*}*</strong></em> </p>
+<p>A、 49,1,31 </p>
+<p>B、 31,31,31 </p>
+<p>C、 31,1,31 </p>
+<p>D、 49,1,49 </p>
+<p>答案： A </p>
+<p><em><strong>*91、单字节有符号十进制数 -2 其对应的十六进制可表示为( )。*</strong></em> </p>
+<p>A、 92 </p>
+<p>B、 82 </p>
+<p>C、 02 </p>
+<p>D、 FE </p>
+<p>答案： D </p>
+<p><em><strong>*92、不是SPI总线引脚的是( )。*</strong></em> </p>
+<p>A、 SCLK </p>
+<p>B、 SDAT </p>
+<p>C、 MOSI </p>
+<p>D、 MISO </p>
+<p>答案： B </p>
+<p><em><strong>*93、RS232通信中,表示逻辑1所使用的电平信号为( )。*</strong></em> </p>
+<p>A、 5V ~ 12V </p>
+<p>B、 5V </p>
+<p>C、 -15V ~ -3V </p>
+<p>D、 -5V ~ 0V </p>
+<p>答案： C </p>
+<p><em><strong>*94、LoRa芯片的信号发射功率由TX_OUTPUT_POWER设置,该值越大发射功率越大,传输距离越远,该值最大不得超过( )*</strong></em> </p>
+<p>A、 3dBm </p>
+<p>B、 10dBm </p>
+<p>C、 15dBm </p>
+<p>D、 20dBm </p>
+<p>答案： D </p>
+<p><em><strong>*95、采用双线结构的CAN总线必须使用( )抑制信号反射。*</strong></em> </p>
+<p>A、 终端电容 </p>
+<p>B、 终端电阻 </p>
+<p>C、 LC电路 </p>
+<p>D、 RC电路 </p>
+<p>答案： B </p>
+<p><em><strong>*96、通过HAL库对STM32的GPIO口配置为推挽输出模式时,初始化GPIO应该将Mode设置为( )*</strong></em> </p>
+<p>A、 GPIO_MODE_IT_FALLING </p>
+<p>B、 GPIO_MODE_OUTPUT_PP </p>
+<p>C、 GPIO_MODE_OUTPUT_OD </p>
+<p>D、 GPIO_MODE_ANALOG </p>
+<p>答案： B </p>
+<p><em><strong>*97、STM32F103VE芯片的定时器属于高级定时器的是( )。*</strong></em> </p>
+<p>A、 TIM1,TIM2 </p>
+<p>B、 TIM3,TIM4 </p>
+<p>C、 TIM6,TIM7 </p>
+<p>D、 TIM1 TIM8 </p>
+<p>答案： D </p>
+<p><em><strong>*98、HAL库代码中定义的uint16_t数据类型,可以表示的数值范围是( )。*</strong></em> </p>
+<p>A、 -32768 ~ 32767 </p>
+<p>B、 0 ~ 65535 </p>
+<p>C、 0~255 </p>
+<p>D、 0 ~ 819200 </p>
+<p>答案： B </p>
+<p><em><strong>*99、STM32的串口通信中断中,判断接收标志位不为空所使用的宏是( )*</strong></em> </p>
+<p>A、 UART_FLAG_IDLE </p>
+<p>B、 UART_FLAG_RXNE </p>
+<p>C、 UART_FLAG_ORE </p>
+<p>D、 UART_FLAG_TXE </p>
+<p>答案： B </p>
+<p><em><strong>*100、STM32F103VET6有3个( )位的A-D转换器。*</strong></em> </p>
+<p>A、 8 </p>
+<p>B、 12 </p>
+<p>C、 16 </p>
+<p>D、 24 </p>
+<p>答案： C </p>
+<p><em><strong>*101、在NB-IoT 网络中,设置对接的IoT 平台地址的AT指令是( )。*</strong></em> </p>
+<p>A、 AT+CMEE </p>
+<p>B、 AT+CFUN </p>
+<p>C、 AT+NCDP </p>
+<p>D、 AT+CIPMUX </p>
+<p>答案： C </p>
+<p><em><strong>*102、CC2530的串口通信中,修改( )寄存器对通信波特率有影响。*</strong></em> </p>
+<p>A、 U0GCR </p>
+<p>B、 UxDBUF </p>
+<p>C、 UxCSR </p>
+<p>D、 APCFG </p>
+<p>答案： A </p>
+<p><em><strong>*103、设置ESP8266 WiFi模块工作模式为soft-AP + station,发送的指令是( )。*</strong></em> </p>
+<p>A、 AT+CWMODE&#x3D;0 </p>
+<p>B、 AT+CWMODE&#x3D;1 </p>
+<p>C、 AT+CWMODE&#x3D;2 </p>
+<p>D、 AT+CWMODE&#x3D;3 </p>
+<p>答案： D </p>
+<p><em><strong>*104、ISO 11898标准的CAN总线的两条信号线CAN_H和CAN_L的传输的信号为3.5V与1.5V,此时表示的是( )。*</strong></em> </p>
+<p>A、 逻辑0 </p>
+<p>B、 逻辑1 </p>
+<p>C、 总线空闲 </p>
+<p>D、 不确定状态 </p>
+<p>答案： A </p>
+<p><em><strong>*105、通过RS485网络上传数据到网关时,如果数据域为两个字节,并且高字节为温度值,当上传的数据域中的数据是0x1840时,上传的温度值是( )℃。*</strong></em> </p>
+<p>A、 6 </p>
+<p>B、 18 </p>
+<p>C、 40 </p>
+<p>D、 24 </p>
+<p>答案： D </p>
+<p><em><strong>*106、CC2530中的定时器4为( )位定时计数器。*</strong></em> </p>
+<p>A、 8 </p>
+<p>B、 12 </p>
+<p>C、 16 </p>
+<p>D、 20 </p>
+<p>答案： A </p>
+<p><em><strong>*107、LoRa采用扩频技术,扩频因子LORA_SPREADING_FACTOR值越大,通信距离 ( )与传输速率( )。*</strong></em> </p>
+<p>A、 越近,越高 </p>
+<p>B、 越远,越高 </p>
+<p>C、 越近,越低 </p>
+<p>D、 越远,越低 </p>
+<p>答案： D </p>
+<p><em><strong>*108、bxCAN有( )个发送邮箱,由发送调度程序决定优先发送哪个。*</strong></em> </p>
+<p>A、 10 </p>
+<p>B、 2 </p>
+<p>C、 3 </p>
+<p>D、 5 </p>
+<p>答案： C </p>
+<p><em><strong>*109、STM32F103中的CAN接收筛选器有工作状态有( )。*</strong></em> </p>
+<p>A、 1个32位标识符掩码 </p>
+<p>B、 2个32位标识符列表 </p>
+<p>C、 2个16位标识符掩码 </p>
+<p>D、 4个16位标识符列表 </p>
+<p>答案： ABCD </p>
+<p><em><strong>*110、STM32F103中的CAN通信端口可以设置为以下哪些工作模式( )。*</strong></em> </p>
+<p>A、 CAN_MODE_NORMAL </p>
+<p>B、 CAN_MODE_LOOPBACK </p>
+<p>C、 CAN_MODE_SILENT </p>
+<p>D、 CAN_MODE_SILENT_LOOPBACK </p>
+<p>答案： ABCD </p>
+<p><em><strong>*111、常用的STM32软件的开发模式有( )。*</strong></em> </p>
+<p>A、 基于寄存器的开发模式 </p>
+<p>B、 基于标准外设库的开发模式 </p>
+<p>C、 基于STM32Cube的开发模式 </p>
+<p>D、 基于应用层的接口调用模式 </p>
+<p>答案： ABC </p>
+<p><em><strong>*112、关于SX1276&#x2F;77&#x2F;78收发器,说法正确的有( )。*</strong></em> </p>
+<p>A、 SX1276的扩频因子为6~12 </p>
+<p>B、 SX1276的带宽与SX1277的不同 </p>
+<p>C、 SX1277的扩频因子为6~9 </p>
+<p>D、 SX1278的扩频因子与SX1276的不同 </p>
+<p>答案： AC </p>
+<p><em><strong>*113、主流的WiFi标准和速率有( )。*</strong></em> </p>
+<p>A、 802.11k </p>
+<p>B、 802.11n </p>
+<p>C、 802.11m </p>
+<p>D、 802.11ax </p>
+<p>答案： BD </p>
+<p><em><strong>*114、目前,Modbus协议的所有权属于( )组织。*</strong></em> </p>
+<p>A、 3GPP </p>
+<p>B、 施耐得 </p>
+<p>C、 Sipex </p>
+<p>D、 Modbus-IDA </p>
+<p>答案： D </p>
+<p><em><strong>*115、LPWAN低功耗广域网又叫做蜂窝物联网,下列属于LPWAN的是( )。*</strong></em> </p>
+<p>A、 WiFi </p>
+<p>B、 NB-IoT </p>
+<p>C、 Bluetooth </p>
+<p>D、 ZigBee </p>
+<p>答案： B </p>
+<p><em><strong>*116、下列不属于NB-IoT应用领域的是( )。*</strong></em> </p>
+<p>A、 远程抄表 </p>
+<p>B、 共享单车 </p>
+<p>C、 智能井盖 </p>
+<p>D、 公交刷卡 </p>
+<p>答案： D </p>
+<p><em><strong>*117、以下技术中覆盖范围最小的是( )。*</strong></em> </p>
+<p>A、 CAN总线 </p>
+<p>B、 蓝牙 </p>
+<p>C、 LoRa </p>
+<p>D、 ZigBee </p>
+<p>答案： B </p>
+<p><em><strong>*118、ARM架构中针对实时操作系统的体系结构是。*</strong></em> </p>
+<p>A、 Cortex-A </p>
+<p>B、 Cortex-R </p>
+<p>C、 Cortex-M </p>
+<p>D、 以上都不正确 </p>
+<p>答案： B </p>
+<p><em><strong>*119、将金属导体温度变化转换为热电势变化的是( )。*</strong></em> </p>
+<p>A、 热电阻传感器 </p>
+<p>B、 热敏电阻传感器 </p>
+<p>C、 热电偶传感器 </p>
+<p>D、 热敏电偶传感器 </p>
+<p>答案： C </p>
+<p><em><strong>*120、STM32F103芯片内核为( )。*</strong></em> </p>
+<p>A、 Cortex-M0 </p>
+<p>B、 Cortex-M3 </p>
+<p>C、 Cortex-M4 </p>
+<p>D、 Cortex-M7 </p>
+<p>答案： B </p>
+<p><em><strong>*121、Ti公司提供的基于CC253x芯片的的BasicRF软件包,不包括( )。*</strong></em> </p>
+<p>A、 硬件层 </p>
+<p>B、 基本无线传输层 </p>
+<p>C、 数据链路层 </p>
+<p>D、 应用层 </p>
+<p>答案： C </p>
+<p><em><strong>*122、以下关于CAN总线的描述中,错误的是( )。*</strong></em> </p>
+<p>A、 CAN总线的数据传输实质是通过总线上的电压变化传输的。 </p>
+<p>B、 静态时两条信号线对地电压均为2.5V左右,表示逻辑1 </p>
+<p>C、 隐性状态是指两根导线的电压差值为0 </p>
+<p>D、 当CAN_H对地电压为3.5且CAN_L对地电压为0时,表示逻辑0 </p>
+<p>答案： D </p>
+<p><em><strong>*123、在802.11无线局域网系列标准,主要工作在( )开放频段。*</strong></em> </p>
+<p>A、 2.4GHz </p>
+<p>B、 868MHz </p>
+<p>C、 915MHz </p>
+<p>D、 433MHz </p>
+<p>答案： A </p>
+<p><em><strong>*124、SHT11是一种数字( )。*</strong></em> </p>
+<p>A、 声音传感器 </p>
+<p>B、 温湿度传感器 </p>
+<p>C、 空气质量传感器 </p>
+<p>D、 二氧化碳传感器 </p>
+<p>答案： B </p>
+<p><em><strong>*125、以下关于Modbus协议描述中,错误的是( )。*</strong></em> </p>
+<p>A、 Modbus是一种并行通信协议 </p>
+<p>B、 Modbus是一种单主&#x2F;多从的通信协议 </p>
+<p>C、 Modbus通信协议是应用层协议 </p>
+<p>D、 Modbus通信协议包括RTU、ASCII、TCP </p>
+<p>答案： A </p>
+<p><em><strong>*126、若要配置CC2530芯片的P1.0、P1.1引脚为通用I&#x2F;O口,则以下配置代码正确的是( )*</strong></em> </p>
+<p>A、 P1SEL &amp;&#x3D;~ 0x03; </p>
+<p>B、 P1SEL &amp;&#x3D; 0x03; </p>
+<p>C、 P1SEL &amp;&#x3D; (0x00&lt;&lt;1|0x01&lt;&lt;0) </p>
+<p>D、 P1DIR &amp;&#x3D; 0x03; </p>
+<p>答案： A </p>
+<p><em><strong>*127、以下关于RS-485总线,说法错误的是( )。*</strong></em> </p>
+<p>A、 RS-485总线是两线制,半双工 </p>
+<p>B、 RS-485总线两线间电压差+2V~+6V,代表逻辑1 </p>
+<p>C、 RS-485接口可以采用屏蔽双绞线传输 </p>
+<p>D、 RS-485总线的最大传输速率为200Kbps </p>
+<p>答案： D </p>
+<p><em><strong>*128、将传感器在使用中或者存储后进行的性能复测称为( )。*</strong></em> </p>
+<p>A、 重置 </p>
+<p>B、 更新 </p>
+<p>C、 校准 </p>
+<p>D、 测试 </p>
+<p>答案： C </p>
+<p><em><strong>*129、CC2530F256芯片自带ADC的ENOB(有效数字位)是( )位*</strong></em> </p>
+<p>A、 8 </p>
+<p>B、 12 </p>
+<p>C、 14 </p>
+<p>D、 16 </p>
+<p>答案： B </p>
+<p><em><strong>*130、以下不属于SPI总线通信的是()。*</strong></em> </p>
+<p>A、 MOSI </p>
+<p>B、 MISO </p>
+<p>C、 SDA </p>
+<p>D、 SCLK </p>
+<p>答案： C </p>
+<p><em><strong>*131、设置当前AP热点SSID名称,登陆密码信道和加密方式的AT指令是( )。*</strong></em> </p>
+<p>A、 AT+CWDHCP </p>
+<p>B、 AT+CWSAP_CUR </p>
+<p>C、 AT+CWMODE </p>
+<p>D、 AT+RST </p>
+<p>答案： B </p>
+<p><em><strong>*132、关于CC2530的串口通信模块,说法错误的是( )。*</strong></em> </p>
+<p>A、 有两个串口通信接口USART0和USATR1 </p>
+<p>B、 串口可以运行于异步UART模式 </p>
+<p>C、 串口可以运行于同步SPI模式 </p>
+<p>D、 通过U0DBUF寄存器可以设置串口对应外部I&#x2F;O口引脚映射关系 </p>
+<p>答案： D </p>
+<p><em><strong>*133、下列哪个不是LoRa通信技术的特点( )。*</strong></em> </p>
+<p>A、 低功耗 </p>
+<p>B、 多节点 </p>
+<p>C、 低成本 </p>
+<p>D、 短距离 </p>
+<p>答案： D </p>
+<p><em><strong>*134、当CC2530的USART数据发送时,会查询完成标志( ),当该标志被置1时,表示数据发送完成。*</strong></em> </p>
+<p>A、 URX0IF </p>
+<p>B、 U0GCR </p>
+<p>C、 UTX0IF </p>
+<p>D、 UxDBUF </p>
+<p>答案： C </p>
+<p><em><strong>*135、关于NB-IoT的AT指令:AT+CSQ说法正确的是( )。*</strong></em> </p>
+<p>A、 该指令用于查询连网的IP地址 </p>
+<p>B、 返回的第一个数值的范围是1-31 </p>
+<p>C、 返回值的第一个参数99代表没有网络 </p>
+<p>D、 返回值的第二个参数目前一直都是99 </p>
+<p>答案： CD </p>
+<p><em><strong>*136、下列关于NB-IoT叙述正确的是( )。*</strong></em> </p>
+<p>A、 频谱窄:200kHz </p>
+<p>B、 该技术降低了终端的激活比,降低了终端基带的复杂度 </p>
+<p>C、 降低了信号的功率谱密度,提升了信号的覆盖增益,并且提升了频谱利用效率 </p>
+<p>D、 相同的数据包重复传输也可获得更好的覆盖增益 </p>
+<p>答案： ABD </p>
+<p><em><strong>*137、下列表述正确的是( )。*</strong></em> </p>
+<p>A、 -1反码为1111 1110 </p>
+<p>B、 0xFF的十进制表述为256 </p>
+<p>C、 -1补码为1111 1111 </p>
+<p>D、 +0和-0的补码均为00000000 </p>
+<p>答案： ACD </p>
+<p><em><strong>*138、湿敏传感器按照元件输出的电学量形式可分为( )。*</strong></em> </p>
+<p>A、 电阻式 </p>
+<p>B、 电容式 </p>
+<p>C、 频率式 </p>
+<p>D、 电感式 </p>
+<p>答案： ABC </p>
+<p><em><strong>*139、正温度系数热敏电阻的阻值随温度升高而( )*</strong></em> </p>
+<p>A、 先升高再降低 </p>
+<p>B、 先降低再升高 </p>
+<p>C、 降低 </p>
+<p>D、 升高 </p>
+<p>答案： D </p>
+<p><em><strong>*140、Modbus网络中主设备发送功能码0x03,如果从设备执行正确返回,则从设备返回帧中的功能码是( )。*</strong></em> </p>
+<p>A、 0x03 </p>
+<p>B、 0x83 </p>
+<p>C、 0x00 </p>
+<p>D、 0xFF </p>
+<p>答案： A </p>
+<p><em><strong>*141、在Modbus网络中,主设备需要向所有的从设备发送请求报文时,该请求报文的设备地址为( )。*</strong></em> </p>
+<p>A、 0x08 </p>
+<p>B、 0x04 </p>
+<p>C、 0x02 </p>
+<p>D、 0x00 </p>
+<p>答案： D </p>
+<p><em><strong>*142、LoRa芯片与MCU通过( )进行通信。*</strong></em> </p>
+<p>A、 UART </p>
+<p>B、 CAN总线 </p>
+<p>C、 SPI </p>
+<p>D、 I 2C </p>
+<p>答案： C </p>
+<p><em><strong>*143、STM32的TIM6定时器,时钟源频率为72MHz,TIMx_PSC配置为7199,定时时间配置为1秒钟,则自动重载寄存器TIMx_ARR的值为( )。*</strong></em> </p>
+<p>A、 9999 </p>
+<p>B、 999 </p>
+<p>C、 10000 </p>
+<p>D、 1000 </p>
+<p>答案： A </p>
+<p><em><strong>*144、若有语句 int *point , a&#x3D;4 ; point &#x3D; &a; 下面均代表地址的一组选项是( )。*</strong></em> </p>
+<p>A、 a , point , *&amp;a </p>
+<p>B、 &amp;*a , &amp;a , *point </p>
+<p>C、 *&amp;point, *point , &amp;a </p>
+<p>D、 &amp;a , &amp;*point , point </p>
+<p>答案： D </p>
+<p><em><strong>*145、LPWAN低功耗广域网又叫做蜂窝物联网，下列属于LPWAN的是( )。*</strong></em> </p>
+<p>A、 WiFi </p>
+<p>B、 NB-IoT </p>
+<p>C、 Bluetooth </p>
+<p>D、 ZigBee </p>
+<p>答案： B </p>
+<p><em><strong>*146、关于BasicRF描述错误的是( )。*</strong></em> </p>
+<p>A、 包含了IEEE802.15.4标准的数据包的收发功能 </p>
+<p>B、 可以让两个节点进行简单的通信 </p>
+<p>C、 可以自动组网 </p>
+<p>D、 没有自动重发的功能 </p>
+<p>答案： C </p>
+<p><em><strong>*147、basicRfCfg_t数据结构中的panId成员是( )。*</strong></em> </p>
+<p>A、 发送模块地址 </p>
+<p>B、 接收模块地址 </p>
+<p>C、 网络ID </p>
+<p>D、 通信信道 </p>
+<p>答案： C </p>
+<p><em><strong>*148、调用basicRfPacketIsReady()函数的目的是( )。*</strong></em> </p>
+<p>A、 basicRf是否地址配置好了 </p>
+<p>B、 检查用户层是否接收到数据 </p>
+<p>C、 是否发送数据完毕 </p>
+<p>D、 是否是无线数据包 </p>
+<p>答案： B </p>
+<p><em><strong>*149、要把CC2530芯片的P1.4 P1.1设置为输出,不影响其它端口的设置,正确的语句是( )。*</strong></em> </p>
+<p>A、 P1DIRL&amp;&#x3D;~0x0D </p>
+<p>B、 P1DIR&amp;&#x3D;~0x12 </p>
+<p>C、 P1DIRL|&#x3D;0x12 </p>
+<p>D、 P1DIR|&#x3D;0x11 </p>
+<p>答案： C </p>
+<p><em><strong>*150、在物联网云平台上创建NB-IoT项目,当添加设备时选择的通讯协议是( )。*</strong></em> </p>
+<p>A、 TCP </p>
+<p>B、 MQTT </p>
+<p>C、 HTTP </p>
+<p>D、 LWM2M </p>
+<p>答案： D </p>
+<p><em><strong>*151、低速CAN总线,要求在每根总线上各串联一个( )的电阻。*</strong></em> </p>
+<p>A、 240Ω </p>
+<p>B、 120Ω </p>
+<p>C、 2.2kΩ </p>
+<p>D、 10kΩ </p>
+<p>答案： C </p>
+<p><em><strong>*152、不属于中国电信NB-IOT UE终端对接流程的是( )。*</strong></em> </p>
+<p>A、 AT+CWLAP </p>
+<p>B、 AT+CFUN&#x3D;1 </p>
+<p>C、 AT+CGATT&#x3D;1 </p>
+<p>D、 AT+NNMI&#x3D;1 </p>
+<p>答案： A </p>
+<p><em><strong>*153、STM32CubeMX中,需要对STM32的中断进行设置是在“Pinout&amp;Configuration”标签页左侧的“System Core”选项,选择( )选项。*</strong></em> </p>
+<p>A、 DMA </p>
+<p>B、 GPIO </p>
+<p>C、 IWDG </p>
+<p>D、 NVIC </p>
+<p>答案： D </p>
+<p><em><strong>*154、RS-485的电气特性:逻辑”1”以两线间的电压差为( )V表示。*</strong></em> </p>
+<p>A、 (-3~-15)V </p>
+<p>B、 (+3~+15)V </p>
+<p>C、 (-2~-6)V </p>
+<p>D、 (+2~+6)V </p>
+<p>答案： D </p>
+<p><em><strong>*155、发动Wi-Fi模块ESP8266连接AP热点的AT指令是( )。*</strong></em> </p>
+<p>A、 AT+CWDHCP </p>
+<p>B、 AT+CWLAP </p>
+<p>C、 AT+CWMODE </p>
+<p>D、 AT+CWJAP </p>
+<p>答案： D </p>
+<p><em><strong>*156、0xFE对应的十进制可表示为( )。*</strong></em> </p>
+<p>A、 256 </p>
+<p>B、 1514 </p>
+<p>C、 254 </p>
+<p>D、 255 </p>
+<p>答案： C </p>
+<p><em><strong>*157、通讯协议中校验位的主要作用是( )。*</strong></em> </p>
+<p>A、 保证一帧数据的准确接收 </p>
+<p>B、 用作一帧数据的结束位 </p>
+<p>C、 求一帧数据的累加和 </p>
+<p>D、 加快应用程序的数据传输和命令的解析 </p>
+<p>答案： A </p>
+<p><em><strong>*158、在NB-IoT常用AT指令中,开启下行数据通知的的指令是( )。*</strong></em> </p>
+<p>A、 AT+CFUN&#x3D;1 </p>
+<p>B、 AT+NNMI&#x3D;1 </p>
+<p>C、 AT+CGATT&#x3D;1 </p>
+<p>D、 AT+CSCON&#x3D;1 </p>
+<p>答案： B </p>
+<p><em><strong>*159、下列哪些是NB-IoT网络体系架构组成部分( )。*</strong></em> </p>
+<p>A、 终端 </p>
+<p>B、 基站 </p>
+<p>C、 IoT平台 </p>
+<p>D、 应用服务器 </p>
+<p>答案： ABCD </p>
+<p><em><strong>*160、bxCAN的工作模式主要有( )。*</strong></em> </p>
+<p>A、 化 </p>
+<p>B、 正常 </p>
+<p>C、 睡眠 </p>
+<p>D、 复位 </p>
+<p>答案： ABC </p>
+<p><em><strong>*161、Wi-Fi的组网结构有( )。*</strong></em> </p>
+<p>A、 一对多 </p>
+<p>B、 多对一 </p>
+<p>C、 点对点 </p>
+<p>D、 多对多 </p>
+<p>答案： AC </p>
+<p><em><strong>*162、为了降低终端功耗,延长终端电池寿命,NB-IoT引入了( )技术*</strong></em> </p>
+<p>A、 eDRX </p>
+<p>B、 PSM </p>
+<p>C、 DRX </p>
+<p>D、 MIMO </p>
+<p>答案： AB </p>
+<p><em><strong>*163、下列关于LoRa技术的说法正确的有( )。*</strong></em> </p>
+<p>A、 LoRa调制解调器采用隐式和显式两种数据包格式 </p>
+<p>B、 LoRa数据包包含前导码、可选报头、数据有效负载 </p>
+<p>C、 扩频因子取值为7-14 </p>
+<p>D、 带宽越小则距离超近 </p>
+<p>答案： AB </p>
+<p><em><strong>*164、CC2530F256芯片自带ADC的ENOB(有效数字位)是( )位。*</strong></em> </p>
+<p>A、 8 </p>
+<p>B、 12 </p>
+<p>C、 14 </p>
+<p>D、 16 </p>
+<p>答案： B </p>
+<p><em><strong>*165、短距离无线通信相关标准包括( )。*</strong></em> </p>
+<p>A、 基于NFC 技术的接口和协议标准 </p>
+<p>B、 低速物理层和MAC 层增强技术标准 </p>
+<p>C、 基于ZigBee 的网络层 </p>
+<p>D、 应用层标准等 </p>
+<p>答案： ABCD </p>
+<p><em><strong>*166、CC2530的无线通信部分工作频段为( )。*</strong></em> </p>
+<p>A、 315MHz </p>
+<p>B、 433MHz </p>
+<p>C、 2.4GHz </p>
+<p>D、 5.8GHz </p>
+<p>答案： C </p>
+<p><em><strong>*167、CC2530哪种工作模式(供电模式)下功耗最低( )。*</strong></em> </p>
+<p>A、 主动模式 </p>
+<p>B、 空闲模式 </p>
+<p>C、 PM1 </p>
+<p>D、 PM3 </p>
+<p>答案： D </p>
+<p><em><strong>*168、CC2530有几个16位定时&#x2F;计数器( )。*</strong></em> </p>
+<p>A、 1个 </p>
+<p>B、 2个 </p>
+<p>C、 3个 </p>
+<p>D、 4个 </p>
+<p>答案： A </p>
+<p><em><strong>*169、Cortex-M3处理器采用的架构是( )。*</strong></em> </p>
+<p>A、 v4T </p>
+<p>B、 v5TE </p>
+<p>C、 v6 </p>
+<p>D、 v7 </p>
+<p>答案： D </p>
+<p><em><strong>*170、STM32F1xx的NVIC用4位数字对NMI中断的抢占和响应优先级分组,共有几组模式( )。*</strong></em> </p>
+<p>A、 2组 </p>
+<p>B、 4组 </p>
+<p>C、 5组 </p>
+<p>D、 6组 </p>
+<p>答案： C </p>
+<p><em><strong>*171、STM32F1xx处理器有8个16位定时器,其中TIM2定时器的类型是( )。*</strong></em> </p>
+<p>A、 高级控制定时器 </p>
+<p>B、 基本定时器 </p>
+<p>C、 通用定时器 </p>
+<p>D、 以上都不正确 </p>
+<p>答案： C </p>
+<p><em><strong>*172、Wi-Fi 6采用的是IEEE802.11家族中哪个标准( )。*</strong></em> </p>
+<p>A、 n </p>
+<p>B、 ac </p>
+<p>C、 ah </p>
+<p>D、 ax </p>
+<p>答案： D </p>
+<p><em><strong>*173、Wi-Fi 6的MU-MIMO技术,允许路由器同时与最多几个设备通信( )。*</strong></em> </p>
+<p>A、 2个 </p>
+<p>B、 4个 </p>
+<p>C、 8个 </p>
+<p>D、 16个 </p>
+<p>答案： C </p>
+<p><em><strong>*174、CAN总线采用差分驱动模式,总线要传递逻辑“1”时,CANH和CANL线电平之差为( )。*</strong></em> </p>
+<p>A、 0V </p>
+<p>B、 2V </p>
+<p>C、 3.3V </p>
+<p>D、 5V </p>
+<p>答案： A </p>
+<p><em><strong>*175、两个CAN通信节点同时向总线输出,一个输出“0”,一个输出“1”,则总线输出( )。*</strong></em> </p>
+<p>A、 0 </p>
+<p>B、 1 </p>
+<p>C、 总线错误 </p>
+<p>D、 随机 </p>
+<p>答案： A </p>
+<p><em><strong>*176、RS485总线设备采用差分驱动模式,有A、B两根信号线,设备连接总线时应( )。*</strong></em> </p>
+<p>A、 同名端相连 </p>
+<p>B、 交叉相连 </p>
+<p>C、 任意连接 </p>
+<p>D、 接地 </p>
+<p>答案： A </p>
+<p><em><strong>*177、Modbus协议网络一般采用“问-答”形式通信中,该网络中主机数量为( )。*</strong></em> </p>
+<p>A、 1个 </p>
+<p>B、 2个 </p>
+<p>C、 3个 </p>
+<p>D、 不限 </p>
+<p>答案： A </p>
+<p><em><strong>*178、NB-IoT频谱利用率高,单个小区200kHz带宽情况,终端数量可达( )。*</strong></em> </p>
+<p>A、 8个 </p>
+<p>B、 128个 </p>
+<p>C、 1万个 </p>
+<p>D、 5-10万个 </p>
+<p>答案： D </p>
+<p><em><strong>*179、NB-IoT网络中,用来关闭NB终端设备的AT指令是( )。*</strong></em> </p>
+<p>A、 AT+CMEE&#x3D;1 </p>
+<p>B、 AT+CGSN&#x3D;1 </p>
+<p>C、 AT+CFUN&#x3D;1 </p>
+<p>D、 AT+NBAND&#x3D;1 </p>
+<p>答案： C </p>
+<p><em><strong>*180、LoRa是一种基于扩频的通信技术,当扩频因子为6时,码片速率&#x2F;符号速率比为( )。*</strong></em> </p>
+<p>A、 1&#x2F;6 </p>
+<p>B、 6 </p>
+<p>C、 1&#x2F;64 </p>
+<p>D、 64 </p>
+<p>答案： D </p>
+<p><em><strong>*181、LoRa相比蓝牙、Wi-Fi等技术,有着更远的传输距离,在典型郊区情况下最远可传输距离( )。*</strong></em> </p>
+<p>A、 一百米以内 </p>
+<p>B、 100-100米左右 </p>
+<p>C、 10-20千米左右 </p>
+<p>D、 100千米以上 </p>
+<p>答案： C </p>
+<p><em><strong>*182、SX1276&#x2F;78是最经常使用的LoRa芯片,其输出功率最大可达20dBm,,接收灵敏度最高可达-148dBm,如果使用一对SX1276&#x2F;78做收发数据,其最大无线链路预算可达( )。*</strong></em> </p>
+<p>A、 148dB </p>
+<p>B、 168dB </p>
+<p>C、 128dB </p>
+<p>D、 -128dB </p>
+<p>答案： B </p>
+<p><em><strong>*183、basicRFCfg_t是BasicRF协议中一个重要的结构体,其成员变量“myAddr”表示( )。*</strong></em> </p>
+<p>A、 网络地址 </p>
+<p>B、 发送方地址 </p>
+<p>C、 射频通道 </p>
+<p>D、 接收方地址 </p>
+<p>答案： B </p>
+<p><em><strong>*184、NB-IoT的AT指令集中AT+CGATT?的含义是( )。*</strong></em> </p>
+<p>A、 指令错误 </p>
+<p>B、 附着网络 </p>
+<p>C、 查询网络附着状态 </p>
+<p>D、 去网络附着 </p>
+<p>答案： C </p>
+<p><em><strong>*185、SPI总线上主机向从机发送数据时,数据是通过( )信号线传输的(。*</strong></em> </p>
+<p>A、 SSN </p>
+<p>B、 SCK </p>
+<p>C、 MISO </p>
+<p>D、 MOSI </p>
+<p>答案： D </p>
+<p><em><strong>*186、关于LoRa技术,以下说法正确的是( )。*</strong></em> </p>
+<p>A、 相同功耗下,能比Wi-Fi传输更远距离 </p>
+<p>B、 发射功率一定时,带宽越宽传输距离越远 </p>
+<p>C、 发射功率一定时,带宽越宽传输距离越近 </p>
+<p>D、 其他参数相同,扩频因子越大,传输速率越高 </p>
+<p>答案： AC </p>
+<p><em><strong>*187、关于Modbus通信协议的说法正确的是( )。*</strong></em> </p>
+<p>A、 只能在RS-485总线上运行 </p>
+<p>B、 可运行在多种介质上 </p>
+<p>C、 每个Modbus总线上只能有一个主机 </p>
+<p>D、 Modbus指令都是固定功能的 </p>
+<p>答案： BC </p>
+<p><em><strong>*188、下列配置CC2530芯片P1.0-P1.3引脚为输出模式的语句正确的有( )。*</strong></em> </p>
+<p>A、 P1DIR |&#x3D; 0x0F; </p>
+<p>B、 P1DIR &amp;&#x3D; ~0x0F; </p>
+<p>C、 P1DIR |&#x3D;(1&lt;&lt;0)|(1&lt;&lt;1)|(1&lt;&lt;2)|(1&lt;&lt;3); </p>
+<p>D、 P1DIR &#x3D; 0x0F; </p>
+<p>答案： BD </p>
+<p><em><strong>*189、下列关于光敏传感器的说法正确的有( )。*</strong></em> </p>
+<p>A、 光照度传感器只能做成模拟量传感器模块 </p>
+<p>B、 光敏电阻型光照度传感器是能量转换型传感器 </p>
+<p>C、 光照度传感器可以做成开关量传感器模块 </p>
+<p>D、 光敏电阻式光照度传感器是能量控制型传感器 </p>
+<p>答案： BD </p>
+<p><em><strong>*190、Wi-Fi 技术标准802.11n使用2.4GGHz频带的信号划分,实际一共有( )信道。*</strong></em> </p>
+<p>A、 7 </p>
+<p>B、 14 </p>
+<p>C、 28 </p>
+<p>D、 32 </p>
+<p>答案： B </p>
+<p><em><strong>*191、下列哪项不属于ZigBee技术体系结构的( )*</strong></em> </p>
+<p>A、 应用层 </p>
+<p>B、 网络层 </p>
+<p>C、 传输层 </p>
+<p>D、 物理层 </p>
+<p>答案： C </p>
+<p><em><strong>*192、关于Flame-1000-D传感器,以下说法正确的是( )。*</strong></em> </p>
+<p>A、 它是红外传感器 </p>
+<p>B、 它是火焰传感器 </p>
+<p>C、 它可输出模拟量 </p>
+<p>D、 它可以输出数字量 </p>
+<p>答案： ABCD </p>
+<p><em><strong>*193、以下关于Modbus的功能码说法正确的是( )。*</strong></em> </p>
+<p>A、 0x01用于读线圈 </p>
+<p>B、 0x03用于读保持寄存器 </p>
+<p>C、 0x06用于写单个寄存器 </p>
+<p>D、 0x10用于写多个线圈 </p>
+<p>答案： ABC </p>
+<p><em><strong>*194、若要配置CC2530芯片的P1.0、P1.1引脚为通用I&#x2F;O口,则以下配置代码错误的是( )。*</strong></em> </p>
+<p>A、 P1SEL &amp;&#x3D;~ 0x03; </p>
+<p>B、 P1SEL &amp;&#x3D; 0x03; </p>
+<p>C、 P1SEL &amp;&#x3D;~ (0x01&lt;&lt;1|0x01&lt;&lt;0) </p>
+<p>D、 P1DIR &amp;&#x3D; 0x03; </p>
+<p>答案： BD </p>
+<p><em><strong>*195、关于STM32的优先级,说法正确的是( )。*</strong></em> </p>
+<p>A、 级别的值越大,优先级越高。 </p>
+<p>B、 级别的值越小,优先级越高。 </p>
+<p>C、 响应优先级高的可以在响应优先级低的中断内嵌套中断。 </p>
+<p>D、 抢占优先级高的可以在抢占优先级低的中断内嵌套中断。 </p>
+<p>答案： BD </p>
+<p><em><strong>*196、一个WSN节点通常由( )构成。*</strong></em> </p>
+<p>A、 传感器(感知芯片) </p>
+<p>B、 微控制器 </p>
+<p>C、 无线收发模块 </p>
+<p>D、 电源模块 </p>
+<p>答案： ABCD </p>
+<p><em><strong>*197、*</strong></em></p>
+<p><em><strong>*1、*</strong></em><em><strong>*补全核心代码HAL_TIM_PeriodElapsedCallback里面的部分*</strong></em></p>
+<p>if(TIM6 &#x3D;&#x3D; htim-&gt;Instance)</p>
+<p>{</p>
+<p>(1)_________;</p>
+<p>(2)_________</p>
+<p>(3)_________;</p>
+<p>HAL_GPIO_WritePin(GPIOE,0xff,GPIO_PIN_SET);</p>
+<p>HAL_GPIO_WritePin(GPIOE,num,GPIO_PIN_RESET);</p>
+<p>}</p>
+<p>答案： </p>
+<p>if(TIM6 &#x3D;&#x3D; htim-&gt;Instance)</p>
+<p>{</p>
+<p>num &#x3D; num&gt;&gt;1;</p>
+<p>if(num &#x3D;&#x3D; 0)</p>
+<p>num &#x3D; 0x80;</p>
+<p>HAL_GPIO_WritePin(GPIOE,0xff,GPIO_PIN_SET);</p>
+<p>HAL_GPIO_WritePin(GPIOE,num,GPIO_PIN_RESET);</p>
+<p>}</p>
+<p><em><strong>*198、*</strong></em></p>
+<p><em><strong>*1、*</strong></em><em><strong>*补全实验2流水灯的使能TIM6更新中断和添加TIM6中断服务程序代码。*</strong></em></p>
+<p>if(HAL_TIM_Base_Start_IT(&amp;htim6)!&#x3D;HAL_OK)</p>
+<p> {</p>
+<p> Error_Handler();</p>
+<p> }</p>
+<p>void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)</p>
+<p>{</p>
+<p>if((1)_________ &#x3D;&#x3D; htim-&gt;Instance)</p>
+<p>{</p>
+<p>num &#x3D; num&gt;&gt;1;</p>
+<p>if(num &#x3D;&#x3D; 0)</p>
+<p>num &#x3D; 0x80;</p>
+<p>HAL_GPIO_WritePin(GPIOE,0xff,GPIO_PIN_(2)_________);</p>
+<p>HAL_GPIO_WritePin(GPIOE,num,GPIO_PIN_(3)_________);</p>
+<p>}</p>
+<p>}</p>
+<p>答案： </p>
+<p>if(HAL_TIM_Base_Start_IT(&amp;htim6)!&#x3D;HAL_OK)</p>
+<p> {</p>
+<p> Error_Handler();</p>
+<p> }</p>
+<p>void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)</p>
+<p>{</p>
+<p>if(TIM6 &#x3D;&#x3D; htim-&gt;Instance)</p>
+<p>{</p>
+<p>num &#x3D; num&gt;&gt;1;</p>
+<p>if(num &#x3D;&#x3D; 0)</p>
+<p>num &#x3D; 0x80;</p>
+<p>HAL_GPIO_WritePin(GPIOE,0xff,GPIO_PIN_SET);</p>
+<p>HAL_GPIO_WritePin(GPIOE,num,GPIO_PIN_RESET);</p>
+<p>}</p>
+<p>}</p>
+<p><em><strong>*199、*</strong></em></p>
+<p><em><strong>*请说明STM32F103VET6型号中各部分的含义*</strong></em></p>
+<p>答案： </p>
+<p><img src="file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml11672\wps1.png" alt="img" loading="lazy"></p>
+<p><em><strong>*200、*</strong></em></p>
+<p><em><strong>*5、*</strong></em><em><strong>*请写出中断处理函数IRQHandler（）*</strong></em></p>
+<p>if((__HAL_UART_GET_FLAG(&amp;huart1,UART_FLAG_RXNE) !&#x3D; RESET))</p>
+<p>{</p>
+<p>__HAL_UART_ENABLE_IT(&amp;huart1,UART_IT_IDLE);</p>
+<p>uart1RxBuff[uart1RxCounter] &#x3D; (uint8_t)(huart1.Instance-&gt;DR &amp; (uint8_t)0x00ff);</p>
+<p>(1)_________;</p>
+<p>__HAL_UART_CLEAR_FLAG(&amp;huart1,UART_FLAG_RXNE);</p>
+<p>}</p>
+<p>if((__HAL_UART_GET_FLAG(&amp;huart1,UART_FLAG_IDLE) !&#x3D; RESET))</p>
+<p>{</p>
+<p>__HAL_UART_DISABLE_IT(&amp;huart1,UART_IT_IDLE);</p>
+<p>(2)_________;</p>
+<p>}</p>
+<p>答案： </p>
+<p>if((__HAL_UART_GET_FLAG(&amp;huart1,UART_FLAG_RXNE) !&#x3D; RESET))</p>
+<p>{</p>
+<p>__HAL_UART_ENABLE_IT(&amp;huart1,UART_IT_IDLE);</p>
+<p>uart1RxBuff[uart1RxCounter] &#x3D; (uint8_t)(huart1.Instance-&gt;DR &amp; (uint8_t)0x00ff);</p>
+<p>uart1RxCounter++;</p>
+<p>__HAL_UART_CLEAR_FLAG(&amp;huart1,UART_FLAG_RXNE);</p>
+<p>}</p>
+<p>if((__HAL_UART_GET_FLAG(&amp;huart1,UART_FLAG_IDLE) !&#x3D; RESET))</p>
+<p>{</p>
+<p>__HAL_UART_DISABLE_IT(&amp;huart1,UART_IT_IDLE);</p>
+<p>uart1RxState &#x3D; 1;</p>
+<p>}</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1></div></section><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="Donate" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><span class="icon iconify" data-icon="ri:hand-coin-line"></span></span><div id="reward-comment">如果以上文章帮助到了你，不妨请我喝杯咖啡</div><div id="qr" style="display:none;"><div style="display:inline-block"><a target="_blank" rel="noopener" href="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213162954156.png"><img loading="lazy" src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213162954156.png" alt="支付宝" title="支付宝"></a><div><span style="color:#00A3EE"><span class="icon iconify" data-icon="ri:alipay-line"></span></span></div></div><div style="display:inline-block"><a target="_blank" rel="noopener" href="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213163004236.png"><img loading="lazy" src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213163004236.png" alt="微信支付" title="微信支付"></a><div><span style="color:#2DC100"><span class="icon iconify" data-icon="ri:wechat-pay-line"></span></span></div></div></div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>Post author: </strong>许步鸢</li><li class="post-copyright-link"><strong>Post link: </strong><a href="https://www.xubuyuan.top/2024/12/12/%E4%BC%A0%E6%84%9F%E7%BD%91%E9%A2%98%E5%BA%93/" title="2024春1X传感网应用开发Ⅱ-题库">https://www.xubuyuan.top/2024/12/12/%E4%BC%A0%E6%84%9F%E7%BD%91%E9%A2%98%E5%BA%93/</a></li><li class="post-copyright-license"><strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><span class="icon iconify" data-icon="ri:creative-commons-line"></span><span class="icon iconify" data-icon="ri:creative-commons-by-line"></span><span class="icon iconify" data-icon="ri:creative-commons-nc-line"></span><span class="icon iconify" data-icon="ri:creative-commons-sa-line"></span></a> unless otherwise stated.</li></ul></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/2024/12/12/OpenEuler/" rel="prev" title="OpenEuler"><span class="icon iconify" data-icon="ri:arrow-left-s-line"></span><span class="post-nav-text">OpenEuler</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/2024/11/16/%E5%8D%8E%E4%B8%89%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4/" rel="next" title="华三交换机配置命令"><span class="post-nav-text">华三交换机配置命令</span><span class="icon iconify" data-icon="ri:arrow-right-s-line"></span></a></div></div></div><div class="hty-card" id="comment"></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2024 </span><span class="with-love" id="animate"><span class="icon iconify" data-icon="ri:cloud-line"></span></span><span class="author"> 许步鸢</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.10.11</span></div><div class="live-time"><span>本博客已运行</span><span id="display_live_time"></span><span class="moe-text">(●'◡'●)</span><script>function blog_live_time() {
+  setTimeout(blog_live_time, 1000);
+  const start = new Date('2024-09-06T09:00:00');
+  const now = new Date();
+  const timeDiff = (now.getTime() - start.getTime());
+  const msPerMinute = 60 * 1000;
+  const msPerHour = 60 * msPerMinute;
+  const msPerDay = 24 * msPerHour;
+  const passDay = Math.floor(timeDiff / msPerDay);
+  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
+  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
+  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
+  display_live_time.innerHTML = ` ${passDay} Days ${passHour} Hours ${passMinute} Minutes ${passSecond} Seconds`;
+}
+blog_live_time();
+</script></div></footer></div><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><span class="icon iconify" data-icon="ri:arrow-up-s-line"></span><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><a class="popup-trigger hty-icon-button icon-search" id="search" href="javascript:;" title="Search"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:search-line"></span></span></a><script>window.addEventListener("DOMContentLoaded", () => {
+  // Handle and trigger popup window
+  document.querySelector(".popup-trigger").addEventListener("click", () => {
+    document.querySelector(".popup").classList.add("show");
+    setTimeout(() => {
+      document.querySelector(".search-input").focus();
+    }, 100);
+  });
+
+  // Monitor main search box
+  const onPopupClose = () => {
+    document.querySelector(".popup").classList.remove("show");
+  };
+
+  document.querySelector(".popup-btn-close").addEventListener("click", () => {
+    onPopupClose();
+  });
+
+  window.addEventListener("keyup", event => {
+    if (event.key === "Escape") {
+      onPopupClose();
+    }
+  });
+});
+</script><script src="https://fastly.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script><script src="/js/search/local-search.js" defer type="module"></script><div class="popup search-popup"><div class="search-header"><span class="popup-btn-close close-icon hty-icon-button"><span class="icon iconify" data-icon="ri:close-line"></span></span></div><div class="search-input-container"><input class="search-input" id="local-search-input" type="text" placeholder="Searching..." value=""></div><div class="search-result-container"></div></div><script>function initMourn() {
+  const date = new Date();
+  const today = (date.getMonth() + 1) + "-" + date.getDate()
+  const mourn_days = ["4-4","9-18"]
+  if (mourn_days.includes(today)) {
+    document.documentElement.style.filter = "grayscale(1)";
+  }
+}
+initMourn();</script><script src="https://fastly.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script><script>const images = [...document.querySelectorAll('.markdown-body img')]
+mediumZoom(images)</script><style>.medium-zoom-image {
+  z-index: 99;
+}</style></body></html>
