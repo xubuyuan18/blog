@@ -1651,7 +1651,29 @@ upstream backend &#123;
 <p>验证配置</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">dis int br<br><br>ping 10.1.1.1<br><br></code></pre></td></tr></table></figure>
 
-<h1 id="期末作业"><a href="#期末作业" class="headerlink" title="期末作业"></a>期末作业</h1>]]></content>
+<h1 id="期末作业"><a href="#期末作业" class="headerlink" title="期末作业"></a>期末作业</h1><h3 id="PC"><a href="#PC" class="headerlink" title="PC"></a>PC</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">pc1<br>ip add 172.10.0.100/24<br>gateway 172.10.0.254<br><br>pc2<br>ip add 172.20.0.100/24<br>gateway 172.20.0.254<br><br>pc3<br>ip add 100.0.1.100/24<br>gateway 100.0.1.254<br></code></pre></td></tr></table></figure>
+
+<h3 id="S2-S3"><a href="#S2-S3" class="headerlink" title="S2&amp;S3"></a>S2&amp;S3</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">#S2<br>v 10<br>po g1/0/5 to g1/0/8<br>v 20<br>po g1/0/9 to g1/0/12<br>int g 1/0/2<br>port link-type trunk<br>port trunk p v all<br>stp g e<br>stp m rstp<br>stp pir 4096<br><br><br>#S3<br>v 10<br>po g1/0/5 to g1/0/8<br>v 20<br>po g1/0/9 to g1/0/12<br>int g 1/0/2<br>port link-type trunk<br>port trunk p v all<br>stp g e<br>stp rstp<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="S1"><a href="#S1" class="headerlink" title="S1"></a>S1</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">v 100<br>po g1/0/1<br>v 10<br>po g1/0/2<br>v 20<br>po g1/0/3<br>int v10 <br>ip add 172.10.0.1 24<br>int v20 <br>ip add 172.20.0.1<br>int r g1/0/2 g1/0/3<br>port link-type trunk<br>port trunk p v all<br><br>int g1/0/1<br>port link-mode route<br>ip add 10.0.0.1 30<br><br>#stp<br>stp g e<br>stp mo rstp<br>stp pri 0<br>#ospf<br>ospf 10<br>a 0<br>network 0.0.0.0 255.255.255.255<br>ip rou 0.0.0.0 0 10.0.0.2 <br></code></pre></td></tr></table></figure>
+
+<h3 id="R1"><a href="#R1" class="headerlink" title="R1"></a>R1</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int g0/0<br>ip add 10.0.0.2 30<br>int mp 1<br>ip add 100.0.0.1 30<br>int r s1/0 s2/0<br>ppp mp mp1<br><br>ip rou 0.0.0.0 0 100.0.0.2<br><br>NAT#<br>acl nember 2000<br>rule p s 172.0.0.0 0.255.255.255<br>q<br>nat address group 1<br>add 202.0.0.1 202.0.0.6<br>q<br>int mp 1<br>nat oubound 2000 address group 1<br><br><br></code></pre></td></tr></table></figure>
+
+<h3 id="R2"><a href="#R2" class="headerlink" title="R2"></a>R2</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int mp 1<br>ip add 100.0.0.2 30<br>q<br>int r s1/0 s2/0<br>ppp mp mp1<br>ip rou 100.0.0.0 24 10.0.0.6<br>ip rou 202.0.0.0 24 100.0.0.1<br><br>#telent<br>telent server enable<br>line vty 0 4<br>aouthenticaition-mode scheme<br>user-role leave-15<br><br>local-user xz<br>passwdorld simple 123456<br>service-type telent<br>authorization-attribute user-role leave-15<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="S4"><a href="#S4" class="headerlink" title="S4"></a>S4</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">v 100<br>po g1/0/1<br>v 101<br>po g1/0/2<br>int g1/0/1 <br>po link-mode route<br>ip add 10.0.0.6 30<br>int g1/0/2<br>po link-mode route<br>ip add 100.0.1.254<br>ip rou 0.0.0.0 0 10.0.0.5<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="禁止ping"><a href="#禁止ping" class="headerlink" title="禁止ping"></a>禁止ping</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SW1<br>创建高级ACL<br>acl ad 3000<br>rule deny icmp scource 172.10.0.0 0.0.0.255 destination 172.20.0.0 0.0.0.255<br>rule deny icmp scource 172.10.0.0 0.0.0.255 destination 172.20.0.0 0.0.0.255<br>int r v10 v20<br>packet-filter 3000 inbound<br></code></pre></td></tr></table></figure>
+
+<h3 id="禁止telnet"><a href="#禁止telnet" class="headerlink" title="禁止telnet"></a>禁止telnet</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SW1<br>acl ad 3001<br>rule deny tcp soure 172.10.0.100 0 destination-port eq telnet<br>int g1/0/1<br>packet-filter 3000 outbound<br></code></pre></td></tr></table></figure>
+
+<h3 id="ospf导入默认路由"><a href="#ospf导入默认路由" class="headerlink" title="ospf导入默认路由"></a>ospf导入默认路由</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SW1<br>ospf 1<br>default-route-advertise always<br>qu<br>undo ip rou 0.0.0.0 0<br></code></pre></td></tr></table></figure>
+
+<h3 id="chap-认证服务"><a href="#chap-认证服务" class="headerlink" title="chap 认证服务"></a>chap 认证服务</h3><h4 id="S2"><a href="#S2" class="headerlink" title="S2"></a>S2</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">local-user admin class network<br>passworld simple 123<br>service-type ppp<br>qu<br><br>int r s1/0 s2/0<br>ppp auth-mode chap<br>ppp chap user xz<br>ppp chap passwd simple 456<br>qu<br></code></pre></td></tr></table></figure>
+
+<h4 id="R2-1"><a href="#R2-1" class="headerlink" title="R2"></a>R2</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">local-user xz class network<br>passwdord simple 456<br>service-type ppp<br>qu<br><br>int r s1/0 s2/0<br>ppp auth-mode chap<br>ppp chap user admin<br>ppp chap password simple 123<br></code></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
         <category>华三</category>
       </categories>
