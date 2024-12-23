@@ -1669,9 +1669,7 @@ upstream backend &#123;
 
 <h3 id="ospf导入默认路由"><a href="#ospf导入默认路由" class="headerlink" title="ospf导入默认路由"></a>ospf导入默认路由</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SW1<br>ospf 1<br>default-route-advertise always<br>qu<br>undo ip rou 0.0.0.0 0<br></code></pre></td></tr></table></figure>
 
-<h3 id="chap-认证服务"><a href="#chap-认证服务" class="headerlink" title="chap 认证服务"></a>chap 认证服务</h3><h4 id="S2"><a href="#S2" class="headerlink" title="S2"></a>S2</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">local-user admin class network<br>passworld simple 123<br>service-type ppp<br>qu<br><br>int r s1/0 s2/0<br>ppp auth-mode chap<br>ppp chap user xz<br>ppp chap passwd simple 456<br>qu<br></code></pre></td></tr></table></figure>
-
-<h4 id="R2-1"><a href="#R2-1" class="headerlink" title="R2"></a>R2</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">local-user xz class network<br>passwdord simple 456<br>service-type ppp<br>qu<br><br>int r s1/0 s2/0<br>ppp auth-mode chap<br>ppp chap user admin<br>ppp chap password simple 123<br></code></pre></td></tr></table></figure>
+<h3 id="chap-认证服务"><a href="#chap-认证服务" class="headerlink" title="chap 认证服务"></a>chap 认证服务</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">主认证方R2<br>local-user xz class network<br>password simple 123<br>service-type ppp<br>qu<br>int r s1/0 s2/0<br>ppp auth-mode chap#设置认证类型<br><br>R1<br>int r s1/0 s2/0<br>ppp chap user xz<br>ppp chatp password simple 123<br></code></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
