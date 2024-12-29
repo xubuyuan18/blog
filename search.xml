@@ -298,7 +298,7 @@ upstream backend &#123;
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/1733826593718.gif" loading="lazy"></p>
  <span id="more"></span>
 
-<h1 id="工业互联网络技术"><a href="#工业互联网络技术" class="headerlink" title="工业互联网络技术"></a>工业互联网络技术</h1><h2 id="简答"><a href="#简答" class="headerlink" title="简答"></a>简答</h2><h3 id="什么是ACL"><a href="#什么是ACL" class="headerlink" title="什么是ACL"></a>什么是ACL</h3><blockquote>
+<h2 id="工业互联网络技术"><a href="#工业互联网络技术" class="headerlink" title="工业互联网络技术"></a>工业互联网络技术</h2><h3 id="什么是ACL"><a href="#什么是ACL" class="headerlink" title="什么是ACL"></a>什么是ACL</h3><blockquote>
 <p>ACl是在交换机和路由器上经常采用的一种流量交换技术，它通过制定一定的规则对经过的网络设备的数据包经行过滤，以实现允许或者拒绝特定的数据包进出网络，实现对网络的访问进行控制</p>
 </blockquote>
 <h3 id="路由器的作用"><a href="#路由器的作用" class="headerlink" title="路由器的作用"></a>路由器的作用</h3><blockquote>
@@ -332,7 +332,67 @@ upstream backend &#123;
 <h3 id="简述STP作用"><a href="#简述STP作用" class="headerlink" title="简述STP作用"></a>简述STP作用</h3><blockquote>
 <p>通过阻断冗余链路来消除桥接网络中可能存在的路径回环<br>当路径发生故障时，激活冗余备份链路，恢复网络连通性</p>
 </blockquote>
-<h1 id="Open-Euler"><a href="#Open-Euler" class="headerlink" title="Open Euler"></a>Open Euler</h1><h2 id="简答-1"><a href="#简答-1" class="headerlink" title="简答"></a>简答</h2><h3 id="假设一个设备的文件名为dev-sdb，可以确认它是主板上第二个插槽上的设备吗？"><a href="#假设一个设备的文件名为dev-sdb，可以确认它是主板上第二个插槽上的设备吗？" class="headerlink" title="假设一个设备的文件名为dev&#x2F;sdb，可以确认它是主板上第二个插槽上的设备吗？"></a>假设一个设备的文件名为dev&#x2F;sdb，可以确认它是主板上第二个插槽上的设备吗？</h3><blockquote>
+<h2 id="简述路由器的作用"><a href="#简述路由器的作用" class="headerlink" title="简述路由器的作用"></a>简述路由器的作用</h2><blockquote>
+<p>连接具有不同介质的链路</p>
+<p>连接网络或子网，隔离广播</p>
+<p>对数据报文执行寻路和转发</p>
+<p>交换和维护路由信息</p>
+</blockquote>
+<h3 id="简述NAT分类特点"><a href="#简述NAT分类特点" class="headerlink" title="简述NAT分类特点"></a>简述NAT分类特点</h3><blockquote>
+<p>basic nat</p>
+<p>私网与公网IP一对一映射，仅能实现内网与公网通信不能实现节约IP地址的作用，现实中基本不会使用</p>
+<p>NAPT</p>
+<p>私网IP+端口号与公网IP+端口号多对一映射，不仅实现了内网与公网通信，并且节约了IP地址。在现实中广泛使用于企业校园网</p>
+<p>Easy IP</p>
+<p>私网IP+端口号与出口IP+端口号的多对一映射 。特点同上，广泛用于家庭网络。</p>
+</blockquote>
+<h3 id="简述动态路由协议的工作原理"><a href="#简述动态路由协议的工作原理" class="headerlink" title="简述动态路由协议的工作原理"></a>简述动态路由协议的工作原理</h3><blockquote>
+<p>网络中所有路由都开启相同的路由协议</p>
+<p>邻居发现：路由器通过发送广播报文或发送给指定的路由器邻居以主动地把自己介绍给网段内的其他路由器</p>
+<p>路由交换：每台路由器将自己路由相关的信息发送给相邻路由器</p>
+<p>路由计算；每台路由运行某种算法，计算出最终的路由来</p>
+<p>路由维护：路由器之间通过周期性的发送 协议报文来维护邻居信息</p>
+</blockquote>
+<h3 id="简述静态路由的优缺点"><a href="#简述静态路由的优缺点" class="headerlink" title="简述静态路由的优缺点"></a>简述静态路由的优缺点</h3><blockquote>
+<p>优点</p>
+<p>网络管理员3手工配置，无开销</p>
+<p>网络安全保密性好</p>
+<p>缺点</p>
+<p>网络拓扑变化时需管理员重新手工配置路由</p>
+<p>网络规模过大时管理员工作量大</p>
+</blockquote>
+<h3 id="简述DHCP的特点"><a href="#简述DHCP的特点" class="headerlink" title="简述DHCP的特点"></a>简述DHCP的特点</h3><blockquote>
+<p>即插即用性：客户端无需配置即能获得IP地址及其参数。建华客户端网络配置，降低维护成本</p>
+<p>统一管理：所有IP地址及其相关参数信息由DHCP服务器统一管理，统一分配</p>
+<p>可跨网段实现：通过使用DHCP中继，可使处于不同子网中的客户端和DHCP服务器之间实现协议报文交互</p>
+</blockquote>
+<h3 id="在显示网络中，DHCP服务器需要为DHCP客户端分配哪些参数？"><a href="#在显示网络中，DHCP服务器需要为DHCP客户端分配哪些参数？" class="headerlink" title="在显示网络中，DHCP服务器需要为DHCP客户端分配哪些参数？"></a>在显示网络中，DHCP服务器需要为DHCP客户端分配哪些参数？</h3><blockquote>
+<p>IP地址</p>
+<p>子网掩码</p>
+<p>默认网关</p>
+<p>DNS服务器地址</p>
+</blockquote>
+<h3 id="衡量路由协议的主要指标"><a href="#衡量路由协议的主要指标" class="headerlink" title="衡量路由协议的主要指标"></a>衡量路由协议的主要指标</h3><blockquote>
+<p>协议计算的正确性</p>
+<p>协议使用算法能否正确算出最优路由，且正确无环</p>
+<p>路由收敛速度</p>
+<p>当网络拓扑发生变化时，能迅速感知并及时更新响应的路由信息</p>
+<p>协议占用系统开销</p>
+<p>协议自身的开销小</p>
+<p>协议自身安全性</p>
+<p>协议自身不易受攻击，有安全机制</p>
+<p>协议适用网络规模</p>
+<p>协议可以应用在任何拓扑结构和规模的网络中</p>
+</blockquote>
+<h3 id="在运行了RIP的MSR路由器上看到如下信息"><a href="#在运行了RIP的MSR路由器上看到如下信息" class="headerlink" title="在运行了RIP的MSR路由器上看到如下信息"></a>在运行了RIP的MSR路由器上看到如下信息</h3><blockquote>
+<p>目的网络 ：6.6.6.0&#x2F;24</p>
+<p>路由协议：RIP</p>
+<p>路由优先级：100</p>
+<p>路由花销值：1</p>
+<p>下一跳地址：100.1.1.1</p>
+<p>出接口：g0&#x2F;0</p>
+</blockquote>
+<h2 id="Open-Euler"><a href="#Open-Euler" class="headerlink" title="Open Euler"></a>Open Euler</h2><h3 id="假设一个设备的文件名为dev-sdb，可以确认它是主板上第二个插槽上的设备吗？"><a href="#假设一个设备的文件名为dev-sdb，可以确认它是主板上第二个插槽上的设备吗？" class="headerlink" title="假设一个设备的文件名为dev&#x2F;sdb，可以确认它是主板上第二个插槽上的设备吗？"></a>假设一个设备的文件名为dev&#x2F;sdb，可以确认它是主板上第二个插槽上的设备吗？</h3><blockquote>
 <p>不一定，因为设备文件名是由系统识别顺序确定的</p>
 </blockquote>
 <h3 id="Linux操作系统中的DNS服务器主要有哪几种类型？"><a href="#Linux操作系统中的DNS服务器主要有哪几种类型？" class="headerlink" title="Linux操作系统中的DNS服务器主要有哪几种类型？"></a>Linux操作系统中的DNS服务器主要有哪几种类型？</h3><blockquote>
@@ -377,7 +437,7 @@ upstream backend &#123;
 <h3 id="如果硬盘需要5个分区，则至少需要几个逻辑分区？"><a href="#如果硬盘需要5个分区，则至少需要几个逻辑分区？" class="headerlink" title="如果硬盘需要5个分区，则至少需要几个逻辑分区？"></a>如果硬盘需要5个分区，则至少需要几个逻辑分区？</h3><blockquote>
 <p>2个逻辑分区</p>
 </blockquote>
-<h1 id="传感网"><a href="#传感网" class="headerlink" title="传感网"></a>传感网</h1><h2 id="简答-2"><a href="#简答-2" class="headerlink" title="简答"></a>简答</h2><h3 id="请说明说stm32f10vet6型号中各部分的意义"><a href="#请说明说stm32f10vet6型号中各部分的意义" class="headerlink" title="请说明说stm32f10vet6型号中各部分的意义"></a>请说明说stm32f10vet6型号中各部分的意义</h3><blockquote>
+<h1 id="传感网"><a href="#传感网" class="headerlink" title="传感网"></a>传感网</h1><h2 id="简答"><a href="#简答" class="headerlink" title="简答"></a>简答</h2><h3 id="请说明说stm32f10vet6型号中各部分的意义"><a href="#请说明说stm32f10vet6型号中各部分的意义" class="headerlink" title="请说明说stm32f10vet6型号中各部分的意义"></a>请说明说stm32f10vet6型号中各部分的意义</h3><blockquote>
 <p>stm32 st公司出品的基于arm内核的32位微控制器<br>f	基础型<br>103	stm32基础型<br>v	引脚数为100<br>E	内存容量为512kb<br>T	封装方式为QFP封装<br>6	工作温度范围为-40到+85</p>
 </blockquote>
 <h3 id="ADC的基本参数"><a href="#ADC的基本参数" class="headerlink" title="ADC的基本参数"></a>ADC的基本参数</h3><blockquote>
@@ -395,7 +455,7 @@ upstream backend &#123;
 <h3 id="can通信帧的类型"><a href="#can通信帧的类型" class="headerlink" title="can通信帧的类型"></a>can通信帧的类型</h3><blockquote>
 <p>数据帧 遥控帧 错误帧 过载帧 帧间隔</p>
 </blockquote>
-<h1 id="openstack-云平台"><a href="#openstack-云平台" class="headerlink" title="openstack 云平台"></a>openstack 云平台</h1><h2 id="简答-3"><a href="#简答-3" class="headerlink" title="简答"></a>简答</h2><h3 id="创建安全组虚拟机"><a href="#创建安全组虚拟机" class="headerlink" title="创建安全组虚拟机"></a>创建安全组虚拟机</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">open stack server create --flavor flavor-02 --image ubuntu-img-01 --nic net-id=net-03b --security-group web-sg webserver-vm<br></code></pre></td></tr></table></figure>
+<h1 id="openstack-云平台"><a href="#openstack-云平台" class="headerlink" title="openstack 云平台"></a>openstack 云平台</h1><h2 id="简答-1"><a href="#简答-1" class="headerlink" title="简答"></a>简答</h2><h3 id="创建安全组虚拟机"><a href="#创建安全组虚拟机" class="headerlink" title="创建安全组虚拟机"></a>创建安全组虚拟机</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">open stack server create --flavor flavor-02 --image ubuntu-img-01 --nic net-id=net-03b --security-group web-sg webserver-vm<br></code></pre></td></tr></table></figure>
 
 <h3 id="删除网络"><a href="#删除网络" class="headerlink" title="删除网络"></a>删除网络</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">先删除子网:open stack subnet delete unused-subnet<br><br>再删除网络:openstack network delete unused-network<br></code></pre></td></tr></table></figure>
 
