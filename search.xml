@@ -227,8 +227,8 @@ upstream backend &#123;
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2025/02/09/py/</url>
+    <title>python</title>
+    <url>/2025/02/09/python/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
 <li><input disabled="" type="checkbox"> <h1 id="python-基础知识点"><a href="#python-基础知识点" class="headerlink" title="python 基础知识点"></a>python 基础知识点</h1></li>
 </ul>
@@ -381,14 +381,14 @@ upstream backend &#123;
 <h4 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h4><blockquote>
 <p>for	遍历循环</p>
 <blockquote>
-<figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#循环字符串</span><br>s = <span class="hljs-string">&#x27;恭喜发财&#x27;</span><br><span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> s:<br>    <span class="hljs-built_in">print</span>(b)<br><span class="hljs-meta">&gt;&gt;&gt; </span>恭<br>  喜<br>  发<br>  财	<br></code></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#循环字符串</span><br>s = <span class="hljs-string">&#x27;恭喜发财&#x27;</span><br><span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> s:<br> <span class="hljs-built_in">print</span>(b)<br><span class="hljs-meta">&gt;&gt;&gt; </span>恭<br>  喜<br>  发<br>  财	<br></code></pre></td></tr></table></figure>
 
 <p>#range函数(左边包括，右边不包括)</p>
-<figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#数字循环</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">6</span>):<br>  <span class="hljs-built_in">print</span>(i)<br>&gt;&gt;&gt;  <span class="hljs-number">1</span><br>  <span class="hljs-number">2</span><br>    <span class="hljs-number">3</span><br>    <span class="hljs-number">4</span><br>    <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#数字循环</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">6</span>):<br>  <span class="hljs-built_in">print</span>(i)<br>&gt;&gt;&gt;  <span class="hljs-number">1</span><br>  <span class="hljs-number">2</span><br> <span class="hljs-number">3</span><br> <span class="hljs-number">4</span><br> <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <p>while	条件循环</p>
 <blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">n = 1<br>while n &lt; 5:<br>    n+=1<br>    print(n)  #注意条件变量，不要写死循环<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">n = 1<br>while n &lt; 5:<br> n+=1<br> print(n)  #注意条件变量，不要写死循环<br></code></pre></td></tr></table></figure>
 
 
 </blockquote>
@@ -398,7 +398,7 @@ upstream backend &#123;
 
 <h5 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h5><figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py">add(<span class="hljs-number">3</span>,<span class="hljs-number">5</span>)  <span class="hljs-comment">#位置参数</span><br>add(x = <span class="hljs-number">3</span>,y = <span class="hljs-number">5</span>)  <span class="hljs-comment">#关键字参数</span><br>&gt;&gt;&gt;<span class="hljs-number">8</span><br></code></pre></td></tr></table></figure>
 
-<h5 id="return"><a href="#return" class="headerlink" title="return"></a>return</h5><figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py">返回函数<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span> (x,y):<br>  s = x + y<br>  <span class="hljs-keyword">return</span> s	<br>  <br>n = add (<span class="hljs-number">3</span>,<span class="hljs-number">7</span>)<br><span class="hljs-built_in">print</span>(n)<br></code></pre></td></tr></table></figure>
+<h5 id="return"><a href="#return" class="headerlink" title="return"></a>return</h5><figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py">返回函数<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span> (x,y):<br>  s = x + y<br>  <span class="hljs-keyword">return</span> s	<br><br>n = add (<span class="hljs-number">3</span>,<span class="hljs-number">7</span>)<br><span class="hljs-built_in">print</span>(n)<br></code></pre></td></tr></table></figure>
 
 <h5 id="global"><a href="#global" class="headerlink" title="global"></a>global</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">s = 0  <br>def add (x,y):<br>  globla s	局部变量&gt;全局变量<br>  s = x + y	<br>  print(S)<br>add(3,7)<br>print(s)<br></code></pre></td></tr></table></figure>
 
@@ -437,6 +437,9 @@ upstream backend &#123;
 
 </blockquote>
 ]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
   </entry>
   <entry>
     <title>Windows Server 域</title>
@@ -938,41 +941,6 @@ upstream backend &#123;
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2025/02/09/%E7%BD%91%E5%AE%89/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="ze入侵"><a href="#ze入侵" class="headerlink" title="ze入侵"></a>ze入侵</h1><p>漏洞复现</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><code class="hljs cmd">whoami  //查看正在使用的用户，拿到主机名<br></code></pre></td></tr></table></figure>
-
-<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250113204019460.png" alt="image-20250113204019460" loading="lazy"></p>
-<blockquote>
-<p>主机名+用户名</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">net user   //主机存在不同用户<br></code></pre></td></tr></table></figure>
-
-<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250113204251097.png" alt="image-20250113204251097" loading="lazy"></p>
-<p>weblogic服务网站</p>
-<p>远程桌面端口：3389</p>
-<p>拿到远程权限</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">net user xz/add    //创建新用户<br></code></pre></td></tr></table></figure>
-
-<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250113205442024.png" alt="image-20250113205442024" loading="lazy"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">net localgroup adminstrators  查看管理员组<br>                添加到管理员组<br></code></pre></td></tr></table></figure>
-
-<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250113205824009.png" alt="image-20250113205824009" loading="lazy"></p>
-<p>成功进入桌面</p>
-<blockquote>
-<p>痕迹清除</p>
-<p>删除登录日志，关闭杀软</p>
-</blockquote>
-<h1 id="kali"><a href="#kali" class="headerlink" title="kali"></a>kali</h1><h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><h3 id="改中文"><a href="#改中文" class="headerlink" title="改中文"></a>改中文</h3><blockquote>
-<p>打开终端</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> dpkg-reconfigure locales<br></code></pre></td></tr></table></figure>
-
-<p>选择 zh_CN.UTF-8 回车 reboot </p>
-</blockquote>
-]]></content>
-  </entry>
-  <entry>
     <title>网安学习路线</title>
     <url>/2024/12/14/%E7%BD%91%E5%AE%89%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一、基础阶段"><a href="#一、基础阶段" class="headerlink" title="一、基础阶段"></a>一、基础阶段</h1><p>中华人民共和国网络安全法<br>Linux操作系统<br>计算机网络<br>SHELL<br>HTML&#x2F;CSS<br>JavaScript<br>PHP入门<br>MySQL数据库<br>Python </p>
@@ -1113,6 +1081,36 @@ upstream backend &#123;
 <p>客户端通过TCP四次挥手，与服务器断开TCP连接</p>
 <h3 id="B-S-C-S"><a href="#B-S-C-S" class="headerlink" title="B&#x2F;S&amp;C&#x2F;S"></a>B&#x2F;S&amp;C&#x2F;S</h3><p>C&#x2F;S Client&#x2F;Server 客户机和服务器结构</p>
 <p>B&#x2F;S  Browser&#x2F;Server  浏览器和服务器结构</p>
+<h1 id="ze入侵"><a href="#ze入侵" class="headerlink" title="ze入侵"></a>ze入侵</h1><p>漏洞复现</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><code class="hljs cmd">whoami  //查看正在使用的用户，拿到主机名<br></code></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250113204019460.png" alt="image-20250113204019460" loading="lazy"></p>
+<blockquote>
+<p>主机名+用户名</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">net user   //主机存在不同用户<br></code></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250113204251097.png" alt="image-20250113204251097" loading="lazy"></p>
+<p>weblogic服务网站</p>
+<p>远程桌面端口：3389</p>
+<p>拿到远程权限</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">net user xz/add    //创建新用户<br></code></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250113205442024.png" alt="image-20250113205442024" loading="lazy"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">net localgroup adminstrators  查看管理员组<br>                添加到管理员组<br></code></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250113205824009.png" alt="image-20250113205824009" loading="lazy"></p>
+<p>成功进入桌面</p>
+<blockquote>
+<p>痕迹清除</p>
+<p>删除登录日志，关闭杀软</p>
+</blockquote>
+<h1 id="kali"><a href="#kali" class="headerlink" title="kali"></a>kali</h1><h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><h3 id="改中文"><a href="#改中文" class="headerlink" title="改中文"></a>改中文</h3><blockquote>
+<p>打开终端</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> dpkg-reconfigure locales<br></code></pre></td></tr></table></figure>
+
+<p>选择 zh_CN.UTF-8 回车 reboot </p>
+</blockquote>
 ]]></content>
       <categories>
         <category>网安</category>
