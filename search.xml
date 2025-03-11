@@ -178,6 +178,30 @@
       </tags>
   </entry>
   <entry>
+    <title>kali</title>
+    <url>/2025/03/12/kali/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="kali"><a href="#kali" class="headerlink" title="kali"></a>kali</h1><h2 id="改中文"><a href="#改中文" class="headerlink" title="改中文"></a>改中文</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo dpkg-reconfigure locales<br></code></pre></td></tr></table></figure>
+
+<h2 id="root用户"><a href="#root用户" class="headerlink" title="root用户"></a>root用户</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo passwd root<br></code></pre></td></tr></table></figure>
+
+<h3 id="开启ssh"><a href="#开启ssh" class="headerlink" title="开启ssh"></a>开启ssh</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">vim /etc/ssh/sshd_config<br>PermitRootLogin without-password 改为 PermitRootLogin yes 并去掉前面的注释符号（#）。<br>PasswordAuthentication yes 的注释去掉，如果是 no 就改为 yes。<br>service ssh start<br></code></pre></td></tr></table></figure>
+
+<h2 id="靶场搭建"><a href="#靶场搭建" class="headerlink" title="靶场搭建"></a>靶场搭建</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">解压放到桌面<br>mv DVWA /var/www/html/<br>vi /var/www/html/DVWA/config/config.inc.php.dist<br>cp config.inc.php.dist config.inc.php<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">chown -R www-date:www-date/var/www/html/DVWA<br>chmod -R 755 /var/www/html/DVWA<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">service apache2 start <br>service mariadb start <br>mysql -u root -p<br><span class="hljs-comment"># 创建数据库dvwa</span><br>create database dvwa;<br><span class="hljs-comment"># 创建数据库用户xzzz，密码是</span><br>create user xzzz@localhost identified by <span class="hljs-string">&#x27;设置的密码&#x27;</span>;<br><span class="hljs-comment"># 分配权限，可以远程登录</span><br>grant all on dvwa.* to xzzz@localhost;<br><span class="hljs-comment"># 刷新权限</span><br>flush privileges;<br></code></pre></td></tr></table></figure>
+
+<p>浏览器访问<code>http://127.0.0.1/dvwa/dvwa-master，点击左下角的</code>Create&#x2F;Reset Database&#96;进行数据库初始化</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>网安</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nginx</title>
     <url>/2024/10/10/nginx/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Nginx-配置问题与解决方法"><a href="#Nginx-配置问题与解决方法" class="headerlink" title="Nginx 配置问题与解决方法"></a>Nginx 配置问题与解决方法</h1><p>Nginx 配置与问题解析</p>
