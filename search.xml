@@ -193,6 +193,17 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">service apache2 start <br>service mariadb start <br>mysql -u root -p<br><span class="hljs-comment"># 创建数据库dvwa</span><br>create database dvwa;<br><span class="hljs-comment"># 创建数据库用户xzzz，密码是</span><br>create user xzzz@localhost identified by <span class="hljs-string">&#x27;设置的密码&#x27;</span>;<br><span class="hljs-comment"># 分配权限，可以远程登录</span><br>grant all on dvwa.* to xzzz@localhost;<br><span class="hljs-comment"># 刷新权限</span><br>flush privileges;<br></code></pre></td></tr></table></figure>
 
 <p>浏览器访问<code>http://127.0.0.1/dvwa/dvwa-master，点击左下角的</code>Create&#x2F;Reset Database&#96;进行数据库初始化</p>
+<h2 id="APT-源失效"><a href="#APT-源失效" class="headerlink" title="APT 源失效"></a>APT 源失效</h2><p>刚装好kali想apt更新的时候突然发现,apt源被禁用了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">apt-get update<br>获取:1 http://mirrors.ustc.edu.cn/kali kali-rolling InRelease [41.5 kB]<br>错误:1 http://mirrors.ustc.edu.cn/kali kali-rolling InRelease<br> 下列签名无效： EXPKEYSIG ED444FF07D8D0BF6 Kali Linux Repository &lt;devel@kali.org&gt;<br>正在读取软件包列表... 完成<br>W: GPG 错误：http://mirrors.ustc.edu.cn/kali kali-rolling InRelease: 下列签名无效： EXPKEYSIG ED444FF07D8D0BF6 Kali Linux Repository &lt;devel@kali.org&gt;<br>E: 仓库 “http://mirrors.ustc.edu.cn/kali kali-rolling InRelease” 没有数字签名。<br>N: 无法安全地用该源进行更新，所以默认禁用该源。<br>N: 参见 apt-secure(8) 手册以了解仓库创建和用户配置方面的细节。<br></code></pre></td></tr></table></figure>
+
+<p>看过后发现,国内的的仓库或者签名过期了。为了安全考虑kali默认禁用这些源</p>
+<p>我们可以强制启动源</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cd /etc/apt/apt.conf.d/<br>vim 70debconf<br>Acquire::AllowInsecureRepositories “true”;   #注意：True的引号一定要是英文<br></code></pre></td></tr></table></figure>
+
+<p>再次更新源，可以看到</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">──(root㉿kali)-[/etc/apt/apt.conf.d]<br>└─# apt-get update<br>获取:1 http://mirrors.ustc.edu.cn/kali kali-rolling InRelease [41.5 kB]<br>忽略:1 http://mirrors.ustc.edu.cn/kali kali-rolling InRelease<br>获取:2 http://mirrors.ustc.edu.cn/kali kali-rolling/non-free Sources [119 kB]<br>获取:3 http://mirrors.ustc.edu.cn/kali kali-rolling/main Sources [17.1 MB]<br>获取:4 http://mirrors.ustc.edu.cn/kali kali-rolling/contrib Sources [78.7 kB]<br>获取:5 http://mirrors.ustc.edu.cn/kali kali-rolling/main amd64 Packages [20.6 MB]<br>获取:6 http://mirrors.ustc.edu.cn/kali kali-rolling/main amd64 Contents (deb) [49.2 MB] <br>获取:7 http://mirrors.ustc.edu.cn/kali kali-rolling/non-free amd64 Packages [203 kB]    <br>获取:8 http://mirrors.ustc.edu.cn/kali kali-rolling/non-free amd64 Contents (deb) [884 kB]<br>获取:9 http://mirrors.ustc.edu.cn/kali kali-rolling/contrib amd64 Packages [115 kB]     <br>获取:10 http://mirrors.ustc.edu.cn/kali kali-rolling/contrib amd64 Contents (deb) [267 kB]<br>已下载 88.6 MB，耗时 26秒 (3,427 kB/s)                                                  <br>正在读取软件包列表... 0%<br><br>正在读取软件包列表... 完成<br>W: GPG 错误：http://mirrors.ustc.edu.cn/kali kali-rolling InRelease: 下列签名无效： EXPKEYSIG ED444FF07D8D0BF6 Kali Linux Repository &lt;devel@kali.org&gt;<br>W: 仓库 “http://mirrors.ustc.edu.cn/kali kali-rolling InRelease” 没有数字签名。<br>N: 无法认证来自该源的数据，所以使用它会带来潜在风险。<br>N: 参见 apt-secure(8) 手册以了解仓库创建和用户配置方面的细节。<br></code></pre></td></tr></table></figure>
+
+<p>虽然仍有警告，但已经可以正确的更新源了</p>
 ]]></content>
       <categories>
         <category>工具</category>
