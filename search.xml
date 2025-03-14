@@ -24,6 +24,35 @@
       </tags>
   </entry>
   <entry>
+    <title>docker原理</title>
+    <url>/2024/10/09/docker%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="docker原理"><a href="#docker原理" class="headerlink" title="docker原理"></a>docker原理</h1><h2 id="一、Docker背景介绍。"><a href="#一、Docker背景介绍。" class="headerlink" title="一、Docker背景介绍。"></a>一、Docker背景介绍。</h2><h3 id="1、什么是docker。"><a href="#1、什么是docker。" class="headerlink" title="1、什么是docker。"></a>1、什么是docker。</h3><h4 id="Docker，翻译过来就是码头工人"><a href="#Docker，翻译过来就是码头工人" class="headerlink" title="Docker，翻译过来就是码头工人"></a>Docker，翻译过来就是码头工人</h4><p>Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可抑制的容器中，然后发布到任何流行的Linux机器上，也可以实现虚拟化。容器完全使用沙盒机制，相互之间不会存在任何接口。几乎没有性能开销，可以很容易的在机器和数据中心运行。最重要的是，他们不依赖于任何语言、框架或者包装系统。</p>
+<p>小知识：沙盒也叫沙箱（sandbox）。在计算机领域指一种虚拟技术，而且多用于计算机安全技术。安全软件可以让它在沙盒中运行，如果含有恶意行为，则禁止程序的进一步运行，而这不会对系统造成任何危害。</p>
+<p>Docker是dotCloud公司开源的一个基于LXC的高级容器引擎，源码托管在Github上，基于go语言并且遵从Apache2.0协议开源。<br>GitHub地址：<a href="https://github.com/moby/moby">https://github.com/moby/moby</a></p>
+<p>小知识：LXC为Linux Container的简写。Linux Container 容器是一种内核虚拟化技术，可以提供轻量级的虚拟化，以便隔离进程和资源，而且不需要提供指令解释机制以及全虚拟化的其他复杂性。<br>LXC主要通过Kernel的namespace实现每个用户实例之间的项目隔离，通过cgroup实现对资源的配额和调度。</p>
+<p>docker官网：<a href="https://www.docker.com/">https://www.docker.com</a><br>docker中文库:<a href="https://www.docker.org.cn/">https://www.docker.org.cn/</a></p>
+<h3 id="2、Docker容器技术与虚拟机的区别。"><a href="#2、Docker容器技术与虚拟机的区别。" class="headerlink" title="2、Docker容器技术与虚拟机的区别。"></a>2、Docker容器技术与虚拟机的区别。</h3><h4 id="docker相较于VM的优点："><a href="#docker相较于VM的优点：" class="headerlink" title="docker相较于VM的优点："></a>docker相较于VM的优点：</h4><p>1、比VM小、快，Docker容器的尺寸减小相比于整个虚拟机大大简化了分布<br>到云和分发时间的开销。Docker启动一个容器实例时间仅仅需要几秒钟。</p>
+<p>2、Docker是一个开放的平台，构建、发布和运行分布式应用程序。</p>
+<p>3、开发人员不需要关系具体是哪个Linux操作系统</p>
+<p>4、Google、微软（azure）、亚马逊、IBM等都支持docker。</p>
+<p>5、Docker支持Unix&#x2F;Linux操作系统，也支持Windows和Mac。</p>
+<h4 id="Docker局限性："><a href="#Docker局限性：" class="headerlink" title="Docker局限性："></a>Docker局限性：</h4><p>Docker用于应用程序时是最有用的，但并不包含数据。日志、数据库等通常放在Docker容器外。一个容器的镜像通常都很小，不用和存储大量数据，存储可以通过外部挂载等方式使用，比如：NFS、ipsan、MFS等 ，或者docker命令 ，-v映射磁盘分区。<br>总之，docker只用于计算，存储交给别人。</p>
+<h3 id="3、通过docker架构图初步了解docker。"><a href="#3、通过docker架构图初步了解docker。" class="headerlink" title="3、通过docker架构图初步了解docker。"></a>3、通过docker架构图初步了解docker。</h3><p>等了解了docker之后，这张图所代表的的内容就很清晰明了，希望大家学完docker之后还能回来看看这张图。这里简单给大家介绍一下docker的工作流程。<br>工作流程：<br>1、启动docker<br>2、下载镜像到本地<br>3、启动docker容器实例<br>提示：大家可以去注册一个dockerhub，之后会详细给大家讲解它的作用（非常重要！连docker hub账号都没有，玩什么docker！）。</p>
+<h4 id="Docker核心技术"><a href="#Docker核心技术" class="headerlink" title="Docker核心技术:"></a>Docker核心技术:</h4><p>1、Namespace —&gt; 实现Container的进程、网络、消息、文件系统和主机名的隔离。<br>2、Cgroup —&gt; 实现对资源的配额和调度。<br>注意：Cgroup的配额，可以指定实例使用的CPU个数，内存大小等</p>
+<h3 id="4、Docker特性。"><a href="#4、Docker特性。" class="headerlink" title="4、Docker特性。"></a>4、Docker特性。</h3><p>文件系统隔离：每个进程容器运行在一个完全独立的根文件系统里。</p>
+<p>资源隔离：系统资源，像CPU和内存等可以分配到不同的容器中，使用cgroup。<br>网络隔离：每个进程容器运行在自己的网路空间，虚拟接口和IP地址。</p>
+<p>日志记录：Docker将收集到和记录的每个进程容器的标准流（stdout&#x2F;stderr&#x2F;stdin），用于实时检索或者批量检索</p>
+<p>变更管理：容器文件系统的变更可以提交到新的镜像中，并可重复使用以创建更多的容器。无需使用模板或者手动配置。</p>
+<p>交互式shell：Docker可以分配一个虚拟终端并且关联到任何容器的标准输出上，例如运行一个一次性交互shell。</p>
+]]></content>
+      <categories>
+        <category>OpenEuler</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何优雅的使用Markdown</title>
     <url>/2024/10/17/Markdown%20%E8%AF%AD%E6%B3%95%E6%A0%BC%E5%BC%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Markdown-语法格式"><a href="#Markdown-语法格式" class="headerlink" title="Markdown 语法格式"></a>Markdown 语法格式</h1><h2 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h2><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="#一级标题"></a>#一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="##二级标题"></a>##二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="###三级标题"></a>###三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="####四级标题"></a>####四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="#####五级标题"></a>#####五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="######六级标题"></a>######六级标题</h6><h2 id="2-强调"><a href="#2-强调" class="headerlink" title="2.强调"></a>2.强调</h2><p><em>斜体文本</em> 	**<br><em>斜体文本</em>	——<br><strong>粗体文本</strong>	** **<br><strong>粗体文本</strong>	————<br><strong><em>同时斜体和粗体</em></strong>	** —	—**</p>
@@ -91,128 +120,6 @@
       </tags>
   </entry>
   <entry>
-    <title>OpenEuler</title>
-    <url>/2024/12/12/OpenEuler/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/1733826593704.gif" loading="lazy"></p>
-<span id="more"></span>
-
-<h1 id="网络YUM源配置"><a href="#网络YUM源配置" class="headerlink" title="网络YUM源配置"></a>网络YUM源配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">确定操作系统版本<br><br>cat /etc/os-release<br></code></pre></td></tr></table></figure>
-
-<h2 id="选择yum源版本-配置yum源文件"><a href="#选择yum源版本-配置yum源文件" class="headerlink" title="选择yum源版本 配置yum源文件"></a>选择yum源版本 配置yum源文件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cd /etc/yum.repos.d/<br>mv openEuler.repo openEuler.repo.bak  *备份原有的配置文件*<br>vi openEuler.repo  *创建或编辑新的配置文件*<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="编辑yum源"><a href="#编辑yum源" class="headerlink" title="编辑yum源"></a>编辑yum源</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">[openEuler-everything]<br>name=openEuler-everything<br>baseurl=http://repo.huaweicloud.com/openeuler/openEuler-22.03-LTS-SP3/everything/x86_64/<br>enabled=1<br>gpgcheck=0<br>gpgkey=http://repo.huaweicloud.com/openeuler/openEuler-22.03-LTS-SP3/everything/x86_64/RPM-GPG-KEY-openEuler<br></code></pre></td></tr></table></figure>
-
-
-
-<h1 id="本地YUM源配置"><a href="#本地YUM源配置" class="headerlink" title="本地YUM源配置"></a>本地YUM源配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">懒的写<br></code></pre></td></tr></table></figure>
-
-
-
-<h1 id="SELinux与防火墙配置"><a href="#SELinux与防火墙配置" class="headerlink" title="SELinux与防火墙配置"></a>SELinux与防火墙配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">查看SElinnux状态<br>getenforce<br>临时更改SELinux模式<br>setenforce 0<br>semanage 安装（用于管理和配置SELinux策略）<br>yum install policycoreutils-python-utils<br>查看所有开放端口<br>semanage port -l<br>查看特定端口是否开放（例如查看端口5000）<br>semanage port -l | grep 5000<br>查看针对特定服务（如http）开放的端口<br>semanage port -l | grep http_port_t<br>添加端口（例如开放5002端口给http服务）<br>semanage port -a -t http_port_t -p tcp 5502<br>删除端口（例如关闭http服务的5002端口）<br>semanage port -a -t http_port_t -p tcp 5502<br>防火墙配置<br>启动/停止 防火墙服务<br>systemctl start/stop firewalld<br>查看防火墙服务状态<br>systemctl status firewalld <br>启用/禁用防火墙服务开机自启<br>systemctl enable/disable firewalld<br>添加/删除端口到防火墙规则<br>firewall-cmd --permanent --add/remove-port=80/tcp<br>重新加载防火墙规则<br>firewall-cmd --reload<br>查看当前防火墙规则 <br>firewall-cmd --list-all<br>允许/阻止特定服务通过防火墙 <br>firewall-cmd --permanent --add/remove-service=http<br>查看防火墙日志 <br>journalctl -u firewalld<br></code></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>OpenEuler</category>
-      </categories>
-      <tags>
-        <tag>openeuler</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker原理</title>
-    <url>/2024/10/09/docker%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="docker原理"><a href="#docker原理" class="headerlink" title="docker原理"></a>docker原理</h1><h2 id="一、Docker背景介绍。"><a href="#一、Docker背景介绍。" class="headerlink" title="一、Docker背景介绍。"></a>一、Docker背景介绍。</h2><h3 id="1、什么是docker。"><a href="#1、什么是docker。" class="headerlink" title="1、什么是docker。"></a>1、什么是docker。</h3><h4 id="Docker，翻译过来就是码头工人"><a href="#Docker，翻译过来就是码头工人" class="headerlink" title="Docker，翻译过来就是码头工人"></a>Docker，翻译过来就是码头工人</h4><p>Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可抑制的容器中，然后发布到任何流行的Linux机器上，也可以实现虚拟化。容器完全使用沙盒机制，相互之间不会存在任何接口。几乎没有性能开销，可以很容易的在机器和数据中心运行。最重要的是，他们不依赖于任何语言、框架或者包装系统。</p>
-<p>小知识：沙盒也叫沙箱（sandbox）。在计算机领域指一种虚拟技术，而且多用于计算机安全技术。安全软件可以让它在沙盒中运行，如果含有恶意行为，则禁止程序的进一步运行，而这不会对系统造成任何危害。</p>
-<p>Docker是dotCloud公司开源的一个基于LXC的高级容器引擎，源码托管在Github上，基于go语言并且遵从Apache2.0协议开源。<br>GitHub地址：<a href="https://github.com/moby/moby">https://github.com/moby/moby</a></p>
-<p>小知识：LXC为Linux Container的简写。Linux Container 容器是一种内核虚拟化技术，可以提供轻量级的虚拟化，以便隔离进程和资源，而且不需要提供指令解释机制以及全虚拟化的其他复杂性。<br>LXC主要通过Kernel的namespace实现每个用户实例之间的项目隔离，通过cgroup实现对资源的配额和调度。</p>
-<p>docker官网：<a href="https://www.docker.com/">https://www.docker.com</a><br>docker中文库:<a href="https://www.docker.org.cn/">https://www.docker.org.cn/</a></p>
-<h3 id="2、Docker容器技术与虚拟机的区别。"><a href="#2、Docker容器技术与虚拟机的区别。" class="headerlink" title="2、Docker容器技术与虚拟机的区别。"></a>2、Docker容器技术与虚拟机的区别。</h3><h4 id="docker相较于VM的优点："><a href="#docker相较于VM的优点：" class="headerlink" title="docker相较于VM的优点："></a>docker相较于VM的优点：</h4><p>1、比VM小、快，Docker容器的尺寸减小相比于整个虚拟机大大简化了分布<br>到云和分发时间的开销。Docker启动一个容器实例时间仅仅需要几秒钟。</p>
-<p>2、Docker是一个开放的平台，构建、发布和运行分布式应用程序。</p>
-<p>3、开发人员不需要关系具体是哪个Linux操作系统</p>
-<p>4、Google、微软（azure）、亚马逊、IBM等都支持docker。</p>
-<p>5、Docker支持Unix&#x2F;Linux操作系统，也支持Windows和Mac。</p>
-<h4 id="Docker局限性："><a href="#Docker局限性：" class="headerlink" title="Docker局限性："></a>Docker局限性：</h4><p>Docker用于应用程序时是最有用的，但并不包含数据。日志、数据库等通常放在Docker容器外。一个容器的镜像通常都很小，不用和存储大量数据，存储可以通过外部挂载等方式使用，比如：NFS、ipsan、MFS等 ，或者docker命令 ，-v映射磁盘分区。<br>总之，docker只用于计算，存储交给别人。</p>
-<h3 id="3、通过docker架构图初步了解docker。"><a href="#3、通过docker架构图初步了解docker。" class="headerlink" title="3、通过docker架构图初步了解docker。"></a>3、通过docker架构图初步了解docker。</h3><p>等了解了docker之后，这张图所代表的的内容就很清晰明了，希望大家学完docker之后还能回来看看这张图。这里简单给大家介绍一下docker的工作流程。<br>工作流程：<br>1、启动docker<br>2、下载镜像到本地<br>3、启动docker容器实例<br>提示：大家可以去注册一个dockerhub，之后会详细给大家讲解它的作用（非常重要！连docker hub账号都没有，玩什么docker！）。</p>
-<h4 id="Docker核心技术"><a href="#Docker核心技术" class="headerlink" title="Docker核心技术:"></a>Docker核心技术:</h4><p>1、Namespace —&gt; 实现Container的进程、网络、消息、文件系统和主机名的隔离。<br>2、Cgroup —&gt; 实现对资源的配额和调度。<br>注意：Cgroup的配额，可以指定实例使用的CPU个数，内存大小等</p>
-<h3 id="4、Docker特性。"><a href="#4、Docker特性。" class="headerlink" title="4、Docker特性。"></a>4、Docker特性。</h3><p>文件系统隔离：每个进程容器运行在一个完全独立的根文件系统里。</p>
-<p>资源隔离：系统资源，像CPU和内存等可以分配到不同的容器中，使用cgroup。<br>网络隔离：每个进程容器运行在自己的网路空间，虚拟接口和IP地址。</p>
-<p>日志记录：Docker将收集到和记录的每个进程容器的标准流（stdout&#x2F;stderr&#x2F;stdin），用于实时检索或者批量检索</p>
-<p>变更管理：容器文件系统的变更可以提交到新的镜像中，并可重复使用以创建更多的容器。无需使用模板或者手动配置。</p>
-<p>交互式shell：Docker可以分配一个虚拟终端并且关联到任何容器的标准输出上，例如运行一个一次性交互shell。</p>
-]]></content>
-      <categories>
-        <category>OpenEuler</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo折腾日记</title>
-    <url>/2024/10/01/hexo%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="hexo使用中遇到的问题和解决方法"><a href="#hexo使用中遇到的问题和解决方法" class="headerlink" title="hexo使用中遇到的问题和解决方法"></a>hexo使用中遇到的问题和解决方法</h1><p> 头文件定义</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">title: 标题<br>date: 时间<br>tags: “tag”<br>categories: 分类归递<br>sticky: 优先级<br>readmore: true  #封面显示<br>&lt;!-- more --&gt;  #截至显示<br></code></pre></td></tr></table></figure>
-
-<p><strong>girls-index</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">- name: <br>  avatar: <br>  from: <br>  url: <br>  reason:<br></code></pre></td></tr></table></figure>
-
-<p>hexo 基础命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">hexo cl #清除本地缓存文件<br>hexo g  #生成网页静态文件<br>hexo s  #启动hexo 服务<br></code></pre></td></tr></table></figure>
-
-<p>遇到无法正确上传的情况可能是git仓库没有正确配置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cd 你的博客根目录<br>vi _conifg.yml<br>编辑<br>deploy:<br>  type: git<br>  repo: https://密钥@github.com/xubuyuan18/blog<br>  branch: main # 默认使用 master 分支<br>  保存退出<br>  <br>配置Deployment首先，你需要为自己配置身份信息，打开命令行，然后输入：<br>git config --global user.name &quot;yourname&quot;<br>git config --global user.email &quot;youremail&quot;<br>如果报错可以使用<br>git config --global user.name --replace-all yourname<br>全局替换<br><br></code></pre></td></tr></table></figure>
-
-
-
-<p>hexo-yun自用配置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">banner:       #开始标语<br>  enable: true<br>  title: 许步鸢的小站<br>  border: true<br>  cloud:<br>    enable: true<br>    color: white<br>  go_down:<br>    enable: true<br>    icon: ri:arrow-down-s-line<br><br>avatar:      <br>  enable: true<br>  url: /images/avatar.jpg<br>  rounded: true<br>  opacity: 1<br>  mickey_mouse: false<br>  status:<br>    enable: true<br>    emoji: 😭<br>    message: 大家一起GO一辈子好吗 #头像<br>wordcloud:<br>  enable: true<br>  height: 600<br>  count: true<br>  time: true  #云体流动效果<br><br>social:   #侧边栏图标<br>  - name: GitHub<br>    link: https://github.com/xubuyuan18<br>    icon: ri:github-line<br>    color: &#x27;#181717&#x27;<br>  - name: 哔哩哔哩动画<br>    link: https://space.bilibili.com/441828893<br>    icon: ri:bilibili-line<br>    color: &#x27;#FF8EB3&#x27;<br>footer:           #运行时间显示<br>  live_time:<br>    enable: true<br>    prefix: 本博客已运行<br>    suffix: (●&#x27;◡&#x27;●)<br>    start_time: &#x27;2024-09-06T09:00:00&#x27;<br><br>medium_zoom: true #图片放大预览<br><br>bg_image:       #背景壁纸<br>  enable: true<br>  url: https://pic2.imge.cc/2024/10/12/670a20fee140a.jpg<br>  dark: https://pic2.imge.cc/2024/10/12/670a050e8ce49.png<br>  # blur: 30px # 设置背景模糊程度<br>  opacity: 0.8<br>pages:  <br>#关闭友链链接<br>say:<br>  enable: true<br>  api: https://cdn.jsdelivr.net/gh/ElpsyCN/say@gh-pages/sentences.json<br>  # https://developer.hitokoto.cn/sentence/<br>  hitokoto:<br>    enable: true<br>    api: https://v1.hitokoto.cn #中二语录<br><br>mourn:<br>  enable: true<br>  days:<br>    - 4-4   #纪念日哀悼<br>search:<br>  path: search.json<br>  field: post<br>  format: html<br>  limit: 10000  #搜索<br>wordcount:<br>  enable: true<br>  count: true<br>  time: true  #字数统计<br># search<br># https://github.com/next-theme/hexo-generator-searchdb<br>local_search:<br>  enable: true  #搜索<br><br>reward:<br>  enable: true<br>  icon: ri:hand-coin-line<br>  comment: 如果以上文章帮助到了你，不妨请我喝杯咖啡<br>  # url: https://github.com/YunYouJun/yunyoujun.github.io/issues/96<br>  methods:<br>    - name: 支付宝<br>      path: https://pic2.imge.cc/2024/11/16/67382dc367df6.jpg<br>      color: &#x27;#00A3EE&#x27;<br>      icon: ri:alipay-line<br>    - name: 微信支付<br>      path: https://pic2.imge.cc/2024/11/16/67382dc383063.jpg<br>      color: &#x27;#2DC100&#x27;<br>      icon: ri:wechat-pay-line<br>  creative_commons:<br>  license: by-nc-sa<br>  post: true<br>  language: deed.zh<br>  clipboard: false<br><br></code></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>常用</category>
-      </categories>
-      <tags>
-        <tag>webserver</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>kali</title>
-    <url>/2025/03/12/kali/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="kali"><a href="#kali" class="headerlink" title="kali"></a>kali</h1><h2 id="改中文"><a href="#改中文" class="headerlink" title="改中文"></a>改中文</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo dpkg-reconfigure locales<br></code></pre></td></tr></table></figure>
-
-<h2 id="root用户"><a href="#root用户" class="headerlink" title="root用户"></a>root用户</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo passwd root<br></code></pre></td></tr></table></figure>
-
-<h3 id="开启ssh"><a href="#开启ssh" class="headerlink" title="开启ssh"></a>开启ssh</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">vim /etc/ssh/sshd_config<br>PermitRootLogin without-password 改为 PermitRootLogin yes 并去掉前面的注释符号（#）。<br>PasswordAuthentication yes 的注释去掉，如果是 no 就改为 yes。<br>service ssh start<br></code></pre></td></tr></table></figure>
-
-<h2 id="靶场搭建"><a href="#靶场搭建" class="headerlink" title="靶场搭建"></a>靶场搭建</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">解压放到桌面<br>mv DVWA /var/www/html/<br>vi /var/www/html/DVWA/config/config.inc.php.dist<br>cp config.inc.php.dist config.inc.php<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">chown -R www-date:www-date/var/www/html/DVWA<br>chmod -R 755 /var/www/html/DVWA<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">service apache2 start <br>service mariadb start <br>mysql -u root -p<br><span class="hljs-comment"># 创建数据库dvwa</span><br>create database dvwa;<br><span class="hljs-comment"># 创建数据库用户xzzz，密码是</span><br>create user xzzz@localhost identified by <span class="hljs-string">&#x27;设置的密码&#x27;</span>;<br><span class="hljs-comment"># 分配权限，可以远程登录</span><br>grant all on dvwa.* to xzzz@localhost;<br><span class="hljs-comment"># 刷新权限</span><br>flush privileges;<br></code></pre></td></tr></table></figure>
-
-<p>浏览器访问<code>http://127.0.0.1/dvwa/dvwa-master，点击左下角的</code>Create&#x2F;Reset Database&#96;进行数据库初始化</p>
-<h2 id="APT-源失效"><a href="#APT-源失效" class="headerlink" title="APT 源失效"></a>APT 源失效</h2><p>刚装好kali想apt更新的时候突然发现,apt源被禁用了</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">apt-get update<br>获取:1 http://mirrors.ustc.edu.cn/kali kali-rolling InRelease [41.5 kB]<br>错误:1 http://mirrors.ustc.edu.cn/kali kali-rolling InRelease<br> 下列签名无效： EXPKEYSIG ED444FF07D8D0BF6 Kali Linux Repository &lt;devel@kali.org&gt;<br>正在读取软件包列表... 完成<br>W: GPG 错误：http://mirrors.ustc.edu.cn/kali kali-rolling InRelease: 下列签名无效： EXPKEYSIG ED444FF07D8D0BF6 Kali Linux Repository &lt;devel@kali.org&gt;<br>E: 仓库 “http://mirrors.ustc.edu.cn/kali kali-rolling InRelease” 没有数字签名。<br>N: 无法安全地用该源进行更新，所以默认禁用该源。<br>N: 参见 apt-secure(8) 手册以了解仓库创建和用户配置方面的细节。<br></code></pre></td></tr></table></figure>
-
-<p>看过后发现,国内的的仓库或者签名过期了。为了安全考虑kali默认禁用这些源</p>
-<p>我们可以强制启动源</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cd /etc/apt/apt.conf.d/<br>vim 70debconf<br>Acquire::AllowInsecureRepositories “true”;   #注意：True的引号一定要是英文<br></code></pre></td></tr></table></figure>
-
-<p>再次更新源，可以看到</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">──(root㉿kali)-[/etc/apt/apt.conf.d]<br>└─# apt-get update<br>获取:1 http://mirrors.ustc.edu.cn/kali kali-rolling InRelease [41.5 kB]<br>忽略:1 http://mirrors.ustc.edu.cn/kali kali-rolling InRelease<br>获取:2 http://mirrors.ustc.edu.cn/kali kali-rolling/non-free Sources [119 kB]<br>获取:3 http://mirrors.ustc.edu.cn/kali kali-rolling/main Sources [17.1 MB]<br>获取:4 http://mirrors.ustc.edu.cn/kali kali-rolling/contrib Sources [78.7 kB]<br>获取:5 http://mirrors.ustc.edu.cn/kali kali-rolling/main amd64 Packages [20.6 MB]<br>获取:6 http://mirrors.ustc.edu.cn/kali kali-rolling/main amd64 Contents (deb) [49.2 MB] <br>获取:7 http://mirrors.ustc.edu.cn/kali kali-rolling/non-free amd64 Packages [203 kB]    <br>获取:8 http://mirrors.ustc.edu.cn/kali kali-rolling/non-free amd64 Contents (deb) [884 kB]<br>获取:9 http://mirrors.ustc.edu.cn/kali kali-rolling/contrib amd64 Packages [115 kB]     <br>获取:10 http://mirrors.ustc.edu.cn/kali kali-rolling/contrib amd64 Contents (deb) [267 kB]<br>已下载 88.6 MB，耗时 26秒 (3,427 kB/s)                                                  <br>正在读取软件包列表... 0%<br><br>正在读取软件包列表... 完成<br>W: GPG 错误：http://mirrors.ustc.edu.cn/kali kali-rolling InRelease: 下列签名无效： EXPKEYSIG ED444FF07D8D0BF6 Kali Linux Repository &lt;devel@kali.org&gt;<br>W: 仓库 “http://mirrors.ustc.edu.cn/kali kali-rolling InRelease” 没有数字签名。<br>N: 无法认证来自该源的数据，所以使用它会带来潜在风险。<br>N: 参见 apt-secure(8) 手册以了解仓库创建和用户配置方面的细节。<br></code></pre></td></tr></table></figure>
-
-<p>虽然仍有警告，但已经可以正确的更新源了</p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>网安</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>nginx</title>
     <url>/2024/10/10/nginx/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Nginx-配置问题与解决方法"><a href="#Nginx-配置问题与解决方法" class="headerlink" title="Nginx 配置问题与解决方法"></a>Nginx 配置问题与解决方法</h1><p>Nginx 配置与问题解析</p>
@@ -230,7 +137,7 @@
 </ul>
 <h2 id="配置个性化web界面"><a href="#配置个性化web界面" class="headerlink" title="配置个性化web界面"></a>配置个性化web界面</h2><h3 id="新建网站首页"><a href="#新建网站首页" class="headerlink" title="新建网站首页"></a>新建网站首页</h3><ul>
 <li>echo “this is nginx web server” &gt; &#x2F;var&#x2F;ww&#x2F;html index.html<ul>
-<li>vi &#x2F;etc&#x2F;nginx&#x2F;ngin #新建并编辑nginx的配置文件<br>server {<br>　　　　listen 80;	#监听端口<br>       server_name localhost; 	#本机IP或域名<br>  location &#x2F; {<br>  root &#x2F;var&#x2F;www&#x2F;html;		#主目录<br>  index index.html;		<br>  }<br>}</li>
+<li>vi &#x2F;etc&#x2F;nginx&#x2F;ngin #新建并编辑nginx的配置文件<br>server {<br>　　　　listen 80;    #监听端口<br>       server_name localhost;     #本机IP或域名<br>  location &#x2F; {<br>  root &#x2F;var&#x2F;www&#x2F;html;        #主目录<br>  index index.html;<br>  }<br>}</li>
 <li>nginx -t      #然后使用命令验证nginx语法正确性<br>tips:尽量不要修改nginx的主配置文件，在&#x2F;cond.d 目录下的文件会被nginx默认识别。</li>
 </ul>
 </li>
@@ -238,19 +145,19 @@
 </ul>
 <h2 id="配置Nginx反向代理"><a href="#配置Nginx反向代理" class="headerlink" title="配置Nginx反向代理"></a>配置Nginx反向代理</h2><h3 id="实现效果：使用-Nginx-反向代理，访问IP直接跳转到百度主页"><a href="#实现效果：使用-Nginx-反向代理，访问IP直接跳转到百度主页" class="headerlink" title="实现效果：使用 Nginx 反向代理，访问IP直接跳转到百度主页"></a>实现效果：使用 Nginx 反向代理，访问IP直接跳转到百度主页</h3><p><strong>PS</strong>：此处如果要想从指定域名跳转到本机指定的ip，需要修改本机的hosts文件。</p>
 <p>配置代码</p>
-<p>server {<br>    listen       80;<br>    server_name  虚拟机IP;</p>
-<p>location &#x2F; {<br>    proxy_pass  <a href="http://www.baidu.com/">http://www.baidu.com</a><br>    }<br>}</p>
+<p>server {<br>	listen       80;<br>	server_name  虚拟机IP;</p>
+<p>location &#x2F; {<br>	proxy_pass  <a href="http://www.baidu.com/">http://www.baidu.com</a><br>	}<br>}</p>
 <p>如上配置，Nginx监听 80端口，访问虚拟机IP（不加端口号时默认为 80端口），访问该IP时会跳转到 百度主页上。</p>
 <h2 id="配置Nginx负载均衡"><a href="#配置Nginx负载均衡" class="headerlink" title="配置Nginx负载均衡"></a>配置Nginx负载均衡</h2><h3 id="负载均衡的作用"><a href="#负载均衡的作用" class="headerlink" title="负载均衡的作用"></a>负载均衡的作用</h3><p>解决服务器的高并发压力，提高应用程序的处理性能；<br>提供故障转移，实现高可用；<br>通过添加或减少服务器数量，增强网站的可扩展性；<br>在负载均衡器上进行过滤，可以提高系统的安全性。</p>
 <h4 id="Nginx负载均衡配置"><a href="#Nginx负载均衡配置" class="headerlink" title="Nginx负载均衡配置"></a>Nginx负载均衡配置</h4><h5 id="代理服务器-配置"><a href="#代理服务器-配置" class="headerlink" title="代理服务器 配置"></a>代理服务器 配置</h5><p>vi &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</p>
 <p>1.在Nnginx的主配置文件下的http块中配置</p>
 <pre><code># 设置服务器组
 upstream backend &#123;
-    server localhost;
-    server localhost;
+	server localhost;
+	server localhost;
 &#125;
 </code></pre>
-<h6 id="2-在server块下增加配置"><a href="#2-在server块下增加配置" class="headerlink" title="2.在server块下增加配置"></a>2.在server块下增加配置</h6><p>server {<br>        listen 80;<br>        server_name localhost;<br>        location &#x2F; {</p>
+<h6 id="2-在server块下增加配置"><a href="#2-在server块下增加配置" class="headerlink" title="2.在server块下增加配置"></a>2.在server块下增加配置</h6><p>server {<br>		listen 80;<br>		server_name localhost;<br>		location &#x2F; {</p>
 <p>​			# backend 就是服务器组的名称</p>
 <p>​			proxy_pass <a href="http://backend/">http://backend/</a>;<br>​		}<br>​	}</p>
 ]]></content>
@@ -269,37 +176,36 @@ upstream backend &#123;
 </ul>
 <h3 id="标识符规则"><a href="#标识符规则" class="headerlink" title="标识符规则"></a>标识符规则</h3><p>1字母数字下划线汉字不能开头</p>
 <p>2不能是保留字</p>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><h3 id="input-输入"><a href="#input-输入" class="headerlink" title="input()输入"></a>input()输入</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a=<span class="hljs-built_in">input</span>()<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(a))  //<span class="hljs-keyword">class</span><br><br><span class="hljs-title class_">a</span>=<span class="hljs-built_in">eval</span>(<span class="hljs-built_in">input</span>())  <br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(a))  //<span class="hljs-built_in">int</span><br></code></pre></td></tr></table></figure>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><h3 id="input-输入"><a href="#input-输入" class="headerlink" title="input()输入"></a>input()输入</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=<span class="built_in">input</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a))	//<span class="keyword">class</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">a</span>=<span class="built_in">eval</span>(<span class="built_in">input</span>())	</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a))	//<span class="built_in">int</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="print-输出-打印"><a href="#print-输出-打印" class="headerlink" title="print()输出&#x2F;打印"></a>print()输出&#x2F;打印</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">a=1<br>b=2<br>print(a)<br>print(b)  //a<br>        b<br>        <br>a=1<br>b=2<br>print(a,end=&#x27;&#x27;)<br>print(b)    // a b<br></code></pre></td></tr></table></figure>
+<h3 id="print-输出-打印"><a href="#print-输出-打印" class="headerlink" title="print()输出&#x2F;打印"></a>print()输出&#x2F;打印</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a=1</span><br><span class="line">b=2</span><br><span class="line">print(a)</span><br><span class="line">print(b)	//a</span><br><span class="line">			  b</span><br><span class="line">			  </span><br><span class="line">a=1</span><br><span class="line">b=2</span><br><span class="line">print(a,end=&#x27;&#x27;)</span><br><span class="line">print(b)		// a b</span><br></pre></td></tr></table></figure>
 
-<h1 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h1><h3 id="整数int"><a href="#整数int" class="headerlink" title="整数	int"></a>整数	int</h3><h3 id="浮点数float"><a href="#浮点数float" class="headerlink" title="浮点数	float"></a>浮点数	float</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">a = 1.0<br>b = 2.0<br>c = a+b<br>print(c)<br>&gt;&gt;&gt;0.3<br><br>a = 0.1<br>b = 0.2<br>c = a+b<br>print(c)<br>&gt;&gt;&gt;0.30000000001<br>#浮点数的计算不一定准确可能会产生很小的误差<br></code></pre></td></tr></table></figure>
+<h1 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h1><h3 id="整数int"><a href="#整数int" class="headerlink" title="整数	int"></a>整数	int</h3><h3 id="浮点数float"><a href="#浮点数float" class="headerlink" title="浮点数	float"></a>浮点数	float</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a = 1.0</span><br><span class="line">b = 2.0</span><br><span class="line">c = a+b</span><br><span class="line">print(c)</span><br><span class="line">&gt;&gt;&gt;0.3</span><br><span class="line"></span><br><span class="line">a = 0.1</span><br><span class="line">b = 0.2</span><br><span class="line">c = a+b</span><br><span class="line">print(c)</span><br><span class="line">&gt;&gt;&gt;0.30000000001</span><br><span class="line">#浮点数的计算不一定准确可能会产生很小的误差</span><br></pre></td></tr></table></figure>
 
-<h3 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">c = <span class="hljs-number">3</span>+<span class="hljs-number">4j</span><br><span class="hljs-built_in">print</span>(c.real)<br><span class="hljs-built_in">print</span>( c.imag)<br>&gt;&gt;&gt;<span class="hljs-number">3.0</span> <span class="hljs-number">4.0</span>    //复数值都为浮点型<br></code></pre></td></tr></table></figure>
+<h3 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c = <span class="number">3</span>+<span class="number">4j</span></span><br><span class="line"><span class="built_in">print</span>(c.real)</span><br><span class="line"><span class="built_in">print</span>( c.imag)</span><br><span class="line">&gt;&gt;&gt;<span class="number">3.0</span> <span class="number">4.0</span>		//复数值都为浮点型</span><br></pre></td></tr></table></figure>
 
 <h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><blockquote>
 <p>加减乘除 + - * &#x2F;</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">a = 4/2<br>print(a)<br>&gt;&gt;&gt;2.0   使用/后会得到浮点数<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a = 4/2</span><br><span class="line">print(a)</span><br><span class="line">&gt;&gt;&gt;2.0 	使用/后会得到浮点数</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>取整	&#x2F;&#x2F;</p>
 <p>取余	%</p>
 <p>复合赋值运算+&#x3D;，-&#x3D;</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">a += 1 等价于 a = a +1<br>a -= 1 等价于 a = a -1<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a += 1 等价于 a = a +1</span><br><span class="line">a -= 1 等价于 a = a -1</span><br></pre></td></tr></table></figure>
 
 <p><strong>相关函数</strong></p>
 <p>abs	取绝对值</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">a = 3 + 4i    复数结果为浮点数类型<br>print(abs(a))  <br>&gt;&gt;&gt;5.0<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a = 3 + 4i		复数结果为浮点数类型</span><br><span class="line">print(abs(a))	</span><br><span class="line">&gt;&gt;&gt;5.0</span><br></pre></td></tr></table></figure>
 
 <p>round(a,n)	浮点数取精度位</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">a = 3.1414141<br>print(round(a))    ##精确到整数位<br>&gt;&gt;&gt; 3<br><br>a = 3.1414141<br>print(round(a,3))    ##保留位数<br>&gt;&gt;&gt; 3.141<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a = 3.1414141</span><br><span class="line">print(round(a))		##精确到整数位</span><br><span class="line">&gt;&gt;&gt; 3</span><br><span class="line"></span><br><span class="line">a = 3.1414141</span><br><span class="line">print(round(a,3))		##保留位数</span><br><span class="line">&gt;&gt;&gt; 3.141</span><br></pre></td></tr></table></figure>
 
 
 
 <p>max&#x2F;min()	求最大&#x2F;小值</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">a = ( 43,545,54,46,02)<br>print(max(a))    <br>&gt;&gt;&gt;545<br><br>a = ( 43,545,54,46,02)<br>print(min(a))    <br>&gt;&gt;&gt;2<br></code></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a = ( 43,545,54,46,02)</span><br><span class="line">print(max(a))		</span><br><span class="line">&gt;&gt;&gt;545</span><br><span class="line"></span><br><span class="line">a = ( 43,545,54,46,02)</span><br><span class="line">print(min(a))		</span><br><span class="line">&gt;&gt;&gt;2</span><br></pre></td></tr></table></figure>
 
 </blockquote>
 <h3 id="序列类型"><a href="#序列类型" class="headerlink" title="序列类型"></a>序列类型</h3><h3 id="字符串S"><a href="#字符串S" class="headerlink" title="字符串S"></a>字符串S</h3><blockquote>
@@ -334,49 +240,46 @@ upstream backend &#123;
 </tr>
 </tbody></table>
 <h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">print(s[1])<br>print(s[-3])    ##索引<br>&gt;&gt;&gt; 喜<br>  喜<br></code></pre></td></tr></table></figure>
-</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(s[1])</span><br><span class="line">print(s[-3])		##索引</span><br><span class="line">&gt;&gt;&gt; 喜</span><br><span class="line">	喜</span><br></pre></td></tr></table></figure></blockquote>
 <h4 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h4><blockquote>
 <p>切出一段内容</p>
 <p>[起始位置(<strong>包含</strong>)：终止位置(<strong>不包含</strong>):步长]</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">print(s[1:4])<br>print(t[1:4])<br>print(ls[1:4])<br>&gt;&gt;&gt;<br>喜发财 f<br>(&#x27;喜&#x27;,&#x27;发&#x27;,&#x27;财&#x27;)<br>[&#x27;喜&#x27;,&#x27;发&#x27;,&#x27;财&#x27;]<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(s[1:4])</span><br><span class="line">print(t[1:4])</span><br><span class="line">print(ls[1:4])</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">喜发财 f</span><br><span class="line">(&#x27;喜&#x27;,&#x27;发&#x27;,&#x27;财&#x27;)</span><br><span class="line">[&#x27;喜&#x27;,&#x27;发&#x27;,&#x27;财&#x27;]</span><br></pre></td></tr></table></figure>
 
 <p><strong>步长</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">print(s[0:3:2])<br>&gt;&gt;&gt;恭发<br>print(s[0:3:2])<br></code></pre></td></tr></table></figure>
-</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(s[0:3:2])</span><br><span class="line">&gt;&gt;&gt;恭发</span><br><span class="line">print(s[0:3:2])</span><br></pre></td></tr></table></figure></blockquote>
 <h4 id="集合与字典"><a href="#集合与字典" class="headerlink" title="集合与字典"></a>集合与字典</h4><blockquote>
 <p>#<strong>集合</strong><br>s &#x3D; {1,2,3,4,5}</p>
 <p>1.不允许存在重复内容</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">s = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">7</span>,<span class="hljs-number">7</span>&#125;<br><span class="hljs-built_in">print</span>(s)<br><span class="hljs-meta">&gt;&gt;&gt; </span>&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">7</span>,<span class="number">7</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(s)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">7</span>&#125;</span><br></pre></td></tr></table></figure>
 
 <p>2.添加-<strong>add</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">s = &#123;1,2,3,4,5&#125;<br>s.add(8)<br>print(s)<br>&gt;&gt;&gt;&#123;1,2,3,4,5,8&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">s = &#123;1,2,3,4,5&#125;</span><br><span class="line">s.add(8)</span><br><span class="line">print(s)</span><br><span class="line">&gt;&gt;&gt;&#123;1,2,3,4,5,8&#125;</span><br></pre></td></tr></table></figure>
 
 <p>3移除-remov</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">s = &#123;1,2,3,4,5&#125;<br>s.remov(5)<br>print(s)<br>&gt;&gt;&gt;&#123;1,2,3,4&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">s = &#123;1,2,3,4,5&#125;</span><br><span class="line">s.remov(5)</span><br><span class="line">print(s)</span><br><span class="line">&gt;&gt;&gt;&#123;1,2,3,4&#125;</span><br></pre></td></tr></table></figure>
 
 <p>4清空-clear</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">s = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;<br>s.clear<br><span class="hljs-built_in">print</span>(s)<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">set</span>&#123;&#125;  特指空集合<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line">s.clear</span><br><span class="line"><span class="built_in">print</span>(s)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">set</span>&#123;&#125;	特指空集合</span><br></pre></td></tr></table></figure>
 
 <p>#<strong>字典</strong></p>
 <p>key : value</p>
 <p>d &#x3D; {“名字”:“张三”，”年龄”:23,”分数”:60}</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">d = &#123;<span class="hljs-string">&quot;名字&quot;</span>:“张三”，<span class="hljs-string">&quot;名字&quot;</span>:“张三”，”年龄<span class="hljs-string">&quot;:23,&quot;</span>分数<span class="hljs-string">&quot;:60&#125;</span><br><span class="hljs-string">print(d)</span><br><span class="hljs-string">&gt;&gt;&gt;&quot;</span>名字<span class="hljs-string">&quot;:“张三”，”年龄&quot;</span>:<span class="hljs-number">23</span>,<span class="hljs-string">&quot;分数&quot;</span>:<span class="hljs-number">60</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">d = &#123;<span class="string">&quot;名字&quot;</span>:“张三”，<span class="string">&quot;名字&quot;</span>:“张三”，”年龄<span class="string">&quot;:23,&quot;</span>分数<span class="string">&quot;:60&#125;</span></span><br><span class="line"><span class="string">print(d)</span></span><br><span class="line"><span class="string">&gt;&gt;&gt;&quot;</span>名字<span class="string">&quot;:“张三”，”年龄&quot;</span>:<span class="number">23</span>,<span class="string">&quot;分数&quot;</span>:<span class="number">60</span></span><br></pre></td></tr></table></figure>
 
 <p>1.添加键值对</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">d = &#123;&quot;名字&quot;:“张三”，”年龄&quot;:23,&quot;分数&quot;:60&#125;<br>d[&#x27;性别&#x27;] = ‘男’<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">d = &#123;&quot;名字&quot;:“张三”，”年龄&quot;:23,&quot;分数&quot;:60&#125;</span><br><span class="line">d[&#x27;性别&#x27;] = ‘男’</span><br></pre></td></tr></table></figure>
 
 <p>2.查找</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">#索引<br>print(d[&#x27;分数&#x27;]) <br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#索引</span><br><span class="line">print(d[&#x27;分数&#x27;]) </span><br></pre></td></tr></table></figure>
 
 <p>3.修改</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">d [&#x27;年龄&#x27;] = 18<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">d [&#x27;年龄&#x27;] = 18</span><br></pre></td></tr></table></figure>
 
 <p>4.删除</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">del d[&#x27;名字&#x27;]<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">del d[&#x27;名字&#x27;]</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">d.pop(&#x27;名字&#x27;)<br></code></pre></td></tr></table></figure>
-</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">d.pop(&#x27;名字&#x27;)</span><br></pre></td></tr></table></figure></blockquote>
 <h2 id="分支与循环结构"><a href="#分支与循环结构" class="headerlink" title="分支与循环结构"></a>分支与循环结构</h2><h4 id="运算符-1"><a href="#运算符-1" class="headerlink" title="运算符"></a>运算符</h4><blockquote>
 <p>比较运算符 </p>
 <blockquote>
@@ -405,70 +308,63 @@ upstream backend &#123;
 </blockquote>
 <h3 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a>分支结构</h3><h4 id="分支结构-1"><a href="#分支结构-1" class="headerlink" title="分支结构"></a>分支结构</h4><blockquote>
 <p><strong>if	单分支</strong></p>
-<figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py">n = <span class="hljs-built_in">eval</span>(<span class="hljs-built_in">input</span>)<br><span class="hljs-keyword">if</span> n%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>:<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;偶数&quot;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">n = <span class="built_in">eval</span>(<span class="built_in">input</span>)</span><br><span class="line"><span class="keyword">if</span> n%<span class="number">2</span>==<span class="number">0</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;偶数&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 <p><strong>if	else	双分支</strong></p>
-<figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py">n = <span class="hljs-built_in">eval</span>(<span class="hljs-built_in">input</span>)<br><span class="hljs-keyword">if</span> n%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>:<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;偶数&quot;</span>)<br><span class="hljs-keyword">else</span>：<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;奇数&quot;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">n = <span class="built_in">eval</span>(<span class="built_in">input</span>)</span><br><span class="line"><span class="keyword">if</span> n%<span class="number">2</span>==<span class="number">0</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;偶数&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>：</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;奇数&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>if	elif	else	多分支</p>
-<figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py">n = <span class="hljs-built_in">eval</span>(<span class="hljs-built_in">input</span>())<br><span class="hljs-keyword">if</span>  n &gt; <span class="hljs-number">90</span>:<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;优秀&quot;</span>)<br><span class="hljs-keyword">elif</span> n &gt; <span class="hljs-number">70</span>:<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;良好&quot;</span>)<br><span class="hljs-keyword">elif</span> n &gt; <span class="hljs-number">60</span>:<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;及格&quot;</span>)<br><span class="hljs-keyword">else</span>：<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;不合格&quot;</span>)<br></code></pre></td></tr></table></figure>
-</blockquote>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">n = <span class="built_in">eval</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">if</span>	n &gt; <span class="number">90</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;优秀&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> n &gt; <span class="number">70</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;良好&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> n &gt; <span class="number">60</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;及格&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>：</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;不合格&quot;</span>)</span><br></pre></td></tr></table></figure></blockquote>
 <h4 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h4><blockquote>
 <p>for	遍历循环</p>
 <blockquote>
-<figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#循环字符串</span><br>s = <span class="hljs-string">&#x27;恭喜发财&#x27;</span><br><span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> s:<br> <span class="hljs-built_in">print</span>(b)<br><span class="hljs-meta">&gt;&gt;&gt; </span>恭<br>  喜<br>  发<br>  财	<br></code></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment">#循环字符串</span></span><br><span class="line">s = <span class="string">&#x27;恭喜发财&#x27;</span></span><br><span class="line"><span class="keyword">for</span> b <span class="keyword">in</span> s:</span><br><span class="line"> <span class="built_in">print</span>(b)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>恭</span><br><span class="line">	喜</span><br><span class="line">	发</span><br><span class="line">	财	</span><br></pre></td></tr></table></figure>
 
 <p>#range函数(左边包括，右边不包括)</p>
-<figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#数字循环</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">6</span>):<br>  <span class="hljs-built_in">print</span>(i)<br>&gt;&gt;&gt;  <span class="hljs-number">1</span><br>  <span class="hljs-number">2</span><br> <span class="hljs-number">3</span><br> <span class="hljs-number">4</span><br> <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
-</blockquote>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment">#数字循环</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">6</span>):</span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line">&gt;&gt;&gt;	<span class="number">1</span></span><br><span class="line">	<span class="number">2</span></span><br><span class="line"> <span class="number">3</span></span><br><span class="line"> <span class="number">4</span></span><br><span class="line"> <span class="number">5</span></span><br></pre></td></tr></table></figure></blockquote>
 <p>while	条件循环</p>
 <blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">n = 1<br>while n &lt; 5:<br> n+=1<br> print(n)  #注意条件变量，不要写死循环<br></code></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">n = 1</span><br><span class="line">while n &lt; 5:</span><br><span class="line"> n+=1</span><br><span class="line"> print(n)	#注意条件变量，不要写死循环</span><br></pre></td></tr></table></figure>
 
 </blockquote>
 </blockquote>
 <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><blockquote>
-<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span> (x,y=<span class="hljs-number">3</span>):  <span class="hljs-comment">#默认参数，必须在后面</span><br>  s = x + y<br>  <span class="hljs-built_in">print</span>(S)<br></code></pre></td></tr></table></figure>
+<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span> (x,y=<span class="number">3</span>):	<span class="comment">#默认参数，必须在后面</span></span><br><span class="line">	s = x + y</span><br><span class="line">	<span class="built_in">print</span>(S)</span><br></pre></td></tr></table></figure>
 
-<h5 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h5><figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py">add(<span class="hljs-number">3</span>,<span class="hljs-number">5</span>)  <span class="hljs-comment">#位置参数</span><br>add(x = <span class="hljs-number">3</span>,y = <span class="hljs-number">5</span>)  <span class="hljs-comment">#关键字参数</span><br>&gt;&gt;&gt;<span class="hljs-number">8</span><br></code></pre></td></tr></table></figure>
+<h5 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h5><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">add(<span class="number">3</span>,<span class="number">5</span>)	<span class="comment">#位置参数</span></span><br><span class="line">add(x = <span class="number">3</span>,y = <span class="number">5</span>)	<span class="comment">#关键字参数</span></span><br><span class="line">&gt;&gt;&gt;<span class="number">8</span></span><br></pre></td></tr></table></figure>
 
-<h5 id="return"><a href="#return" class="headerlink" title="return"></a>return</h5><figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py">返回函数<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span> (x,y):<br>  s = x + y<br>  <span class="hljs-keyword">return</span> s	<br><br>n = add (<span class="hljs-number">3</span>,<span class="hljs-number">7</span>)<br><span class="hljs-built_in">print</span>(n)<br></code></pre></td></tr></table></figure>
+<h5 id="return"><a href="#return" class="headerlink" title="return"></a>return</h5><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">返回函数</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span> (x,y):</span><br><span class="line">	s = x + y</span><br><span class="line">	<span class="keyword">return</span> s	</span><br><span class="line"></span><br><span class="line">n = add (<span class="number">3</span>,<span class="number">7</span>)</span><br><span class="line"><span class="built_in">print</span>(n)</span><br></pre></td></tr></table></figure>
 
-<h5 id="global"><a href="#global" class="headerlink" title="global"></a>global</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">s = 0  <br>def add (x,y):<br>  globla s	局部变量&gt;全局变量<br>  s = x + y	<br>  print(S)<br>add(3,7)<br>print(s)<br></code></pre></td></tr></table></figure>
-
+<h5 id="global"><a href="#global" class="headerlink" title="global"></a>global</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">s = 0	</span><br><span class="line">def add (x,y):</span><br><span class="line">	globla s	局部变量&gt;全局变量</span><br><span class="line">	s = x + y	</span><br><span class="line">	print(S)</span><br><span class="line">add(3,7)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
 
 </blockquote>
 <h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><blockquote>
 <h5 id="open-函数"><a href="#open-函数" class="headerlink" title="open  函数"></a>open  函数</h5><h5 id="指定编码参数"><a href="#指定编码参数" class="headerlink" title="指定编码参数"></a>指定编码参数</h5><blockquote>
 <h5 id="enconding-‘uef-8’"><a href="#enconding-‘uef-8’" class="headerlink" title="enconding &#x3D; ‘uef-8’"></a>enconding &#x3D; ‘uef-8’</h5></blockquote>
-<figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py">f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;文件名&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;文件名&quot;</span>,<span class="string">&quot;r&quot;</span>,<span class="string">&quot;w&quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<h6 id="read-读取"><a href="#read-读取" class="headerlink" title="read()	读取"></a>read()	读取</h6><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">print(f.read)    全部读取<br>print(f.readlines)  按行读取<br></code></pre></td></tr></table></figure>
+<h6 id="read-读取"><a href="#read-读取" class="headerlink" title="read()	读取"></a>read()	读取</h6><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(f.read)		全部读取</span><br><span class="line">print(f.readlines)	按行读取</span><br></pre></td></tr></table></figure>
 
 <p><strong>写入</strong></p>
-<figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py">f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;文件名&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>)    <br><span class="hljs-built_in">print</span>(f.write(<span class="hljs-string">&quot;恭喜发财&quot;</span>))  <span class="hljs-comment">#覆盖写入文件文件，并非追加</span><br>f.close()  <span class="hljs-comment">#关闭文件</span><br></code></pre></td></tr></table></figure>
-</blockquote>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;文件名&quot;</span>,<span class="string">&quot;w&quot;</span>)		</span><br><span class="line"><span class="built_in">print</span>(f.write(<span class="string">&quot;恭喜发财&quot;</span>))	<span class="comment">#覆盖写入文件文件，并非追加</span></span><br><span class="line">f.close()	<span class="comment">#关闭文件</span></span><br></pre></td></tr></table></figure></blockquote>
 <h2 id="标准库"><a href="#标准库" class="headerlink" title="标准库"></a>标准库</h2><h3 id="tuetlr库"><a href="#tuetlr库" class="headerlink" title="tuetlr库"></a>tuetlr库</h3><blockquote>
-<h4 id="导入方式"><a href="#导入方式" class="headerlink" title="导入方式"></a>导入方式</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">import turtle<br>turtle.fd(200)<br></code></pre></td></tr></table></figure>
+<h4 id="导入方式"><a href="#导入方式" class="headerlink" title="导入方式"></a>导入方式</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import turtle</span><br><span class="line">turtle.fd(200)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">import turtle as t<br>t.fd(200)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import turtle as t</span><br><span class="line">t.fd(200)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">import turtle import *<br>fd(200)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import turtle import *</span><br><span class="line">fd(200)</span><br></pre></td></tr></table></figure>
 
 <h4 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h4><blockquote>
-<h5 id="前进"><a href="#前进" class="headerlink" title="前进"></a>前进</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">import turtle<br>turtle.fd(200)<br></code></pre></td></tr></table></figure>
+<h5 id="前进"><a href="#前进" class="headerlink" title="前进"></a>前进</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import turtle</span><br><span class="line">turtle.fd(200)</span><br></pre></td></tr></table></figure>
 
-<h5 id="后退"><a href="#后退" class="headerlink" title="后退"></a>后退</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">import turtle<br>turtle.fd(—200)<br></code></pre></td></tr></table></figure>
+<h5 id="后退"><a href="#后退" class="headerlink" title="后退"></a>后退</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import turtle</span><br><span class="line">turtle.fd(—200)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">left()  #左旋转<br>right()  #右旋转<br>Seth()  #朝向<br></code></pre></td></tr></table></figure>
-</blockquote>
-<h5 id="pensize-设置画笔粗细"><a href="#pensize-设置画笔粗细" class="headerlink" title="pensize() 	#设置画笔粗细"></a>pensize() 	#设置画笔粗细</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">pensize(10)    <br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">left()	#左旋转</span><br><span class="line">right()	#右旋转</span><br><span class="line">Seth()	#朝向</span><br></pre></td></tr></table></figure></blockquote>
+<h5 id="pensize-设置画笔粗细"><a href="#pensize-设置画笔粗细" class="headerlink" title="pensize() 	#设置画笔粗细"></a>pensize() 	#设置画笔粗细</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pensize(10)		</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">import turtle<br>#设置填充色<br>turtle.color(&#x27;bule&#x27;,&#x27;red&#x27;)<br>#三角形<br>turtle.begin_fill()<br>for i in range (3):<br>  turtle.fd(200)<br>  turtle.left(120)<br>turtle.end_fill()  #结束填充色<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import turtle</span><br><span class="line">#设置填充色</span><br><span class="line">turtle.color(&#x27;bule&#x27;,&#x27;red&#x27;)</span><br><span class="line">#三角形</span><br><span class="line">turtle.begin_fill()</span><br><span class="line">for i in range (3):</span><br><span class="line">	turtle.fd(200)</span><br><span class="line">	turtle.left(120)</span><br><span class="line">turtle.end_fill()	#结束填充色</span><br></pre></td></tr></table></figure>
 
-<h5 id="goto-移动到"><a href="#goto-移动到" class="headerlink" title="goto	#移动到"></a>goto	#移动到</h5><figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> turtle<br>turtle,fd(<span class="hljs-number">100</span>)<br>turtle.goto(<span class="hljs-number">192</span>,<span class="hljs-number">242</span>)<br><br></code></pre></td></tr></table></figure>
-
+<h5 id="goto-移动到"><a href="#goto-移动到" class="headerlink" title="goto	#移动到"></a>goto	#移动到</h5><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line">turtle,fd(<span class="number">100</span>)</span><br><span class="line">turtle.goto(<span class="number">192</span>,<span class="number">242</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 </blockquote>
 ]]></content>
@@ -667,7 +563,7 @@ upstream backend &#123;
 <p>nslookup<br>ping</p>
 </blockquote>
 <h4 id="对逻辑卷扩容，缩容有何异同点"><a href="#对逻辑卷扩容，缩容有何异同点" class="headerlink" title="对逻辑卷扩容，缩容有何异同点"></a>对逻辑卷扩容，缩容有何异同点</h4><blockquote>
-<p>同：都需要先取消逻辑卷与目录的挂载关联<br>异：扩容先扩容后检查文件系统完整性<br>    缩容为保证数据安全，先检查文件系统完整性在缩容</p>
+<p>同：都需要先取消逻辑卷与目录的挂载关联<br>异：扩容先扩容后检查文件系统完整性<br>	缩容为保证数据安全，先检查文件系统完整性在缩容</p>
 </blockquote>
 <h4 id="输出重定向-与-的区别是什么？"><a href="#输出重定向-与-的区别是什么？" class="headerlink" title="输出重定向&gt;与&gt;&gt;的区别是什么？"></a>输出重定向&gt;与&gt;&gt;的区别是什么？</h4><blockquote>
 <p>‘&gt;’是定向输出文件，如果文件存在就清空，如果不存在就创建</p>
@@ -709,23 +605,23 @@ upstream backend &#123;
 <h4 id="can通信帧的类型"><a href="#can通信帧的类型" class="headerlink" title="can通信帧的类型"></a>can通信帧的类型</h4><blockquote>
 <p>数据帧 遥控帧 错误帧 过载帧 帧间隔</p>
 </blockquote>
-<h2 id="openstack-云平台"><a href="#openstack-云平台" class="headerlink" title="openstack 云平台"></a>openstack 云平台</h2><h4 id="创建安全组虚拟机"><a href="#创建安全组虚拟机" class="headerlink" title="创建安全组虚拟机"></a>创建安全组虚拟机</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">open stack server create --flavor flavor-02 --image ubuntu-img-01 --nic net-id=net-03b --security-group web-sg webserver-vm<br></code></pre></td></tr></table></figure>
+<h2 id="openstack-云平台"><a href="#openstack-云平台" class="headerlink" title="openstack 云平台"></a>openstack 云平台</h2><h4 id="创建安全组虚拟机"><a href="#创建安全组虚拟机" class="headerlink" title="创建安全组虚拟机"></a>创建安全组虚拟机</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">open stack server create --flavor flavor-02 --image ubuntu-img-01 --nic net-id=net-03b --security-group web-sg webserver-vm</span><br></pre></td></tr></table></figure>
 
-<h4 id="删除网络"><a href="#删除网络" class="headerlink" title="删除网络"></a>删除网络</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">先删除子网:open stack subnet delete unused-subnet<br><br>再删除网络:openstack network delete unused-network<br></code></pre></td></tr></table></figure>
+<h4 id="删除网络"><a href="#删除网络" class="headerlink" title="删除网络"></a>删除网络</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">先删除子网:open stack subnet delete unused-subnet</span><br><span class="line"></span><br><span class="line">再删除网络:openstack network delete unused-network</span><br></pre></td></tr></table></figure>
 
-<h4 id="查看虚拟机情况"><a href="#查看虚拟机情况" class="headerlink" title="查看虚拟机情况"></a>查看虚拟机情况</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">openstack server show qppserver-vm -c address -c os-extened-volunmes:volumes_attached -c networks  -f value | grep -E <span class="hljs-string">&quot;address|mac&quot;</span><br></code></pre></td></tr></table></figure>
+<h4 id="查看虚拟机情况"><a href="#查看虚拟机情况" class="headerlink" title="查看虚拟机情况"></a>查看虚拟机情况</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openstack server show qppserver-vm -c address -c os-extened-volunmes:volumes_attached -c networks  -f value | grep -E <span class="string">&quot;address|mac&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="创建主机"><a href="#创建主机" class="headerlink" title="创建主机"></a>创建主机</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">openstack server creat VM_host --image cirros --flavor myflavor --network vm-network<br></code></pre></td></tr></table></figure>
+<h4 id="创建主机"><a href="#创建主机" class="headerlink" title="创建主机"></a>创建主机</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openstack server creat VM_host --image cirros --flavor myflavor --network vm-network</span><br></pre></td></tr></table></figure>
 
-<h4 id="挂起恢复"><a href="#挂起恢复" class="headerlink" title="挂起恢复"></a>挂起恢复</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">挂起命令:openstcak server <span class="hljs-built_in">suspend</span> dbserver-vm;<br>恢复命令:openstack server resume dbserver-vm<br></code></pre></td></tr></table></figure>
+<h4 id="挂起恢复"><a href="#挂起恢复" class="headerlink" title="挂起恢复"></a>挂起恢复</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">挂起命令:openstcak server <span class="built_in">suspend</span> dbserver-vm;</span><br><span class="line">恢复命令:openstack server resume dbserver-vm</span><br></pre></td></tr></table></figure>
 
-<h4 id="加密密钥"><a href="#加密密钥" class="headerlink" title="加密密钥"></a>加密密钥</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">openstack volume create --size 50 --volume-type high-perf --encryption-provider luks --encryption-key-id encrypt-key-01 highperf-volume<br></code></pre></td></tr></table></figure>
+<h4 id="加密密钥"><a href="#加密密钥" class="headerlink" title="加密密钥"></a>加密密钥</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openstack volume create --size 50 --volume-type high-perf --encryption-provider luks --encryption-key-id encrypt-key-01 highperf-volume</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">创建网络 openstack network create test-isolate-network<br>创建子网 openstack subnet create --network tes-isolate-network --subnet-range 172.16.10.0/24 --gateway 172.16.10.1 --dns-namerver 8.8.8.8 test-subnet<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">创建网络 openstack network create test-isolate-network</span><br><span class="line">创建子网 openstack subnet create --network tes-isolate-network --subnet-range 172.16.10.0/24 --gateway 172.16.10.1 --dns-namerver 8.8.8.8 test-subnet</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">创建网络<br>openstack subent create --network vm-network --allocation pool start=192.168.20.100.end=192.168.20.200 --dns-nameserver 114.114.114.114 --subnet-range 192.168.20.0/24 vm-subnetwork<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">创建网络</span><br><span class="line">openstack subent create --network vm-network --allocation pool start=192.168.20.100.end=192.168.20.200 --dns-nameserver 114.114.114.114 --subnet-range 192.168.20.0/24 vm-subnetwork</span><br></pre></td></tr></table></figure>
 
-<h4 id="上传镜像"><a href="#上传镜像" class="headerlink" title="上传镜像"></a>上传镜像</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">open stack image create --file win-server-custom.qcow2 --disk-format qcw2 --container-format bare --property tags=<span class="hljs-string">&quot;windows,server&quot;</span> win-server-optimized<br></code></pre></td></tr></table></figure>
+<h4 id="上传镜像"><a href="#上传镜像" class="headerlink" title="上传镜像"></a>上传镜像</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">open stack image create --file win-server-custom.qcow2 --disk-format qcw2 --container-format bare --property tags=<span class="string">&quot;windows,server&quot;</span> win-server-optimized</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <tags>
@@ -740,22 +636,22 @@ upstream backend &#123;
 <span id="more"></span>
 
 <h1 id="华三交换机命令"><a href="#华三交换机命令" class="headerlink" title="华三交换机命令"></a>华三交换机命令</h1><h3 id="Vlan-划分与配置"><a href="#Vlan-划分与配置" class="headerlink" title="Vlan 划分与配置"></a>Vlan 划分与配置</h3><p>基础记了一点常用命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int g1/0/1 #进入接口<br>int v 10  #进入vlan<br>v b 10 20 #批量创建vlan<br>int b 1   #创建聚合口<br>p link-type t #改变为turk<br>p t p v 10 #允许不同vlan经过<br>ip add 10.10.10.10 24 #配置ip地址<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int g1/0/1 #进入接口</span><br><span class="line">int v 10  #进入vlan</span><br><span class="line">v b 10 20 #批量创建vlan</span><br><span class="line">int b 1   #创建聚合口</span><br><span class="line">p link-type t #改变为turk</span><br><span class="line">p t p v 10 #允许不同vlan经过</span><br><span class="line">ip add 10.10.10.10 24 #配置ip地址</span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="创建交换核心堆叠"><a href="#创建交换核心堆叠" class="headerlink" title="创建交换核心堆叠"></a>创建交换核心堆叠</h3><p>​	<strong>核心堆叠是一种网络技术，它允许将多台支持堆叠特性的交换机通过专用的堆叠口连接起来，从逻辑上变成一台交换设备，作为一个整体参与数据转发。</strong></p>
 <p>​	准备两台交换机</p>
 <p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213163202229.png" loading="lazy"></p>
-<h4 id="SW1配置"><a href="#SW1配置" class="headerlink" title="SW1配置"></a>SW1配置</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs /">irf domain 10  #配置domain域<br>irf member 1 priority 10  #配置设备权重(大的为主)<br>int r t1/0/49 to t1/0/50  <br>shutdown    #端口加入之前必须先shutdowm		<br>qu      <br>irf-port 1/1  #irf -port 1/1 注解	前一个1代表交换机的member号，后一个代表irf-port的端口号<br>port group int t1/0/49<br>port group int t1/0/50<br>qu<br>int r t1/0/49 to t1/0/50  <br>undo shutdown<br>qu<br>irf-port-configuration active  #激活配置<br>save保存<br></code></pre></td></tr></table></figure>
+<h4 id="SW1配置"><a href="#SW1配置" class="headerlink" title="SW1配置"></a>SW1配置</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">irf domain 10	#配置domain域</span><br><span class="line">irf member 1 priority 10	#配置设备权重(大的为主)</span><br><span class="line">int r t1/0/49 to t1/0/50	</span><br><span class="line">shutdown		#端口加入之前必须先shutdowm		</span><br><span class="line">qu			</span><br><span class="line">irf-port 1/1	#irf -port 1/1 注解	前一个1代表交换机的member号，后一个代表irf-port的端口号</span><br><span class="line">port group int t1/0/49</span><br><span class="line">port group int t1/0/50</span><br><span class="line">qu</span><br><span class="line">int r t1/0/49 to t1/0/50	</span><br><span class="line">undo shutdown</span><br><span class="line">qu</span><br><span class="line">irf-port-configuration active	#激活配置</span><br><span class="line">save保存</span><br></pre></td></tr></table></figure>
 
-<h4 id="SW2配置"><a href="#SW2配置" class="headerlink" title="SW2配置"></a>SW2配置</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">irf domain 10  #配置domain域<br>irf member 1 remember 2    #重置编号后需要重启设备<br>qu<br>reboot<br>.......<br>irf member 2 priority 1  #配置设备权重(默认为1，此步可省略)<br>int r t2/0/49 to t2/0/50  <br>shutdown    #端口加入之前必须先shutdowm		<br>qu      <br>irf-port 2/2<br>port group int t2/0/49<br>port group int t2/0/50<br>qu<br>int r t2/0/49 to t2/0/50  <br>undo shutdown<br>qu<br>irf-port-configuration active  #激活配置<br>save保存<br></code></pre></td></tr></table></figure>
+<h4 id="SW2配置"><a href="#SW2配置" class="headerlink" title="SW2配置"></a>SW2配置</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">irf domain 10	#配置domain域</span><br><span class="line">irf member 1 remember 2		#重置编号后需要重启设备</span><br><span class="line">qu</span><br><span class="line">reboot</span><br><span class="line">.......</span><br><span class="line">irf member 2 priority 1	#配置设备权重(默认为1，此步可省略)</span><br><span class="line">int r t2/0/49 to t2/0/50	</span><br><span class="line">shutdown		#端口加入之前必须先shutdowm		</span><br><span class="line">qu			</span><br><span class="line">irf-port 2/2</span><br><span class="line">port group int t2/0/49</span><br><span class="line">port group int t2/0/50</span><br><span class="line">qu</span><br><span class="line">int r t2/0/49 to t2/0/50	</span><br><span class="line">undo shutdown</span><br><span class="line">qu</span><br><span class="line">irf-port-configuration active	#激活配置</span><br><span class="line">save保存</span><br></pre></td></tr></table></figure>
 
 <p>​	<strong>完成上述配置后,接线，堆叠完成</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">dis irf    #查看irf配置<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dis irf		#查看irf配置</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213163057374.png" loading="lazy"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">dis irf link  #查看irf接口(多用于排错)	<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dis irf link	#查看irf接口(多用于排错)	</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213163103741.png" loading="lazy"></p>
 <h4 id="IRF-心跳检测-选做"><a href="#IRF-心跳检测-选做" class="headerlink" title="IRF 心跳检测(选做)"></a>IRF 心跳检测(选做)</h4><h3 id="静态路由部署与配置"><a href="#静态路由部署与配置" class="headerlink" title="静态路由部署与配置"></a>静态路由部署与配置</h3><p>原理：</p>
@@ -767,30 +663,30 @@ upstream backend &#123;
 <img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213163140436.png" style="zoom:200%;" / loading="lazy">
 
 <p>ping不通是因为路由无法正常的找到IP地址发送数据包</p>
-<h4 id="静态路由"><a href="#静态路由" class="headerlink" title="静态路由"></a>静态路由</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">[RAT-1]ip route-static 10.10.20.0 24 10.10.30.2<br>[RAT-2]ip route-static 10.10.10.0 24 10.10.30.1<br></code></pre></td></tr></table></figure>
+<h4 id="静态路由"><a href="#静态路由" class="headerlink" title="静态路由"></a>静态路由</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[RAT-1]ip route-static 10.10.20.0 24 10.10.30.2</span><br><span class="line">[RAT-2]ip route-static 10.10.10.0 24 10.10.30.1</span><br></pre></td></tr></table></figure>
 
 <p>成功ping通！</p>
 <p>查看一下路由表 可以看到路由已经添加了</p>
 <img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213163146508.png" style="zoom:200%;" / loading="lazy">
 
-<h4 id="默认路由"><a href="#默认路由" class="headerlink" title="默认路由"></a>默认路由</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">[RAT-1]ip route-static 0.0.0.0 0 10.10.30.2<br>[RAT-2]ip route-static 0.0.0.0 0 10.10.30.1<br></code></pre></td></tr></table></figure>
+<h4 id="默认路由"><a href="#默认路由" class="headerlink" title="默认路由"></a>默认路由</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[RAT-1]ip route-static 0.0.0.0 0 10.10.30.2</span><br><span class="line">[RAT-2]ip route-static 0.0.0.0 0 10.10.30.1</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213163153148.png" loading="lazy"></p>
 <h3 id="华三OSPF配置"><a href="#华三OSPF配置" class="headerlink" title="华三OSPF配置"></a>华三OSPF配置</h3><h4 id="技术简介"><a href="#技术简介" class="headerlink" title="技术简介"></a>技术简介</h4><p>实验拓扑</p>
 <p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241214112704356.png" loading="lazy"></p>
 <p>基础配置</p>
-<h4 id="OSPF单域配置"><a href="#OSPF单域配置" class="headerlink" title="OSPF单域配置"></a>OSPF单域配置</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">RTA<br>int g0/0<br>ip add 10.10.10.2 24<br>int s1/0<br>ip add 10.10.20.1 30<br>int s2/0<br>ip add 10.10.40.1 30<br>ospf 10<br>a 0<br>net 0.0.0.0 255.255.255.255    #默认路由<br></code></pre></td></tr></table></figure>
+<h4 id="OSPF单域配置"><a href="#OSPF单域配置" class="headerlink" title="OSPF单域配置"></a>OSPF单域配置</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RTA</span><br><span class="line">int g0/0</span><br><span class="line">ip add 10.10.10.2 24</span><br><span class="line">int s1/0</span><br><span class="line">ip add 10.10.20.1 30</span><br><span class="line">int s2/0</span><br><span class="line">ip add 10.10.40.1 30</span><br><span class="line">ospf 10</span><br><span class="line">a 0</span><br><span class="line">net 0.0.0.0 255.255.255.255		#默认路由</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">RTB<br>int s1/0<br>ip add 10.10.20.2 30<br>int s2/0<br>ip add 10.10.50.2 30<br>int g0/0<br>ip add 10.10.30.2 24<br>ospf 10 <br>a 0<br>net  10.10.20.2 0.0.0.3<br>net  10.10.30.2 0.0.0.255<br>net  10.10.50.2 0.0.0.3<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RTB</span><br><span class="line">int s1/0</span><br><span class="line">ip add 10.10.20.2 30</span><br><span class="line">int s2/0</span><br><span class="line">ip add 10.10.50.2 30</span><br><span class="line">int g0/0</span><br><span class="line">ip add 10.10.30.2 24</span><br><span class="line">ospf 10 </span><br><span class="line">a 0</span><br><span class="line">net	10.10.20.2 0.0.0.3</span><br><span class="line">net	10.10.30.2 0.0.0.255</span><br><span class="line">net	10.10.50.2 0.0.0.3</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">RTC<br>int s1/0<br>ip add 10.10.40.2 30<br>int s2/0<br>ip add 10.10.50.1 30<br>int g0/0<br>ip add 10.10.60.2 24<br>ospf 10 <br>a 0<br>net  0.0.0.0 255.255.255.255<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RTC</span><br><span class="line">int s1/0</span><br><span class="line">ip add 10.10.40.2 30</span><br><span class="line">int s2/0</span><br><span class="line">ip add 10.10.50.1 30</span><br><span class="line">int g0/0</span><br><span class="line">ip add 10.10.60.2 24</span><br><span class="line">ospf 10 </span><br><span class="line">a 0</span><br><span class="line">net	0.0.0.0 255.255.255.255</span><br></pre></td></tr></table></figure>
 
 <h4 id="OSPF多域配置"><a href="#OSPF多域配置" class="headerlink" title="OSPF多域配置"></a>OSPF多域配置</h4><p>在OSPF中，必须有一个骨干区域（通常为Area 0），所有其他区域必须直接或间接地连接到骨干区域。骨干区域负责在不同区域之间传递路由信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">#ip 地址配置同上<br>[RTA]  <br>ospf 100<br>a  0<br>net 0.0.0.0 255.255.255.255<br><br>[RTB]<br>ospf 100<br>a  1<br>net  0.0.0.0 255.255.255.255<br><br>[RTC]<br>ospf 100<br>a 0<br>net 10.10.40.0 0.0.0.255<br>qu<br>a 1<br>net 10.10.50.0 0.0.0.255<br>net 10.10.60.0 0.0.0.255<br>save<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#ip 地址配置同上</span><br><span class="line">[RTA]	</span><br><span class="line">ospf 100</span><br><span class="line">a	0</span><br><span class="line">net 0.0.0.0 255.255.255.255</span><br><span class="line"></span><br><span class="line">[RTB]</span><br><span class="line">ospf 100</span><br><span class="line">a	1</span><br><span class="line">net	0.0.0.0 255.255.255.255</span><br><span class="line"></span><br><span class="line">[RTC]</span><br><span class="line">ospf 100</span><br><span class="line">a 0</span><br><span class="line">net 10.10.40.0 0.0.0.255</span><br><span class="line">qu</span><br><span class="line">a 1</span><br><span class="line">net 10.10.50.0 0.0.0.255</span><br><span class="line">net 10.10.60.0 0.0.0.255</span><br><span class="line">save</span><br></pre></td></tr></table></figure>
 
 <h3 id="网络访问控制"><a href="#网络访问控制" class="headerlink" title="网络访问控制"></a>网络访问控制</h3><h4 id="访问控制列表ACl"><a href="#访问控制列表ACl" class="headerlink" title="访问控制列表ACl"></a>访问控制列表ACl</h4><h2 id="ACL简介"><a href="#ACL简介" class="headerlink" title="ACL简介"></a>ACL简介</h2><p>ACL（Access Control List，访问控制列表）是一系列用于识别报文流的规则的集合。这里的规则是指描述报文匹配条件的判断语句，匹配条件可以是报文的源地址、目的地址、端口号等。设备依据ACL规则识别出特定的报文，并根据预先设定的策略对其进行处理，最常见的应用就是使用ACL进行报文过滤。此外，ACL还可应用于诸如路由、安全、QoS等业务中识别报文，对这些报文的具体处理方式由应用ACL的业务模块来决定</p>
 <h5 id="基本ACL"><a href="#基本ACL" class="headerlink" title="基本ACL"></a>基本ACL</h5><p>基本ACL根据报文的源IP地址来制订规则，对报文进行匹配</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"><br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
@@ -799,22 +695,22 @@ upstream backend &#123;
 <h1 id="NAPT-telent"><a href="#NAPT-telent" class="headerlink" title="NAPT+telent"></a>NAPT+telent</h1><p>拓扑图</p>
 <p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213183716661.png" loading="lazy"></p>
 <p><strong>内网PC</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">ip add 10.10.10.10 24<br>网关  10.10.10.2<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip add 10.10.10.10 24</span><br><span class="line">网关	10.10.10.2</span><br></pre></td></tr></table></figure>
 
 <p><strong>内网服务器</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int g0/0<br>ip add 10.10.1.10 24<br>ip rou 0.0.0.0 0 10.10.10.1.2<br>#开启tenlent 远程访问服务<br>telent server enable<br>line vty 0 4<br>aouthenticaition-mode scheme<br>user-role leave-15<br>qu<br>local-user xz<br>passwdorld simple 12345<br>service-type telent<br>authorization-attribute user-role leave-15<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int g0/0</span><br><span class="line">ip add 10.10.1.10 24</span><br><span class="line">ip rou 0.0.0.0 0 10.10.10.1.2</span><br><span class="line">#开启tenlent 远程访问服务</span><br><span class="line">telent server enable</span><br><span class="line">line vty 0 4</span><br><span class="line">aouthenticaition-mode scheme</span><br><span class="line">user-role leave-15</span><br><span class="line">qu</span><br><span class="line">local-user xz</span><br><span class="line">passwdorld simple 12345</span><br><span class="line">service-type telent</span><br><span class="line">authorization-attribute user-role leave-15</span><br></pre></td></tr></table></figure>
 
 <p><strong>核心交换</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int vlan1<br>ip add 10.10.10.2 24<br>int g1/0/2 <br>port link-mode route<br>ip add 10.10.1.2 24<br>int g1/0/3<br>port like-mode route<br>ip add 10.10.2.1 30<br>ip rou 0.0.0.0 0 10.10.10.2.2<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int vlan1</span><br><span class="line">ip add 10.10.10.2 24</span><br><span class="line">int g1/0/2 </span><br><span class="line">port link-mode route</span><br><span class="line">ip add 10.10.1.2 24</span><br><span class="line">int g1/0/3</span><br><span class="line">port like-mode route</span><br><span class="line">ip add 10.10.2.1 30</span><br><span class="line">ip rou 0.0.0.0 0 10.10.10.2.2</span><br></pre></td></tr></table></figure>
 
 <p><strong>带宽路由</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int g0/0<br>ip add 10.10.2.2 30<br>int s1/0<br>ip add 100.200.1.1 28<br>ip rou 0.0.0.0 0 100.200.1.2<br>ip rou 10.10.0.0 16 10.10.2.1<br>acl nember 2000<br>rule p s 10.10.0.0 16 <br>nat add group 1<br>add 100.200.1.3  100.200.14<br>qu<br>int s1/0<br>nat outbound 2000<br>nat server protocol tcp global 100.200.3[公网] 23 inside 10.10.1.10[内网] 23<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int g0/0</span><br><span class="line">ip add 10.10.2.2 30</span><br><span class="line">int s1/0</span><br><span class="line">ip add 100.200.1.1 28</span><br><span class="line">ip rou 0.0.0.0 0 100.200.1.2</span><br><span class="line">ip rou 10.10.0.0 16 10.10.2.1</span><br><span class="line">acl nember 2000</span><br><span class="line">rule p s 10.10.0.0 16 </span><br><span class="line">nat add group 1</span><br><span class="line">add 100.200.1.3	100.200.14</span><br><span class="line">qu</span><br><span class="line">int s1/0</span><br><span class="line">nat outbound 2000</span><br><span class="line">nat server protocol tcp global 100.200.3[公网] 23 inside 10.10.1.10[内网] 23</span><br></pre></td></tr></table></figure>
 
 <p><strong>公网路由</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int s1/0<br>ip add 100.200.1.2 28<br>int g0/0<br>ip add 20.20.20.2 24<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int s1/0</span><br><span class="line">ip add 100.200.1.2 28</span><br><span class="line">int g0/0</span><br><span class="line">ip add 20.20.20.2 24</span><br></pre></td></tr></table></figure>
 
 <p><strong>外网PC</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">ip add 20.20.20.10 24<br>网关   20.20.20.2<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip add 20.20.20.10 24</span><br><span class="line">网关 	20.20.20.2</span><br></pre></td></tr></table></figure>
 
 <p>此时先在内网测试telnet 服务是否失败</p>
 <p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213183109189.png" loading="lazy"></p>
@@ -824,37 +720,37 @@ upstream backend &#123;
 <p>大成功！</p>
 <p>恭喜你学会了NAT server + telnet</p>
 <h1 id="ppp"><a href="#ppp" class="headerlink" title="ppp"></a>ppp</h1><p>#PAP认证</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">RTA<br>int s1/0<br>linl-protocol ppp<br>ppp auth-mode pap<br>qu<br>local-user xz class network<br>password simlpe 123456<br>service-type ppp<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RTA</span><br><span class="line">int s1/0</span><br><span class="line">linl-protocol ppp</span><br><span class="line">ppp auth-mode pap</span><br><span class="line">qu</span><br><span class="line">local-user xz class network</span><br><span class="line">password simlpe 123456</span><br><span class="line">service-type ppp</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">RTB<br><br>int s1/0<br><br>link-protocol ppp<br><br>ppp pap local-user xz password simple 123456<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RTB</span><br><span class="line"></span><br><span class="line">int s1/0</span><br><span class="line"></span><br><span class="line">link-protocol ppp</span><br><span class="line"></span><br><span class="line">ppp pap local-user xz password simple 123456</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="MP"><a href="#MP" class="headerlink" title="#MP"></a>#MP</h3><p>创建MP口</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">RTA配置<br>int mp 1<br>ip add 10.1.1.1 30<br>qu<br><br>int  r s1/0 s2/0<br>ppp mp m 1<br>qu<br><br>local-user admin class network<br>passworld simple 123<br>service-type ppp<br>qu<br>int r s1/0 s2/0<br>ppp auth-mode chap<br>ppp chap user xz<br>ppp chap passwd simple 456<br>qu<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RTA配置</span><br><span class="line">int mp 1</span><br><span class="line">ip add 10.1.1.1 30</span><br><span class="line">qu</span><br><span class="line"></span><br><span class="line">int  r s1/0 s2/0</span><br><span class="line">ppp mp m 1</span><br><span class="line">qu</span><br><span class="line"></span><br><span class="line">local-user admin class network</span><br><span class="line">passworld simple 123</span><br><span class="line">service-type ppp</span><br><span class="line">qu</span><br><span class="line">int r s1/0 s2/0</span><br><span class="line">ppp auth-mode chap</span><br><span class="line">ppp chap user xz</span><br><span class="line">ppp chap passwd simple 456</span><br><span class="line">qu</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">RTB配置<br>int mp 1<br>ip add 10.1.1.2 30<br><br>local-user xz class network<br>passwdord simple 456<br>service-type ppp<br>qu<br><br>int r s1/0 s2/0<br>ppp auth-mode chap<br>ppp chap user admin<br>ppp chap password simple 123<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RTB配置</span><br><span class="line">int mp 1</span><br><span class="line">ip add 10.1.1.2 30</span><br><span class="line"></span><br><span class="line">local-user xz class network</span><br><span class="line">passwdord simple 456</span><br><span class="line">service-type ppp</span><br><span class="line">qu</span><br><span class="line"></span><br><span class="line">int r s1/0 s2/0</span><br><span class="line">ppp auth-mode chap</span><br><span class="line">ppp chap user admin</span><br><span class="line">ppp chap password simple 123</span><br></pre></td></tr></table></figure>
 
 <p>验证配置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">dis int br<br><br>ping 10.1.1.1<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dis int br</span><br><span class="line"></span><br><span class="line">ping 10.1.1.1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h1 id="期末作业"><a href="#期末作业" class="headerlink" title="期末作业"></a>期末作业</h1><h3 id="PC"><a href="#PC" class="headerlink" title="PC"></a>PC</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">pc1<br>ip add 172.10.0.100/24<br>gateway 172.10.0.254<br><br>pc2<br>ip add 172.20.0.100/24<br>gateway 172.20.0.254<br><br>pc3<br>ip add 100.0.1.100/24<br>gateway 100.0.1.254<br></code></pre></td></tr></table></figure>
+<h1 id="期末作业"><a href="#期末作业" class="headerlink" title="期末作业"></a>期末作业</h1><h3 id="PC"><a href="#PC" class="headerlink" title="PC"></a>PC</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pc1</span><br><span class="line">ip add 172.10.0.100/24</span><br><span class="line">gateway 172.10.0.254</span><br><span class="line"></span><br><span class="line">pc2</span><br><span class="line">ip add 172.20.0.100/24</span><br><span class="line">gateway 172.20.0.254</span><br><span class="line"></span><br><span class="line">pc3</span><br><span class="line">ip add 100.0.1.100/24</span><br><span class="line">gateway 100.0.1.254</span><br></pre></td></tr></table></figure>
 
-<h3 id="S2-S3"><a href="#S2-S3" class="headerlink" title="S2&amp;S3"></a>S2&amp;S3</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">#S2<br>v 10<br>po g1/0/5 to g1/0/8<br>v 20<br>po g1/0/9 to g1/0/12<br>int g 1/0/2<br>port link-type trunk<br>port trunk p v all<br>stp g e<br>stp m rstp<br>stp pir 4096<br><br><br>#S3<br>v 10<br>po g1/0/5 to g1/0/8<br>v 20<br>po g1/0/9 to g1/0/12<br>int g 1/0/2<br>port link-type trunk<br>port trunk p v all<br>stp g e<br>stp rstp<br><br></code></pre></td></tr></table></figure>
+<h3 id="S2-S3"><a href="#S2-S3" class="headerlink" title="S2&amp;S3"></a>S2&amp;S3</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#S2</span><br><span class="line">v 10</span><br><span class="line">po g1/0/5 to g1/0/8</span><br><span class="line">v 20</span><br><span class="line">po g1/0/9 to g1/0/12</span><br><span class="line">int g 1/0/2</span><br><span class="line">port link-type trunk</span><br><span class="line">port trunk p v all</span><br><span class="line">stp g e</span><br><span class="line">stp m rstp</span><br><span class="line">stp pir 4096</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#S3</span><br><span class="line">v 10</span><br><span class="line">po g1/0/5 to g1/0/8</span><br><span class="line">v 20</span><br><span class="line">po g1/0/9 to g1/0/12</span><br><span class="line">int g 1/0/2</span><br><span class="line">port link-type trunk</span><br><span class="line">port trunk p v all</span><br><span class="line">stp g e</span><br><span class="line">stp rstp</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="S1"><a href="#S1" class="headerlink" title="S1"></a>S1</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">v 100<br>po g1/0/1<br>v 10<br>po g1/0/2<br>v 20<br>po g1/0/3<br>int v10 <br>ip add 172.10.0.1 24<br>int v20 <br>ip add 172.20.0.1<br>int r g1/0/2 g1/0/3<br>port link-type trunk<br>port trunk p v all<br><br>int g1/0/1<br>port link-mode route<br>ip add 10.0.0.1 30<br><br>#stp<br>stp g e<br>stp mo rstp<br>stp pri 0<br>#ospf<br>ospf 10<br>a 0<br>network 0.0.0.0 255.255.255.255<br>ip rou 0.0.0.0 0 10.0.0.2 <br></code></pre></td></tr></table></figure>
+<h3 id="S1"><a href="#S1" class="headerlink" title="S1"></a>S1</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">v 100</span><br><span class="line">po g1/0/1</span><br><span class="line">v 10</span><br><span class="line">po g1/0/2</span><br><span class="line">v 20</span><br><span class="line">po g1/0/3</span><br><span class="line">int v10 </span><br><span class="line">ip add 172.10.0.1 24</span><br><span class="line">int v20 </span><br><span class="line">ip add 172.20.0.1</span><br><span class="line">int r g1/0/2 g1/0/3</span><br><span class="line">port link-type trunk</span><br><span class="line">port trunk p v all</span><br><span class="line"></span><br><span class="line">int g1/0/1</span><br><span class="line">port link-mode route</span><br><span class="line">ip add 10.0.0.1 30</span><br><span class="line"></span><br><span class="line">#stp</span><br><span class="line">stp g e</span><br><span class="line">stp mo rstp</span><br><span class="line">stp pri 0</span><br><span class="line">#ospf</span><br><span class="line">ospf 10</span><br><span class="line">a 0</span><br><span class="line">network 0.0.0.0 255.255.255.255</span><br><span class="line">ip rou 0.0.0.0 0 10.0.0.2 </span><br></pre></td></tr></table></figure>
 
-<h3 id="R1"><a href="#R1" class="headerlink" title="R1"></a>R1</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int g0/0<br>ip add 10.0.0.2 30<br>int mp 1<br>ip add 100.0.0.1 30<br>int r s1/0 s2/0<br>ppp mp mp1<br><br>ip rou 0.0.0.0 0 100.0.0.2<br><br>NAT#<br>acl nember 2000<br>rule p s 172.0.0.0 0.255.255.255<br>q<br>nat address group 1<br>add 202.0.0.1 202.0.0.6<br>q<br>int mp 1<br>nat oubound 2000 address group 1<br><br><br></code></pre></td></tr></table></figure>
+<h3 id="R1"><a href="#R1" class="headerlink" title="R1"></a>R1</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int g0/0</span><br><span class="line">ip add 10.0.0.2 30</span><br><span class="line">int mp 1</span><br><span class="line">ip add 100.0.0.1 30</span><br><span class="line">int r s1/0 s2/0</span><br><span class="line">ppp mp mp1</span><br><span class="line"></span><br><span class="line">ip rou 0.0.0.0 0 100.0.0.2</span><br><span class="line"></span><br><span class="line">NAT#</span><br><span class="line">acl nember 2000</span><br><span class="line">rule p s 172.0.0.0 0.255.255.255</span><br><span class="line">q</span><br><span class="line">nat address group 1</span><br><span class="line">add 202.0.0.1 202.0.0.6</span><br><span class="line">q</span><br><span class="line">int mp 1</span><br><span class="line">nat oubound 2000 address group 1</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="R2"><a href="#R2" class="headerlink" title="R2"></a>R2</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">int mp 1<br>ip add 100.0.0.2 30<br>q<br>int r s1/0 s2/0<br>ppp mp mp1<br>ip rou 100.0.0.0 24 10.0.0.6<br>ip rou 202.0.0.0 24 100.0.0.1<br><br>#telent<br>telent server enable<br>line vty 0 4<br>aouthenticaition-mode scheme<br>user-role leave-15<br><br>local-user xz<br>passwdorld simple 123456<br>service-type telent<br>authorization-attribute user-role leave-15<br><br></code></pre></td></tr></table></figure>
+<h3 id="R2"><a href="#R2" class="headerlink" title="R2"></a>R2</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int mp 1</span><br><span class="line">ip add 100.0.0.2 30</span><br><span class="line">q</span><br><span class="line">int r s1/0 s2/0</span><br><span class="line">ppp mp mp1</span><br><span class="line">ip rou 100.0.0.0 24 10.0.0.6</span><br><span class="line">ip rou 202.0.0.0 24 100.0.0.1</span><br><span class="line"></span><br><span class="line">#telent</span><br><span class="line">telent server enable</span><br><span class="line">line vty 0 4</span><br><span class="line">aouthenticaition-mode scheme</span><br><span class="line">user-role leave-15</span><br><span class="line"></span><br><span class="line">local-user xz</span><br><span class="line">passwdorld simple 123456</span><br><span class="line">service-type telent</span><br><span class="line">authorization-attribute user-role leave-15</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="S4"><a href="#S4" class="headerlink" title="S4"></a>S4</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">v 100<br>po g1/0/1<br>v 101<br>po g1/0/2<br>int g1/0/1 <br>po link-mode route<br>ip add 10.0.0.6 30<br>int g1/0/2<br>po link-mode route<br>ip add 100.0.1.254<br>ip rou 0.0.0.0 0 10.0.0.5<br><br></code></pre></td></tr></table></figure>
+<h3 id="S4"><a href="#S4" class="headerlink" title="S4"></a>S4</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">v 100</span><br><span class="line">po g1/0/1</span><br><span class="line">v 101</span><br><span class="line">po g1/0/2</span><br><span class="line">int g1/0/1 </span><br><span class="line">po link-mode route</span><br><span class="line">ip add 10.0.0.6 30</span><br><span class="line">int g1/0/2</span><br><span class="line">po link-mode route</span><br><span class="line">ip add 100.0.1.254</span><br><span class="line">ip rou 0.0.0.0 0 10.0.0.5</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="禁止ping"><a href="#禁止ping" class="headerlink" title="禁止ping"></a>禁止ping</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SW1<br>创建高级ACL<br>acl ad 3000<br>rule deny icmp scource 172.10.0.0 0.0.0.255 destination 172.20.0.0 0.0.0.255<br>rule deny icmp scource 172.10.0.0 0.0.0.255 destination 172.20.0.0 0.0.0.255<br>int r v10 v20<br>packet-filter 3000 inbound<br></code></pre></td></tr></table></figure>
+<h3 id="禁止ping"><a href="#禁止ping" class="headerlink" title="禁止ping"></a>禁止ping</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SW1</span><br><span class="line">创建高级ACL</span><br><span class="line">acl ad 3000</span><br><span class="line">rule deny icmp scource 172.10.0.0 0.0.0.255 destination 172.20.0.0 0.0.0.255</span><br><span class="line">rule deny icmp scource 172.10.0.0 0.0.0.255 destination 172.20.0.0 0.0.0.255</span><br><span class="line">int r v10 v20</span><br><span class="line">packet-filter 3000 inbound</span><br></pre></td></tr></table></figure>
 
-<h3 id="禁止telnet"><a href="#禁止telnet" class="headerlink" title="禁止telnet"></a>禁止telnet</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SW1<br>acl ad 3001<br>rule deny tcp soure 172.10.0.100 0 destination-port eq telnet<br>int g1/0/1<br>packet-filter 3000 outbound<br></code></pre></td></tr></table></figure>
+<h3 id="禁止telnet"><a href="#禁止telnet" class="headerlink" title="禁止telnet"></a>禁止telnet</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SW1</span><br><span class="line">acl ad 3001</span><br><span class="line">rule deny tcp soure 172.10.0.100 0 destination-port eq telnet</span><br><span class="line">int g1/0/1</span><br><span class="line">packet-filter 3000 outbound</span><br></pre></td></tr></table></figure>
 
-<h3 id="ospf导入默认路由"><a href="#ospf导入默认路由" class="headerlink" title="ospf导入默认路由"></a>ospf导入默认路由</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SW1<br>ospf 1<br>default-route-advertise always<br>qu<br>undo ip rou 0.0.0.0 0<br></code></pre></td></tr></table></figure>
+<h3 id="ospf导入默认路由"><a href="#ospf导入默认路由" class="headerlink" title="ospf导入默认路由"></a>ospf导入默认路由</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SW1</span><br><span class="line">ospf 1</span><br><span class="line">default-route-advertise always</span><br><span class="line">qu</span><br><span class="line">undo ip rou 0.0.0.0 0</span><br></pre></td></tr></table></figure>
 
-<h3 id="chap-认证服务"><a href="#chap-认证服务" class="headerlink" title="chap 认证服务"></a>chap 认证服务</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">主认证方R2<br>local-user xz class network<br>password simple 123<br>service-type ppp<br>qu<br>int r s1/0 s2/0<br>ppp auth-mode chap#设置认证类型<br><br>R1<br>int r s1/0 s2/0<br>ppp chap user xz<br>ppp chatp password simple 123<br></code></pre></td></tr></table></figure>
+<h3 id="chap-认证服务"><a href="#chap-认证服务" class="headerlink" title="chap 认证服务"></a>chap 认证服务</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">主认证方R2</span><br><span class="line">local-user xz class network</span><br><span class="line">password simple 123</span><br><span class="line">service-type ppp</span><br><span class="line">qu</span><br><span class="line">int r s1/0 s2/0</span><br><span class="line">ppp auth-mode chap#设置认证类型</span><br><span class="line"></span><br><span class="line">R1</span><br><span class="line">int r s1/0 s2/0</span><br><span class="line">ppp chap user xz</span><br><span class="line">ppp chatp password simple 123</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -862,6 +758,305 @@ upstream backend &#123;
       </categories>
       <tags>
         <tag>“交换机”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo折腾日记</title>
+    <url>/2024/10/01/hexo%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="hexo使用中遇到的问题和解决方法"><a href="#hexo使用中遇到的问题和解决方法" class="headerlink" title="hexo使用中遇到的问题和解决方法"></a>hexo使用中遇到的问题和解决方法</h1><p> 头文件定义</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: 标题</span><br><span class="line">date: 时间</span><br><span class="line">tags: “tag”</span><br><span class="line">categories: 分类归递</span><br><span class="line">sticky: 优先级</span><br><span class="line">readmore: true	#封面显示</span><br><span class="line">&lt;!-- more --&gt;	#截至显示</span><br></pre></td></tr></table></figure>
+
+<p><strong>girls-index</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- name: </span><br><span class="line">  avatar: </span><br><span class="line">  from: </span><br><span class="line">  url: </span><br><span class="line">  reason:</span><br></pre></td></tr></table></figure>
+
+<p>hexo 基础命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo cl #清除本地缓存文件</span><br><span class="line">hexo g	#生成网页静态文件</span><br><span class="line">hexo s	#启动hexo 服务</span><br></pre></td></tr></table></figure>
+
+<p>遇到无法正确上传的情况可能是git仓库没有正确配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd 你的博客根目录</span><br><span class="line">vi _conifg.yml</span><br><span class="line">编辑</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://密钥@github.com/xubuyuan18/blog</span><br><span class="line">  branch: main # 默认使用 master 分支</span><br><span class="line">  保存退出</span><br><span class="line">  </span><br><span class="line">配置Deployment首先，你需要为自己配置身份信息，打开命令行，然后输入：</span><br><span class="line">git config --global user.name &quot;yourname&quot;</span><br><span class="line">git config --global user.email &quot;youremail&quot;</span><br><span class="line">如果报错可以使用</span><br><span class="line">git config --global user.name --replace-all yourname</span><br><span class="line">全局替换</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>hexo-yun自用配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">banner:       #开始标语</span><br><span class="line">  enable: true</span><br><span class="line">  title: 许步鸢的小站</span><br><span class="line">  border: true</span><br><span class="line">  cloud:</span><br><span class="line">    enable: true</span><br><span class="line">    color: white</span><br><span class="line">  go_down:</span><br><span class="line">    enable: true</span><br><span class="line">    icon: ri:arrow-down-s-line</span><br><span class="line"></span><br><span class="line">avatar:			</span><br><span class="line">  enable: true</span><br><span class="line">  url: /images/avatar.jpg</span><br><span class="line">  rounded: true</span><br><span class="line">  opacity: 1</span><br><span class="line">  mickey_mouse: false</span><br><span class="line">  status:</span><br><span class="line">    enable: true</span><br><span class="line">    emoji: 😭</span><br><span class="line">    message: 大家一起GO一辈子好吗 #头像</span><br><span class="line">wordcloud:</span><br><span class="line">  enable: true</span><br><span class="line">  height: 600</span><br><span class="line">  count: true</span><br><span class="line">  time: true  #云体流动效果</span><br><span class="line"></span><br><span class="line">social:   #侧边栏图标</span><br><span class="line">  - name: GitHub</span><br><span class="line">    link: https://github.com/xubuyuan18</span><br><span class="line">    icon: ri:github-line</span><br><span class="line">    color: &#x27;#181717&#x27;</span><br><span class="line">  - name: 哔哩哔哩动画</span><br><span class="line">    link: https://space.bilibili.com/441828893</span><br><span class="line">    icon: ri:bilibili-line</span><br><span class="line">    color: &#x27;#FF8EB3&#x27;</span><br><span class="line">footer:           #运行时间显示</span><br><span class="line">  live_time:</span><br><span class="line">    enable: true</span><br><span class="line">    prefix: 本博客已运行</span><br><span class="line">    suffix: (●&#x27;◡&#x27;●)</span><br><span class="line">    start_time: &#x27;2024-09-06T09:00:00&#x27;</span><br><span class="line"></span><br><span class="line">medium_zoom: true #图片放大预览</span><br><span class="line"></span><br><span class="line">bg_image:       #背景壁纸</span><br><span class="line">  enable: true</span><br><span class="line">  url: https://pic2.imge.cc/2024/10/12/670a20fee140a.jpg</span><br><span class="line">  dark: https://pic2.imge.cc/2024/10/12/670a050e8ce49.png</span><br><span class="line">  # blur: 30px # 设置背景模糊程度</span><br><span class="line">  opacity: 0.8</span><br><span class="line">pages:  </span><br><span class="line">#关闭友链链接</span><br><span class="line">say:</span><br><span class="line">  enable: true</span><br><span class="line">  api: https://cdn.jsdelivr.net/gh/ElpsyCN/say@gh-pages/sentences.json</span><br><span class="line">  # https://developer.hitokoto.cn/sentence/</span><br><span class="line">  hitokoto:</span><br><span class="line">    enable: true</span><br><span class="line">    api: https://v1.hitokoto.cn #中二语录</span><br><span class="line"></span><br><span class="line">mourn:</span><br><span class="line">  enable: true</span><br><span class="line">  days:</span><br><span class="line">    - 4-4   #纪念日哀悼</span><br><span class="line">search:</span><br><span class="line">  path: search.json</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000  #搜索</span><br><span class="line">wordcount:</span><br><span class="line">  enable: true</span><br><span class="line">  count: true</span><br><span class="line">  time: true  #字数统计</span><br><span class="line"># search</span><br><span class="line"># https://github.com/next-theme/hexo-generator-searchdb</span><br><span class="line">local_search:</span><br><span class="line">  enable: true  #搜索</span><br><span class="line"></span><br><span class="line">reward:</span><br><span class="line">  enable: true</span><br><span class="line">  icon: ri:hand-coin-line</span><br><span class="line">  comment: 如果以上文章帮助到了你，不妨请我喝杯咖啡</span><br><span class="line">  # url: https://github.com/YunYouJun/yunyoujun.github.io/issues/96</span><br><span class="line">  methods:</span><br><span class="line">    - name: 支付宝</span><br><span class="line">      path: https://pic2.imge.cc/2024/11/16/67382dc367df6.jpg</span><br><span class="line">      color: &#x27;#00A3EE&#x27;</span><br><span class="line">      icon: ri:alipay-line</span><br><span class="line">    - name: 微信支付</span><br><span class="line">      path: https://pic2.imge.cc/2024/11/16/67382dc383063.jpg</span><br><span class="line">      color: &#x27;#2DC100&#x27;</span><br><span class="line">      icon: ri:wechat-pay-line</span><br><span class="line">  creative_commons:</span><br><span class="line">  license: by-nc-sa</span><br><span class="line">  post: true</span><br><span class="line">  language: deed.zh</span><br><span class="line">  clipboard: false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>常用</category>
+      </categories>
+      <tags>
+        <tag>webserver</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常用网址</title>
+    <url>/2024/10/12/%E5%B8%B8%E7%94%A8%E7%BD%91%E5%9D%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/1733826593723.gif" loading="lazy"></p>
+<span id="more"></span>
+
+<h3 id="kimi-AIhttps-kimi-moonshot-cn"><a href="#kimi-AIhttps-kimi-moonshot-cn" class="headerlink" title="kimi AI	https://kimi.moonshot.cn/"></a>kimi AI	<a href="https://kimi.moonshot.cn/">https://kimi.moonshot.cn/</a></h3><h3 id="学习通-http-pjzy-fanya-chaoxing-com-portal"><a href="#学习通-http-pjzy-fanya-chaoxing-com-portal" class="headerlink" title="学习通      http://pjzy.fanya.chaoxing.com/portal"></a>学习通      <a href="http://pjzy.fanya.chaoxing.com/portal">http://pjzy.fanya.chaoxing.com/portal</a></h3><h3 id="红队命令https-book-shentoushi-top"><a href="#红队命令https-book-shentoushi-top" class="headerlink" title="红队命令	https://book.shentoushi.top/"></a>红队命令	<a href="https://book.shentoushi.top/">https://book.shentoushi.top/</a></h3><h3 id="P站国内镜像https-www-vilipix-com"><a href="#P站国内镜像https-www-vilipix-com" class="headerlink" title="P站国内镜像	https://www.vilipix.com/"></a>P站国内镜像	<a href="https://www.vilipix.com/">https://www.vilipix.com/</a></h3><h3 id="次元云订阅https-ciyy-cc-index-php-stage-dashboard"><a href="#次元云订阅https-ciyy-cc-index-php-stage-dashboard" class="headerlink" title="次元云订阅	https://ciyy.cc/index.php/#/stage/dashboard"></a>次元云订阅	<a href="https://ciyy.cc/index.php/#/stage/dashboard">https://ciyy.cc/index.php/#/stage/dashboard</a></h3><h3 id="vercel部署https-vercel-com-xubuyuan18s-projects"><a href="#vercel部署https-vercel-com-xubuyuan18s-projects" class="headerlink" title="vercel部署	https://vercel.com/xubuyuan18s-projects"></a>vercel部署	<a href="https://vercel.com/xubuyuan18s-projects">https://vercel.com/xubuyuan18s-projects</a></h3><h3 id="清华镜像站https-mirrors-tuna-tsinghua-edu-cn"><a href="#清华镜像站https-mirrors-tuna-tsinghua-edu-cn" class="headerlink" title="清华镜像站	https://mirrors.tuna.tsinghua.edu.cn/"></a>清华镜像站	<a href="https://mirrors.tuna.tsinghua.edu.cn/">https://mirrors.tuna.tsinghua.edu.cn/</a></h3><h3 id="中科大镜像站https-lug-ustc-edu-cn-wiki-lug-services-mirrors"><a href="#中科大镜像站https-lug-ustc-edu-cn-wiki-lug-services-mirrors" class="headerlink" title="中科大镜像站	https://lug.ustc.edu.cn/wiki/lug/services/mirrors/"></a>中科大镜像站	<a href="https://lug.ustc.edu.cn/wiki/lug/services/mirrors/">https://lug.ustc.edu.cn/wiki/lug/services/mirrors/</a></h3>]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>网站</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OpenEuler</title>
+    <url>/2024/12/12/OpenEuler/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/1733826593704.gif" loading="lazy"></p>
+<span id="more"></span>
+
+<h1 id="网络YUM源配置"><a href="#网络YUM源配置" class="headerlink" title="网络YUM源配置"></a>网络YUM源配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">确定操作系统版本</span><br><span class="line"></span><br><span class="line">cat /etc/os-release</span><br></pre></td></tr></table></figure>
+
+<h2 id="选择yum源版本-配置yum源文件"><a href="#选择yum源版本-配置yum源文件" class="headerlink" title="选择yum源版本 配置yum源文件"></a>选择yum源版本 配置yum源文件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /etc/yum.repos.d/</span><br><span class="line">mv openEuler.repo openEuler.repo.bak  *备份原有的配置文件*</span><br><span class="line">vi openEuler.repo  *创建或编辑新的配置文件*</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="编辑yum源"><a href="#编辑yum源" class="headerlink" title="编辑yum源"></a>编辑yum源</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[openEuler-everything]</span><br><span class="line">name=openEuler-everything</span><br><span class="line">baseurl=http://repo.huaweicloud.com/openeuler/openEuler-22.03-LTS-SP3/everything/x86_64/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">gpgkey=http://repo.huaweicloud.com/openeuler/openEuler-22.03-LTS-SP3/everything/x86_64/RPM-GPG-KEY-openEuler</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="本地YUM源配置"><a href="#本地YUM源配置" class="headerlink" title="本地YUM源配置"></a>本地YUM源配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">懒的写</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="SELinux与防火墙配置"><a href="#SELinux与防火墙配置" class="headerlink" title="SELinux与防火墙配置"></a>SELinux与防火墙配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">查看SElinnux状态</span><br><span class="line">getenforce</span><br><span class="line">临时更改SELinux模式</span><br><span class="line">setenforce 0</span><br><span class="line">semanage 安装（用于管理和配置SELinux策略）</span><br><span class="line">yum install policycoreutils-python-utils</span><br><span class="line">查看所有开放端口</span><br><span class="line">semanage port -l</span><br><span class="line">查看特定端口是否开放（例如查看端口5000）</span><br><span class="line">semanage port -l | grep 5000</span><br><span class="line">查看针对特定服务（如http）开放的端口</span><br><span class="line">semanage port -l | grep http_port_t</span><br><span class="line">添加端口（例如开放5002端口给http服务）</span><br><span class="line">semanage port -a -t http_port_t -p tcp 5502</span><br><span class="line">删除端口（例如关闭http服务的5002端口）</span><br><span class="line">semanage port -a -t http_port_t -p tcp 5502</span><br><span class="line">防火墙配置</span><br><span class="line">启动/停止 防火墙服务</span><br><span class="line">systemctl start/stop firewalld</span><br><span class="line">查看防火墙服务状态</span><br><span class="line">systemctl status firewalld </span><br><span class="line">启用/禁用防火墙服务开机自启</span><br><span class="line">systemctl enable/disable firewalld</span><br><span class="line">添加/删除端口到防火墙规则</span><br><span class="line">firewall-cmd --permanent --add/remove-port=80/tcp</span><br><span class="line">重新加载防火墙规则</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">查看当前防火墙规则 </span><br><span class="line">firewall-cmd --list-all</span><br><span class="line">允许/阻止特定服务通过防火墙 </span><br><span class="line">firewall-cmd --permanent --add/remove-service=http</span><br><span class="line">查看防火墙日志 </span><br><span class="line">journalctl -u firewalld</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>OpenEuler</category>
+      </categories>
+      <tags>
+        <tag>openeuler</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>测试</title>
+    <url>/2024/09/17/%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是一篇测试，用来git仓库是否成功同步</p>
+<p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213162936893.png" loading="lazy"></p>
+]]></content>
+      <categories>
+        <category>测试</category>
+      </categories>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网安笔记</title>
+    <url>/2024/12/14/%E7%BD%91%E5%AE%89%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>我将分享我在PC领域遇到的一些关键知识点，并将它们系统化整理</p>
+<h1 id="osi七层网络参考模型"><a href="#osi七层网络参考模型" class="headerlink" title="osi七层网络参考模型"></a>osi七层网络参考模型</h1><p>OSI模型，全称为开放式系统互联参考模型（Open System Interconnection Reference Model），是由国际标准化组织（ISO）在20世纪80年代初提出的一个网络通信模型。这个模型的目的是为了标准化网络通信的过程，使得不同厂商的设备能够互联互通。</p>
+<p>OSI模型将网络通信划分为七个层次，每一层都有其特定的功能和协议。这七个层次从底到顶依次是：</p>
+<ol>
+<li><strong>物理层（Physical Layer）</strong>：负责在物理媒介上传输原始的比特流，包括定义电气、机械、过程和功能标准，如电压、物理数据速率、最大传输距离等。</li>
+<li><strong>数据链路层（Data Link Layer）</strong>：确保物理层传输的数据无误，进行帧同步、差错控制和流量控制，将网络层的逻辑传输单元封装成帧。</li>
+<li><strong>网络层（Network Layer）</strong>：负责数据包从源到宿的传输和路由选择，处理数据包在整个网络中的移动。</li>
+<li><strong>传输层（Transport Layer）</strong>：提供端到端的数据传输服务，确保数据的完整性和可靠性，常见的协议有TCP和UDP。</li>
+<li><strong>会话层（Session Layer）</strong>：管理和控制两个通信系统之间的会话连接，负责建立、维护和终止会话。</li>
+<li><strong>表示层（Presentation Layer）</strong>：处理数据的表示、编码和转换，确保一个系统的应用层所发送的信息可以被另一个系统的应用层读取。</li>
+<li><strong>应用层（Application Layer）</strong>：为应用软件提供网络服务，如文件传输、电子邮件和远程登录等。</li>
+</ol>
+<p>每一层都向其上层提供服务，并且依赖于其下层所提供的服务。OSI模型的成功之处在于它清晰地区分了服务、接口和协议这三个容易混淆的概念，使得功能定义与实现细节区分开来，具有很高的概括性和适应能力</p>
+<h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1><p>端口（Port）在计算机网络中是一个重要的概念，用于区分不同的服务或进程。每个运行在计算机上的进程都可以通过一个端口来与其他计算机上的进程进行通信。端口号是一个16位的数字，其取值范围从0到65535。</p>
+<p>端口可以分为以下几类：</p>
+<ol>
+<li><strong>知名端口（Well-Known Ports）</strong>：<ul>
+<li>范围：0-1023</li>
+<li>这些端口号被分配给常用的或者标准的服务和应用程序。例如，HTTP服务通常使用端口80，HTTPS使用443，FTP使用21。</li>
+</ul>
+</li>
+<li><strong>注册端口（Registered Ports）</strong>：<ul>
+<li>范围：1024-49151</li>
+<li>这些端口号用于用户或公司的应用程序。它们不像知名端口那样固定，但通常被注册以避免冲突。</li>
+</ul>
+</li>
+<li><strong>动态或私有端口（Dynamic or Private Ports）</strong>：<ul>
+<li>范围：49152-65535</li>
+<li>这些端口号通常不固定分配给任何服务，可以由任何用户用于任何目的。它们经常用于临时的通信会话。</li>
+</ul>
+</li>
+</ol>
+<p>端口在网络通信中的作用包括：</p>
+<ul>
+<li><strong>区分服务</strong>：不同的网络服务监听不同的端口，例如，Web服务器通常监听80端口，而邮件服务器可能监听25端口（SMTP）。</li>
+<li><strong>端到端通信</strong>：在客户端和服务器之间的通信中，端口用于标识特定的进程或服务，确保数据能够正确地送达目的地。</li>
+<li><strong>安全性</strong>：通过开放或关闭特定的端口，可以增加或减少网络的攻击面。例如，关闭不必要的服务端口可以提高系统的安全性。</li>
+<li><strong>端口转发和映射</strong>：在家庭或企业网络中，端口转发可以将外部请求从一个端口转发到内部网络的另一个端口，使得内部服务能够被外部访问。</li>
+</ul>
+<h2 id="常用端口号"><a href="#常用端口号" class="headerlink" title="常用端口号"></a>常用端口号</h2><blockquote>
+<ol>
+<li><strong>HTTP (Hypertext Transfer Protocol)</strong>：80端口，用于普通的Web页面传输。</li>
+<li><strong>HTTPS (HTTP Secure)</strong>：443端口，用于加密的Web页面传输。</li>
+<li><strong>FTP (File Transfer Protocol)</strong>：21端口，用于文件传输。</li>
+<li><strong>SSH (Secure Shell)</strong>：22端口，用于安全远程登录和文件传输。</li>
+<li><strong>Telnet</strong>：23端口，用于远程登录，但由于不安全，已逐渐被SSH取代。</li>
+<li><strong>SMTP (Simple Mail Transfer Protocol)</strong>：25端口，用于发送电子邮件。</li>
+<li><strong>DNS (Domain Name System)</strong>：53端口，用于域名解析。</li>
+<li><strong>DHCP (Dynamic Host Configuration Protocol)</strong>：67和68端口，用于自动分配IP地址。</li>
+<li><strong>POP3 (Post Office Protocol 3)</strong>：110端口，用于接收电子邮件。</li>
+<li><strong>IMAP (Internet Message Access Protocol)</strong>：143端口，用于访问和管理电子邮件。</li>
+<li><strong>SNMP (Simple Network Management Protocol)</strong>：161和162端口，用于网络管理。</li>
+<li><strong>LDAP (Lightweight Directory Access Protocol)</strong>：389端口，用于访问和维护分布式目录信息服务。</li>
+<li><strong>HTTPS over SSL&#x2F;TLS</strong>：443端口，用于加密的Web页面传输。</li>
+<li><strong>RDP (Remote Desktop Protocol)</strong>：3389端口，用于远程桌面连接。</li>
+<li><strong>SIP (Session Initiation Protocol)</strong>：5060和5061端口，用于语音和视频通信。</li>
+<li><strong>MySQL</strong>：3306端口，用于MySQL数据库服务。</li>
+<li><strong>PostgreSQL</strong>：5432端口，用于PostgreSQL数据库服务。</li>
+<li><strong>Microsoft SQL Server</strong>：1433端口，用于SQL Server数据库服务。</li>
+<li><strong>Oracle SQL*Net</strong>：1521端口，用于Oracle数据库服务。</li>
+<li><strong>NFS (Network File System)</strong>：2049端口，用于文件共享。</li>
+</ol>
+</blockquote>
+<h2 id="tcp-udp"><a href="#tcp-udp" class="headerlink" title="tcp&#x2F;udp"></a>tcp&#x2F;udp</h2><p>二者都工作在<strong>传输层</strong> 在程序之间传输数据</p>
+<h6 id="TCP（传输控制协议）"><a href="#TCP（传输控制协议）" class="headerlink" title="TCP（传输控制协议）"></a><strong>TCP</strong>（传输控制协议）</h6><blockquote>
+<p>是互联网上最常用的协议之一，广泛应用于TCP&#x2F;IP网络中。TCP协议通过建立连接并在两台设备之间传输数据流，确保数据包的可靠传输和顺序接收。与UDP相比，TCP的最大特点是它能够保证通信的可靠性，确保数据不会丢失或乱序。</p>
+</blockquote>
+<h5 id="UDP（用户数据报协议）"><a href="#UDP（用户数据报协议）" class="headerlink" title="UDP（用户数据报协议）"></a><strong>UDP</strong>（用户数据报协议）</h5><blockquote>
+<p>与TCP一样，通常与IP协议一起使用，用于在计算机之间传输数据报。与TCP不同，UDP是无连接的，无法保证数据的可靠性。在数据传输过程中，如果出现错误或丢包，接收方应用程序需要自行处理。由于UDP的传输速度更快，且适用于对实时性要求较高的应用，比如音视频流或在线游戏等，因此在这些场景中常常优先选择UDP协议，即便它可能会丢失一些数据包。</p>
+<p>​		</p>
+</blockquote>
+<p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241214192948834.png" loading="lazy"></p>
+<p>​			如图所示（笑）</p>
+<h3 id="TCP连接的建立过程（三次握手）："><a href="#TCP连接的建立过程（三次握手）：" class="headerlink" title="TCP连接的建立过程（三次握手）："></a>TCP连接的建立过程（三次握手）：</h3><ul>
+<li><blockquote>
+<p><strong>SYN（同步序列编号）</strong>：</p>
+<ul>
+<li>客户端发送一个带有SYN标志的TCP段到服务器，请求建立连接，并指定客户端的初始序列号。</li>
+</ul>
+<p><strong>SYN-ACK（同步-确认）</strong>：</p>
+<ul>
+<li>服务器收到SYN请求后，如果同意建立连接，则发送一个SYN-ACK段作为响应，包含服务器的初始序列号和对客户端SYN的确认。</li>
+</ul>
+<p><strong>ACK（确认）</strong>：</p>
+<ul>
+<li>客户端收到服务器的SYN-ACK响应后，发送一个带有ACK标志的TCP段作为最后的确认，确认收到了服务器的SYN-ACK。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p>完成这三次握手后，TCP连接就成功建立了，数据可以开始在两端之间传输。这个过程确保了双方都准备好进行数据传输，并且能够跟踪和确认数据包的发送和接收。</p>
+<h3 id="TCP连接的终止（四次挥手）："><a href="#TCP连接的终止（四次挥手）：" class="headerlink" title="TCP连接的终止（四次挥手）："></a>TCP连接的终止（四次挥手）：</h3><ul>
+<li><blockquote>
+<p><strong>FIN（结束）</strong>：</p>
+<ul>
+<li>当一方完成数据发送后，发送一个FIN段来关闭连接。</li>
+</ul>
+<p><strong>ACK（确认）</strong>：</p>
+<ul>
+<li>接收方确认FIN，并发送一个ACK段。</li>
+</ul>
+<p><strong>FIN（结束）</strong>：</p>
+<ul>
+<li>接收方在发送完所有剩余数据后，也发送一个FIN段。</li>
+</ul>
+<p><strong>ACK（确认）</strong>：</p>
+<ul>
+<li>最初发送FIN的一方确认接收方的FIN，并发送最后一个ACK段。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p>完成这四次挥手后，TCP连接被关闭。这个过程确保了双方都有机会发送完所有剩余的数据，并确认连接即将关闭。</p>
+<h1 id="HTPP协议简介"><a href="#HTPP协议简介" class="headerlink" title="HTPP协议简介"></a>HTPP协议简介</h1><p>超文本传输协议</p>
+<p>应用层</p>
+<p>TCP&#x2F;IP</p>
+<p>发布和接受HTML</p>
+<h3 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h3><p>TCP三次握手</p>
+<p>tcp建立连接成功后，向服务器发送http请求</p>
+<p>服务器收到http请求后，向客户机发送http响应</p>
+<p>客户端通过TCP四次挥手，与服务器断开TCP连接</p>
+<h3 id="B-S-C-S"><a href="#B-S-C-S" class="headerlink" title="B&#x2F;S&amp;C&#x2F;S"></a>B&#x2F;S&amp;C&#x2F;S</h3><p>C&#x2F;S Client&#x2F;Server 客户机和服务器结构</p>
+<p>B&#x2F;S  Browser&#x2F;Server  浏览器和服务器结构</p>
+<h1 id="ze入侵"><a href="#ze入侵" class="headerlink" title="ze入侵"></a>ze入侵</h1><p>漏洞复现</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">whoami	//查看正在使用的用户，拿到主机名</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250113204019460.png" alt="image-20250113204019460" loading="lazy"></p>
+<blockquote>
+<p>主机名+用户名</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net user 	//主机存在不同用户</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250113204251097.png" alt="image-20250113204251097" loading="lazy"></p>
+<p>weblogic服务网站</p>
+<p>远程桌面端口：3389</p>
+<p>拿到远程权限</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net user xz/add		//创建新用户</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250113205442024.png" alt="image-20250113205442024" loading="lazy"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net localgroup adminstrators	查看管理员组</span><br><span class="line">								添加到管理员组</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250113205824009.png" alt="image-20250113205824009" loading="lazy"></p>
+<p>成功进入桌面</p>
+<blockquote>
+<p>痕迹清除</p>
+<p>删除登录日志，关闭杀软</p>
+</blockquote>
+<h1 id="kali"><a href="#kali" class="headerlink" title="kali"></a>kali</h1><h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><h3 id="改中文"><a href="#改中文" class="headerlink" title="改中文"></a>改中文</h3><blockquote>
+<p>打开终端</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dpkg-reconfigure locales</span><br></pre></td></tr></table></figure>
+
+<p>选择 zh_CN.UTF-8 回车 reboot </p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>网安</category>
+      </categories>
+      <tags>
+        <tag>网安</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网安学习路线</title>
+    <url>/2024/12/14/%E7%BD%91%E5%AE%89%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一、基础阶段"><a href="#一、基础阶段" class="headerlink" title="一、基础阶段"></a>一、基础阶段</h1><p>中华人民共和国网络安全法<br>Linux操作系统<br>计算机网络<br>SHELL<br>HTML&#x2F;CSS<br>JavaScript<br>PHP入门<br>MySQL数据库<br>Python </p>
+<h1 id="二、渗透阶段"><a href="#二、渗透阶段" class="headerlink" title="二、渗透阶段"></a>二、渗透阶段</h1><p>SQL注入的渗透与防御<br>XSS相关渗透与防御<br>上传验证渗透与防御<br>文件包含渗透与防御<br>CSRF渗透与防御<br>SSRF渗透与防御<br>XXE渗透与防御<br>远程代码执行渗透与防御</p>
+<h1 id="三、安全管理（提升）"><a href="#三、安全管理（提升）" class="headerlink" title="三、安全管理（提升）"></a>三、安全管理（提升）</h1><p>渗透报告编写<br>等级保护2.0<br>应急响应<br>代码审计<br>风险评估<br>安全巡检<br>数据安全</p>
+<h4 id="四、提升阶段（提升）"><a href="#四、提升阶段（提升）" class="headerlink" title="四、提升阶段（提升）"></a>四、提升阶段（提升）</h4><p>密码学<br>JavaSE入门<br>C语言<br>C++语言<br>Windows逆向<br>CTF夺旗赛<br>Android逆向</p>
+]]></content>
+      <categories>
+        <category>网安</category>
+      </categories>
+      <tags>
+        <tag>网安</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>kali</title>
+    <url>/2025/03/12/kali/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="kali"><a href="#kali" class="headerlink" title="kali"></a>kali</h1><h2 id="改中文"><a href="#改中文" class="headerlink" title="改中文"></a>改中文</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo dpkg-reconfigure locales</span><br></pre></td></tr></table></figure>
+
+<h2 id="root用户"><a href="#root用户" class="headerlink" title="root用户"></a>root用户</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo passwd root</span><br></pre></td></tr></table></figure>
+
+<h3 id="开启ssh"><a href="#开启ssh" class="headerlink" title="开启ssh"></a>开启ssh</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line">PermitRootLogin without-password 改为 PermitRootLogin yes 并去掉前面的注释符号（#）。</span><br><span class="line">PasswordAuthentication yes 的注释去掉，如果是 no 就改为 yes。</span><br><span class="line">service ssh start</span><br></pre></td></tr></table></figure>
+
+<h2 id="靶场搭建"><a href="#靶场搭建" class="headerlink" title="靶场搭建"></a>靶场搭建</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">解压放到桌面</span><br><span class="line">mv DVWA /var/www/html/</span><br><span class="line">vi /var/www/html/DVWA/config/config.inc.php.dist</span><br><span class="line">cp config.inc.php.dist config.inc.php</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chown -R www-date:www-date/var/www/html/DVWA</span><br><span class="line">chmod -R 755 /var/www/html/DVWA</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service apache2 start </span><br><span class="line">service mariadb start </span><br><span class="line">mysql -u root -p</span><br><span class="line"><span class="comment"># 创建数据库dvwa</span></span><br><span class="line">create database dvwa;</span><br><span class="line"><span class="comment"># 创建数据库用户xzzz，密码是</span></span><br><span class="line">create user xzzz@localhost identified by <span class="string">&#x27;设置的密码&#x27;</span>;</span><br><span class="line"><span class="comment"># 分配权限，可以远程登录</span></span><br><span class="line">grant all on dvwa.* to xzzz@localhost;</span><br><span class="line"><span class="comment"># 刷新权限</span></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p>浏览器访问<code>http://127.0.0.1/dvwa/dvwa-master，点击左下角的</code>Create&#x2F;Reset Database&#96;进行数据库初始化</p>
+<h2 id="APT-源失效"><a href="#APT-源失效" class="headerlink" title="APT 源失效"></a>APT 源失效</h2><p>刚装好kali想apt更新的时候突然发现,apt源被禁用了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">获取:1 http://mirrors.ustc.edu.cn/kali kali-rolling InRelease [41.5 kB]</span><br><span class="line">错误:1 http://mirrors.ustc.edu.cn/kali kali-rolling InRelease</span><br><span class="line"> 下列签名无效： EXPKEYSIG ED444FF07D8D0BF6 Kali Linux Repository &lt;devel@kali.org&gt;</span><br><span class="line">正在读取软件包列表... 完成</span><br><span class="line">W: GPG 错误：http://mirrors.ustc.edu.cn/kali kali-rolling InRelease: 下列签名无效： EXPKEYSIG ED444FF07D8D0BF6 Kali Linux Repository &lt;devel@kali.org&gt;</span><br><span class="line">E: 仓库 “http://mirrors.ustc.edu.cn/kali kali-rolling InRelease” 没有数字签名。</span><br><span class="line">N: 无法安全地用该源进行更新，所以默认禁用该源。</span><br><span class="line">N: 参见 apt-secure(8) 手册以了解仓库创建和用户配置方面的细节。</span><br></pre></td></tr></table></figure>
+
+<p>看过后发现,国内的的仓库或者签名过期了。为了安全考虑kali默认禁用这些源</p>
+<p>我们可以强制启动源</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /etc/apt/apt.conf.d/</span><br><span class="line">vim 70debconf</span><br><span class="line">Acquire::AllowInsecureRepositories “true”;   #注意：True的引号一定要是英文</span><br></pre></td></tr></table></figure>
+
+<p>再次更新源，可以看到</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">──(root㉿kali)-[/etc/apt/apt.conf.d]</span><br><span class="line">└─# apt-get update</span><br><span class="line">获取:1 http://mirrors.ustc.edu.cn/kali kali-rolling InRelease [41.5 kB]</span><br><span class="line">忽略:1 http://mirrors.ustc.edu.cn/kali kali-rolling InRelease</span><br><span class="line">获取:2 http://mirrors.ustc.edu.cn/kali kali-rolling/non-free Sources [119 kB]</span><br><span class="line">获取:3 http://mirrors.ustc.edu.cn/kali kali-rolling/main Sources [17.1 MB]</span><br><span class="line">获取:4 http://mirrors.ustc.edu.cn/kali kali-rolling/contrib Sources [78.7 kB]</span><br><span class="line">获取:5 http://mirrors.ustc.edu.cn/kali kali-rolling/main amd64 Packages [20.6 MB]</span><br><span class="line">获取:6 http://mirrors.ustc.edu.cn/kali kali-rolling/main amd64 Contents (deb) [49.2 MB] </span><br><span class="line">获取:7 http://mirrors.ustc.edu.cn/kali kali-rolling/non-free amd64 Packages [203 kB]    </span><br><span class="line">获取:8 http://mirrors.ustc.edu.cn/kali kali-rolling/non-free amd64 Contents (deb) [884 kB]</span><br><span class="line">获取:9 http://mirrors.ustc.edu.cn/kali kali-rolling/contrib amd64 Packages [115 kB]     </span><br><span class="line">获取:10 http://mirrors.ustc.edu.cn/kali kali-rolling/contrib amd64 Contents (deb) [267 kB]</span><br><span class="line">已下载 88.6 MB，耗时 26秒 (3,427 kB/s)                                                  </span><br><span class="line">正在读取软件包列表... 0%</span><br><span class="line"></span><br><span class="line">正在读取软件包列表... 完成</span><br><span class="line">W: GPG 错误：http://mirrors.ustc.edu.cn/kali kali-rolling InRelease: 下列签名无效： EXPKEYSIG ED444FF07D8D0BF6 Kali Linux Repository &lt;devel@kali.org&gt;</span><br><span class="line">W: 仓库 “http://mirrors.ustc.edu.cn/kali kali-rolling InRelease” 没有数字签名。</span><br><span class="line">N: 无法认证来自该源的数据，所以使用它会带来潜在风险。</span><br><span class="line">N: 参见 apt-secure(8) 手册以了解仓库创建和用户配置方面的细节。</span><br></pre></td></tr></table></figure>
+
+<p>虽然仍有警告，但已经可以正确的更新源了</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>网安</tag>
       </tags>
   </entry>
   <entry>
@@ -946,212 +1141,6 @@ upstream backend &#123;
       </categories>
       <tags>
         <tag>工坊</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>常用网址</title>
-    <url>/2024/10/12/%E5%B8%B8%E7%94%A8%E7%BD%91%E5%9D%80/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/1733826593723.gif" loading="lazy"></p>
-<span id="more"></span>
-
-<h3 id="kimi-AIhttps-kimi-moonshot-cn"><a href="#kimi-AIhttps-kimi-moonshot-cn" class="headerlink" title="kimi AI	https://kimi.moonshot.cn/"></a>kimi AI	<a href="https://kimi.moonshot.cn/">https://kimi.moonshot.cn/</a></h3><h3 id="学习通-http-pjzy-fanya-chaoxing-com-portal"><a href="#学习通-http-pjzy-fanya-chaoxing-com-portal" class="headerlink" title="学习通      http://pjzy.fanya.chaoxing.com/portal"></a>学习通      <a href="http://pjzy.fanya.chaoxing.com/portal">http://pjzy.fanya.chaoxing.com/portal</a></h3><h3 id="红队命令https-book-shentoushi-top"><a href="#红队命令https-book-shentoushi-top" class="headerlink" title="红队命令	https://book.shentoushi.top/"></a>红队命令	<a href="https://book.shentoushi.top/">https://book.shentoushi.top/</a></h3><h3 id="P站国内镜像https-www-vilipix-com"><a href="#P站国内镜像https-www-vilipix-com" class="headerlink" title="P站国内镜像	https://www.vilipix.com/"></a>P站国内镜像	<a href="https://www.vilipix.com/">https://www.vilipix.com/</a></h3><h3 id="次元云订阅https-ciyy-cc-index-php-stage-dashboard"><a href="#次元云订阅https-ciyy-cc-index-php-stage-dashboard" class="headerlink" title="次元云订阅	https://ciyy.cc/index.php/#/stage/dashboard"></a>次元云订阅	<a href="https://ciyy.cc/index.php/#/stage/dashboard">https://ciyy.cc/index.php/#/stage/dashboard</a></h3><h3 id="vercel部署https-vercel-com-xubuyuan18s-projects"><a href="#vercel部署https-vercel-com-xubuyuan18s-projects" class="headerlink" title="vercel部署	https://vercel.com/xubuyuan18s-projects"></a>vercel部署	<a href="https://vercel.com/xubuyuan18s-projects">https://vercel.com/xubuyuan18s-projects</a></h3><h3 id="清华镜像站https-mirrors-tuna-tsinghua-edu-cn"><a href="#清华镜像站https-mirrors-tuna-tsinghua-edu-cn" class="headerlink" title="清华镜像站	https://mirrors.tuna.tsinghua.edu.cn/"></a>清华镜像站	<a href="https://mirrors.tuna.tsinghua.edu.cn/">https://mirrors.tuna.tsinghua.edu.cn/</a></h3><h3 id="中科大镜像站https-lug-ustc-edu-cn-wiki-lug-services-mirrors"><a href="#中科大镜像站https-lug-ustc-edu-cn-wiki-lug-services-mirrors" class="headerlink" title="中科大镜像站	https://lug.ustc.edu.cn/wiki/lug/services/mirrors/"></a>中科大镜像站	<a href="https://lug.ustc.edu.cn/wiki/lug/services/mirrors/">https://lug.ustc.edu.cn/wiki/lug/services/mirrors/</a></h3>]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>网站</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>测试</title>
-    <url>/2024/09/17/%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是一篇测试，用来git仓库是否成功同步</p>
-<p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241213162936893.png" loading="lazy"></p>
-]]></content>
-      <categories>
-        <category>测试</category>
-      </categories>
-      <tags>
-        <tag>测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>网安学习路线</title>
-    <url>/2024/12/14/%E7%BD%91%E5%AE%89%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一、基础阶段"><a href="#一、基础阶段" class="headerlink" title="一、基础阶段"></a>一、基础阶段</h1><p>中华人民共和国网络安全法<br>Linux操作系统<br>计算机网络<br>SHELL<br>HTML&#x2F;CSS<br>JavaScript<br>PHP入门<br>MySQL数据库<br>Python </p>
-<h1 id="二、渗透阶段"><a href="#二、渗透阶段" class="headerlink" title="二、渗透阶段"></a>二、渗透阶段</h1><p>SQL注入的渗透与防御<br>XSS相关渗透与防御<br>上传验证渗透与防御<br>文件包含渗透与防御<br>CSRF渗透与防御<br>SSRF渗透与防御<br>XXE渗透与防御<br>远程代码执行渗透与防御</p>
-<h1 id="三、安全管理（提升）"><a href="#三、安全管理（提升）" class="headerlink" title="三、安全管理（提升）"></a>三、安全管理（提升）</h1><p>渗透报告编写<br>等级保护2.0<br>应急响应<br>代码审计<br>风险评估<br>安全巡检<br>数据安全</p>
-<h4 id="四、提升阶段（提升）"><a href="#四、提升阶段（提升）" class="headerlink" title="四、提升阶段（提升）"></a>四、提升阶段（提升）</h4><p>密码学<br>JavaSE入门<br>C语言<br>C++语言<br>Windows逆向<br>CTF夺旗赛<br>Android逆向</p>
-]]></content>
-      <categories>
-        <category>网安</category>
-      </categories>
-      <tags>
-        <tag>网安</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>网安笔记</title>
-    <url>/2024/12/14/%E7%BD%91%E5%AE%89%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>我将分享我在PC领域遇到的一些关键知识点，并将它们系统化整理</p>
-<h1 id="osi七层网络参考模型"><a href="#osi七层网络参考模型" class="headerlink" title="osi七层网络参考模型"></a>osi七层网络参考模型</h1><p>OSI模型，全称为开放式系统互联参考模型（Open System Interconnection Reference Model），是由国际标准化组织（ISO）在20世纪80年代初提出的一个网络通信模型。这个模型的目的是为了标准化网络通信的过程，使得不同厂商的设备能够互联互通。</p>
-<p>OSI模型将网络通信划分为七个层次，每一层都有其特定的功能和协议。这七个层次从底到顶依次是：</p>
-<ol>
-<li><strong>物理层（Physical Layer）</strong>：负责在物理媒介上传输原始的比特流，包括定义电气、机械、过程和功能标准，如电压、物理数据速率、最大传输距离等。</li>
-<li><strong>数据链路层（Data Link Layer）</strong>：确保物理层传输的数据无误，进行帧同步、差错控制和流量控制，将网络层的逻辑传输单元封装成帧。</li>
-<li><strong>网络层（Network Layer）</strong>：负责数据包从源到宿的传输和路由选择，处理数据包在整个网络中的移动。</li>
-<li><strong>传输层（Transport Layer）</strong>：提供端到端的数据传输服务，确保数据的完整性和可靠性，常见的协议有TCP和UDP。</li>
-<li><strong>会话层（Session Layer）</strong>：管理和控制两个通信系统之间的会话连接，负责建立、维护和终止会话。</li>
-<li><strong>表示层（Presentation Layer）</strong>：处理数据的表示、编码和转换，确保一个系统的应用层所发送的信息可以被另一个系统的应用层读取。</li>
-<li><strong>应用层（Application Layer）</strong>：为应用软件提供网络服务，如文件传输、电子邮件和远程登录等。</li>
-</ol>
-<p>每一层都向其上层提供服务，并且依赖于其下层所提供的服务。OSI模型的成功之处在于它清晰地区分了服务、接口和协议这三个容易混淆的概念，使得功能定义与实现细节区分开来，具有很高的概括性和适应能力</p>
-<h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1><p>端口（Port）在计算机网络中是一个重要的概念，用于区分不同的服务或进程。每个运行在计算机上的进程都可以通过一个端口来与其他计算机上的进程进行通信。端口号是一个16位的数字，其取值范围从0到65535。</p>
-<p>端口可以分为以下几类：</p>
-<ol>
-<li><strong>知名端口（Well-Known Ports）</strong>：<ul>
-<li>范围：0-1023</li>
-<li>这些端口号被分配给常用的或者标准的服务和应用程序。例如，HTTP服务通常使用端口80，HTTPS使用443，FTP使用21。</li>
-</ul>
-</li>
-<li><strong>注册端口（Registered Ports）</strong>：<ul>
-<li>范围：1024-49151</li>
-<li>这些端口号用于用户或公司的应用程序。它们不像知名端口那样固定，但通常被注册以避免冲突。</li>
-</ul>
-</li>
-<li><strong>动态或私有端口（Dynamic or Private Ports）</strong>：<ul>
-<li>范围：49152-65535</li>
-<li>这些端口号通常不固定分配给任何服务，可以由任何用户用于任何目的。它们经常用于临时的通信会话。</li>
-</ul>
-</li>
-</ol>
-<p>端口在网络通信中的作用包括：</p>
-<ul>
-<li><strong>区分服务</strong>：不同的网络服务监听不同的端口，例如，Web服务器通常监听80端口，而邮件服务器可能监听25端口（SMTP）。</li>
-<li><strong>端到端通信</strong>：在客户端和服务器之间的通信中，端口用于标识特定的进程或服务，确保数据能够正确地送达目的地。</li>
-<li><strong>安全性</strong>：通过开放或关闭特定的端口，可以增加或减少网络的攻击面。例如，关闭不必要的服务端口可以提高系统的安全性。</li>
-<li><strong>端口转发和映射</strong>：在家庭或企业网络中，端口转发可以将外部请求从一个端口转发到内部网络的另一个端口，使得内部服务能够被外部访问。</li>
-</ul>
-<h2 id="常用端口号"><a href="#常用端口号" class="headerlink" title="常用端口号"></a>常用端口号</h2><blockquote>
-<ol>
-<li>**HTTP (Hypertext Transfer Protocol)**：80端口，用于普通的Web页面传输。</li>
-<li>**HTTPS (HTTP Secure)**：443端口，用于加密的Web页面传输。</li>
-<li>**FTP (File Transfer Protocol)**：21端口，用于文件传输。</li>
-<li>**SSH (Secure Shell)**：22端口，用于安全远程登录和文件传输。</li>
-<li><strong>Telnet</strong>：23端口，用于远程登录，但由于不安全，已逐渐被SSH取代。</li>
-<li>**SMTP (Simple Mail Transfer Protocol)**：25端口，用于发送电子邮件。</li>
-<li>**DNS (Domain Name System)**：53端口，用于域名解析。</li>
-<li>**DHCP (Dynamic Host Configuration Protocol)**：67和68端口，用于自动分配IP地址。</li>
-<li>**POP3 (Post Office Protocol 3)**：110端口，用于接收电子邮件。</li>
-<li>**IMAP (Internet Message Access Protocol)**：143端口，用于访问和管理电子邮件。</li>
-<li>**SNMP (Simple Network Management Protocol)**：161和162端口，用于网络管理。</li>
-<li>**LDAP (Lightweight Directory Access Protocol)**：389端口，用于访问和维护分布式目录信息服务。</li>
-<li><strong>HTTPS over SSL&#x2F;TLS</strong>：443端口，用于加密的Web页面传输。</li>
-<li>**RDP (Remote Desktop Protocol)**：3389端口，用于远程桌面连接。</li>
-<li>**SIP (Session Initiation Protocol)**：5060和5061端口，用于语音和视频通信。</li>
-<li><strong>MySQL</strong>：3306端口，用于MySQL数据库服务。</li>
-<li><strong>PostgreSQL</strong>：5432端口，用于PostgreSQL数据库服务。</li>
-<li><strong>Microsoft SQL Server</strong>：1433端口，用于SQL Server数据库服务。</li>
-<li><strong>Oracle SQL*Net</strong>：1521端口，用于Oracle数据库服务。</li>
-<li>**NFS (Network File System)**：2049端口，用于文件共享。</li>
-</ol>
-</blockquote>
-<h2 id="tcp-udp"><a href="#tcp-udp" class="headerlink" title="tcp&#x2F;udp"></a>tcp&#x2F;udp</h2><p>二者都工作在<strong>传输层</strong> 在程序之间传输数据</p>
-<h6 id="TCP（传输控制协议）"><a href="#TCP（传输控制协议）" class="headerlink" title="TCP（传输控制协议）"></a><strong>TCP</strong>（传输控制协议）</h6><blockquote>
-<p>是互联网上最常用的协议之一，广泛应用于TCP&#x2F;IP网络中。TCP协议通过建立连接并在两台设备之间传输数据流，确保数据包的可靠传输和顺序接收。与UDP相比，TCP的最大特点是它能够保证通信的可靠性，确保数据不会丢失或乱序。</p>
-</blockquote>
-<h5 id="UDP（用户数据报协议）"><a href="#UDP（用户数据报协议）" class="headerlink" title="UDP（用户数据报协议）"></a><strong>UDP</strong>（用户数据报协议）</h5><blockquote>
-<p>与TCP一样，通常与IP协议一起使用，用于在计算机之间传输数据报。与TCP不同，UDP是无连接的，无法保证数据的可靠性。在数据传输过程中，如果出现错误或丢包，接收方应用程序需要自行处理。由于UDP的传输速度更快，且适用于对实时性要求较高的应用，比如音视频流或在线游戏等，因此在这些场景中常常优先选择UDP协议，即便它可能会丢失一些数据包。</p>
-<p>​		</p>
-</blockquote>
-<p><img src="https://xubuyuan-1332571105.cos.ap-beijing.myqcloud.com/20241214192948834.png" loading="lazy"></p>
-<p>​			如图所示（笑）</p>
-<h3 id="TCP连接的建立过程（三次握手）："><a href="#TCP连接的建立过程（三次握手）：" class="headerlink" title="TCP连接的建立过程（三次握手）："></a>TCP连接的建立过程（三次握手）：</h3><ul>
-<li><blockquote>
-<p><strong>SYN（同步序列编号）</strong>：</p>
-<ul>
-<li>客户端发送一个带有SYN标志的TCP段到服务器，请求建立连接，并指定客户端的初始序列号。</li>
-</ul>
-<p><strong>SYN-ACK（同步-确认）</strong>：</p>
-<ul>
-<li>服务器收到SYN请求后，如果同意建立连接，则发送一个SYN-ACK段作为响应，包含服务器的初始序列号和对客户端SYN的确认。</li>
-</ul>
-<p><strong>ACK（确认）</strong>：</p>
-<ul>
-<li>客户端收到服务器的SYN-ACK响应后，发送一个带有ACK标志的TCP段作为最后的确认，确认收到了服务器的SYN-ACK。</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<p>完成这三次握手后，TCP连接就成功建立了，数据可以开始在两端之间传输。这个过程确保了双方都准备好进行数据传输，并且能够跟踪和确认数据包的发送和接收。</p>
-<h3 id="TCP连接的终止（四次挥手）："><a href="#TCP连接的终止（四次挥手）：" class="headerlink" title="TCP连接的终止（四次挥手）："></a>TCP连接的终止（四次挥手）：</h3><ul>
-<li><blockquote>
-<p><strong>FIN（结束）</strong>：</p>
-<ul>
-<li>当一方完成数据发送后，发送一个FIN段来关闭连接。</li>
-</ul>
-<p><strong>ACK（确认）</strong>：</p>
-<ul>
-<li>接收方确认FIN，并发送一个ACK段。</li>
-</ul>
-<p><strong>FIN（结束）</strong>：</p>
-<ul>
-<li>接收方在发送完所有剩余数据后，也发送一个FIN段。</li>
-</ul>
-<p><strong>ACK（确认）</strong>：</p>
-<ul>
-<li>最初发送FIN的一方确认接收方的FIN，并发送最后一个ACK段。</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<p>完成这四次挥手后，TCP连接被关闭。这个过程确保了双方都有机会发送完所有剩余的数据，并确认连接即将关闭。</p>
-<h1 id="HTPP协议简介"><a href="#HTPP协议简介" class="headerlink" title="HTPP协议简介"></a>HTPP协议简介</h1><p>超文本传输协议</p>
-<p>应用层</p>
-<p>TCP&#x2F;IP</p>
-<p>发布和接受HTML</p>
-<h3 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h3><p>TCP三次握手</p>
-<p>tcp建立连接成功后，向服务器发送http请求</p>
-<p>服务器收到http请求后，向客户机发送http响应</p>
-<p>客户端通过TCP四次挥手，与服务器断开TCP连接</p>
-<h3 id="B-S-C-S"><a href="#B-S-C-S" class="headerlink" title="B&#x2F;S&amp;C&#x2F;S"></a>B&#x2F;S&amp;C&#x2F;S</h3><p>C&#x2F;S Client&#x2F;Server 客户机和服务器结构</p>
-<p>B&#x2F;S  Browser&#x2F;Server  浏览器和服务器结构</p>
-<h1 id="ze入侵"><a href="#ze入侵" class="headerlink" title="ze入侵"></a>ze入侵</h1><p>漏洞复现</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><code class="hljs cmd">whoami  //查看正在使用的用户，拿到主机名<br></code></pre></td></tr></table></figure>
-
-<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250113204019460.png" alt="image-20250113204019460" loading="lazy"></p>
-<blockquote>
-<p>主机名+用户名</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">net user   //主机存在不同用户<br></code></pre></td></tr></table></figure>
-
-<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250113204251097.png" alt="image-20250113204251097" loading="lazy"></p>
-<p>weblogic服务网站</p>
-<p>远程桌面端口：3389</p>
-<p>拿到远程权限</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">net user xz/add    //创建新用户<br></code></pre></td></tr></table></figure>
-
-<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250113205442024.png" alt="image-20250113205442024" loading="lazy"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">net localgroup adminstrators  查看管理员组<br>                添加到管理员组<br></code></pre></td></tr></table></figure>
-
-<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20250113205824009.png" alt="image-20250113205824009" loading="lazy"></p>
-<p>成功进入桌面</p>
-<blockquote>
-<p>痕迹清除</p>
-<p>删除登录日志，关闭杀软</p>
-</blockquote>
-<h1 id="kali"><a href="#kali" class="headerlink" title="kali"></a>kali</h1><h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><h3 id="改中文"><a href="#改中文" class="headerlink" title="改中文"></a>改中文</h3><blockquote>
-<p>打开终端</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> dpkg-reconfigure locales<br></code></pre></td></tr></table></figure>
-
-<p>选择 zh_CN.UTF-8 回车 reboot </p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>网安</category>
-      </categories>
-      <tags>
-        <tag>网安</tag>
       </tags>
   </entry>
 </search>
