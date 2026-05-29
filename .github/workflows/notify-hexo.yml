@@ -1,0 +1,16 @@
+name: Notify Hexo Repo
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Hexo build
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.DISPATCH_TOKEN }}
+          repository: xubuyuan18/hexo      # 你的 Hexo 仓库
+          event-type: articles-updated
