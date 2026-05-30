@@ -12,5 +12,5 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.DISPATCH_TOKEN }}
-          repository: xubuyuan18/hexo      # 你的 Hexo 仓库
+          repository: xubuyuan18/xubuyuan18.github.io
           event-type: articles-updated
