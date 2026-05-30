@@ -5,4 +5,4 @@ tags:
   - 随机
 categories: Linux
 ---
-这是一个测试 GIt仓库是否同步！故uhiobubuobjbjbiub比哦你别离开、
+这是一个测试 GIt仓库是否同步！二次测试！
