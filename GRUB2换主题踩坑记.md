@@ -1,5 +1,5 @@
 ---
-title: GRUB2换主题踩坑记
+title: Linux娘救援行动：GRUB2换主题踩坑记
 tags:
   - 折腾
 categories: Linux

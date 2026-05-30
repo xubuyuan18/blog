@@ -3,7 +3,7 @@ title: 华为ICT比赛记录
 tags: note
 categories: AI
 abbrlink: 26728
-date: 2026-05-30 10:43:50
+date: 2025-06-01 10:43:50
 ---
 # ICT-AI 
 

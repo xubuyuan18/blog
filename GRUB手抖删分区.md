@@ -1,5 +1,5 @@
 ---
-title: GRUB
+title: Linux娘救援行动：GRUB手抖删分区
 tags: note
 categories: Linux
 abbrlink:
